@@ -10,6 +10,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langsmith import tracing_context
 from agent import load_config, OpenAIModelClient, RoutingOutput, EvidenceRequest
 from retrieval import LocalE5, EmbeddingUnavailable
+from remote_embeddings import AvalAIEmbeddings
 from web_search import TavilySearchClient
 
 
@@ -34,7 +35,16 @@ async def check():
                              "evidence_status": result.status, "records": len(result.records)}
     else:
         results["search"] = {"status": "not_exercised", "reason": "Search disabled or key unconfigured"}
-    if not importlib.util.find_spec("sentence_transformers"):
+    if config.embedding_backend == "avalai":
+        try:
+            embedder = AvalAIEmbeddings(config, credentials.embedding_api_key)
+            documents = await asyncio.to_thread(embedder.encode, ["The derivative gives the instantaneous rate of change and tangent slope.", "A matrix is a rectangular array of numbers."])
+            query = await asyncio.to_thread(embedder.encode, ["شیب لحظه‌ای تابع چیست؟"], query=True)
+            results["embedding"] = {"status": "passed" if int((documents @ query[0]).argmax()) == 0 else "failed",
+                                    "backend": "avalai", "coverage": "One Persian query against two English synthetic passages"}
+        except Exception:
+            results["embedding"] = {"status": "failed", "reason": "AvalAI embedding request failed or returned invalid vectors"}
+    elif not importlib.util.find_spec("sentence_transformers"):
         results["embedding"] = {"status": "not_exercised", "reason": "Embedding package unavailable"}
     else:
         try:

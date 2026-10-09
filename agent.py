@@ -84,6 +84,8 @@ class AppConfig(Contract):
     search_url: str | None = None
     generated_examples_enabled: bool = False
     semantic_enabled: bool = True
+    embedding_backend: Literal["local", "avalai"] = "local"
+    embedding_base_url: str = "https://api.avalai.ir/v1"
     embedding_model: str = "intfloat/multilingual-e5-small"
     embedding_revision: str = "fd1525a9fd15316a2d503bf26ab031a61d056e98"
     embedding_dimension: int = Field(default=384, ge=1, le=4096)
@@ -91,16 +93,34 @@ class AppConfig(Contract):
     embedding_cache_dir: Path = PROJECT_ROOT / ".cache" / "retrieval"
     embedding_model_dir: Path | None = None
 
+    @model_validator(mode="before")
+    @classmethod
+    def embedding_defaults(cls, values):
+        if isinstance(values, dict) and values.get("embedding_backend") == "avalai":
+            values = dict(values)
+            model = values.get("embedding_model", "text-embedding-3-large")
+            for field, default in {"embedding_model": model, "embedding_revision": "provider-managed",
+                                   "embedding_dimension": 1536 if model == "text-embedding-3-small" else 3072,
+                                   "embedding_max_tokens": 2048,
+                                   "embedding_cache_dir": PROJECT_ROOT / ".cache/retrieval/avalai" / model}.items():
+                values.setdefault(field, default)
+        return values
+
     @model_validator(mode="after")
     def valid_service_urls(self):
         from urllib.parse import urlsplit
-        for value in [self.model_base_url, self.search_url]:
+        for value in [self.model_base_url, self.search_url, self.embedding_base_url]:
             if value is None:
                 continue
             TypeAdapter(HttpUrl).validate_python(value)
             parts = urlsplit(value)
             if parts.scheme != "https" or parts.username or parts.password or parts.query or parts.fragment:
                 raise ValueError("Service URLs must be HTTPS without credentials, query or fragment")
+        if self.embedding_backend == "avalai":
+            if urlsplit(self.embedding_base_url).hostname not in {"api.avalai.ir", "api.avalai.org"}:
+                raise ValueError("AvalAI embedding endpoint must use an official AvalAI host")
+            if self.embedding_model not in {"text-embedding-3-small", "text-embedding-3-large"} or self.embedding_max_tokens > 8191:
+                raise ValueError("AvalAI embedding adapter supports text-embedding-3 models with at most 8191 tokens")
         return self
 
 
@@ -108,6 +128,7 @@ class Credentials(Contract):
     # Never add credentials to TutorState. Both serialization and repr omit them.
     openai_api_key: SecretStr | None = Field(default=None, exclude=True, repr=False)
     search_api_key: SecretStr | None = Field(default=None, exclude=True, repr=False)
+    embedding_api_key: SecretStr | None = Field(default=None, exclude=True, repr=False)
 
 
 class ConfigurationError(ValueError):
@@ -132,7 +153,7 @@ def load_config(*, env: Mapping[str, str] | None = None, dotenv_path: Path | Non
                        ("TUTOR_SEARCH_BACKEND", "search_backend"),
                        ("TUTOR_MODEL_BASE_URL", "model_base_url"), ("TUTOR_SEARCH_URL", "search_url"),
                        ("TUTOR_KEYS_FROM_DOTENV", "keys_from_dotenv"),
-                       *(("TUTOR_" + field.upper(), field) for field in ["semantic_enabled", "embedding_model", "embedding_revision", "embedding_dimension", "embedding_max_tokens", "embedding_cache_dir", "embedding_model_dir"])]:
+                       *(("TUTOR_" + field.upper(), field) for field in ["semantic_enabled", "embedding_backend", "embedding_base_url", "embedding_model", "embedding_revision", "embedding_dimension", "embedding_max_tokens", "embedding_cache_dir", "embedding_model_dir"])]:
         if env.get(key, "").strip():
             values[field] = env[key].strip()
     values["preferences"] = {field: env[key].strip() for key, field in [("TUTOR_MODE", "mode"), ("TUTOR_LANGUAGE", "language"), ("TUTOR_LEVEL", "learner_level"), ("TUTOR_DELIVERY", "delivery_mode")] if env.get(key, "").strip()}
@@ -153,11 +174,13 @@ def load_config(*, env: Mapping[str, str] | None = None, dotenv_path: Path | Non
     if use_local_credentials and config.keys_from_dotenv:
         from dotenv import dotenv_values
         credential_env.update({key: value for key, value in dotenv_values(local_env_path).items()
-                               if key in {"OPENAI_API_KEY", "AVALAI_API_KEY", "TUTOR_SEARCH_API_KEY"} and value and value.strip()})
+                               if key in {"OPENAI_API_KEY", "AVALAI_API_KEY", "TUTOR_SEARCH_API_KEY", "TUTOR_EMBEDDING_API_KEY"} and value and value.strip()})
     model_key = credential_env.get("OPENAI_API_KEY", "").strip()
     if urlsplit(config.model_base_url).hostname in {"api.avalai.ir", "api.avalai.org"}:
         model_key = credential_env.get("AVALAI_API_KEY", "").strip() or model_key
-    credentials = Credentials(openai_api_key=model_key or None, search_api_key=credential_env.get("TUTOR_SEARCH_API_KEY", "").strip() or None)
+    embedding_key = credential_env.get("TUTOR_EMBEDDING_API_KEY", "").strip() or credential_env.get("AVALAI_API_KEY", "").strip()
+    credentials = Credentials(openai_api_key=model_key or None, search_api_key=credential_env.get("TUTOR_SEARCH_API_KEY", "").strip() or None,
+                              embedding_api_key=embedding_key or None)
     return config, credentials
 
 
@@ -919,7 +942,7 @@ def format_answer(result: MathResult) -> str:
 
 def build_graph(config: AppConfig, model: ModelClient | None = None, search_client: SearchClient | None = None,
                 *, math_runner=run_math_worker, retrieval_client: RetrievalClient | None = None,
-                embedding_client=None, resource_workers=None, checkpointer=None):
+                embedding_client=None, embedding_credentials=None, resource_workers=None, checkpointer=None):
     """Actual eleven-node graph; resource_workers inject services, never scheduling.
 
     External services are injected; live search requires explicit configuration.
@@ -1022,7 +1045,7 @@ def build_graph(config: AppConfig, model: ModelClient | None = None, search_clie
     builder = StateGraph(TutorState)
     for name, node in [("classify", classify), ("answer", answer), ("math_tool", math_tool), ("write_answer", write_answer)]:
         builder.add_node(name, node)
-    retrieval = retrieval_client or SemanticRetrievalClient(app_config, math_runner, embedding_client=embedding_client)
+    retrieval = retrieval_client or SemanticRetrievalClient(app_config, math_runner, embedding_client=embedding_client, credentials=embedding_credentials)
     for name, node in learning_nodes(app_config, model, retrieval, resource_workers, search_client=search_client).items():
         builder.add_node(name, node)
     builder.add_edge(START, "classify")

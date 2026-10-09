@@ -195,10 +195,14 @@ class VectorIndex:
             self.lock = _LOCKS.setdefault(str(self.path.resolve()), threading.RLock())
 
     def settings(self):
-        return {"model_id": self.embedder.model_id, "revision": self.embedder.revision,
+        settings = {"model_id": self.embedder.model_id, "revision": self.embedder.revision,
                 "dimension": self.embedder.dimension, "normalization": "l2", "metric": "cosine",
                 "max_tokens": self.embedder.max_tokens, "preprocessing_version": PREPROCESSING,
-                "document_prefix": "passage: ", "query_prefix": "query: "}
+                "document_prefix": getattr(self.embedder, "document_prefix", "passage: "),
+                "query_prefix": getattr(self.embedder, "query_prefix", "query: ")}
+        if hasattr(self.embedder, "endpoint"):
+            settings.update(provider="avalai", endpoint=self.embedder.endpoint, tokenizer="cl100k_base")
+        return settings
 
     def validate_vectors(self, values, count):
         vectors = np.asarray(values, dtype=np.float32)
@@ -294,9 +298,15 @@ def keyword_rank(records, query):
 
 class SemanticRetrievalClient(LocalRetrievalClient):
     """Default file/vector adapter; injectable embeddings never replace LangGraph."""
-    def __init__(self, config, math_runner, *, embedding_client=None):
+    def __init__(self, config, math_runner, *, embedding_client=None, credentials=None):
         super().__init__(config, math_runner)
-        self.embedder = embedding_client or LocalE5(config)
+        if embedding_client is not None:
+            self.embedder = embedding_client
+        elif config.embedding_backend == "avalai":
+            from remote_embeddings import AvalAIEmbeddings
+            self.embedder = AvalAIEmbeddings(config, credentials.embedding_api_key if credentials else None)
+        else:
+            self.embedder = LocalE5(config)
         self.indexes = {kind: VectorIndex(config.embedding_cache_dir / (kind + ".npz"), self.embedder) for kind in ["sources", "examples"]}
 
     def load_sources(self):
@@ -417,6 +427,7 @@ class SemanticRetrievalClient(LocalRetrievalClient):
             try:
                 _, _, report = self.indexes[kind].sync(records, rebuild=rebuild)
                 reports[kind] = {"status": "success" if report["chunks"] else "empty", **report}
-            except (ValueError, OSError):
-                reports[kind] = {"status": "error", "warning": "Embedding model/cache unavailable or incompatible; no successful index build."}
+            except (ValueError, OSError) as exc:
+                safe = str(exc) if isinstance(exc, (EmbeddingUnavailable, CacheIncompatible)) else "Embedding model/cache unavailable or incompatible; no successful index build."
+                reports[kind] = {"status": "error", "warning": safe}
         return reports

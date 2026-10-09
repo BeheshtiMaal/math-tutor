@@ -16,7 +16,7 @@ from langsmith import tracing_context
 from pydantic import ValidationError
 from agent import AppConfig, ConfigurationError, OpenAIModelClient, Preferences, Request, build_graph, load_config, new_request_state
 
-REQUIRED_PACKAGES = ("langgraph", "langchain", "langchain-openai", "sympy", "pydantic", "python-dotenv", "numpy", "httpx")
+REQUIRED_PACKAGES = ("langgraph", "langchain", "langchain-openai", "sympy", "pydantic", "python-dotenv", "numpy", "httpx", "tiktoken")
 
 
 def check_configuration() -> tuple[dict, bool]:
@@ -38,9 +38,12 @@ def check_configuration() -> tuple[dict, bool]:
         "example_bank_present": (config.sources_dir / "examples" / "paul").is_dir(),
         "teaching_rules_present": (config.sources_dir / "teaching_bestpractices.md").is_file(),
         "semantic_enabled": config.semantic_enabled,
+        "embedding_backend": config.embedding_backend,
+        "embedding_base_url": config.embedding_base_url,
+        "embedding_key_present": credentials.embedding_api_key is not None,
         "embedding_model": config.embedding_model,
         "embedding_revision": config.embedding_revision,
-        "embedding_package_present": importlib.util.find_spec("sentence_transformers") is not None,
+        "embedding_package_present": importlib.util.find_spec("tiktoken" if config.embedding_backend == "avalai" else "sentence_transformers") is not None,
         "embedding_cache_present": (config.embedding_cache_dir / "sources.npz").is_file(),
         "provider": config.provider, "model_configured": config.model is not None,
         "credentials_configured": credentials.openai_api_key is not None,
@@ -69,8 +72,8 @@ During clarification, reply with the complete request or use /reset to cancel.
 """
 
 
-async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read=input, display=print, search_client=None) -> int:
-    graph = graph or build_graph(config, model=model, search_client=search_client)
+async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read=input, display=print, search_client=None, embedding_credentials=None) -> int:
+    graph = graph or build_graph(config, model=model, search_client=search_client, embedding_credentials=embedding_credentials)
     thread = {"configurable": {"thread_id": str(uuid4())}}
     pending = False
     pending_kind = None
@@ -180,7 +183,7 @@ async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Validate config and report installed dependencies without network activity")
-    parser.add_argument("--offline", action="store_true", help="Never call the language model or web search; local embeddings remain available")
+    parser.add_argument("--offline", action="store_true", help="Disable model, search and remote embeddings; local embeddings remain available")
     parser.add_argument("--query", help="Process one request; return nonzero for clarification or calculation failure")
     parser.add_argument("--index", action="store_true", help="Build/update local embedding caches; never download a model")
     parser.add_argument("--rebuild-index", action="store_true", help="Explicitly rebuild caches after model/settings changes (with --index)")
@@ -191,14 +194,22 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(json.dumps(report, indent=2, ensure_ascii=True))
             return 0 if complete else 2
         config, credentials = load_config()
+        if args.offline and config.embedding_backend == "avalai":
+            if args.index:
+                parser.error("AvalAI index construction requires network access; omit --offline")
+            config.semantic_enabled = False
         if args.rebuild_index and not args.index:
             parser.error("--rebuild-index requires --index")
         if args.index:
             from agent import run_math_worker
             from retrieval import SemanticRetrievalClient
-            reports = SemanticRetrievalClient(config, run_math_worker).build_indexes(rebuild=args.rebuild_index)
+            retrieval = SemanticRetrievalClient(config, run_math_worker, credentials=credentials)
+            reports = retrieval.build_indexes(rebuild=args.rebuild_index)
+            if config.embedding_backend == "avalai":
+                reports["api_usage"] = {"requests": retrieval.embedder.requests, "prompt_tokens": retrieval.embedder.prompt_tokens}
             print(json.dumps(reports, indent=2, ensure_ascii=True))
-            return 0 if any(report["status"] == "success" for report in reports.values()) and all(report["status"] != "error" for report in reports.values()) else 2
+            banks = [reports[kind] for kind in ["sources", "examples"]]
+            return 0 if any(report["status"] == "success" for report in banks) and all(report["status"] != "error" for report in banks) else 2
         model = OpenAIModelClient(config, credentials) if config.model and not args.offline else None
         from web_search import TavilySearchClient
         if args.offline:
@@ -210,7 +221,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     try:
-        return asyncio.run(run_cli(config, model, query=args.query, search_client=search_client))
+        return asyncio.run(run_cli(config, model, query=args.query, search_client=search_client, embedding_credentials=credentials))
     except KeyboardInterrupt:
         print("Goodbye.")
         return 0

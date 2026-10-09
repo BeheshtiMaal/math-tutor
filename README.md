@@ -2,6 +2,33 @@
 
 The governing documents are version 2.6 in `specs/math_tutor_spec.md` and `specs/math_tutor_implementation_prompt.md`. Phase 3 is now authorized: four official OpenStax PDFs are downloaded, with readable prose extracts, seven original starter topic notes, a private 51-example Paul bank and 15 teaching rules. Phase 3 remains incomplete because representative PDF formulas are omitted or flattened, and example level gaps are recorded. Installed SymPy and multilingual embeddings passed earlier real acceptance checks; AvalAI live access has not been rechecked in this phase. Supplied PDFs under `files/` are preserved. See the [Phase 3 report](sources/manifests/phase3_report.md); earlier phase results below are historical.
 
+## Current embeddings — AvalAI API
+
+The active `.env` uses **AvalAI `text-embedding-3-large`**, 3,072 dimensions and a 2,048-token chunk budget. Requests use `https://api.avalai.ir/v1/embeddings` with the existing `AVALAI_API_KEY`; an optional `TUTOR_EMBEDDING_API_KEY` overrides it. Keys stay out of graph state, logs and Git. [AvalAI documents the endpoint and batch format](https://docs.avalai.org/en/api-reference/embeddings); [OpenAI documents embedding tokenization and similarity settings](https://developers.openai.com/api/docs/guides/embeddings). Document and query vectors use this same model and endpoint, without E5 prefixes. No local embedding model is loaded for this backend.
+
+```dotenv
+TUTOR_EMBEDDING_BACKEND=avalai
+TUTOR_EMBEDDING_BASE_URL=https://api.avalai.ir/v1
+TUTOR_EMBEDDING_MODEL=text-embedding-3-large
+TUTOR_EMBEDDING_REVISION=provider-managed
+TUTOR_EMBEDDING_DIMENSION=3072
+TUTOR_EMBEDDING_MAX_TOKENS=2048
+TUTOR_EMBEDDING_CACHE_DIR=.cache/retrieval/avalai/text-embedding-3-large
+TUTOR_EMBEDDING_MODEL_DIR=
+```
+
+Vectors and provenance stay local in the cache above. A repeat index build reuses unchanged vectors; new queries request only a query embedding. The cache records model, endpoint, dimensions, tokenizer, preprocessing and content hashes. API aliases are provider-managed rather than pinned weight revisions; rebuild after a known provider/model version change. An unavailable key/API gives an explicit keyword fallback and never switches to a local model. `--offline` disables remote embeddings along with model/search calls. Local E5 remains an optional explicit `local` backend for compatibility; the historical local setup below is not required for AvalAI.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe cli.py --check
+.\.venv\Scripts\python.exe cli.py --index
+.\.venv\Scripts\python.exe scripts\check_remote_retrieval.py
+.\.venv\Scripts\python.exe cli.py
+```
+
+Actual migration: embedded **28 prepared source passages and 51 complete Paul examples** using three requests / 33,893 reported prompt tokens. No unreviewed full-book extracts were embedded. The smaller model missed two unrestricted Persian topic-ranking cases; the selected larger model passed all four fixed English/Persian cases. The repeat build reused all 79 vectors with zero document-embedding API requests. These fixed cases establish a limited smoke result, not universal retrieval quality. See [the migration record](sources/manifests/avalai_embeddings.json).
+
 ## Current implementation — Phase 7 search, local retrieval and full/step learning
 
 `agent.py` owns schemas, typed state/reducers, safe math payload construction, spawned math workers and the real compiled eleven-node LangGraph shown below. `learning.py` contains local evidence adapters and learning node bodies; `lesson_steps.py` validates short teaching content and parses lesson replies. `retrieval.py` adds local semantic retrieval. `build_graph(config, model=None, search_client=None, *, math_runner=..., retrieval_client=None, resource_workers=None, checkpointer=None, embedding_client=None)` supports service injection. Essential missing input pauses inside existing nodes, using an in-memory checkpoint and same-thread `Command(resume=...)`. `cli.py` owns input, display, commands and resume, and never executes graph routes itself.

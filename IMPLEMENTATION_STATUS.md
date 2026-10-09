@@ -1,6 +1,6 @@
 # Implementation status
 
-Current authorized work: Phase 5. Earlier entries describe historical checks; current behavior and limitations are recorded in the Phase 5 entry at the end.
+Current work: AvalAI embedding migration completed. Earlier phase entries are historical; the latest entry records current behavior and tests.
 
 ## Phase 0 — Complete reference acquisition and organization
 
@@ -334,3 +334,15 @@ The Phase 3 exit is **incomplete**: visually reviewed pages show missing formula
 See [the Phase 3 report](sources/manifests/phase3_report.md), [selected-example counts/rationales](sources/manifests/paul_selection.json) and [topic registry](sources/manifests/topic_registry.json) for actual results and remaining work. Earlier acquisition reports are historical.
 
 Final full regression: 119 collected, 118 passed, one expected skip. Final affected learning suite: 19 passed. Actual-corpus keyword/real-LangGraph smoke and idempotent 51-record import passed. Phase 3 formula exit remains incomplete; no later implementation phase started. See the report for initial failures and corrections.
+
+## AvalAI embedding migration — 2026-10-09
+
+Initialized local Git on `main` and committed the existing implementation/docs as `370a876` before migration. API keys, environment, generated caches and private source originals remain excluded; no remote repository/push was configured.
+
+Added a bounded, validated AvalAI embedding adapter, credential injection outside graph state, backend-specific defaults/cache metadata, safe failures and an offline network guard. Active `.env` now uses `text-embedding-3-large`, 3,072 dimensions and a separate `.cache/retrieval/avalai/text-embedding-3-large` cache. Existing chat/search keys and endpoints were preserved. API calls use the user's AvalAI key; no local model is loaded in this backend. Graph topology is unchanged.
+
+Actual preparation: 28 source-note passages + 51 complete selected examples = 79 vectors, in three requests / 33,893 reported prompt tokens. A repeat build reused every document vector without another document request. Both English and Persian derivative/equation cases passed across unrestricted topic ranking. `text-embedding-3-small` missed both Persian cases; the larger model was selected using the same cases and unchanged notes. Raw PDF extracts remain excluded and their Phase 3 formula status is unchanged.
+
+Regression before final model selection: 133 collected, 131 passed, two skipped (missing-SymPy scenario and optional compatible local-E5 acceptance under the remote configuration). After selecting the larger model/defaults: eight remote-adapter tests and 15 contract tests passed; actual large-model index/reuse/bilingual smoke passed. See [the migration record](sources/manifests/avalai_embeddings.json). The first small-model semantic smoke failed two Persian cases; this was corrected by selecting/testing the larger model, not hidden or relabelled as success.
+
+Run `.\.venv\Scripts\python.exe cli.py`; `cli.py --index` reuses cached documents and `scripts/check_remote_retrieval.py` explicitly tests the remote backend. `--offline` disables remote embeddings. Local generated cache files are present but ignored by Git; no secret value was committed or printed.

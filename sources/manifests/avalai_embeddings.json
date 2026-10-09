@@ -1,0 +1,152 @@
+{
+  "prepared_at": "2026-10-09T19:52:31.614645+00:00",
+  "baseline_commit": "370a876783c55da7607156a0f3307c7a3e5b492a",
+  "backend": "avalai",
+  "model": "text-embedding-3-large",
+  "dimensions": 3072,
+  "endpoint": "https://api.avalai.ir/v1/embeddings",
+  "api_key_source": "Existing AVALAI_API_KEY; no key values recorded",
+  "revision": "provider-managed (API alias, not a pinned local weight revision)",
+  "initial_index": {
+    "sources": {
+      "status": "success",
+      "logical_records": 28,
+      "chunks": 28,
+      "embedded": 28,
+      "reused": 0,
+      "warnings": []
+    },
+    "examples": {
+      "status": "success",
+      "logical_records": 51,
+      "chunks": 51,
+      "embedded": 51,
+      "reused": 0,
+      "warnings": []
+    },
+    "api_usage": {
+      "requests": 3,
+      "prompt_tokens": 33893
+    }
+  },
+  "final_retrieval": {
+    "backend": "avalai",
+    "model": "text-embedding-3-large",
+    "dimensions": 3072,
+    "cache_reuse": {
+      "sources": {
+        "status": "success",
+        "logical_records": 28,
+        "chunks": 28,
+        "embedded": 0,
+        "reused": 28,
+        "warnings": []
+      },
+      "examples": {
+        "status": "success",
+        "logical_records": 51,
+        "chunks": 51,
+        "embedded": 0,
+        "reused": 51,
+        "warnings": []
+      }
+    },
+    "cache_reuse_without_api_requests": true,
+    "cases": [
+      {
+        "language": "en",
+        "expected_topic": "derivative",
+        "actual_topic": "derivative",
+        "method": "semantic",
+        "status": "passed"
+      },
+      {
+        "language": "fa",
+        "expected_topic": "derivative",
+        "actual_topic": "derivative",
+        "method": "semantic",
+        "status": "passed"
+      },
+      {
+        "language": "en",
+        "expected_topic": "algebra",
+        "actual_topic": "algebra",
+        "method": "semantic",
+        "status": "passed"
+      },
+      {
+        "language": "fa",
+        "expected_topic": "algebra",
+        "actual_topic": "algebra",
+        "method": "semantic",
+        "status": "passed"
+      }
+    ],
+    "smoke_api_requests": 4,
+    "smoke_prompt_tokens": 106,
+    "local_embedding_model_loaded": false,
+    "chat_or_search_called": false
+  },
+  "small_model_comparison": [
+    {
+      "language": "en",
+      "expected_topic": "derivative",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "status": "passed"
+    },
+    {
+      "language": "fa",
+      "expected_topic": "derivative",
+      "actual_topic": "integral",
+      "method": "semantic",
+      "status": "failed"
+    },
+    {
+      "language": "en",
+      "expected_topic": "algebra",
+      "actual_topic": "algebra",
+      "method": "semantic",
+      "status": "passed"
+    },
+    {
+      "language": "fa",
+      "expected_topic": "algebra",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "status": "failed"
+    }
+  ],
+  "caches": [
+    {
+      "kind": "sources",
+      "path": ".cache/retrieval/avalai/text-embedding-3-large/sources.npz",
+      "actual_file_size_bytes": 289299,
+      "sha256": "da6134ecc5d16bf03b598f090a2298a7bba8babf053486cfa5bcc1acf166bce4"
+    },
+    {
+      "kind": "examples",
+      "path": ".cache/retrieval/avalai/text-embedding-3-large/examples.npz",
+      "actual_file_size_bytes": 582226,
+      "sha256": "f6e8713cbfca02345ac7637ab2a4bd470b4085636fd9c2642ad115543f169dfb"
+    }
+  ],
+  "full_regression_before_final_model_selection": {
+    "collected": 133,
+    "passed": 131,
+    "skipped": 2
+  },
+  "final_focused_checks": {
+    "remote_adapter": 8,
+    "configuration_contracts": 15
+  },
+  "original_pdfs_embedded": false,
+  "local_embedding_model_loaded": false,
+  "git_exclusions": [
+    ".env and credentials",
+    ".venv",
+    ".cache (vectors remain local)",
+    "private originals/extracts and selected Paul content"
+  ],
+  "limitations": "Four fixed bilingual ranking cases passed; this does not certify every topic or question. Phase 3 raw PDF formula gaps remain incomplete. Provider aliases require rebuilding if their underlying version changes."
+}
