@@ -1,5 +1,7 @@
 # MathTutor
 
+[راهنمای فارسی — Persian README](README.fa.md)
+
 ## Current terminal display policy
 
 User-directed update: displayed answers and lessons contain no citations, source names, source URLs, retrieval timestamps or license blocks. Preserve all provenance, attribution, licenses and internal source IDs in evidence records and manifests, including the selected Paul examples. This display policy supersedes earlier requirements to append citations to responses. Retrieval, verification and example selection are unchanged.
