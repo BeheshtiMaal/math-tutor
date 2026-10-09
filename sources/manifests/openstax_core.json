@@ -1,0 +1,933 @@
+{
+  "phase": 3,
+  "scope": "Four OpenStax PDFs only; no full-site or example-collection crawl",
+  "updated_at": "2026-10-09T19:03:46.450004+00:00",
+  "books": [
+    {
+      "title": "Calculus Volume 1",
+      "source_url": "https://openstax.org/details/books/calculus-volume-1",
+      "pdf_url": "https://assets.openstax.org/oscms-prodcms/media/documents/calculus-volume-1_-_WEB.pdf",
+      "license": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "raw_path": "sources/raw/openstax/calculus-volume-1.pdf",
+      "text_path": "sources/text/openstax/calculus-volume-1.md",
+      "download_status": "downloaded",
+      "actual_file_size_bytes": 52104540,
+      "partial_transfer_bytes": 0,
+      "transferred_this_run_bytes": 52104540,
+      "extraction_status": "incomplete",
+      "extraction_problems": {
+        "sparse_pages": [
+          1,
+          2,
+          14,
+          112,
+          302,
+          359,
+          444,
+          672,
+          684,
+          687,
+          691,
+          697,
+          710,
+          711,
+          729,
+          750,
+          751,
+          752,
+          753,
+          755,
+          756,
+          757,
+          758,
+          766,
+          769
+        ],
+        "replacement_or_null_character_pages": [],
+        "page_errors": [],
+        "math_layout_risk": "PDF extraction can flatten fractions, powers, bounds, matrices and diagrams; raw extracted text is not reviewed teaching evidence.",
+        "observed_formula_problems": [
+          "Power-rule formula and derivative proof visible in PDF but omitted from text by pypdf and PyMuPDF. Formula images need reviewed transcription or math OCR."
+        ]
+      },
+      "license_text": "",
+      "authors": [
+        {
+          "type": "author",
+          "value": {
+            "name": "Gilbert Strang",
+            "university": "Massachusetts Institute of Technology",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": true
+          },
+          "id": "845fc674-e2bd-41d6-833a-09605def9d8b"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Joseph Lakey",
+            "university": "New Mexico State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "da1be78c-f4f8-47ae-86ac-9f1e00d503dd"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Elaine A. Terry",
+            "university": "Saint Joseph’s University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "fbe6dac0-450f-4905-a8ae-d1993e6671e4"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Alfred K. Mulzet",
+            "university": "Florida State College at Jacksonville",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "7607fb35-68d4-4416-915a-5ffdd0d16dc9"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Sheri J. Boyd",
+            "university": "Rollins College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "ed4be58a-18c7-4cb8-aceb-82d6b45acf50"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Joyati Debnath",
+            "university": "Winona State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "9ba25aa3-be8e-4d6a-9d26-c4ab157f30df"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Michelle Merriweather",
+            "university": "Bronxville High School",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "9f331e1a-f494-487f-88cd-89b6e0ef697e"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David Smith",
+            "university": "University of the Virgin Islands",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "cbd01593-5794-4449-9ec1-56a37e4299f3"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Nicoleta Virginia Bila",
+            "university": "Fayetteville State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "e9c3e9b4-62cf-426c-ac89-f109c9085b6d"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Valeree Falduto",
+            "university": "Palm Beach State College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "4d886d57-edc6-4d80-ad59-4234df2a607b"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Kirsten R. Messer",
+            "university": "Colorado State University-Pueblo",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "90baa82d-d60d-418e-b7ab-aa1676177326"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "William Radulovich",
+            "university": "Formerly at Florida State College at Jacksonville",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "de4252bf-1006-4442-907c-917aa02339f0"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Erica M. Rutter",
+            "university": "Arizona State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "464ca24c-1052-4589-9d17-ca472132645b"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David Torain",
+            "university": "Hampton University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "e0ae2686-1ddb-490f-ba91-5f413c55b25b"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Edwin “Jed” Herman",
+            "university": "University of Wisconsin-Stevens Point",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": true
+          },
+          "id": "25002e71-0909-42b2-b385-679c82e033b0"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Catherine Abbott",
+            "university": "Keuka College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "5ff2add3-cf69-45ab-a13c-23eb2cf39f2c"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Julie Levandosky",
+            "university": "Framingham State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "44d075da-ecdf-4c10-b27b-25141ce7af74"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David McCune",
+            "university": "William Jewell College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "7cd5fd90-6009-4ed8-a887-587f3d1c9096"
+        }
+      ],
+      "pdf_updated_at": "2020-06-25T13:49:00-05:00",
+      "resolution": {
+        "source_page": "https://openstax.org/details/books/calculus-volume-1",
+        "app_bundle_url": "https://openstax.org/dist/main-b43144dce9f6334c217c.min.js",
+        "cms_listing_url": "https://openstax.org/apps/cms/api/v2/pages/?slug=calculus-volume-1",
+        "cms_detail_url": "https://openstax.org/apps/cms/api/v2/pages/74/",
+        "resolved_at": "2026-10-09T18:59:01.317913+00:00"
+      },
+      "reported_content_length": 52104540,
+      "retrieved_at": "2026-10-09T18:59:33.761062+00:00",
+      "raw_sha256": "7303513c1927b9b6d04d150502e769cc1821638a24c774e2f6bba82bf9875990",
+      "page_count": 769,
+      "text_size_bytes": 1049441,
+      "text_sha256": "7541a391ca89affcac69ad23643a19cfb8104115d1b1521714f9b077071e1293",
+      "formula_review_status": "spot_checked_problems_found",
+      "formula_review": {
+        "raw_sha256": "7303513c1927b9b6d04d150502e769cc1821638a24c774e2f6bba82bf9875990",
+        "pdf_pages": [
+          226
+        ],
+        "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+        "observations": [
+          "Power-rule formula and derivative proof visible in PDF but omitted from text by pypdf and PyMuPDF. Formula images need reviewed transcription or math OCR."
+        ],
+        "all_pages_reviewed": false
+      }
+    },
+    {
+      "title": "Calculus Volume 2",
+      "source_url": "https://openstax.org/details/books/calculus-volume-2",
+      "pdf_url": "https://assets.openstax.org/oscms-prodcms/media/documents/calculus-volume-2_-_WEB.pdf",
+      "license": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "raw_path": "sources/raw/openstax/calculus-volume-2.pdf",
+      "text_path": "sources/text/openstax/calculus-volume-2.md",
+      "download_status": "downloaded",
+      "actual_file_size_bytes": 47350759,
+      "partial_transfer_bytes": 0,
+      "transferred_this_run_bytes": 47350759,
+      "extraction_status": "incomplete",
+      "extraction_problems": {
+        "sparse_pages": [
+          1,
+          2,
+          337,
+          339,
+          476,
+          542,
+          582,
+          624,
+          636,
+          654,
+          655,
+          656,
+          657,
+          659,
+          660,
+          661,
+          662,
+          679,
+          685,
+          715,
+          716,
+          720,
+          722,
+          723,
+          725,
+          726,
+          730,
+          734,
+          737
+        ],
+        "replacement_or_null_character_pages": [],
+        "page_errors": [],
+        "math_layout_risk": "PDF extraction can flatten fractions, powers, bounds, matrices and diagrams; raw extracted text is not reviewed teaching evidence.",
+        "observed_formula_problems": [
+          "Sigma expressions and summation bounds visible in PDF are omitted from the text."
+        ]
+      },
+      "license_text": "Calculus Volumes 1, 2, and 3 are licensed under an Attribution-NonCommercial-Sharealike 4.0 International License (CC BY-NC-SA), which means you can share, remix, transform, and build upon the content, as long as you credit OpenStax and license your new creations under the same terms. If you have any questions, contact us .",
+      "authors": [
+        {
+          "type": "author",
+          "value": {
+            "name": "William Radulovich",
+            "university": "Formerly at Florida State College at Jacksonville",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "86f461d9-0b76-438c-9656-0a800fc410cc"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Erica M. Rutter",
+            "university": "Arizona State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "042a887d-8ef8-448e-ac09-387b3245371a"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David Smith",
+            "university": "University of the Virgin Islands",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "54e6f9c1-bcea-4d8d-820e-7ba95b256cf2"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Gilbert Strang",
+            "university": "Massachusetts Institute of Technology",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": true
+          },
+          "id": "b68b58d4-092c-48b3-bd7a-5ce4d0a7b6c7"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Kirsten R. Messer",
+            "university": "Colorado State University-Pueblo",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "8fd98479-556b-4938-a048-21902e9239c9"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Alfred K. Mulzet",
+            "university": "Florida State College at Jacksonville",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "a4a2bfbc-ae68-4ebf-af06-2825d7f8f379"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Nicoleta Virginia Bila",
+            "university": "Fayetteville State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "50bf67e8-a732-447c-9e03-d307d7464d2a"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Sheri J. Boyd",
+            "university": "Rollins College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "57fec2a9-1b87-4230-a8de-f70ef7c509be"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Joyati Debnath",
+            "university": "Winona State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "b4f9dbc1-7dc5-46da-be0a-b3fb358aee0f"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Edwin “Jed” Herman",
+            "university": "University of Wisconsin-Stevens Point",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": true
+          },
+          "id": "d7398e10-d6fd-45ef-910c-8088476f63d6"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Valeree Falduto",
+            "university": "Palm Beach State College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "917a44fc-ed37-43c8-bf90-1833ffbffa0d"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Elaine A. Terry",
+            "university": "Saint Joseph’s University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "6881419b-7899-41bd-8e38-f5c73b178361"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David Torain",
+            "university": "Hampton University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "982e2a54-d171-4936-8b49-bc9fe99112ac"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Michelle Merriweather",
+            "university": "Bronxville High School",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "eb8c0108-c3a1-452e-9ff4-6257f0c07e89"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Catherine Abbott",
+            "university": "Keuka College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "181f5945-0282-47cd-b740-7acd9b07be08"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Joseph Lakey",
+            "university": "New Mexico State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "6e6497d0-4691-4f09-acb1-b475f545bda6"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Julie Levandosky",
+            "university": "Framingham State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "5b78bf29-2e06-44a5-be8c-9e5c8860cb53"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David McCune",
+            "university": "William Jewell College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "9c2bc931-90ba-4294-a7af-9eb17e82281f"
+        }
+      ],
+      "pdf_updated_at": null,
+      "resolution": {
+        "source_page": "https://openstax.org/details/books/calculus-volume-2",
+        "app_bundle_url": "https://openstax.org/dist/main-b43144dce9f6334c217c.min.js",
+        "cms_listing_url": "https://openstax.org/apps/cms/api/v2/pages/?slug=calculus-volume-2",
+        "cms_detail_url": "https://openstax.org/apps/cms/api/v2/pages/75/",
+        "resolved_at": "2026-10-09T18:59:02.010992+00:00"
+      },
+      "reported_content_length": 47350759,
+      "retrieved_at": "2026-10-09T19:00:04.434813+00:00",
+      "raw_sha256": "f6ac06038088711766e5b664a8114c8fcb0b7b88cfb38e92bbaf56ba2df43f4a",
+      "page_count": 737,
+      "text_size_bytes": 971274,
+      "text_sha256": "c5654d82ba2256ef16dc9a8dfc6ca7cfb0656cadcecce8625c017d7d52b469db",
+      "formula_review_status": "spot_checked_problems_found",
+      "formula_review": {
+        "raw_sha256": "f6ac06038088711766e5b664a8114c8fcb0b7b88cfb38e92bbaf56ba2df43f4a",
+        "pdf_pages": [
+          14
+        ],
+        "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+        "observations": [
+          "Sigma expressions and summation bounds visible in PDF are omitted from the text."
+        ],
+        "all_pages_reviewed": false
+      }
+    },
+    {
+      "title": "College Algebra 2e",
+      "source_url": "https://openstax.org/details/books/college-algebra-2e",
+      "pdf_url": "https://assets.openstax.org/oscms-prodcms/media/documents/college-algebra-2e_-_WEB.pdf",
+      "license": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "raw_path": "sources/raw/openstax/college-algebra-2e.pdf",
+      "text_path": "sources/text/openstax/college-algebra-2e.md",
+      "download_status": "downloaded",
+      "actual_file_size_bytes": 84220165,
+      "partial_transfer_bytes": 0,
+      "transferred_this_run_bytes": 84220165,
+      "extraction_status": "incomplete",
+      "extraction_problems": {
+        "sparse_pages": [
+          1,
+          2,
+          3,
+          10,
+          90,
+          184,
+          655,
+          674,
+          868,
+          954,
+          1009,
+          1070
+        ],
+        "replacement_or_null_character_pages": [],
+        "page_errors": [],
+        "math_layout_risk": "PDF extraction can flatten fractions, powers, bounds, matrices and diagrams; raw extracted text is not reviewed teaching evidence.",
+        "observed_formula_problems": [
+          "Matrix bracketed entries and indexed entry notation visible in PDF are omitted from the text; table reading order also needs review."
+        ]
+      },
+      "license_text": "",
+      "authors": [
+        {
+          "type": "author",
+          "value": {
+            "name": "Jay Abramson",
+            "university": "Arizona State University",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": true
+          },
+          "id": "e3dcdbc8-16fe-4597-91d6-e7b346ef35a2"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Valeree Falduto",
+            "university": "Palm Beach State College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "75dd70e1-b108-457b-9933-fb0909a51fcb"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Rachael Gross",
+            "university": "Towson University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "42f5162b-9001-4153-acb8-320038259df2"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "David Lippman",
+            "university": "Pierce College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "86d91600-c729-4d5e-9c41-883ac9cb9209"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Melonie Rasmussen",
+            "university": "Pierce College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "d773a879-b211-4321-81a2-da1849223a56"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Rick Norwood",
+            "university": "East Tennessee State University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "bd9f1581-6693-4bca-8b5a-853786ba21ed"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Nicholas Belloit",
+            "university": "Florida State College at Jacksonville",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "9e6ae962-b40e-4260-bfe3-fee204387ba8"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Harold Whipple",
+            "university": "Formerly of Columbia College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "56ec3416-26ad-4c15-ab83-cda3542e6dc6"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Jean-Marie Magnier",
+            "university": "Springfield Technical Community College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "3964c520-5a04-466c-bc17-e4644187d74c"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Christina Fernandez",
+            "university": "",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "5c4844f9-ef96-47f8-867f-c2b06c554def"
+        }
+      ],
+      "pdf_updated_at": null,
+      "resolution": {
+        "source_page": "https://openstax.org/details/books/college-algebra-2e",
+        "app_bundle_url": "https://openstax.org/dist/main-b43144dce9f6334c217c.min.js",
+        "cms_listing_url": "https://openstax.org/apps/cms/api/v2/pages/?slug=college-algebra-2e",
+        "cms_detail_url": "https://openstax.org/apps/cms/api/v2/pages/550/",
+        "resolved_at": "2026-10-09T18:59:01.782448+00:00"
+      },
+      "reported_content_length": 84220165,
+      "retrieved_at": "2026-10-09T19:00:27.939957+00:00",
+      "raw_sha256": "381c7d1f2ce21d6786a9e4624d33cdedf3c3be468c011321b25c865786999802",
+      "page_count": 1073,
+      "text_size_bytes": 1627266,
+      "text_sha256": "46b2ae870f345662a24140a3ed76763f7ab27e8bdb0d0b5953dc17a9a743e410",
+      "formula_review_status": "spot_checked_problems_found",
+      "formula_review": {
+        "raw_sha256": "381c7d1f2ce21d6786a9e4624d33cdedf3c3be468c011321b25c865786999802",
+        "pdf_pages": [
+          727
+        ],
+        "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+        "observations": [
+          "Matrix bracketed entries and indexed entry notation visible in PDF are omitted from the text; table reading order also needs review."
+        ],
+        "all_pages_reviewed": false
+      }
+    },
+    {
+      "title": "Introductory Statistics 2e",
+      "source_url": "https://openstax.org/details/books/introductory-statistics-2e",
+      "pdf_url": "https://assets.openstax.org/oscms-prodcms/media/documents/introductory-statistics-2e_-_WEB.pdf",
+      "license": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "raw_path": "sources/raw/openstax/introductory-statistics-2e.pdf",
+      "text_path": "sources/text/openstax/introductory-statistics-2e.md",
+      "download_status": "downloaded",
+      "actual_file_size_bytes": 23503369,
+      "partial_transfer_bytes": 0,
+      "transferred_this_run_bytes": 23503369,
+      "extraction_status": "incomplete",
+      "extraction_problems": {
+        "sparse_pages": [
+          1,
+          2,
+          12,
+          76,
+          238,
+          416,
+          472,
+          690,
+          730,
+          756,
+          810,
+          814,
+          824,
+          832,
+          844,
+          847
+        ],
+        "replacement_or_null_character_pages": [],
+        "page_errors": [],
+        "math_layout_risk": "PDF extraction can flatten fractions, powers, bounds, matrices and diagrams; raw extracted text is not reviewed teaching evidence.",
+        "observed_formula_problems": [
+          "Fraction-based probability equations lose numerator/denominator layout in plain text; inline notation and table reading order need review."
+        ]
+      },
+      "license_text": "",
+      "authors": [
+        {
+          "type": "author",
+          "value": {
+            "name": "Barbara Illowsky",
+            "university": "De Anza College",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": false
+          },
+          "id": "35f6999f-2c7f-4bd3-97c8-02ba4cb91144"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Susan Dean",
+            "university": "De Anza College",
+            "country": "",
+            "senior_author": true,
+            "display_at_top": false
+          },
+          "id": "d6f00490-6dce-4cc8-83ab-f4d473ea987c"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Daniel Birmajer",
+            "university": "Nazareth College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "7f620851-2bcb-4e23-a703-c0a5c1f4201f"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Bryan Blount",
+            "university": "Kentucky Wesleyan College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "0d088036-cf11-4e42-87ca-d6da65ec85df"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Sheri Boyd",
+            "university": "Rollins College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "a5202d22-1499-467c-937c-06b828c52405"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Matthew Einsohn",
+            "university": "Prescott College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "4665e0fc-d36f-4e75-8f92-0c05fc0c181a"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Nancy Foreman",
+            "university": "West Los Angeles College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "6bb7596c-68ec-4dcd-90d5-479501a5c519"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "James Helmreich",
+            "university": "Marist College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "578da412-a1a5-4dd7-969d-eb2229e8d774"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Lynette Kenyon",
+            "university": "Collin County Community College",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "996f3611-beae-4976-8ff7-4e4f3c82e544"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Sheldon Lee",
+            "university": "Viterbo University",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "0fa694b8-f67d-41ac-a830-bdc39dd79c86"
+        },
+        {
+          "type": "author",
+          "value": {
+            "name": "Jeff Taub",
+            "university": "Maine Maritime Academy",
+            "country": "",
+            "senior_author": false,
+            "display_at_top": false
+          },
+          "id": "2f5beb8b-4ca8-4469-b729-efe64a25da9b"
+        }
+      ],
+      "pdf_updated_at": null,
+      "resolution": {
+        "source_page": "https://openstax.org/details/books/introductory-statistics-2e",
+        "app_bundle_url": "https://openstax.org/dist/main-b43144dce9f6334c217c.min.js",
+        "cms_listing_url": "https://openstax.org/apps/cms/api/v2/pages/?slug=introductory-statistics-2e",
+        "cms_detail_url": "https://openstax.org/apps/cms/api/v2/pages/750/",
+        "resolved_at": "2026-10-09T18:59:01.506617+00:00"
+      },
+      "reported_content_length": 23503369,
+      "retrieved_at": "2026-10-09T19:00:09.682766+00:00",
+      "raw_sha256": "a79a953b75e570030c74ea6f700b8bd70f41dc8c01bf4e9618e6a0adba3a382a",
+      "page_count": 847,
+      "text_size_bytes": 1749597,
+      "text_sha256": "f12b3443bc3fe27c1275a3f3f050b8de168697626a10ae01b3a2e5ac44fbfa78",
+      "formula_review_status": "spot_checked_problems_found",
+      "formula_review": {
+        "raw_sha256": "a79a953b75e570030c74ea6f700b8bd70f41dc8c01bf4e9618e6a0adba3a382a",
+        "pdf_pages": [
+          180
+        ],
+        "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+        "observations": [
+          "Fraction-based probability equations lose numerator/denominator layout in plain text; inline notation and table reading order need review."
+        ],
+        "all_pages_reviewed": false
+      }
+    }
+  ],
+  "total_actual_download_bytes": 207178833,
+  "total_partial_transfer_bytes": 0,
+  "transferred_this_run_bytes": 207178833,
+  "total_extracted_text_bytes": 5397578,
+  "phase3_formula_exit": "incomplete: readable prose extracted, representative formulas lost or flattened; raw extracts excluded from teaching and embeddings"
+}

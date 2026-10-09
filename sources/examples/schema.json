@@ -1,0 +1,584 @@
+{
+  "$defs": {
+    "DifferentiateProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "$ref": "#/$defs/Expression"
+        },
+        "variable": {
+          "default": "x",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+          "title": "Variable",
+          "type": "string"
+        },
+        "domain": {
+          "default": "real",
+          "enum": [
+            "real",
+            "complex"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "operation": {
+          "const": "differentiate",
+          "title": "Operation",
+          "type": "string"
+        },
+        "order": {
+          "default": 1,
+          "maximum": 10,
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "expression",
+        "operation"
+      ],
+      "title": "DifferentiateProblem",
+      "type": "object"
+    },
+    "Expression": {
+      "additionalProperties": false,
+      "description": "Allowlisted expression AST, not executable Python or a SymPy input string.",
+      "properties": {
+        "op": {
+          "enum": [
+            "number",
+            "symbol",
+            "constant",
+            "add",
+            "sub",
+            "mul",
+            "div",
+            "pow",
+            "neg",
+            "sin",
+            "cos",
+            "tan",
+            "exp",
+            "log",
+            "sqrt",
+            "abs"
+          ],
+          "title": "Op",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "args": {
+          "items": {
+            "$ref": "#/$defs/Expression"
+          },
+          "maxItems": 256,
+          "title": "Args",
+          "type": "array"
+        }
+      },
+      "required": [
+        "op"
+      ],
+      "title": "Expression",
+      "type": "object"
+    },
+    "IntegrateProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "$ref": "#/$defs/Expression"
+        },
+        "variable": {
+          "default": "x",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+          "title": "Variable",
+          "type": "string"
+        },
+        "domain": {
+          "default": "real",
+          "enum": [
+            "real",
+            "complex"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "operation": {
+          "const": "integrate",
+          "title": "Operation",
+          "type": "string"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Expression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Expression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "expression",
+        "operation"
+      ],
+      "title": "IntegrateProblem",
+      "type": "object"
+    },
+    "LimitProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "$ref": "#/$defs/Expression"
+        },
+        "variable": {
+          "default": "x",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+          "title": "Variable",
+          "type": "string"
+        },
+        "domain": {
+          "default": "real",
+          "enum": [
+            "real",
+            "complex"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "operation": {
+          "const": "limit",
+          "title": "Operation",
+          "type": "string"
+        },
+        "point": {
+          "$ref": "#/$defs/Expression"
+        },
+        "direction": {
+          "default": "both",
+          "enum": [
+            "left",
+            "right",
+            "both"
+          ],
+          "title": "Direction",
+          "type": "string"
+        }
+      },
+      "required": [
+        "expression",
+        "operation",
+        "point"
+      ],
+      "title": "LimitProblem",
+      "type": "object"
+    },
+    "MatrixProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "operation": {
+          "const": "matrix",
+          "title": "Operation",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "determinant",
+            "inverse",
+            "rank",
+            "transpose",
+            "multiply"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "matrix": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Expression"
+            },
+            "type": "array"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Matrix",
+          "type": "array"
+        },
+        "other": {
+          "anyOf": [
+            {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Expression"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Other"
+        }
+      },
+      "required": [
+        "operation",
+        "action",
+        "matrix"
+      ],
+      "title": "MatrixProblem",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "source_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "section_title": {
+          "minLength": 1,
+          "title": "Section Title",
+          "type": "string"
+        },
+        "source_author": {
+          "minLength": 1,
+          "title": "Source Author",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "usage_terms_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Usage Terms Url",
+          "type": "string"
+        },
+        "usage_terms": {
+          "minLength": 1,
+          "title": "Usage Terms",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_url",
+        "section_title",
+        "source_author",
+        "retrieved_at",
+        "usage_terms_url",
+        "usage_terms"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "SimplifyProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "$ref": "#/$defs/Expression"
+        },
+        "variable": {
+          "default": "x",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+          "title": "Variable",
+          "type": "string"
+        },
+        "domain": {
+          "default": "real",
+          "enum": [
+            "real",
+            "complex"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "operation": {
+          "const": "simplify",
+          "title": "Operation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "expression",
+        "operation"
+      ],
+      "title": "SimplifyProblem",
+      "type": "object"
+    },
+    "SolveProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "operation": {
+          "const": "solve",
+          "title": "Operation",
+          "type": "string"
+        },
+        "lhs": {
+          "$ref": "#/$defs/Expression"
+        },
+        "rhs": {
+          "$ref": "#/$defs/Expression"
+        },
+        "variable": {
+          "default": "x",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+          "title": "Variable",
+          "type": "string"
+        },
+        "domain": {
+          "default": "real",
+          "enum": [
+            "real",
+            "complex"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Assumptions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "operation",
+        "lhs",
+        "rhs"
+      ],
+      "title": "SolveProblem",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "example_id": {
+      "minLength": 1,
+      "title": "Example Id",
+      "type": "string"
+    },
+    "topic": {
+      "minLength": 1,
+      "title": "Topic",
+      "type": "string"
+    },
+    "subtopic": {
+      "minLength": 1,
+      "title": "Subtopic",
+      "type": "string"
+    },
+    "course": {
+      "minLength": 1,
+      "title": "Course",
+      "type": "string"
+    },
+    "learner_level": {
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "title": "Learner Level",
+      "type": "string"
+    },
+    "statement": {
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "solution": {
+      "minLength": 1,
+      "title": "Solution",
+      "type": "string"
+    },
+    "source_example_label": {
+      "minLength": 1,
+      "title": "Source Example Label",
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "origin": {
+      "default": "paul",
+      "enum": [
+        "paul",
+        "original"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "operation_payload": {
+      "anyOf": [
+        {
+          "discriminator": {
+            "mapping": {
+              "differentiate": "#/$defs/DifferentiateProblem",
+              "integrate": "#/$defs/IntegrateProblem",
+              "limit": "#/$defs/LimitProblem",
+              "matrix": "#/$defs/MatrixProblem",
+              "simplify": "#/$defs/SimplifyProblem",
+              "solve": "#/$defs/SolveProblem"
+            },
+            "propertyName": "operation"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/DifferentiateProblem"
+            },
+            {
+              "$ref": "#/$defs/IntegrateProblem"
+            },
+            {
+              "$ref": "#/$defs/LimitProblem"
+            },
+            {
+              "$ref": "#/$defs/SolveProblem"
+            },
+            {
+              "$ref": "#/$defs/MatrixProblem"
+            },
+            {
+              "$ref": "#/$defs/SimplifyProblem"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Operation Payload"
+    },
+    "proposed_result": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Proposed Result"
+    },
+    "verification_status": {
+      "default": "unknown",
+      "enum": [
+        "verified",
+        "rejected",
+        "unknown",
+        "unsupported"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    },
+    "verification_method": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Verification Method"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "example_id",
+    "topic",
+    "subtopic",
+    "course",
+    "learner_level",
+    "statement",
+    "solution",
+    "source_example_label",
+    "provenance"
+  ],
+  "title": "ExampleRecord",
+  "type": "object"
+}

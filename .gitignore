@@ -1,0 +1,16 @@
+# Reference corpora remain local; do not accidentally publish originals or extracts.
+sources/raw/
+sources/text/
+# Private selected source content; reproducible selection plan stays in scripts.
+sources/examples/paul/
+*.partial
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.cache/
+# User-supplied reference originals remain local too.
+files/
+specs/

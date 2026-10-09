@@ -1,0 +1,46 @@
+{
+  "calculus-volume-1": {
+    "raw_sha256": "7303513c1927b9b6d04d150502e769cc1821638a24c774e2f6bba82bf9875990",
+    "pdf_pages": [
+      226
+    ],
+    "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+    "observations": [
+      "Power-rule formula and derivative proof visible in PDF but omitted from text by pypdf and PyMuPDF. Formula images need reviewed transcription or math OCR."
+    ],
+    "all_pages_reviewed": false
+  },
+  "calculus-volume-2": {
+    "raw_sha256": "f6ac06038088711766e5b664a8114c8fcb0b7b88cfb38e92bbaf56ba2df43f4a",
+    "pdf_pages": [
+      14
+    ],
+    "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+    "observations": [
+      "Sigma expressions and summation bounds visible in PDF are omitted from the text."
+    ],
+    "all_pages_reviewed": false
+  },
+  "college-algebra-2e": {
+    "raw_sha256": "381c7d1f2ce21d6786a9e4624d33cdedf3c3be468c011321b25c865786999802",
+    "pdf_pages": [
+      727
+    ],
+    "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+    "observations": [
+      "Matrix bracketed entries and indexed entry notation visible in PDF are omitted from the text; table reading order also needs review."
+    ],
+    "all_pages_reviewed": false
+  },
+  "introductory-statistics-2e": {
+    "raw_sha256": "a79a953b75e570030c74ea6f700b8bd70f41dc8c01bf4e9618e6a0adba3a382a",
+    "pdf_pages": [
+      180
+    ],
+    "review_method": "Rendered local original PDF visually compared with pypdf text; limited spot check, not whole-book fidelity certification.",
+    "observations": [
+      "Fraction-based probability equations lose numerator/denominator layout in plain text; inline notation and table reading order need review."
+    ],
+    "all_pages_reviewed": false
+  }
+}

@@ -1,0 +1,39 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	classify(classify)
+	answer(answer)
+	math_tool(math_tool)
+	write_answer(write_answer)
+	learn(learn)
+	read_source(read_source)
+	verified_examples(verified_examples)
+	teaching_bestpractices(teaching_bestpractices)
+	web_search(web_search)
+	write_explanation(write_explanation)
+	user_input(user_input)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> classify;
+	answer --> math_tool;
+	classify -.-> answer;
+	classify -.-> learn;
+	learn --> read_source;
+	learn --> teaching_bestpractices;
+	learn --> verified_examples;
+	learn --> web_search;
+	math_tool --> write_answer;
+	read_source --> write_explanation;
+	teaching_bestpractices --> write_explanation;
+	user_input -. &nbsp;done&nbsp; .-> __end__;
+	user_input -. &nbsp;moreQ&nbsp; .-> write_explanation;
+	verified_examples --> write_explanation;
+	web_search --> write_explanation;
+	write_explanation --> user_input;
+	write_answer --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

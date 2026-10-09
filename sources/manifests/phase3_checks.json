@@ -1,0 +1,48 @@
+{
+  "phase": 3,
+  "actual_pdf_size_bytes": 207178833,
+  "source_records": 28,
+  "unique_examples": 51,
+  "verification_counts": {
+    "unsupported": 23,
+    "verified": 27,
+    "unknown": 1
+  },
+  "keyword_bilingual_cases": [
+    {
+      "topic": "derivative",
+      "status": "success",
+      "retrieval_method": "keyword"
+    },
+    {
+      "topic": "مشتق",
+      "status": "success",
+      "retrieval_method": "keyword"
+    },
+    {
+      "topic": "matrix",
+      "status": "success",
+      "retrieval_method": "keyword"
+    },
+    {
+      "topic": "ماتریس",
+      "status": "success",
+      "retrieval_method": "keyword"
+    },
+    {
+      "topic": "probability",
+      "status": "success",
+      "retrieval_method": "keyword"
+    },
+    {
+      "topic": "احتمال",
+      "status": "success",
+      "retrieval_method": "keyword"
+    }
+  ],
+  "teaching_rules": 15,
+  "actual_langgraph_local_lesson": "passed; one matching example and done resume",
+  "semantic_index_built": false,
+  "provider_or_search_calls": false,
+  "formula_exit_complete": false
+}

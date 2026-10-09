@@ -1,0 +1,3 @@
+# Optional model adapter; download/install is currently untested in this environment.
+# Application runtime never downloads models automatically.
+sentence-transformers>=3.0,<6

@@ -1,0 +1,10 @@
+# Versions present and tested for Phases 1/2/4/5/6/7; SymPy installation status is
+# recorded in IMPLEMENTATION_STATUS.md. No acquisition packages are needed here.
+langgraph==1.2.12
+langchain==1.4.2
+langchain-openai==1.6.4
+pydantic==2.13.5
+python-dotenv==1.2.3
+sympy==1.14.0
+numpy==2.2.1
+httpx==0.28.1

@@ -1,0 +1,780 @@
+{
+  "phase": 3,
+  "prepared_at": "2026-10-09T19:18:30.147691+00:00",
+  "selected_count": 51,
+  "fetched_pages": [
+    "Alg/SolveLinearEqns",
+    "Alg/SolveQuadraticEqnsI",
+    "Alg/SolveQuadraticEqnsII",
+    "CalcI/DiffFormulas",
+    "CalcI/ComputingIndefiniteIntegrals",
+    "Alg/AugmentedMatrix",
+    "CalcI/ComputingLimits",
+    "CalcI/Optimization"
+  ],
+  "selections": [
+    {
+      "page": "Alg/SolveLinearEqns",
+      "example": 1,
+      "part": "a",
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "level": "beginner",
+      "level_rationale": "Distribution and one-denominator arithmetic",
+      "example_id": "paul:Alg/SolveLinearEqns:1:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveLinearEqns",
+      "example": 1,
+      "part": "b",
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "level": "beginner",
+      "level_rationale": "Distribution and one-denominator arithmetic",
+      "example_id": "paul:Alg/SolveLinearEqns:1:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveLinearEqns",
+      "example": 1,
+      "part": "c",
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "level": "intermediate",
+      "level_rationale": "Rational equations with denominator restrictions",
+      "example_id": "paul:Alg/SolveLinearEqns:1:c",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveLinearEqns",
+      "example": 1,
+      "part": "d",
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "level": "intermediate",
+      "level_rationale": "Rational equations with denominator restrictions",
+      "example_id": "paul:Alg/SolveLinearEqns:1:d",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveLinearEqns",
+      "example": 2,
+      "part": "a",
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "level": "advanced",
+      "level_rationale": "Excluded roots and identity/no-solution distinctions",
+      "example_id": "paul:Alg/SolveLinearEqns:2:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveLinearEqns",
+      "example": 2,
+      "part": "b",
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "level": "advanced",
+      "level_rationale": "Excluded roots and identity/no-solution distinctions",
+      "example_id": "paul:Alg/SolveLinearEqns:2:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 1,
+      "part": "a",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "beginner",
+      "level_rationale": "Basic factoring and repeated roots",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:1:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 1,
+      "part": "c",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "beginner",
+      "level_rationale": "Basic factoring and repeated roots",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:1:c",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 1,
+      "part": "d",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "beginner",
+      "level_rationale": "Basic factoring and repeated roots",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:1:d",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 1,
+      "part": "e",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "intermediate",
+      "level_rationale": "Nonmonic factoring and zero-product choices",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:1:e",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 1,
+      "part": "f",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "intermediate",
+      "level_rationale": "Nonmonic factoring and zero-product choices",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:1:f",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 1,
+      "part": "g",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "intermediate",
+      "level_rationale": "Nonmonic factoring and zero-product choices",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:1:g",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 2,
+      "part": "a",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "advanced",
+      "level_rationale": "Rational equations and excluded roots",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:2:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsI",
+      "example": 2,
+      "part": "b",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "advanced",
+      "level_rationale": "Rational equations and excluded roots",
+      "example_id": "paul:Alg/SolveQuadraticEqnsI:2:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "Alg/SolveQuadraticEqnsII",
+      "example": 3,
+      "part": "d",
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "level": "advanced",
+      "level_rationale": "Rational quadratic requiring domain restrictions and formula",
+      "example_id": "paul:Alg/SolveQuadraticEqnsII:3:d",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 1,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "beginner",
+      "level_rationale": "Direct integer power rule",
+      "example_id": "paul:CalcI/DiffFormulas:1:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 1,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "beginner",
+      "level_rationale": "Direct integer power rule",
+      "example_id": "paul:CalcI/DiffFormulas:1:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 1,
+      "part": "c",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "beginner",
+      "level_rationale": "Direct integer power rule",
+      "example_id": "paul:CalcI/DiffFormulas:1:c",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 1,
+      "part": "d",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "intermediate",
+      "level_rationale": "Rewrite products, quotients and radicals first",
+      "example_id": "paul:CalcI/DiffFormulas:1:d",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 2,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "intermediate",
+      "level_rationale": "Rewrite products, quotients and radicals first",
+      "example_id": "paul:CalcI/DiffFormulas:2:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 2,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "intermediate",
+      "level_rationale": "Rewrite products, quotients and radicals first",
+      "example_id": "paul:CalcI/DiffFormulas:2:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 1,
+      "part": "e",
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "advanced",
+      "level_rationale": "Irrational exponents, monotonicity or tangent application",
+      "example_id": "paul:CalcI/DiffFormulas:1:e",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 3,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "advanced",
+      "level_rationale": "Irrational exponents, monotonicity or tangent application",
+      "example_id": "paul:CalcI/DiffFormulas:3",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/DiffFormulas",
+      "example": 4,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "level": "advanced",
+      "level_rationale": "Irrational exponents, monotonicity or tangent application",
+      "example_id": "paul:CalcI/DiffFormulas:4",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 1,
+      "part": "a",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "beginner",
+      "level_rationale": "Direct power rule and constant of integration",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:1:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 1,
+      "part": "b",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "beginner",
+      "level_rationale": "Direct power rule and constant of integration",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:1:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 1,
+      "part": "d",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "beginner",
+      "level_rationale": "Direct power rule and constant of integration",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:1:d",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 1,
+      "part": "c",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "intermediate",
+      "level_rationale": "Algebraic rewriting and logarithmic exceptions",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:1:c",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 1,
+      "part": "e",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "intermediate",
+      "level_rationale": "Algebraic rewriting and logarithmic exceptions",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:1:e",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 1,
+      "part": "f",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "intermediate",
+      "level_rationale": "Algebraic rewriting and logarithmic exceptions",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:1:f",
+      "verification_status": "unknown"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 2,
+      "part": "a",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "advanced",
+      "level_rationale": "Mixed functions, trigonometric identities or initial conditions",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:2:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 3,
+      "part": null,
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "advanced",
+      "level_rationale": "Mixed functions, trigonometric identities or initial conditions",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:3",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingIndefiniteIntegrals",
+      "example": 4,
+      "part": "b",
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "level": "advanced",
+      "level_rationale": "Mixed functions, trigonometric identities or initial conditions",
+      "example_id": "paul:CalcI/ComputingIndefiniteIntegrals:4:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "Alg/AugmentedMatrix",
+      "example": 1,
+      "part": "a",
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "level": "beginner",
+      "level_rationale": "Two-variable row operations",
+      "example_id": "paul:Alg/AugmentedMatrix:1:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "Alg/AugmentedMatrix",
+      "example": 1,
+      "part": "b",
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "level": "beginner",
+      "level_rationale": "Two-variable row operations",
+      "example_id": "paul:Alg/AugmentedMatrix:1:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "Alg/AugmentedMatrix",
+      "example": 1,
+      "part": "c",
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "level": "beginner",
+      "level_rationale": "Two-variable row operations",
+      "example_id": "paul:Alg/AugmentedMatrix:1:c",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "Alg/AugmentedMatrix",
+      "example": 2,
+      "part": "a",
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "level": "intermediate",
+      "level_rationale": "Three-variable elimination",
+      "example_id": "paul:Alg/AugmentedMatrix:2:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "Alg/AugmentedMatrix",
+      "example": 2,
+      "part": "b",
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "level": "intermediate",
+      "level_rationale": "Three-variable elimination",
+      "example_id": "paul:Alg/AugmentedMatrix:2:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 1,
+      "part": null,
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "beginner",
+      "level_rationale": "Factoring, expansion or an ordinary piecewise branch",
+      "example_id": "paul:CalcI/ComputingLimits:1",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 2,
+      "part": null,
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "beginner",
+      "level_rationale": "Factoring, expansion or an ordinary piecewise branch",
+      "example_id": "paul:CalcI/ComputingLimits:2",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 4,
+      "part": "a",
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "beginner",
+      "level_rationale": "Factoring, expansion or an ordinary piecewise branch",
+      "example_id": "paul:CalcI/ComputingLimits:4:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 3,
+      "part": null,
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "intermediate",
+      "level_rationale": "Conjugates and one-sided piecewise reasoning",
+      "example_id": "paul:CalcI/ComputingLimits:3",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 4,
+      "part": "b",
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "intermediate",
+      "level_rationale": "Conjugates and one-sided piecewise reasoning",
+      "example_id": "paul:CalcI/ComputingLimits:4:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 5,
+      "part": null,
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "intermediate",
+      "level_rationale": "Conjugates and one-sided piecewise reasoning",
+      "example_id": "paul:CalcI/ComputingLimits:5",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ComputingLimits",
+      "example": 6,
+      "part": null,
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "level": "advanced",
+      "level_rationale": "Squeeze theorem for an oscillatory expression",
+      "example_id": "paul:CalcI/ComputingLimits:6",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/Optimization",
+      "example": 1,
+      "part": null,
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "level": "beginner",
+      "level_rationale": "Simple area and square-base constraints",
+      "example_id": "paul:CalcI/Optimization:1",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/Optimization",
+      "example": 3,
+      "part": null,
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "level": "beginner",
+      "level_rationale": "Simple area and square-base constraints",
+      "example_id": "paul:CalcI/Optimization:3",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/Optimization",
+      "example": 2,
+      "part": null,
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "level": "intermediate",
+      "level_rationale": "Cost or cylinder constraints with several quantities",
+      "example_id": "paul:CalcI/Optimization:2",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/Optimization",
+      "example": 4,
+      "part": null,
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "level": "intermediate",
+      "level_rationale": "Cost or cylinder constraints with several quantities",
+      "example_id": "paul:CalcI/Optimization:4",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/Optimization",
+      "example": 5,
+      "part": null,
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "level": "advanced",
+      "level_rationale": "Feasible domains, boundary comparison and multiple dimensions",
+      "example_id": "paul:CalcI/Optimization:5",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/Optimization",
+      "example": 6,
+      "part": null,
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "level": "advanced",
+      "level_rationale": "Feasible domains, boundary comparison and multiple dimensions",
+      "example_id": "paul:CalcI/Optimization:6",
+      "verification_status": "unsupported"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "learner_level": "beginner",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "algebra",
+      "subtopic": "linear equations",
+      "learner_level": "advanced",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "algebra",
+      "subtopic": "quadratic equations",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "power rule",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "integral",
+      "subtopic": "antiderivatives",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "matrix",
+      "subtopic": "augmented systems",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "missing": 3
+    },
+    {
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "limits",
+      "subtopic": "evaluating limits",
+      "learner_level": "advanced",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "learner_level": "beginner",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "optimization",
+      "subtopic": "constrained optimization",
+      "learner_level": "advanced",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "probability",
+      "subtopic": "basic probability",
+      "learner_level": "beginner",
+      "selected": 0,
+      "target": 3,
+      "missing": 3
+    },
+    {
+      "topic": "probability",
+      "subtopic": "basic probability",
+      "learner_level": "intermediate",
+      "selected": 0,
+      "target": 3,
+      "missing": 3
+    },
+    {
+      "topic": "probability",
+      "subtopic": "basic probability",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "missing": 3
+    }
+  ],
+  "failures": [],
+  "verification_counts": {
+    "unsupported": 23,
+    "verified": 27,
+    "unknown": 1
+  },
+  "notice": "© 2003 - 2026 Paul Dawkins. All rights reserved. Private noncommercial reference copy; retain notices. Product incorporation and networked redistribution require express written consent.",
+  "limitations": "Difficulty is editorial. Gaps reflect this finite selection, not proof that no other suitable examples exist. Unknown/unsupported examples remain source-backed, not mathematically verified. Diagram URLs and alt descriptions retained; no images downloaded."
+}

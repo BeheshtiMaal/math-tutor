@@ -1,0 +1,5 @@
+# Phase 3 PDF extraction and selective HTML preparation.
+beautifulsoup4==4.13.3
+pypdf>=5,<7
+# Optional: render original PDF pages for visual formula spot checks.
+PyMuPDF>=1.28,<2

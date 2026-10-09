@@ -1,0 +1,84 @@
+{
+  "phase": 3,
+  "topics": [
+    {
+      "topic": "derivative",
+      "english": "derivative",
+      "persian": "مشتق",
+      "path": "sources/topics/derivative.md",
+      "reference_book": "Calculus Volume 1",
+      "reference_section": "3.3 Differentiation Rules",
+      "level_objectives": "beginner: rate of change; intermediate: power rules; advanced: domain and local definition",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "integral",
+      "english": "integral",
+      "persian": "انتگرال",
+      "path": "sources/topics/integral.md",
+      "reference_book": "Calculus Volume 1",
+      "reference_section": "5.3 The Fundamental Theorem of Calculus; 5.4 Integration Formulas",
+      "level_objectives": "beginner: primitive; intermediate: rewriting; advanced: convergence and conditions",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "limits",
+      "english": "limits",
+      "persian": "حد",
+      "path": "sources/topics/limits.md",
+      "reference_book": "Calculus Volume 1",
+      "reference_section": "2.2 The Limit of a Function; 2.3 The Limit Laws",
+      "level_objectives": "beginner: approach; intermediate: one-sided comparison; advanced: squeeze and existence",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "algebra",
+      "english": "algebra",
+      "persian": "معادله و جبر",
+      "path": "sources/topics/algebra.md",
+      "reference_book": "College Algebra 2e",
+      "reference_section": "2.2 Linear Equations in One Variable; 2.5 Quadratic Equations",
+      "level_objectives": "beginner: inverse operations; intermediate: method choice; advanced: excluded and repeated roots",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "matrix",
+      "english": "matrix",
+      "persian": "ماتریس",
+      "path": "sources/topics/matrix.md",
+      "reference_book": "College Algebra 2e",
+      "reference_section": "7.5 Matrices and Matrix Operations; 7.6 Solving Systems with Gaussian Elimination",
+      "level_objectives": "beginner: entries and rows; intermediate: elimination; advanced: rank and solution families",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "probability",
+      "english": "probability",
+      "persian": "احتمال",
+      "path": "sources/topics/probability.md",
+      "reference_book": "Introductory Statistics 2e",
+      "reference_section": "3.1 Terminology; 3.3 Two Basic Rules of Probability",
+      "level_objectives": "beginner: outcomes; intermediate: conditional probability; advanced: independence assumptions",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "optimization",
+      "english": "optimization",
+      "persian": "بهینه‌سازی",
+      "path": "sources/topics/optimization.md",
+      "reference_book": "Calculus Volume 1",
+      "reference_section": "4.7 Applied Optimization Problems",
+      "level_objectives": "beginner: objective; intermediate: constraint; advanced: global extremum and endpoints",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    }
+  ],
+  "raw_book_retrieval_enabled": false,
+  "limitation": "Starter notes do not establish whole-book coverage. Calculus Volume 2 is acquired but no direct transcript is indexed."
+}

@@ -1,0 +1,11 @@
+{
+  "topic": "matrix",
+  "provenance": {
+    "source_url": "https://openstax.org/details/books/college-algebra-2e",
+    "section_title": "7.5 Matrices and Matrix Operations; 7.6 Solving Systems with Gaussian Elimination",
+    "source_author": "MathTutor project (original exposition), referencing College Algebra 2e",
+    "retrieved_at": "2026-10-09T19:00:27.939957+00:00",
+    "usage_terms_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "usage_terms": "Original project exposition; reference textbook license observed: Creative Commons Attribution-NonCommercial-ShareAlike License 4.0. Raw extracted text has not been cleared for formula fidelity or embedding use."
+  }
+}
