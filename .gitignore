@@ -14,3 +14,4 @@ __pycache__/
 # User-supplied reference originals remain local too.
 files/
 specs/
+IMPLEMENTATION_STATUS.md
