@@ -1,5 +1,16 @@
 # MathTutor
 
+## Current terminal display policy
+
+User-directed update: displayed answers and lessons contain no citations, source names, source URLs, retrieval timestamps or license blocks. Preserve all provenance, attribution, licenses and internal source IDs in evidence records and manifests, including the selected Paul examples. This display policy supersedes earlier requirements to append citations to responses. Retrieval, verification and example selection are unchanged.
+
+The terminal is named `math-tutor`. Use UTF-8 and plain-text formulas (`x^2`, `sqrt(x)`, `(a)/(b)`), with a grouped `/help` guide. Windows startup requests a Persian-capable Courier New font; terminal hosts may control font rendering independently. `/language en` is available when a host cannot render Persian correctly.
+
+Persian terminal output now uses joined letters and bidirectional visual layout on interactive Windows consoles, with RTL paragraphs aligned to the right. Wrapping happens before reordering; complete formulas remain LTR. The rendering adapter uses `arabic-reshaper` and `python-bidi` only at display time, preserving logical text in graph state, saved sources, model context and redirected output. English commands and formulas retain their original order. `TUTOR_TERMINAL_RTL=visual` forces this legacy-console mode; `TUTOR_TERMINAL_RTL=native` leaves logical Unicode intact for a terminal with native RTL support. The default is `auto`. Keyboard input rendering is controlled by the terminal host.
+
+A complete supported math request entered at `reply>` starts a fresh request, including another equation in the same topic. Its lesson starts at step 1; contextual questions continue the current step. Persian progress reads `مرحله 1 از N`. Plans use only the steps the objective needs, within the existing limit. Example-step follow-ups retain the selected problem and full solution, and may ground their response in that example's evidence ID. Provider failure preserves the example and step position rather than displaying only the example introduction.
+
+
 The governing documents are version 2.6 in `specs/math_tutor_spec.md` and `specs/math_tutor_implementation_prompt.md`. Phase 3 is now authorized: four official OpenStax PDFs are downloaded, with readable prose extracts, seven original starter topic notes, a private 51-example Paul bank and 15 teaching rules. Phase 3 remains incomplete because representative PDF formulas are omitted or flattened, and example level gaps are recorded. Installed SymPy and multilingual embeddings passed earlier real acceptance checks; AvalAI live access has not been rechecked in this phase. Supplied PDFs under `files/` are preserved. See the [Phase 3 report](sources/manifests/phase3_report.md); earlier phase results below are historical.
 
 ## Current embeddings — AvalAI API

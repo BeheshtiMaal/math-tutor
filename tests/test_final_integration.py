@@ -130,7 +130,7 @@ class SearchChecks(unittest.IsolatedAsyncioTestCase):
     def web(self):
         return FakeSearchClient(evidence([agent.WebRecord(title="Synthetic derivative excerpt", text="A derivative describes the tangent slope. Keep the positive integer condition for this power rule.", source_url="https://example.org/web-excerpt", retrieved_at=datetime.now(timezone.utc))]))
 
-    async def test_web_excerpt_full_step_citations_and_no_followup_resource_replay(self):
+    async def test_web_evidence_retained_without_displayed_citations_or_resource_replay(self):
         for delivery in ["full", "step"]:
             self.config.preferences.delivery_mode = delivery
             search = self.web()
@@ -139,9 +139,11 @@ class SearchChecks(unittest.IsolatedAsyncioTestCase):
             result = await graph.ainvoke(agent.new_request_state(agent.Request(query="Explain derivatives"), self.config), thread)
             if delivery == "step":
                 result = await graph.ainvoke(Command(resume="next"), thread)
-            self.assertIn("Web excerpt:", result["explanation"])
-            self.assertIn("https://example.org/web-excerpt", result["explanation"])
-            self.assertIn("not reviewed", result["explanation"])
+            self.assertNotIn("Web excerpt:", result["explanation"])
+            self.assertNotIn("https://example.org/web-excerpt", result["explanation"])
+            self.assertEqual(str(result["websearch"].records[0].source_url), "https://example.org/web-excerpt")
+            self.assertNotIn("Retrieved:", result["explanation"])
+            self.assertNotIn("Terms:", result["explanation"])
             await graph.ainvoke(Command(resume="Why is the condition needed?"), thread)
             await graph.ainvoke(Command(resume="done"), thread)
             self.assertEqual(len(search.calls), 1)
@@ -151,7 +153,7 @@ class SearchChecks(unittest.IsolatedAsyncioTestCase):
         result = await graph.ainvoke(agent.new_request_state(agent.Request(query="Explain derivatives"), self.config), {"configurable": {"thread_id": "failure"}})
         self.assertEqual(result["websearch"].status, "error")
         self.assertIn("d(x^n)", result["explanation"])
-        self.assertEqual(result["explanation"].count("Source example:"), 1)
+        self.assertEqual(result["explanation"].count("Example:"), 1)
         self.assertNotIn("secret", result["explanation"])
 
     async def test_unsupported_verification_claim_repairs_are_bounded(self):

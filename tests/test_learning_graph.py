@@ -131,10 +131,10 @@ class LearningGraphChecks(unittest.IsolatedAsyncioTestCase):
         graph = agent.build_graph(self.config, model, retrieval_client=retrieval)
         thread = {"configurable": {"thread_id": "followup"}}
         first = await graph.ainvoke(self.state(), thread)
-        self.assertEqual(first["explanation"].count("Source example:"), 1)
-        self.assertIn("https://example.org/synthetic-lesson", first["explanation"])
-        self.assertIn("Test fixture author", first["explanation"])
-        self.assertIn("Synthetic testing material", first["explanation"])
+        self.assertEqual(first["explanation"].count("Example:"), 1)
+        self.assertNotIn("https://example.org/synthetic-lesson", first["explanation"])
+        self.assertNotIn("Test fixture author", first["explanation"])
+        self.assertNotIn("Synthetic testing material", first["explanation"])
         self.assertIn("Verification: unknown", first["explanation"])
         self.assertEqual(first["selected_example_id"], "fixture-beginner-1")
         second = await graph.ainvoke(Command(resume="What is n?"), thread)
@@ -158,7 +158,7 @@ class LearningGraphChecks(unittest.IsolatedAsyncioTestCase):
             result = await graph.ainvoke(self.state(learner_level=level), {"configurable": {"thread_id": level}})
             self.assertIn(STYLES[level], model.calls[0][1][0].content)
             self.assertEqual(result["examples"].records[0].learner_level, level)
-            self.assertEqual(result["explanation"].count("Source example:"), 1)
+            self.assertEqual(result["explanation"].count("Example:"), 1)
 
     async def test_missing_evidence_no_model_fabrication_and_search_never_called(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -173,7 +173,7 @@ class LearningGraphChecks(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result["teaching_tips"].status, "empty")
         self.assertEqual(result["websearch"].status, "skipped")
         self.assertIn("cannot be produced", result["explanation"])
-        self.assertNotIn("Source example:", result["explanation"])
+        self.assertNotIn("Example:", result["explanation"])
 
     async def test_resource_timeout_and_wrong_record_type_do_not_block_join(self):
         async def slow(request):
@@ -216,7 +216,7 @@ class LearningGraphChecks(unittest.IsolatedAsyncioTestCase):
         outputs = []
         status = await cli.run_cli(self.config, graph=graph, read=lambda _: next(commands), display=outputs.append)
         self.assertEqual(status, 0)
-        lessons = [output for output in outputs if "Source example:" in output]
+        lessons = [output for output in outputs if "Example:" in output]
         self.assertEqual(len(lessons), 2)
         self.assertEqual(len([output for output in outputs if "Ask a follow-up question" in output]), 2)
 
@@ -265,8 +265,8 @@ class LocalEvidenceChecks(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result["teaching_tips"].status, "success")
         self.assertEqual(len(result["teaching_tips"].records), 1)
         self.assertIn("d(x^n)/dx", result["explanation"])
-        self.assertIn("https://example.org/synthetic-lesson", result["explanation"])
-        self.assertEqual(result["explanation"].count("Source example:"), 1)
+        self.assertNotIn("https://example.org/synthetic-lesson", result["explanation"])
+        self.assertEqual(result["explanation"].count("Example:"), 1)
 
     async def test_compact_bank_dedup_level_rejection_and_no_false_verification(self):
         records = [example(i) for i in range(1, 6)] + [example(1), example(1, "advanced"), example(7, verification_status="rejected", verification_method="fixture rejection")]

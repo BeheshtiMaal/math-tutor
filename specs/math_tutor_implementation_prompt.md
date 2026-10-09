@@ -1,4 +1,13 @@
 # Implementation prompt — PROJECT_MILO Mathematics Tutor
+
+## Current terminal display policy
+
+User-directed update: displayed answers and lessons contain no citations, source names, source URLs, retrieval timestamps or license blocks. Preserve all provenance, attribution, licenses and internal source IDs in evidence records and manifests, including the selected Paul examples. This display policy supersedes earlier requirements to append citations to responses. Retrieval, verification and example selection are unchanged.
+
+The terminal is named `math-tutor`. Use UTF-8 and plain-text formulas (`x^2`, `sqrt(x)`, `(a)/(b)`), with a grouped `/help` guide. Windows startup requests a Persian-capable Courier New font; terminal hosts may control font rendering independently. `/language en` is available when a host cannot render Persian correctly.
+
+On Windows consoles without native RTL layout, shape Persian letters and render RTL visual order only at display time. Wrap logical paragraphs first, align Persian paragraphs right, and preserve complete formulas and commands in LTR order. Keep graph/model/source text logical. Native terminals and redirected output retain logical Unicode; `TUTOR_TERMINAL_RTL=visual|native|auto` controls the display adapter.
+
 Version 2.6 • 2026-10-09
 
 ## Current embedding backend — 2026-10-09

@@ -57,7 +57,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(sentences(first["current_step_explanation"])), 2)
         self.assertIn("Step 1/4", first["explanation"])
         self.assertNotIn("Multiply by the exponent", first["explanation"])
-        self.assertNotIn("Source example:", first["explanation"])
+        self.assertNotIn("Example:", first["explanation"])
         self.assertIsNone(first["selected_example_id"])
         self.assertEqual(graph.get_state(thread).next, ("user_input",))
         self.assertEqual(len(model.calls), 1)
@@ -76,7 +76,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
             self.assertEqual([step.model_dump() for step in result["lesson_plan"]], saved)
             self.assertEqual(result["explanation_version"], index + 1)
             self.assertTrue(result["__interrupt__"])
-            self.assertEqual(result["explanation"].count("Source example:"), int(index == 3))
+            self.assertEqual(result["explanation"].count("Example:"), int(index == 3))
         self.assertTrue(result["lesson_complete"])
         self.assertIn("Verification: unknown", result["explanation"])
         self.assertEqual(len(self.retrieval.calls), 3)
@@ -85,7 +85,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(finished["step_index"], 3)
         self.assertEqual(finished["last_emitted_step"], 3)
         self.assertIn("lesson is complete", finished["explanation"])
-        self.assertNotIn("Source example:", finished["explanation"])
+        self.assertNotIn("Example:", finished["explanation"])
         final = await graph.ainvoke(Command(resume="done"), thread)
         self.assertNotIn("__interrupt__", final)
         self.assertEqual(graph.get_state(thread).next, ())
@@ -102,7 +102,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(result["last_emitted_step"], 1)
             self.assertEqual(result["current_step_explanation"], expected["explanation"])
             self.assertEqual([step.model_dump() for step in result["lesson_plan"]], saved)
-            self.assertNotIn("Source example:", result["explanation"])
+            self.assertNotIn("Example:", result["explanation"])
         self.assertEqual(len(model.calls), 3)
         payload = json.loads(model.calls[2][1][-1].content)
         self.assertEqual(payload["question"], "What is n?")
@@ -124,7 +124,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn(plan()["steps"][0]["explanation"], full["explanation"])
         self.assertNotIn(plan()["steps"][1]["explanation"], full["explanation"])
         self.assertIn(plan()["steps"][2]["explanation"], full["explanation"])
-        self.assertEqual(full["explanation"].count("Source example:"), 1)
+        self.assertEqual(full["explanation"].count("Example:"), 1)
         self.assertEqual(len(model.calls), 1)
         final = await graph.ainvoke(Command(resume="تمام"), thread)
         self.assertEqual(final["explanation_version"], full["explanation_version"])
@@ -136,7 +136,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         final = await graph.ainvoke(Command(resume={"action": "done"}), thread)
         self.assertEqual(final["step_index"], 0)
         self.assertEqual(final["explanation_version"], 1)
-        self.assertNotIn("Source example:", final["explanation"])
+        self.assertNotIn("Example:", final["explanation"])
         self.assertEqual(len(model.calls), 1)
         self.assertFalse(graph.get_state(thread).next)
 
@@ -146,10 +146,10 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         response = await graph.ainvoke(Command(resume="Show me an example"), thread)
         self.assertEqual(response["step_index"], 0)
         self.assertEqual(response["last_emitted_step"], 0)
-        self.assertEqual(response["explanation"].count("Source example:"), 1)
+        self.assertEqual(response["explanation"].count("Example:"), 1)
         first_example = response["selected_example_id"]
         final = await graph.ainvoke(Command(resume="full"), thread)
-        self.assertEqual(final["explanation"].count("Source example:"), 1)
+        self.assertEqual(final["explanation"].count("Example:"), 1)
         self.assertNotEqual(final["selected_example_id"], first_example)
 
     async def test_persian_step_plan_simplification_and_full_remain_in_persian(self):
@@ -162,7 +162,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         graph = agent.build_graph(self.config, model, retrieval_client=self.retrieval)
         thread = {"configurable": {"thread_id": "persian-step"}}
         first = await graph.ainvoke(self.state(language="fa"), thread)
-        self.assertIn("مرحله 1/3", first["explanation"])
+        self.assertIn("مرحله 1 از 3", first["explanation"])
         self.assertIn("«بعدی»", first["__interrupt__"][0].value["prompt"])
         result = await graph.ainvoke(Command(resume="نفهمیدم"), thread)
         self.assertEqual(result["step_index"], 0)
@@ -236,6 +236,63 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         self.assertIn("could not be synthesized", result["explanation"])
         self.assertEqual(len(model.calls), 4)
 
+    async def test_example_followup_accepts_its_evidence_id_and_keeps_solution(self):
+        response = {"explanation": "The exponent is two in this problem. The solution is twice x.",
+                    "source_ids": ["fixture-beginner-1"]}
+        graph, thread, model, first = await self.start([plan(), response])
+        for _ in range(3):
+            final = await graph.ainvoke(Command(resume="next"), thread)
+        selected = final["selected_example_id"]
+        result = await graph.ainvoke(Command(resume="Why does that solution work?"), thread)
+        self.assertEqual(result["selected_example_id"], selected)
+        self.assertIn(response["explanation"], result["explanation"])
+        self.assertIn(example().statement, result["explanation"])
+        self.assertIn(example().solution, result["explanation"])
+        self.assertNotIn("could not be synthesized", result["explanation"])
+        self.assertEqual(result["step_index"], 3)
+        self.assertEqual(len(self.retrieval.calls), 3)
+
+    async def test_failed_example_followup_still_displays_complete_cached_example(self):
+        bad = {"explanation": "An invented response. It has no evidence.", "source_ids": ["missing"]}
+        graph, thread, model, first = await self.start([plan(), bad, bad, bad])
+        for _ in range(3):
+            final = await graph.ainvoke(Command(resume="next"), thread)
+        result = await graph.ainvoke(Command(resume="Why does that solution work?"), thread)
+        self.assertEqual(result["selected_example_id"], final["selected_example_id"])
+        self.assertIn(example().statement, result["explanation"])
+        self.assertIn(example().solution, result["explanation"])
+        self.assertEqual(result["explanation"].count("Example:"), 1)
+
+    async def test_new_equation_at_reply_exits_old_lesson_without_synthesis(self):
+        self.retrieval.results["read_source"].records.append(source().model_copy(update={"topic": "algebra"}))
+        self.retrieval.results["verified_examples"].records.append(example().model_copy(update={"topic": "algebra"}))
+        for initial, question in [("Explain derivatives", "Can you help me with x^2 - 5x + 6 = 0 step-by-step?"),
+                                  ("Can you help me with x^2 - 1 = 0 step-by-step?", "Can you help me with x^2 - 5x + 6 = 0 step-by-step?")]:
+            model = FakeModelClient([plan()])
+            graph = agent.build_graph(self.config, model, retrieval_client=self.retrieval)
+            thread = {"configurable": {"thread_id": initial}}
+            await graph.ainvoke(agent.new_request_state(agent.Request(query=initial), self.config), thread)
+            for _ in range(3):
+                await graph.ainvoke(Command(resume="next"), thread)
+            result = await graph.ainvoke(Command(resume=question), thread)
+            self.assertEqual(result["new_topic_query"], question)
+            self.assertFalse(graph.get_state(thread).next)
+            self.assertEqual(len(model.calls), 1)
+
+    async def test_cli_new_equation_starts_first_step_with_fresh_objective(self):
+        self.retrieval.results["read_source"].records.append(source().model_copy(update={"topic": "algebra"}))
+        self.retrieval.results["verified_examples"].records.append(example().model_copy(update={"topic": "algebra"}))
+        model = FakeModelClient([plan(), plan()])
+        graph = agent.build_graph(self.config, model, retrieval_client=self.retrieval)
+        question = "Can you help me with x^2 - 5x + 6 = 0 step-by-step?"
+        lines = iter(["Can you help me with x^2 - 1 = 0 step-by-step?", "next", "next", "next", question, "/exit"])
+        output = []
+        await cli.run_cli(self.config, graph=graph, read=lambda prompt: next(lines), display=output.append)
+        headers = [line.splitlines()[0] for line in output if line.startswith("Step ")]
+        self.assertEqual(headers, ["Step 1/4", "Step 2/4", "Step 3/4", "Step 4/4", "Step 1/4"])
+        self.assertEqual(json.loads(model.calls[-1][1][-1].content)["objective"], question)
+        self.assertFalse(any("could not be synthesized" in line for line in output))
+
     async def test_missing_sources_and_model_are_honest_short_chunks(self):
         with tempfile.TemporaryDirectory() as directory:
             config = self.config.model_copy(update={"sources_dir": Path(directory)})
@@ -249,7 +306,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
             second = await graph.ainvoke(Command(resume="Why?"), thread)
             self.assertEqual(second["step_index"], 0)
             self.assertIn("configured model", second["explanation"])
-            self.assertNotIn("Source example:", second["explanation"])
+            self.assertNotIn("Example:", second["explanation"])
 
     async def test_offline_source_steps_protect_formula_and_only_show_final_example(self):
         note = source().model_copy(update={"text": "Use the formula $x^{2.5}$. Preserve the real-domain assumptions. Read the exponent carefully. Keep the variable fixed."})
@@ -259,7 +316,7 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         first = await graph.ainvoke(self.state(), thread)
         self.assertIn("$x^{2.5}$", first["current_step_explanation"])
         self.assertEqual(len(first["lesson_plan"]), 3)
-        self.assertNotIn("Source example:", first["explanation"])
+        self.assertNotIn("Example:", first["explanation"])
         simpler = await graph.ainvoke(Command(resume="simplify"), thread)
         self.assertEqual(simpler["step_index"], 0)
         self.assertIn("simplification is unavailable", simpler["explanation"])
@@ -283,7 +340,7 @@ class StepCliChecks(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(lessons), 2)
         self.assertIn("Step 1/4", lessons[0])
         self.assertIn("Step 2/4", lessons[1])
-        self.assertEqual(len([text for text in outputs if "Source example:" in text]), 1)
+        self.assertEqual(len([text for text in outputs if "Example:" in text]), 1)
         self.assertEqual(outputs.count("[classify: success]"), 1)
         self.assertEqual(outputs.count("[write_explanation: success]"), 3)
         self.assertEqual(outputs.count("Invalid preference. Use /help."), 2)
@@ -339,7 +396,7 @@ class StepCliChecks(unittest.IsolatedAsyncioTestCase):
         code = await cli.run_cli(self.config, graph=graph, query="Explain derivatives", display=outputs.append)
         self.assertEqual(code, 2)
         self.assertEqual(len([text for text in outputs if text.startswith("Step ")]), 1)
-        self.assertNotIn("Source example:", "\n".join(outputs))
+        self.assertNotIn("Example:", "\n".join(outputs))
         self.assertIn("Reply 'next'", outputs[-1])
 
 

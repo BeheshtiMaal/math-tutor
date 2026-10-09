@@ -52,7 +52,7 @@ async def check():
     result = await graph.ainvoke(state, thread)
     assert result["source"].status == "success" and result["examples"].status == "success"
     assert result["selected_example_id"] in {r.example_id for r in examples}
-    assert result["explanation"].count("Source example:") == 1
+    assert result["explanation"].count("Example:") == 1
     assert result["__interrupt__"]
     await graph.ainvoke(Command(resume="done"), thread)
     report = dict(phase=3, actual_pdf_size_bytes=sum(b["actual_file_size_bytes"] for b in manifest["books"]),

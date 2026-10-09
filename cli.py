@@ -6,6 +6,8 @@ import asyncio
 import importlib.metadata
 import importlib.util
 import json
+import os
+import re
 import sys
 from uuid import uuid4
 from typing import Sequence
@@ -15,8 +17,9 @@ from langgraph.types import Command
 from langsmith import tracing_context
 from pydantic import ValidationError
 from agent import AppConfig, ConfigurationError, OpenAIModelClient, Preferences, Request, build_graph, load_config, new_request_state
+from terminal_display import render_terminal
 
-REQUIRED_PACKAGES = ("langgraph", "langchain", "langchain-openai", "sympy", "pydantic", "python-dotenv", "numpy", "httpx", "tiktoken")
+REQUIRED_PACKAGES = ("langgraph", "langchain", "langchain-openai", "sympy", "pydantic", "python-dotenv", "numpy", "httpx", "tiktoken", "arabic-reshaper", "python-bidi")
 
 
 def check_configuration() -> tuple[dict, bool]:
@@ -53,26 +56,103 @@ def check_configuration() -> tuple[dict, bool]:
     }, all(versions.values())
 
 
-HELP = """Answer and full/step learning. Commands: /help, /mode answer|learn,
-/delivery full|step, /level beginner|intermediate|advanced,
-/language fa|en, /reset, /debug on|off, /exit.
-Lesson replies: next / بعدی / ادامه / اوکی; simplify / نفهمیدم;
-full / کامل بگو; a follow-up question; done / تمام.
-Only next advances a step. Full explains the remaining lesson.
-Settings apply to the next request; /delivery full also finishes an active lesson's remainder.
-Local calculation examples:
-  2x+5=17
+HELP = """
+math-tutor / help
+-----------------
+
+GET STARTED
+  Solve:    2x+5=17
+  Learn:    Can you help me with x^2 - 5x + 6 = 0 step-by-step?
+
+SETTINGS
+  /mode answer|learn                  Quick answer or a lesson
+  /delivery full|step                 Whole lesson or one step at a time
+  /level beginner|intermediate|advanced
+  /language fa|en                     Persian or English
+
+DURING A LESSON
+  next      Advance one step          (بعدی)
+  simplify  Explain this step simply  (نفهمیدم)
+  full      Show all remaining steps  (کامل بگو)
+  done      End the lesson            (تمام)
+  You can also ask a follow-up question.
+  A complete new math problem starts a fresh lesson at step 1.
+
+MORE MATH EXAMPLES
   diff x^3
   integrate x^2 from 0 to 1
   limit sin(x)/x at 0 both
   matrix inverse [[1,2],[3,4]]
   simplify x/x
-Use 'wrt y' to select a variable. JSON problem payloads are also accepted.
-During clarification, reply with the complete request or use /reset to cancel.
+  Add 'wrt y' to select a different variable.
+
+SESSION
+  /help           Show this guide
+  /reset          Start a fresh conversation
+  /debug on|off   Show or hide execution details
+  /exit           Quit
+
+Settings apply to your next request. /delivery full also finishes
+the remaining steps of an active lesson. Only 'next' advances a step.
+During clarification, enter the complete request or use /reset.
 """
 
 
+def terminal_text(text: str) -> str:
+    """Render common TeX wrappers as readable text, preserving unsupported math."""
+    text = re.sub(r"\\(?:left|right)\b", "", text)
+    text = re.sub(r"\\(?:\(|\)|\[|\])", "", text)
+    text = text.replace("$$", "").replace("$", "")
+    # Repeated passes handle nested braces without evaluating any expression.
+    for _ in range(16):
+        previous = text
+        text = re.sub(r"\\(?:dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}", r"(\1)/(\2)", text)
+        text = re.sub(r"\\sqrt\{([^{}]*)\}", r"sqrt(\1)", text)
+        text = re.sub(r"\\(?:boxed|text|mathrm|mathbf)\{([^{}]*)\}", r"\1", text)
+        text = re.sub(r"([_^])\{([^{}]*)\}", r"\1(\2)", text)
+        if text == previous:
+            break
+    replacements = {r"\times": "*", r"\cdot": "*", r"\pm": "+/-", r"\neq": "!=",
+                    r"\leq": "<=", r"\geq": ">=", r"\infty": "infinity"}
+    for command, replacement in replacements.items():
+        text = re.sub(re.escape(command) + r"\b", lambda match: replacement, text)
+    text = text.translate(str.maketrans({"−": "-", "×": "*", "÷": "/", "±": "+/-", "√": "sqrt",
+                                       "²": "^2", "³": "^3", "≤": "<=", "≥": ">=", "≠": "!="}))
+    return text.strip()
+
+
+def configure_terminal() -> None:
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
+    if os.name == "nt" and sys.stdout.isatty():
+        import ctypes
+        from ctypes import wintypes
+        kernel = ctypes.windll.kernel32
+        kernel.SetConsoleTitleW("math-tutor")
+        kernel.SetConsoleCP(65001)
+        kernel.SetConsoleOutputCP(65001)
+        # Courier New includes Persian glyphs absent from some console fonts.
+        class ConsoleFont(ctypes.Structure):
+            _fields_ = [("cbSize", wintypes.ULONG), ("nFont", wintypes.DWORD),
+                        ("dwFontSize", wintypes._COORD), ("FontFamily", wintypes.UINT),
+                        ("FontWeight", wintypes.UINT), ("FaceName", wintypes.WCHAR * 32)]
+        font = ConsoleFont()
+        font.cbSize = ctypes.sizeof(font)
+        font.dwFontSize.Y = 20
+        font.FontFamily = 54
+        font.FontWeight = 400
+        font.FaceName = "Courier New"
+        kernel.GetStdHandle.restype = wintypes.HANDLE
+        kernel.SetCurrentConsoleFontEx.argtypes = [wintypes.HANDLE, wintypes.BOOL, ctypes.POINTER(ConsoleFont)]
+        kernel.SetCurrentConsoleFontEx(kernel.GetStdHandle(-11), False, ctypes.byref(font))
+
+
 async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read=input, display=print, search_client=None, embedding_credentials=None) -> int:
+    raw_display = display
+    def display(text):
+        rendered = terminal_text(text)
+        raw_display("\n" + render_terminal(rendered) + "\n" if raw_display is print else rendered)
     graph = graph or build_graph(config, model=model, search_client=search_client, embedding_credentials=embedding_credentials)
     thread = {"configurable": {"thread_id": str(uuid4())}}
     pending = False
@@ -82,7 +162,7 @@ async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read
     emitted_version = 0
     queued_request = None
     emitted_traces = 0
-    display("MathTutor Phase 7 — answer and full/step learning. /help for syntax; /exit to quit.")
+    display("math-tutor\n----------\nAsk a math question to begin. /help for commands; /exit to quit.")
     while True:
         try:
             line = queued_request if queued_request is not None else query if query is not None else read("reply> " if pending else "> ")
@@ -181,6 +261,7 @@ async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    configure_terminal()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Validate config and report installed dependencies without network activity")
     parser.add_argument("--offline", action="store_true", help="Disable model, search and remote embeddings; local embeddings remain available")
