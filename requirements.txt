@@ -11,3 +11,6 @@ httpx==0.28.1
 tiktoken==0.14.0
 arabic-reshaper==3.0.0
 python-bidi==0.6.6
+# Added in phase W1 (local web service). uvicorn pulls starlette, which FastAPI pins.
+fastapi==0.121.2
+uvicorn==0.40.0

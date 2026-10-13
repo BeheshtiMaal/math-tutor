@@ -1,0 +1,157 @@
+{
+  "phase": "W1",
+  "transport": "uvicorn on 127.0.0.1:49602 + httpx over a real socket",
+  "graph": "real compiled LangGraph, 11 nodes, LangGraph in-memory checkpointer",
+  "real_services": [
+    "sympy math worker",
+    "langgraph checkpointer",
+    "uvicorn",
+    "httpx client"
+  ],
+  "replaced_services": [
+    "model",
+    "search",
+    "retrieval"
+  ],
+  "checks": [
+    {
+      "check": "health returns 200 and version 3.0",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "check": "health reports the frozen eleven-node graph",
+      "passed": true,
+      "nodes": 11
+    },
+    {
+      "check": "health reports configuration presence, never a credential value",
+      "passed": true,
+      "services": {
+        "model": "missing",
+        "search": "missing",
+        "embedding": "missing"
+      }
+    },
+    {
+      "check": "CORS is limited to the configured frontend origin",
+      "passed": true
+    },
+    {
+      "check": "answer mode: 2x+5=17 solves to x=6 via the real SymPy worker",
+      "passed": true,
+      "segments": [
+        {
+          "kind": "answer",
+          "text": "x=6"
+        }
+      ],
+      "seconds": 2.98,
+      "http": 200
+    },
+    {
+      "check": "answer mode reaches no external model",
+      "passed": true,
+      "model_calls": 0
+    },
+    {
+      "check": "learn mode: first step is delivered and the graph pauses",
+      "passed": true,
+      "lesson": {
+        "step_index": 0,
+        "total_steps": 4,
+        "awaiting_user": true,
+        "can_continue": true
+      }
+    },
+    {
+      "check": "learn mode: the topic is classified against the prepared corpus",
+      "passed": true,
+      "topic": "derivative",
+      "topic_kind": "core"
+    },
+    {
+      "check": "next resume advances exactly one step and re-pauses",
+      "passed": true,
+      "lesson": {
+        "step_index": 1,
+        "total_steps": 4,
+        "awaiting_user": true,
+        "can_continue": true
+      }
+    },
+    {
+      "check": "done resume ends the lesson with no pending interrupt",
+      "passed": true,
+      "lesson": {
+        "step_index": 1,
+        "total_steps": 4,
+        "awaiting_user": false,
+        "can_continue": true
+      }
+    },
+    {
+      "check": "the lesson plan is cached: one planning call and three retrievals",
+      "passed": true,
+      "model_calls": 1,
+      "retrieval_calls": 3
+    },
+    {
+      "check": "resuming an unknown thread with 'next' is a status, not an error",
+      "passed": true,
+      "status": 200,
+      "body_status": "thread_not_found"
+    },
+    {
+      "check": "resuming an unknown thread with 'full' is a status, not an error",
+      "passed": true,
+      "status": 200,
+      "body_status": "thread_not_found"
+    },
+    {
+      "check": "resuming an unknown thread with 'done' is a status, not an error",
+      "passed": true,
+      "status": 200,
+      "body_status": "thread_not_found"
+    },
+    {
+      "check": "a rejected resume never creates the thread",
+      "passed": true
+    },
+    {
+      "check": "an oversized body is rejected with 413 before the handler",
+      "passed": true,
+      "status": 413
+    },
+    {
+      "check": "a malformed thread id is a 400 without echoing the value",
+      "passed": true,
+      "status": 400
+    },
+    {
+      "check": "ui_event is explicitly refused until phase W7",
+      "passed": true,
+      "status": 400
+    },
+    {
+      "check": "both scripted threads are tracked and none are active",
+      "passed": true,
+      "known": 2,
+      "active": 0
+    },
+    {
+      "check": "sweeping idle threads evicts them and drops their checkpoints",
+      "passed": true,
+      "evicted": [
+        "thr_4WQVSHGAG2Q9EZDP8RXTFAAED7",
+        "thr_3GZM7K2XHZDKWFJ7B7EM176DZV"
+      ]
+    },
+    {
+      "check": "an evicted thread reports thread_not_found rather than resuming",
+      "passed": true,
+      "status": "thread_not_found"
+    }
+  ],
+  "passed": true
+}

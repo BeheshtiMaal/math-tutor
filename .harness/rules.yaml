@@ -1,0 +1,16 @@
+# What agents may do in this workspace.
+# access: allow (just do it) | ask (pause for approval) | deny (never)
+# The first matching rule wins.
+files:
+  - paths: ["/.harness/runs/**", "/.harness/artifacts/**"]
+    operations: [write]
+    access: allow
+  - paths: ["/.harness/**"]
+    operations: [write]
+    access: ask
+  - paths: ["/**"]
+    operations: [write]
+    access: ask
+tools:
+  execute: ask
+  browse_page: ask
