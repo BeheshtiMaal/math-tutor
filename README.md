@@ -70,7 +70,7 @@ TUTOR_LANGUAGE=fa
 TUTOR_LEVEL=beginner
 TUTOR_DELIVERY=step
 
-TUTOR_SEARCH_ENABLED=true
+TUTOR_SEARCH_ENABLED=false
 TUTOR_SEARCH_BACKEND=avalai_tavily
 TUTOR_SEARCH_URL=https://api.avalai.ir/v1/search/tavily-search
 TUTOR_SEARCH_API_KEY=YOUR_AVALAI_SEARCH_KEY
@@ -86,6 +86,8 @@ TUTOR_EMBEDDING_CACHE_DIR=.cache/retrieval/avalai/text-embedding-3-large
 ```
 
 </div>
+
+جست‌وجوی Tavily فعلاً با `TUTOR_SEARCH_ENABLED=false` غیرفعال است؛ تابع و تنظیمات اتصال حفظ شده‌اند. برای اتصال دوباره، مقدار را `true` کنید و سرویس یا CLI را دوباره اجرا کنید. در حالت غیرفعال، شاخهٔ جست‌وجو بدون درخواست شبکه نتیجهٔ `skipped` می‌دهد و آموزش با منابع محلی ادامه می‌یابد.
 
 Embeddingها به‌صورت پیش‌فرض از `AVALAI_API_KEY` استفاده می‌کنند؛ کلید جداگانه را می‌توان در `TUTOR_EMBEDDING_API_KEY` قرار داد. جست‌وجو کلید `TUTOR_SEARCH_API_KEY` را می‌خواند. برای اتصال مستقیم به Tavily، backend را `tavily` و URL را `https://api.tavily.com/search` تنظیم کنید و کلید Tavily خود را وارد کنید. نتیجهٔ جست‌وجوی وب شاهد تکمیلی است و جای بررسی محاسبات با SymPy را نمی‌گیرد.
 
