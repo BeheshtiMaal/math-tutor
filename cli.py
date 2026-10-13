@@ -68,7 +68,7 @@ SETTINGS
   /mode answer|learn                  Quick answer or a lesson
   /delivery full|step                 Whole lesson or one step at a time
   /level beginner|intermediate|advanced
-  /language fa|en                     Persian or English
+  /language fa|en|auto               Persian, English, or detect per message
 
 DURING A LESSON
   next      Advance one step          (بعدی)
@@ -153,7 +153,8 @@ async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read
     def display(text):
         rendered = terminal_text(text)
         raw_display("\n" + render_terminal(rendered) + "\n" if raw_display is print else rendered)
-    graph = graph or build_graph(config, model=model, search_client=search_client, embedding_credentials=embedding_credentials)
+    graph = graph or build_graph(config, model=model, search_client=search_client,
+                                 embedding_credentials=embedding_credentials, channel="cli")
     thread = {"configurable": {"thread_id": str(uuid4())}}
     pending = False
     pending_kind = None
@@ -192,11 +193,16 @@ async def run_cli(config: AppConfig, model=None, *, query=None, graph=None, read
             elif command in {"/mode", "/language", "/delivery", "/level"} and len(parts) == 2:
                 field = {"/mode": "mode", "/language": "language", "/delivery": "delivery_mode", "/level": "learner_level"}[command]
                 try:
-                    value = {"مبتدی": "beginner", "متوسط": "intermediate", "پیشرفته": "advanced"}.get(parts[1], parts[1]) if field == "learner_level" else parts[1]
-                    config.preferences = Preferences.model_validate({**config.preferences.model_dump(), field: value})
-                    display("Preference saved for the next request.")
-                    if field == "delivery_mode" and value == "full" and pending_kind == "lesson":
-                        line, resume_command = "full", True
+                    if field == "language" and parts[1].lower() in {"auto", "خودکار"}:
+                        # W2: clearing the override restores per-message detection.
+                        config.preferences = Preferences.model_validate({**config.preferences.model_dump(), "language": None})
+                        display("Language will be detected from each message.")
+                    else:
+                        value = {"مبتدی": "beginner", "متوسط": "intermediate", "پیشرفته": "advanced"}.get(parts[1], parts[1]) if field == "learner_level" else parts[1]
+                        config.preferences = Preferences.model_validate({**config.preferences.model_dump(), field: value})
+                        display("Preference saved for the next request.")
+                        if field == "delivery_mode" and value == "full" and pending_kind == "lesson":
+                            line, resume_command = "full", True
                 except ValidationError:
                     display("Invalid preference. Use /help.")
             elif command == "/debug" and len(parts) == 2 and parts[1] in {"on", "off"}:

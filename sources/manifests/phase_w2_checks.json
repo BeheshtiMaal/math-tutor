@@ -1,0 +1,109 @@
+{
+  "phase": "W2",
+  "transport": "uvicorn on 127.0.0.1:53330 + httpx over a real socket",
+  "graph": "real compiled LangGraph, 11 nodes, LangGraph in-memory checkpointer",
+  "real_services": [
+    "sympy math worker",
+    "langgraph checkpointer",
+    "uvicorn",
+    "httpx client",
+    "cli.py subprocess"
+  ],
+  "replaced_services": [
+    "model",
+    "search",
+    "retrieval"
+  ],
+  "checks": [
+    {
+      "check": "a Persian message is detected as fa and answered in Persian",
+      "passed": true,
+      "language": "fa",
+      "source": "detected"
+    },
+    {
+      "check": "an English message in the same thread is detected as en and answered in English",
+      "passed": true,
+      "language": "en",
+      "source": "detected"
+    },
+    {
+      "check": "the two turns in one thread used different languages",
+      "passed": true
+    },
+    {
+      "check": "a request language override wins over detection",
+      "passed": true,
+      "language": "fa",
+      "source": "override"
+    },
+    {
+      "check": "an ambiguous message falls back to the thread's previous language",
+      "passed": true,
+      "language": "en"
+    },
+    {
+      "check": "the web channel returns SymPy's own LaTeX for the formula",
+      "passed": true,
+      "segments": [
+        {
+          "kind": "answer",
+          "text": "$$x = 6$$"
+        }
+      ]
+    },
+    {
+      "check": "a core topic completes a lesson and is labelled core",
+      "passed": true,
+      "topic": "derivative",
+      "kind": "core"
+    },
+    {
+      "check": "an open topic completes a lesson and is labelled open",
+      "passed": true,
+      "topic": "topology",
+      "kind": "open"
+    },
+    {
+      "check": "the metadata distinguishes the two topic kinds",
+      "passed": true
+    },
+    {
+      "check": "a valid profile is accepted and its level is applied",
+      "passed": true,
+      "status": "accepted",
+      "level": "advanced"
+    },
+    {
+      "check": "an oversized profile is rejected while the turn still succeeds",
+      "passed": true,
+      "status": "rejected"
+    },
+    {
+      "check": "a malformed profile is rejected while the turn still succeeds",
+      "passed": true,
+      "status": "rejected"
+    },
+    {
+      "check": "the server keeps no copy of any profile",
+      "passed": true
+    },
+    {
+      "check": "the writer returns ordered typed text segments and a separate empty block list",
+      "passed": true,
+      "blocks": [],
+      "segments": 4
+    },
+    {
+      "check": "the writer schema accepts blocks, caps them at two, and drops malformed ones",
+      "passed": true
+    },
+    {
+      "check": "the CLI still runs offline in debug mode and answers correctly",
+      "passed": true,
+      "returncode": 0,
+      "debug_lines": 4
+    }
+  ],
+  "passed": true
+}

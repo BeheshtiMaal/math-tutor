@@ -48,8 +48,12 @@ def build_service(
         loaded_config, loaded_credentials = agent.load_config()
         config = config or loaded_config
         credentials = credentials or loaded_credentials
+    # The web product detects language per message and lets the client override
+    # it per request (spec section 11.1). TUTOR_LANGUAGE is a CLI session
+    # default, so it must not silently force one language on this channel.
+    config = config.model_copy(deep=True)
+    config.preferences = config.preferences.model_copy(update={"language": None})
     if settings.offline:
-        config = config.model_copy(deep=True)
         config.search_enabled = False
         config.semantic_enabled = False
         model = None
@@ -63,6 +67,7 @@ def build_service(
             model=model,
             search_client=search_client,
             embedding_credentials=credentials,
+            channel="web",
         )
     registry = ThreadRegistry(
         max_threads=settings.max_threads,

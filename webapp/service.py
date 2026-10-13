@@ -13,15 +13,13 @@ Resume semantics mirror ``cli.py``: a paused graph is continued with
 from __future__ import annotations
 
 import asyncio
-import json
-from pathlib import Path
 from typing import Any
 
 from langgraph.types import Command
 from langsmith import tracing_context
 from pydantic import ValidationError
 
-from agent import AppConfig, Request, new_request_state
+from agent import AppConfig, LearnerProfile, Request, load_core_topics, new_request_state
 
 from .errors import ApiError, ErrorCode
 from .schemas import (
@@ -29,10 +27,8 @@ from .schemas import (
     ChatTurnRequest,
     ChatTurnResponse,
     InterruptInfo,
-    LearnerProfile,
     LessonState,
     Segment,
-    TopicKind,
     Usage,
 )
 from .threads import ThreadRegistry, new_turn_id
@@ -45,28 +41,6 @@ RESUME_TEXT: dict[str, str] = {
     "full": "full",
     "done": "done",
 }
-
-
-def load_core_topics(sources_dir: Path) -> set[str]:
-    """Topic keys that have prepared local notes (spec section 13)."""
-    keys: set[str] = set()
-    registry = sources_dir / "manifests" / "topic_registry.json"
-    if registry.is_file():
-        try:
-            data = json.loads(registry.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            data = {}
-        for entry in data.get("topics", []) if isinstance(data, dict) else []:
-            if not isinstance(entry, dict):
-                continue
-            for field in ("topic", "english", "persian"):
-                value = entry.get(field)
-                if isinstance(value, str) and value.strip():
-                    keys.add(value.strip().lower())
-    topics_dir = sources_dir / "topics"
-    if topics_dir.is_dir():
-        keys.update(path.stem.lower() for path in topics_dir.glob("*.md"))
-    return keys
 
 
 class TutorService:
@@ -84,15 +58,17 @@ class TutorService:
         self.graph = graph
         self.registry = registry
         self.turn_timeout_seconds = turn_timeout_seconds
+        # The same registry the graph itself uses (spec section 13.1).
         self._core_topics = load_core_topics(config.sources_dir)
         self._last_awaiting = False
 
     # ---------------------------------------------------------------- topics
 
-    def topic_kind(self, topic: str | None) -> TopicKind:
-        if topic and topic.strip().lower() in self._core_topics:
-            return "core"
-        return "open"
+    def topic_kind(self, topic: str | None) -> str:
+        """Fallback classifier; the graph's own ``topic_kind`` is preferred."""
+        from agent import topic_kind_of
+
+        return topic_kind_of(topic, self._core_topics)
 
     # ---------------------------------------------------------------- public
 
@@ -117,7 +93,7 @@ class TutorService:
                 detail="A turn is already running for this thread.",
             )
         try:
-            result = await self._run(request)
+            result = await self._run(request, profile)
         except asyncio.TimeoutError:
             raise ApiError(
                 ErrorCode.TURN_TIMEOUT,
@@ -149,12 +125,12 @@ class TutorService:
             except Exception:  # a failed cleanup must not break the request
                 pass
 
-    async def _run(self, request: ChatTurnRequest) -> dict[str, Any]:
+    async def _run(self, request: ChatTurnRequest, profile: LearnerProfile | None) -> dict[str, Any]:
         self._last_awaiting = False
         thread = {"configurable": {"thread_id": request.thread_id}}
         with tracing_context(enabled=False):
             if request.action == "new_lesson":
-                payload = self._new_state(request)
+                payload = self._new_state(request, profile)
                 coroutine = self.graph.ainvoke(payload, thread)
             else:
                 coroutine = self.graph.ainvoke(Command(resume=self._resume_text(request)), thread)
@@ -162,7 +138,7 @@ class TutorService:
         self._last_awaiting = bool(result.get("__interrupt__"))
         return result
 
-    def _new_state(self, request: ChatTurnRequest):
+    def _new_state(self, request: ChatTurnRequest, profile: LearnerProfile | None):
         try:
             payload = Request(
                 query=request.message,
@@ -170,6 +146,9 @@ class TutorService:
                 language=request.language_override,
                 learner_level=request.level,
                 delivery_mode=request.delivery,
+                # Spec section 8: the validated profile travels in the request
+                # state so nodes may read it. It is never persisted by the server.
+                learner_profile=profile,
             )
             return new_request_state(payload, self.config)
         except ValueError:
@@ -218,12 +197,18 @@ class TutorService:
         profile_status: str,
     ) -> ChatTurnResponse:
         mode = result.get("mode")
-        if mode == "learn":
-            explanation = result.get("explanation") or ""
-            segments = [Segment(kind="text", text=explanation)] if explanation else []
+        # Spec section 12.1: the writer returns typed segments and a separate
+        # block list. The fallback only covers a graph that produced neither.
+        raw_segments = result.get("explanation_segments") or []
+        if raw_segments:
+            segments = [
+                Segment(kind=item["kind"], text=item["text"]) if isinstance(item, dict)
+                else Segment(kind=item.kind, text=item.text)
+                for item in raw_segments
+            ]
         else:
-            answer = result.get("final_answer") or ""
-            segments = [Segment(kind="answer", text=answer)] if answer else []
+            text = (result.get("explanation") or "") if mode == "learn" else (result.get("final_answer") or "")
+            segments = [Segment(kind="text" if mode == "learn" else "answer", text=text)] if text else []
 
         plan = result.get("lesson_plan") or []
         step_index = int(result.get("step_index") or 0)
@@ -245,7 +230,9 @@ class TutorService:
             awaiting_user=bool(interrupt),
             can_continue=bool(plan) and not lesson_complete,
         )
-        if request.level:
+        if result.get("level_source"):
+            level_source = result["level_source"]
+        elif request.level:
             level_source = request.level_source or "manual"
         else:
             level_source = "default"
@@ -254,15 +241,16 @@ class TutorService:
             thread_id=request.thread_id,
             turn_id=turn_id,
             language=result.get("language"),
-            language_source="override" if request.language_override else "detected",
+            language_source=result.get("language_source") or ("override" if request.language_override else "detected"),
             topic=result.get("topic"),
-            topic_kind=self.topic_kind(result.get("topic")),
+            topic_kind=result.get("topic_kind") or self.topic_kind(result.get("topic")),
             mode=mode,
             delivery=result.get("delivery_mode"),
             learner_level=result.get("learner_level"),
             level_source=level_source,
             segments=segments,
-            blocks=[],
+            # Emitted blocks stay empty until the W5 validation pipeline runs.
+            blocks=list(result.get("ui_blocks") or []),
             lesson=lesson,
             interrupt=interrupt,
             next_request=result.get("new_topic_query"),

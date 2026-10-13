@@ -7,13 +7,25 @@ does not change between phases:
 * ``blocks`` is always empty until phase W5.
 * ``level_suggestion`` is always ``None`` until phase W8.
 * ``usage`` values are ``None`` until phase W9 measures token usage.
+
+The learner-profile contracts live in the core (``agent.py``) because the graph
+state carries them, and are re-exported here for the HTTP layer and its tests.
 """
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+from agent import (
+    MAX_CONFUSION_SPOTS,
+    MAX_PROFILE_BYTES,
+    MAX_PROFILE_TOPICS,
+    MAX_RECENT_TOPICS,
+    ConfusionSpot,
+    LearnerProfile,
+    TopicProfile,
+)
 
 from .threads import normalize_thread_id, valid_thread_id
 
@@ -27,83 +39,10 @@ LevelSource = Literal["manual", "inferred", "default"]
 LanguageSource = Literal["detected", "override"]
 
 MAX_MESSAGE_CHARS = 8_000
-MAX_PROFILE_BYTES = 16 * 1024
-MAX_PROFILE_TOPICS = 50
-MAX_CONFUSION_SPOTS = 10
-MAX_RECENT_TOPICS = 20
-FUTURE_TOLERANCE = timedelta(minutes=5)
 
 
 class WebContract(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
-
-
-def _clamp_timestamp(value: datetime | None) -> datetime | None:
-    """Reject nonsense timestamps: a future value is clamped to now."""
-    if value is None:
-        return None
-    if value.tzinfo is None:
-        value = value.replace(tzinfo=timezone.utc)
-    now = datetime.now(timezone.utc)
-    return now if value - now > FUTURE_TOLERANCE else value
-
-
-class ConfusionSpot(BaseModel):
-    """One recorded confusion, keyed by topic and concept (spec section 8)."""
-
-    model_config = ConfigDict(extra="ignore")
-
-    concept: str = Field(min_length=1, max_length=120)
-    step_id: str | None = Field(default=None, max_length=120)
-    count: int = Field(default=1, ge=1, le=1000)
-    last_seen: datetime | None = None
-
-    @field_validator("last_seen")
-    @classmethod
-    def _normalize_last_seen(cls, value: datetime | None) -> datetime | None:
-        return _clamp_timestamp(value)
-
-
-class TopicProfile(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    level: LearnerLevel
-    level_source: Literal["manual", "inferred"] = "manual"
-    confusion_spots: list[ConfusionSpot] = Field(default_factory=list, max_length=MAX_CONFUSION_SPOTS)
-    last_seen: datetime | None = None
-
-    @field_validator("last_seen")
-    @classmethod
-    def _normalize_last_seen(cls, value: datetime | None) -> datetime | None:
-        return _clamp_timestamp(value)
-
-
-class LearnerProfile(BaseModel):
-    """Browser-stored learner profile. Never persisted server-side."""
-
-    model_config = ConfigDict(extra="ignore")
-
-    version: Literal[1] = 1
-    topics: dict[str, TopicProfile] = Field(default_factory=dict)
-    recent_topics: list[str] = Field(default_factory=list, max_length=MAX_RECENT_TOPICS)
-    updated_at: datetime | None = None
-
-    @field_validator("updated_at")
-    @classmethod
-    def _normalize_updated_at(cls, value: datetime | None) -> datetime | None:
-        return _clamp_timestamp(value)
-
-    @model_validator(mode="after")
-    def bounded(self):
-        if len(self.topics) > MAX_PROFILE_TOPICS:
-            raise ValueError("Profile exceeds the topic limit")
-        if any(len(key) > 128 for key in self.topics):
-            raise ValueError("Profile topic key is too long")
-        if any(len(value) > 120 for value in self.recent_topics):
-            raise ValueError("Profile recent topic entry is too long")
-        if len(self.model_dump_json()) > MAX_PROFILE_BYTES:
-            raise ValueError("Profile exceeds the size limit")
-        return self
 
 
 class ClientInfo(BaseModel):

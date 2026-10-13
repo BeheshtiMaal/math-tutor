@@ -7,7 +7,7 @@ from __future__ import annotations
 from collections import deque
 import ast
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from functools import lru_cache
 import json
@@ -28,7 +28,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.func import task
 from langgraph.types import interrupt
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, SecretStr, TypeAdapter, ValidationError, field_serializer, model_validator
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, SecretStr, TypeAdapter, ValidationError, field_serializer, field_validator, model_validator
 from typing_extensions import TypedDict
 
 Mode = Literal["answer", "learn"]
@@ -38,8 +38,105 @@ DeliveryMode = Literal["full", "step"]
 EvidenceStatus = Literal["success", "empty", "skipped", "error"]
 VerificationStatus = Literal["verified", "rejected", "unknown", "unsupported"]
 UserAction = Literal["next", "followup", "simplify", "full", "done"]
+# W2 additions (spec v3.0 sections 5, 11, 12 and 13).
+Channel = Literal["web", "cli"]
+TopicKind = Literal["core", "open"]
+LanguageSource = Literal["detected", "override"]
+LevelSource = Literal["manual", "inferred", "default"]
+BlockType = Literal["function_graph", "step_reveal"]
 LEVEL_LABELS = {"beginner": "مبتدی", "intermediate": "متوسط", "advanced": "پیشرفته"}
 PROJECT_ROOT = Path(__file__).resolve().parent
+
+# Script detection (spec section 11.1). Persian/Arabic script is counted per
+# letter; Latin letters only count inside runs of two or more, so a lone math
+# variable such as the "x" in "2x+5=17" never decides the language.
+PERSIAN_SCRIPT = re.compile(r"[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]")
+LATIN_WORD = re.compile(r"[A-Za-z]{2,}")
+SCRIPT_TIE_RATIO = 0.4
+PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹"
+
+
+def detect_language(text: str) -> Language | None:
+    """Dominant script by character count; ``None`` when the message is ambiguous.
+
+    Spec section 11.1: the caller falls back to the previous message's language
+    and then to ``fa`` when this returns ``None``.
+    """
+    if not isinstance(text, str):
+        return None
+    persian = len(PERSIAN_SCRIPT.findall(text))
+    latin = sum(len(match) for match in LATIN_WORD.findall(text))
+    total = persian + latin
+    if total == 0 or min(persian, latin) / total >= SCRIPT_TIE_RATIO:
+        return None
+    return "fa" if persian > latin else "en"
+
+
+def latinize_math_digits(text: str) -> str:
+    """Map Persian digits to Latin ones inside math regions (spec section 11.3).
+
+    Persian digits belong in UI chrome only. This is a defensive normalisation
+    applied to writer output on the web channel; it never changes non-math text.
+    """
+    if not isinstance(text, str) or not any(digit in text for digit in PERSIAN_DIGITS):
+        return text
+    table = str.maketrans(PERSIAN_DIGITS, "0123456789")
+
+    def fix(match):
+        return match.group(1) + match.group(2).translate(table) + match.group(3)
+
+    return re.sub(r"(\$\$?)(.*?)(\$\$?)", fix, text, flags=re.S)
+
+
+def load_core_topics(sources_dir: Path) -> frozenset[str]:
+    """Topic keys that have prepared local notes (spec section 13.1).
+
+    Reads the registry plus any prepared note file, so a topic counts as core
+    only when a reviewed note actually exists on disk.
+    """
+    keys: set[str] = set()
+    registry = Path(sources_dir) / "manifests" / "topic_registry.json"
+    if registry.is_file():
+        try:
+            data = json.loads(registry.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            data = {}
+        for entry in data.get("topics", []) if isinstance(data, dict) else []:
+            if not isinstance(entry, dict):
+                continue
+            for field in ("topic", "english", "persian"):
+                value = entry.get(field)
+                if isinstance(value, str) and value.strip():
+                    keys.add(value.strip().lower())
+    topics_dir = Path(sources_dir) / "topics"
+    if topics_dir.is_dir():
+        keys.update(path.stem.lower() for path in topics_dir.glob("*.md"))
+    return frozenset(keys)
+
+
+def topic_kind_of(topic: str | None, core_topics: frozenset[str]) -> TopicKind:
+    """``core`` when reviewed local notes exist for the topic, else ``open``."""
+    if topic and topic.strip().lower() in core_topics:
+        return "core"
+    return "open"
+
+
+# Learner-profile bounds (spec section 8). The profile is untrusted input.
+MAX_PROFILE_BYTES = 16 * 1024
+MAX_PROFILE_TOPICS = 50
+MAX_CONFUSION_SPOTS = 10
+MAX_RECENT_TOPICS = 20
+FUTURE_TOLERANCE = timedelta(minutes=5)
+
+
+def _clamp_timestamp(value: datetime | None) -> datetime | None:
+    """Reject nonsense timestamps: a future value is clamped to now."""
+    if value is None:
+        return None
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
+    return now if value - now > FUTURE_TOLERANCE else value
 
 
 class Contract(BaseModel):
@@ -66,7 +163,9 @@ class Limits(Contract):
 
 class Preferences(Contract):
     mode: Mode = "answer"
-    language: Language = "fa"
+    # W2: ``None`` means "detect per message" (spec section 11.1). A non-null
+    # value is a session override and wins until it is cleared.
+    language: Language | None = None
     learner_level: LearnerLevel | None = None
     delivery_mode: DeliveryMode = "full"
 
@@ -184,10 +283,103 @@ def load_config(*, env: Mapping[str, str] | None = None, dotenv_path: Path | Non
     return config, credentials
 
 
+class ConfusionSpot(Contract):
+    """One recorded confusion, keyed by topic and concept (spec section 8)."""
+
+    model_config = ConfigDict(extra="ignore", str_strip_whitespace=True, hide_input_in_errors=True)
+
+    concept: str = Field(min_length=1, max_length=120)
+    step_id: str | None = Field(default=None, max_length=120)
+    count: int = Field(default=1, ge=1, le=1000)
+    last_seen: datetime | None = None
+
+    @field_validator("last_seen")
+    @classmethod
+    def _normalize_last_seen(cls, value: datetime | None) -> datetime | None:
+        return _clamp_timestamp(value)
+
+
+class TopicProfile(Contract):
+    model_config = ConfigDict(extra="ignore", str_strip_whitespace=True, hide_input_in_errors=True)
+
+    level: LearnerLevel
+    level_source: Literal["manual", "inferred"] = "manual"
+    confusion_spots: list[ConfusionSpot] = Field(default_factory=list, max_length=MAX_CONFUSION_SPOTS)
+    last_seen: datetime | None = None
+
+    @field_validator("last_seen")
+    @classmethod
+    def _normalize_last_seen(cls, value: datetime | None) -> datetime | None:
+        return _clamp_timestamp(value)
+
+
+class LearnerProfile(Contract):
+    """Browser-stored learner profile. Never persisted server-side (spec section 8).
+
+    Contents are untrusted input: unknown fields are ignored, every list and the
+    serialized size are bounded, and an unusable profile is dropped by the caller
+    while the turn still succeeds.
+    """
+
+    model_config = ConfigDict(extra="ignore", str_strip_whitespace=True, hide_input_in_errors=True)
+
+    version: Literal[1] = 1
+    topics: dict[str, TopicProfile] = Field(default_factory=dict)
+    recent_topics: list[str] = Field(default_factory=list, max_length=MAX_RECENT_TOPICS)
+    updated_at: datetime | None = None
+
+    @field_validator("updated_at")
+    @classmethod
+    def _normalize_updated_at(cls, value: datetime | None) -> datetime | None:
+        return _clamp_timestamp(value)
+
+    @model_validator(mode="after")
+    def bounded(self):
+        if len(self.topics) > MAX_PROFILE_TOPICS:
+            raise ValueError("Profile exceeds the topic limit")
+        if any(len(key) > 128 for key in self.topics):
+            raise ValueError("Profile topic key is too long")
+        if any(len(value) > 120 for value in self.recent_topics):
+            raise ValueError("Profile recent topic entry is too long")
+        if len(self.model_dump_json()) > MAX_PROFILE_BYTES:
+            raise ValueError("Profile exceeds the size limit")
+        return self
+
+    def level_for(self, topic: str | None) -> LearnerLevel | None:
+        """The stored manual level for a topic, if the client recorded one."""
+        if not topic:
+            return None
+        entry = self.topics.get(topic) or self.topics.get(topic.strip().lower())
+        if entry is None or entry.level_source != "manual":
+            return None
+        return entry.level
+
+
+class TextSegment(Contract):
+    """Ordered typed text segment (spec section 12.1)."""
+
+    kind: Literal["text", "answer"] = "text"
+    text: str = Field(min_length=1, max_length=20000)
+
+
+class BlockRequest(Contract):
+    """A UI block the model asks for, before backend validation (spec section 9).
+
+    The model supplies only the type, title, parameters and fallback text. The
+    backend assigns the envelope ``id``, ``version`` and ``data_source`` when it
+    validates and emits the block in phase W5, so no block is emitted in W2.
+    """
+
+    type: BlockType
+    title: str = Field(min_length=1, max_length=120)
+    params: dict[str, Any] = Field(default_factory=dict)
+    fallback_text: str = Field(min_length=1, max_length=600)
+
+
 class RoutingOutput(Contract):
     mode: Mode
     topic: str = Field(min_length=1, max_length=128)
-    language: Language
+    language: Language | None = None
     learner_level: LearnerLevel | None = None
     delivery_mode: DeliveryMode = "full"
 
@@ -199,6 +391,8 @@ class Request(Contract):
     language: Language | None = None
     learner_level: LearnerLevel | None = None
     delivery_mode: DeliveryMode | None = None
+    # Spec section 5: validated and bounded here, read by nodes, never stored.
+    learner_profile: LearnerProfile | None = None
 
 
 class Expression(Contract):
@@ -344,6 +538,9 @@ def validate_problem(payload: Any, limits: Limits | None = None) -> Problem:
 class MathResult(Contract):
     status: Literal["solved", "unevaluated", "unsupported", "error", "timeout"]
     result: str | None = None
+    # SymPy's own LaTeX rendering of the same value, without delimiters. It is
+    # produced in the worker, never by the model, and always uses Latin digits.
+    latex: str | None = None
     conditions: list[str] = Field(default_factory=list)
     exclusions: list[str] = Field(default_factory=list)
     integration_constant_required: bool = False
@@ -471,8 +668,11 @@ class TutorState(TypedDict, total=False):
     mode: Mode
     query: str
     topic: str | None
+    # Resolved per message in W2; a session override wins while it is set.
     language: Language
+    language_source: LanguageSource
     learner_level: LearnerLevel | None
+    level_source: LevelSource
     delivery_mode: DeliveryMode
     messages: Annotated[list[BaseMessage], add_messages]
     problem: Problem | None
@@ -483,6 +683,12 @@ class TutorState(TypedDict, total=False):
     websearch: EvidenceResult | None
     explanation: str
     final_answer: str
+    # Spec section 12.1: text segments and block requests are separate fields.
+    explanation_segments: list[TextSegment]
+    block_requests: list[BlockRequest]
+    ui_blocks: list[dict[str, Any]]
+    topic_kind: TopicKind
+    learner_profile: LearnerProfile | None
     lesson_plan: list[LessonStep]
     step_index: int
     last_emitted_step: int | None
@@ -506,21 +712,37 @@ def new_request_state(request: Request, config: AppConfig, history: list[BaseMes
     """Fresh graph invocation state; caller must use a new/finished thread boundary."""
     if len(request.query) > config.limits.max_input_chars:
         raise ValueError("Request exceeds input size limit")
-    preferences = config.preferences.model_dump()
+    # ``language`` is deliberately excluded from the merged preferences. When an
+    # override is supplied it is written below; otherwise the key is left out so
+    # a checkpointed thread keeps the previous turn's language for the
+    # ambiguous-message fallback in ``classify`` (spec section 11.1).
+    preferences = {key: value for key, value in config.preferences.model_dump().items() if key != "language"}
     preferences.update({key: value for key, value in request.model_dump().items() if key in preferences and value is not None})
     if request.mode is None and re.search(r"(?i)\bstep(?:-by-| by )step\b|گام[‌ -]به[‌ -]گام|مرحله[‌ -]به[‌ -]مرحله", request.query):
         preferences["mode"] = "learn"
         if request.delivery_mode is None:
             preferences["delivery_mode"] = "step"
+    override = request.language if request.language is not None else config.preferences.language
     messages = list(history or [])[-(config.limits.max_history_messages - 1):]
     messages.append(HumanMessage(content=request.query))
-    return TutorState(**preferences, query=request.query, topic=request.topic, messages=messages,
-                      problem=None, math_result=None, source=None, examples=None, teaching_tips=None, websearch=None,
-                      explanation="", final_answer="", lesson_plan=[], step_index=0, last_emitted_step=None,
-                      user_decision=None, user_action=None, followup_query=None, clarification_count=0,
-                      repair_count=0, warnings=[], execution_trace=[], evidence_request={},
-                      lesson_objective="", explanation_version=0, selected_example_id=None, new_topic_query=None,
-                      current_step_explanation="", lesson_complete=False)
+    state = TutorState(**preferences, query=request.query, topic=request.topic, messages=messages,
+                       problem=None, math_result=None, source=None, examples=None, teaching_tips=None, websearch=None,
+                       explanation="", final_answer="", lesson_plan=[], step_index=0, last_emitted_step=None,
+                       user_decision=None, user_action=None, followup_query=None, clarification_count=0,
+                       repair_count=0, warnings=[], execution_trace=[], evidence_request={},
+                       lesson_objective="", explanation_version=0, selected_example_id=None, new_topic_query=None,
+                       current_step_explanation="", lesson_complete=False, explanation_segments=[],
+                       block_requests=[], ui_blocks=[], topic_kind="open",
+                       learner_profile=request.learner_profile, level_source="default")
+    if override is not None:
+        state["language"] = override
+        state["language_source"] = "override"
+    else:
+        # No override this turn. ``language`` keeps whatever the thread already
+        # resolved so an ambiguous message can fall back to it; the source is
+        # reset so a cleared override cannot keep winning (spec section 11.1).
+        state["language_source"] = "detected"
+    return state
 
 
 Schema = TypeVar("Schema", bound=BaseModel)
@@ -774,6 +996,21 @@ def _compute_math(payload, limits: Limits) -> MathResult:
             except (AttributeError, NotImplementedError):
                 conditions.append(f"{variable} in {allowed}")
 
+    def bounded(rendered):
+        """Drop a rendering that would dominate the output budget."""
+        return rendered if rendered and len(rendered) <= limits.max_output_chars // 2 else None
+
+    def latex_of(value):
+        """SymPy's own LaTeX for a result, or None when it is unusable.
+
+        The rendering is dropped when it would dominate the output budget, so
+        the plain-text path and the existing size guard keep working unchanged.
+        """
+        try:
+            return bounded(sp.latex(value))
+        except Exception:
+            return None
+
     if isinstance(problem, MatrixProblem):
         matrix = sp.Matrix([[build(cell) for cell in row] for row in problem.matrix])
         if problem.action == "inverse":
@@ -788,7 +1025,7 @@ def _compute_math(payload, limits: Limits) -> MathResult:
             result = matrix * other
         else:
             result = {"determinant": matrix.det, "rank": matrix.rank, "transpose": matrix.transpose}[problem.action]()
-        return MathResult(status="solved", result=str(result), conditions=conditions, exclusions=list(dict.fromkeys(f"{value} != 0" for value in nonzero)))
+        return MathResult(status="solved", result=str(result), latex=latex_of(result), conditions=conditions, exclusions=list(dict.fromkeys(f"{value} != 0" for value in nonzero)))
 
     variable = symbol(problem.variable)
     expressions = [build(problem.lhs), build(problem.rhs)] if isinstance(problem, SolveProblem) else [build(problem.expression)]
@@ -800,16 +1037,27 @@ def _compute_math(payload, limits: Limits) -> MathResult:
     exclusions = list(dict.fromkeys(f"{value} != 0" for value in nonzero))
     expression = expressions[0]
     constant_required = False
+    latex = None
     if isinstance(problem, SolveProblem):
-        result = sp.solveset(expressions[0] - expressions[1], variable, domain=allowed)
-        if result.has(sp.ConditionSet):
-            return MathResult(status="unevaluated", result=str(result), exclusions=exclusions, warning="Solution set remains conditional; completeness is not established.")
-        if isinstance(result, sp.FiniteSet):
-            if any(sp.simplify((expressions[0] - expressions[1]).subs(variable, root)) != 0 for root in result):
-                return MathResult(status="unevaluated", result=str(result), exclusions=exclusions, warning="Root verification was inconclusive.")
-            result = f"{variable}={next(iter(result))}" if len(result) == 1 else f"{variable} in {result}"
+        solutions = sp.solveset(expressions[0] - expressions[1], variable, domain=allowed)
+        if solutions.has(sp.ConditionSet):
+            return MathResult(status="unevaluated", result=str(solutions), latex=latex_of(solutions), exclusions=exclusions, warning="Solution set remains conditional; completeness is not established.")
+        if isinstance(solutions, sp.FiniteSet):
+            if any(sp.simplify((expressions[0] - expressions[1]).subs(variable, root)) != 0 for root in solutions):
+                return MathResult(status="unevaluated", result=str(solutions), latex=latex_of(solutions), exclusions=exclusions, warning="Root verification was inconclusive.")
+            # The plain-text form is an equation or a membership statement, so
+            # its LaTeX is assembled from the solution objects directly rather
+            # than rendered from the finished string.
+            if len(solutions) == 1:
+                root = next(iter(solutions))
+                result = f"{variable}={root}"
+                latex = bounded(f"{sp.latex(variable)} = {sp.latex(root)}")
+            else:
+                result = f"{variable} in {solutions}"
+                latex = bounded(f"{sp.latex(variable)} \\in {sp.latex(solutions)}")
         else:
-            result = f"{variable} in {result}"
+            result = f"{variable} in {solutions}"
+            latex = bounded(f"{sp.latex(variable)} \\in {sp.latex(solutions)}")
     elif isinstance(problem, LimitProblem):
         point = build(problem.point)
         if point.free_symbols:
@@ -844,7 +1092,7 @@ def _compute_math(payload, limits: Limits) -> MathResult:
         if problem.lower is None:
             result = sp.integrate(expression, variable)
             if not result.has(sp.Integral) and sp.simplify(sp.diff(result, variable) - expression) != 0:
-                return MathResult(status="unevaluated", result=str(result), warning="Antiderivative verification was inconclusive.")
+                return MathResult(status="unevaluated", result=str(result), latex=latex_of(result), warning="Antiderivative verification was inconclusive.")
             constant_required = not result.has(sp.Integral)
             if domain == "real" and not result.has(sp.Integral):
                 allowed = allowed.intersect(continuous_domain(result, variable, sp.S.Reals))
@@ -865,10 +1113,10 @@ def _compute_math(payload, limits: Limits) -> MathResult:
         domain_condition(allowed, variable)
     if isinstance(result, sp.Basic):
         if result.has(sp.Integral, sp.Derivative, sp.Limit, sp.ConditionSet):
-            return MathResult(status="unevaluated", result=str(result), conditions=conditions, exclusions=exclusions, warning="SymPy left this calculation unevaluated.")
+            return MathResult(status="unevaluated", result=str(result), latex=latex_of(result), conditions=conditions, exclusions=exclusions, warning="SymPy left this calculation unevaluated.")
         if result.has(sp.nan, sp.zoo):
             return MathResult(status="error", warning="Calculation is undefined; check its domain.")
-    return MathResult(status="solved", result=str(result), conditions=list(dict.fromkeys(conditions)), exclusions=exclusions, integration_constant_required=constant_required)
+    return MathResult(status="solved", result=str(result), latex=latex if latex is not None else latex_of(result), conditions=list(dict.fromkeys(conditions)), exclusions=exclusions, integration_constant_required=constant_required)
 
 
 def _worker_entry():
@@ -924,7 +1172,13 @@ class ExtractionOutput(Contract):
         return self
 
 
-def format_answer(result: MathResult) -> str:
+def format_answer(result: MathResult, channel: Channel = "cli") -> str:
+    """Render a math result for the requested channel (spec section 11.3).
+
+    ``cli`` keeps the v2.6 plain-text form. ``web`` wraps SymPy's own LaTeX in
+    display delimiters and keeps the plain form only when SymPy supplied none,
+    so no number is ever invented outside the worker.
+    """
     if result.status in {"error", "timeout", "unsupported"}:
         return result.warning or "Calculation unavailable."
     text = result.result or "Calculation unresolved."
@@ -937,19 +1191,29 @@ def format_answer(result: MathResult) -> str:
         text += " (" + "; ".join(restrictions) + ")"
     if result.warning:
         text += " " + result.warning
+    if channel == "web" and result.latex:
+        body = result.latex + (" + C" if result.integration_constant_required else "")
+        if result.status == "unevaluated":
+            return "Unresolved: $$" + body + "$$"
+        return "$$" + body + "$$"
     return text
 
 
 def build_graph(config: AppConfig, model: ModelClient | None = None, search_client: SearchClient | None = None,
                 *, math_runner=run_math_worker, retrieval_client: RetrievalClient | None = None,
-                embedding_client=None, embedding_credentials=None, resource_workers=None, checkpointer=None):
+                embedding_client=None, embedding_credentials=None, resource_workers=None, checkpointer=None,
+                channel: Channel = "cli"):
     """Actual eleven-node graph; resource_workers inject services, never scheduling.
 
     External services are injected; live search requires explicit configuration.
+    ``channel`` selects the notation the writers emit (spec section 11.3): the
+    CLI keeps plain text, the web service asks for LaTeX. It is a graph-level
+    property, so it adds nothing to the state contract.
     """
     from learning import learning_nodes
     from retrieval import SemanticRetrievalClient
     app_config = config
+    core_topics = load_core_topics(config.sources_dir)
     def trace(name, status="success"):
         return [TraceEvent(node=name, status=status)]
 
@@ -984,6 +1248,28 @@ def build_graph(config: AppConfig, model: ModelClient | None = None, search_clie
             except Exception:
                 return {"error": "Model request failed or timed out. Check provider configuration or use local math syntax."}
 
+    def resolve_language(state: TutorState, query: str, override: Language | None) -> tuple[Language, LanguageSource]:
+        """Per-message language (spec section 11.1).
+
+        Order: an explicit session override wins; otherwise the message's own
+        dominant script; otherwise the previous message's language in the
+        thread; otherwise ``fa``.
+        """
+        if override is not None:
+            return override, "override"
+        detected = detect_language(query)
+        if detected is not None:
+            return detected, "detected"
+        for message in reversed(list(state.get("messages") or [])):
+            if isinstance(message, HumanMessage) and str(message.content).strip() != query:
+                previous = detect_language(str(message.content))
+                if previous is not None:
+                    return previous, "detected"
+        carried = state.get("language")
+        if carried in {"fa", "en"}:
+            return carried, "detected"
+        return "fa", "detected"
+
     def classify(state: TutorState, config: RunnableConfig):
         try:
             preferences = Preferences.model_validate({key: state[key] for key in Preferences.model_fields if key in state})
@@ -1000,7 +1286,14 @@ def build_graph(config: AppConfig, model: ModelClient | None = None, search_clie
                 reply = context.run(interrupt, {"kind": "clarification", "prompt": "Enter a mathematical request."})
             query = str(reply).strip()
             count += 1
-        update = {**route.model_dump(), "topic": route.topic.lower(), "query": query, "clarification_count": count, "execution_trace": trace("classify")}
+        # Only an explicitly marked override wins; a language carried over from
+        # the thread's checkpoint is a fallback, not an override.
+        override = route.language if state.get("language_source") == "override" else None
+        language, language_source = resolve_language(state, query, override)
+        topic = route.topic.lower()
+        update = {**route.model_dump(), "topic": topic, "topic_kind": topic_kind_of(topic, core_topics),
+                  "language": language, "language_source": language_source, "query": query,
+                  "clarification_count": count, "execution_trace": trace("classify")}
         if not query or len(query) > app_config.limits.max_input_chars:
             update["math_result"] = failure("Request is empty or exceeds the configured input limit.")
             update["mode"] = "answer"
@@ -1040,13 +1333,17 @@ def build_graph(config: AppConfig, model: ModelClient | None = None, search_clie
 
     def write_answer(state: TutorState):
         result = state.get("math_result") or failure("No mathematical result was produced.")
-        return {"final_answer": format_answer(result), "execution_trace": trace("write_answer")}
+        answer = format_answer(result, channel)
+        return {"final_answer": answer,
+                "explanation_segments": [TextSegment(kind="answer", text=answer)],
+                "block_requests": [], "ui_blocks": [], "execution_trace": trace("write_answer")}
 
     builder = StateGraph(TutorState)
     for name, node in [("classify", classify), ("answer", answer), ("math_tool", math_tool), ("write_answer", write_answer)]:
         builder.add_node(name, node)
     retrieval = retrieval_client or SemanticRetrievalClient(app_config, math_runner, embedding_client=embedding_client, credentials=embedding_credentials)
-    for name, node in learning_nodes(app_config, model, retrieval, resource_workers, search_client=search_client).items():
+    for name, node in learning_nodes(app_config, model, retrieval, resource_workers, search_client=search_client,
+                                     channel=channel, core_topics=core_topics).items():
         builder.add_node(name, node)
     builder.add_edge(START, "classify")
     builder.add_conditional_edges("classify", lambda state: state["mode"], CONDITIONAL_EDGES["classify"])
@@ -1059,7 +1356,7 @@ def build_graph(config: AppConfig, model: ModelClient | None = None, search_clie
     builder.add_edge("write_explanation", "user_input")
     builder.add_conditional_edges("user_input", lambda state: state["user_decision"], CONDITIONAL_EDGES["user_input"])
     if checkpointer is None:
-        allowed = [(cls.__module__, cls.__name__) for cls in [Expression, DifferentiateProblem, IntegrateProblem, LimitProblem, SolveProblem, MatrixProblem, SimplifyProblem, MathResult, TraceEvent, EvidenceResult, SourceRecord, ExampleRecord, TeachingRule, WebRecord, Provenance, LessonStep]]
+        allowed = [(cls.__module__, cls.__name__) for cls in [Expression, DifferentiateProblem, IntegrateProblem, LimitProblem, SolveProblem, MatrixProblem, SimplifyProblem, MathResult, TraceEvent, EvidenceResult, SourceRecord, ExampleRecord, TeachingRule, WebRecord, Provenance, LessonStep, TextSegment, BlockRequest, LearnerProfile, TopicProfile, ConfusionSpot]]
         checkpointer = InMemorySaver(serde=JsonPlusSerializer(allowed_msgpack_modules=allowed))
     return builder.compile(checkpointer=checkpointer)
 
