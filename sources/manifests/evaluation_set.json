@@ -1,0 +1,907 @@
+{
+  "generated_at": "2026-10-13T14:57:49.695766+00:00",
+  "curation_phase": "W3",
+  "items": 40,
+  "languages": [
+    "fa",
+    "en"
+  ],
+  "levels": [
+    "beginner",
+    "intermediate",
+    "advanced"
+  ],
+  "core_topics": [
+    "derivative",
+    "integral",
+    "limits",
+    "algebra",
+    "matrix",
+    "probability",
+    "optimization",
+    "logarithms",
+    "exponentials",
+    "trigonometry"
+  ],
+  "scoring": "Concept terms are a coarse presence check for a human read, not an automatic correctness judgement. Every run is reviewed and the gaps are listed.",
+  "records": [
+    {
+      "id": "logarithms.beginner.question",
+      "topic": "logarithms",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "لگاریتم چیست و چگونه وارون توان‌رسانی است؟",
+        "en": "What is a logarithm and in what sense is it the inverse of exponentiation?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "لگاریتم",
+          "پایه",
+          "توان",
+          "وارون"
+        ],
+        "en": [
+          "logarithm",
+          "base",
+          "exponent",
+          "inverse"
+        ]
+      }
+    },
+    {
+      "id": "logarithms.intermediate.question",
+      "topic": "logarithms",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "عبارت log_b(x^2*y) را با قواعد لگاریتم بگشا و بگو چرا هر قاعده معتبر است.",
+        "en": "Expand log_b(x^2*y) using the logarithm rules and explain why each rule applies."
+      },
+      "expected_concepts": {
+        "fa": [
+          "قاعده ضرب",
+          "قاعده توان",
+          "دامنه"
+        ],
+        "en": [
+          "product rule",
+          "power rule",
+          "domain"
+        ]
+      }
+    },
+    {
+      "id": "logarithms.advanced.question",
+      "topic": "logarithms",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله log_2(x) + log_2(x - 2) = 3 را حل کن و توضیح بده چرا یک ریشه رد می‌شود.",
+        "en": "Solve log_2(x) + log_2(x - 2) = 3 and explain why one root is rejected."
+      },
+      "expected_concepts": {
+        "fa": [
+          "دامنه",
+          "x = 4",
+          "ریشه ناخواسته"
+        ],
+        "en": [
+          "domain",
+          "x = 4",
+          "extraneous"
+        ]
+      }
+    },
+    {
+      "id": "logarithms.advanced.probe",
+      "topic": "logarithms",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا log_b(x + y) برابر log_b(x) + log_b(y) است؟",
+        "en": "Is log_b(x + y) equal to log_b(x) + log_b(y)?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "ضرب",
+          "جمع",
+          "نادرست"
+        ],
+        "en": [
+          "product",
+          "sum",
+          "not"
+        ]
+      },
+      "misconception": "Treating a logarithm as linear: the sum rule applies to a product, not a sum.",
+      "correct": "log_b(x*y) = log_b(x) + log_b(y); no rule turns a sum inside the argument into a sum of logarithms."
+    },
+    {
+      "id": "exponentials.beginner.question",
+      "topic": "exponentials",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "تابع نمایی چیست و چرا خطی نیست؟",
+        "en": "What is an exponential function and why is it not linear?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "پایه",
+          "توان",
+          "ضرب مکرر"
+        ],
+        "en": [
+          "base",
+          "exponent",
+          "repeated multiplication"
+        ]
+      }
+    },
+    {
+      "id": "exponentials.intermediate.question",
+      "topic": "exponentials",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله 5 * 2^x = 80 را حل کن و هر گام را توضیح بده.",
+        "en": "Solve 5 * 2^x = 80 and explain each step."
+      },
+      "expected_concepts": {
+        "fa": [
+          "جدا کردن",
+          "x = 4",
+          "پایه یکسان"
+        ],
+        "en": [
+          "isolate",
+          "x = 4",
+          "same base"
+        ]
+      }
+    },
+    {
+      "id": "exponentials.advanced.question",
+      "topic": "exponentials",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله 2^x = 30 را دقیق و عددی حل کن و بگو چرا گرفتن لگاریتم معتبر است.",
+        "en": "Solve 2^x = 30 exactly and numerically, and explain why taking logarithms is valid."
+      },
+      "expected_concepts": {
+        "fa": [
+          "لگاریتم طبیعی",
+          "یک‌به‌یک",
+          "4.9069"
+        ],
+        "en": [
+          "natural logarithm",
+          "injective",
+          "4.9069"
+        ]
+      }
+    },
+    {
+      "id": "exponentials.advanced.probe",
+      "topic": "exponentials",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا (b^x)^y با b^(x^y) برابر است؟",
+        "en": "Is (b^x)^y equal to b^(x^y)?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "ضرب"
+        ],
+        "en": [
+          "not",
+          "multiply"
+        ]
+      },
+      "misconception": "Confusing the two exponent laws, so that (b^x)^y and b^(x^y) are treated as interchangeable.",
+      "correct": "(b^x)^y = b^(x*y), which is not b^(x^y); for example (2^2)^3 = 64 while 2^(2^3) = 256."
+    },
+    {
+      "id": "trigonometry.beginner.question",
+      "topic": "trigonometry",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "سینوس، کسینوس و تانژانت را روی دایره واحد تعریف کن و مقدارشان را در pi/6 بگو.",
+        "en": "Define sine, cosine and tangent on the unit circle and give their values at pi/6."
+      },
+      "expected_concepts": {
+        "fa": [
+          "دایره واحد",
+          "مختصات",
+          "1/2"
+        ],
+        "en": [
+          "unit circle",
+          "coordinates",
+          "1/2"
+        ]
+      }
+    },
+    {
+      "id": "trigonometry.intermediate.question",
+      "topic": "trigonometry",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله 2*sin(t)^2 - sin(t) - 1 = 0 را برای t حقیقی حل کن.",
+        "en": "Solve 2*sin(t)^2 - sin(t) - 1 = 0 for real t."
+      },
+      "expected_concepts": {
+        "fa": [
+          "تجزیه",
+          "جواب کلی",
+          "2k*pi"
+        ],
+        "en": [
+          "factor",
+          "general solution",
+          "2*k*pi"
+        ]
+      }
+    },
+    {
+      "id": "trigonometry.advanced.question",
+      "topic": "trigonometry",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "ثابت کن که (1 - cos(2t))/2 = sin(t)^2 برای هر t حقیقی.",
+        "en": "Prove that (1 - cos(2t))/2 = sin(t)^2 for every real t."
+      },
+      "expected_concepts": {
+        "fa": [
+          "زاویه دوبرابر",
+          "اتحاد فیثاغورسی"
+        ],
+        "en": [
+          "double angle",
+          "Pythagorean"
+        ]
+      }
+    },
+    {
+      "id": "trigonometry.advanced.probe",
+      "topic": "trigonometry",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا sin(a + b) برابر sin(a) + sin(b) است؟",
+        "en": "Is sin(a + b) equal to sin(a) + sin(b)?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "فرمول جمع"
+        ],
+        "en": [
+          "not",
+          "sum formula"
+        ]
+      },
+      "misconception": "Assuming the sine is linear, so that sin(a + b) is written as sin(a) + sin(b).",
+      "correct": "sin(a + b) = sin(a)cos(b) + cos(a)sin(b); the sine is not linear."
+    },
+    {
+      "id": "algebra.beginner.question",
+      "topic": "algebra",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله 3*x - 7 = 8 را با عملیات وارون حل کن.",
+        "en": "Solve 3*x - 7 = 8 using inverse operations."
+      },
+      "expected_concepts": {
+        "fa": [
+          "x = 5",
+          "وارون"
+        ],
+        "en": [
+          "x = 5",
+          "inverse"
+        ]
+      }
+    },
+    {
+      "id": "algebra.intermediate.question",
+      "topic": "algebra",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله 2*x^2 + 4*x - 6 = 0 را با تجزیه حل کن و پاسخ را بررسی کن.",
+        "en": "Solve 2*x^2 + 4*x - 6 = 0 by factoring and check the answer."
+      },
+      "expected_concepts": {
+        "fa": [
+          "تجزیه",
+          "x = -3",
+          "x = 1"
+        ],
+        "en": [
+          "factor",
+          "x = -3",
+          "x = 1"
+        ]
+      }
+    },
+    {
+      "id": "algebra.advanced.question",
+      "topic": "algebra",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "معادله sqrt(x + 5) = x - 1 را حل کن و توضیح بده کدام ریشه ناخواسته است.",
+        "en": "Solve sqrt(x + 5) = x - 1 and explain which root is extraneous."
+      },
+      "expected_concepts": {
+        "fa": [
+          "x = 4",
+          "ریشه ناخواسته",
+          "شرط"
+        ],
+        "en": [
+          "x = 4",
+          "extraneous",
+          "condition"
+        ]
+      }
+    },
+    {
+      "id": "algebra.advanced.probe",
+      "topic": "algebra",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا توان‌رسانی دو طرف معادله همیشه مجموعه جواب را حفظ می‌کند؟",
+        "en": "Does squaring both sides of an equation always preserve the solution set?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "ریشه ناخواسته"
+        ],
+        "en": [
+          "not",
+          "extraneous"
+        ]
+      },
+      "misconception": "Believing that squaring is a reversible step, so that no candidate root needs checking.",
+      "correct": "Squaring is not reversible and can introduce extraneous roots, so every candidate must be checked in the original equation."
+    },
+    {
+      "id": "derivative.beginner.question",
+      "topic": "derivative",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "مشتق چه چیزی را اندازه می‌گیرد و f'(a) چگونه تعریف می‌شود؟",
+        "en": "What does the derivative measure and how is f'(a) defined?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نرخ تغییر",
+          "حد",
+          "خارج قسمت تفاضلی"
+        ],
+        "en": [
+          "rate of change",
+          "limit",
+          "difference quotient"
+        ]
+      }
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "topic": "derivative",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "تابع f(x) = 4*x^3 - 2*x + 7 را مشتق بگیر و f'(2) را بیاب.",
+        "en": "Differentiate f(x) = 4*x^3 - 2*x + 7 and find f'(2)."
+      },
+      "expected_concepts": {
+        "fa": [
+          "12*x^2 - 2",
+          "46"
+        ],
+        "en": [
+          "12*x^2 - 2",
+          "46"
+        ]
+      }
+    },
+    {
+      "id": "derivative.advanced.question",
+      "topic": "derivative",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "تابع ln(x)/x را مشتق بگیر و نقطه بحرانی آن را روی دامنه پیدا کن.",
+        "en": "Differentiate ln(x)/x and locate its critical point on the domain."
+      },
+      "expected_concepts": {
+        "fa": [
+          "قاعده تقسیم",
+          "(1 - ln(x))/x^2",
+          "x = e"
+        ],
+        "en": [
+          "quotient rule",
+          "(1 - ln(x))/x^2",
+          "x = e"
+        ]
+      }
+    },
+    {
+      "id": "derivative.advanced.probe",
+      "topic": "derivative",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا مشتق x^n برابر x^(n-1) است؟",
+        "en": "Is the derivative of x^n equal to x^(n-1)?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "n*x^(n-1)"
+        ],
+        "en": [
+          "not",
+          "n*x^(n-1)"
+        ]
+      },
+      "misconception": "Dropping the coefficient in the power rule.",
+      "correct": "d/dx x^n = n*x^(n-1); the coefficient n must be kept."
+    },
+    {
+      "id": "integral.beginner.question",
+      "topic": "integral",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "پادمشتق چیست و چرا ثابت C در جواب می‌آید؟",
+        "en": "What is an antiderivative and why does the constant C appear?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "پادمشتق",
+          "خانواده",
+          "مشتق"
+        ],
+        "en": [
+          "antiderivative",
+          "family",
+          "derivative"
+        ]
+      }
+    },
+    {
+      "id": "integral.intermediate.question",
+      "topic": "integral",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "انتگرال معین 3*x^2 را از ۰ تا ۲ حساب کن و پاسخ را بررسی کن.",
+        "en": "Evaluate the definite integral of 3*x^2 from 0 to 2 and check the answer."
+      },
+      "expected_concepts": {
+        "fa": [
+          "انتگرال معین",
+          "8",
+          "قضیه اساسی"
+        ],
+        "en": [
+          "definite integral",
+          "8",
+          "fundamental theorem"
+        ]
+      }
+    },
+    {
+      "id": "integral.advanced.question",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "آیا انتگرال ناسره 1/x^2 از ۱ تا بی‌نهایت همگراست؟ آن را با 1/x مقایسه کن.",
+        "en": "Does the improper integral of 1/x^2 from 1 to infinity converge? Compare it with 1/x."
+      },
+      "expected_concepts": {
+        "fa": [
+          "حد",
+          "همگرا",
+          "واگرا"
+        ],
+        "en": [
+          "limit",
+          "converge",
+          "diverge"
+        ]
+      }
+    },
+    {
+      "id": "integral.advanced.probe",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا انتگرال معین همیشه همان مساحت هندسی است؟",
+        "en": "Is a definite integral always the geometric area?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "علامت‌دار"
+        ],
+        "en": [
+          "not",
+          "signed"
+        ]
+      },
+      "misconception": "Reading every definite integral as geometric area, ignoring sign and orientation.",
+      "correct": "A definite integral is signed accumulation; parts below the axis count negatively, so it need not equal geometric area."
+    },
+    {
+      "id": "limits.beginner.question",
+      "topic": "limits",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "حد f(x) هنگامی که x به a نزدیک می‌شود چه معنایی دارد؟",
+        "en": "What does the limit of f(x) as x approaches a mean?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نزدیک",
+          "دوطرفه",
+          "لزومی ندارد"
+        ],
+        "en": [
+          "near",
+          "two-sided",
+          "not necessarily"
+        ]
+      }
+    },
+    {
+      "id": "limits.intermediate.question",
+      "topic": "limits",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "حد (x^2 - 1)/(x - 1) را هنگامی که x به ۱ نزدیک می‌شود بیاب.",
+        "en": "Find the limit of (x^2 - 1)/(x - 1) as x approaches 1."
+      },
+      "expected_concepts": {
+        "fa": [
+          "مبهم",
+          "تجزیه",
+          "2"
+        ],
+        "en": [
+          "indeterminate",
+          "factor",
+          "2"
+        ]
+      }
+    },
+    {
+      "id": "limits.advanced.question",
+      "topic": "limits",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "نشان بده حد sin(1/x) هنگام نزدیک شدن x به صفر وجود ندارد و آن را با x*sin(1/x) مقایسه کن.",
+        "en": "Show that the limit of sin(1/x) as x approaches 0 does not exist, and compare it with x*sin(1/x)."
+      },
+      "expected_concepts": {
+        "fa": [
+          "نوسان",
+          "دنباله",
+          "قضیه فشردگی"
+        ],
+        "en": [
+          "oscillation",
+          "sequence",
+          "squeeze"
+        ]
+      }
+    },
+    {
+      "id": "limits.advanced.probe",
+      "topic": "limits",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا یک جدول مقادیر، وجود حد را اثبات می‌کند؟",
+        "en": "Does a table of values prove that a limit exists?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "نشانه"
+        ],
+        "en": [
+          "not",
+          "suggest"
+        ]
+      },
+      "misconception": "Treating a numerical table as a proof of a limit.",
+      "correct": "A table only suggests behaviour; existence needs a two-sided limit argument such as the squeeze theorem."
+    },
+    {
+      "id": "matrix.beginner.question",
+      "topic": "matrix",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "ماتریس چیست و در دستگاه معادلات یک سطر چه چیزی را نشان می‌دهد؟",
+        "en": "What is a matrix and what does a row represent in a system of equations?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "سطر",
+          "ستون",
+          "ضرایب"
+        ],
+        "en": [
+          "row",
+          "column",
+          "coefficients"
+        ]
+      }
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "topic": "matrix",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "دستگاه x + 2*y = 5 و 3*x - y = 1 را با حذف گاوسی حل کن.",
+        "en": "Solve x + 2*y = 5 and 3*x - y = 1 by Gaussian elimination."
+      },
+      "expected_concepts": {
+        "fa": [
+          "ماتریس افزوده",
+          "عملیات سطری",
+          "x = 1"
+        ],
+        "en": [
+          "augmented matrix",
+          "row operation",
+          "x = 1"
+        ]
+      }
+    },
+    {
+      "id": "matrix.advanced.question",
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "رتبه و دترمینان چگونه سازگاری و یگانگی جواب دستگاه را تعیین می‌کنند؟",
+        "en": "How do rank and the determinant decide consistency and uniqueness of a system?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "رتبه",
+          "سازگار",
+          "دترمینان"
+        ],
+        "en": [
+          "rank",
+          "consistent",
+          "determinant"
+        ]
+      }
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا ضرب ماتریس‌ها جابه‌جایی‌پذیر است؟",
+        "en": "Is matrix multiplication commutative?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "جابه‌جایی"
+        ],
+        "en": [
+          "not",
+          "commutative"
+        ]
+      },
+      "misconception": "Assuming AB = BA for matrices.",
+      "correct": "In general AB is not BA; matrix multiplication is associative but not commutative."
+    },
+    {
+      "id": "probability.beginner.question",
+      "topic": "probability",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "فضای نمونه چیست و برای پیامدهای هم‌شانس احتمال چگونه تعریف می‌شود؟",
+        "en": "What is a sample space and how is probability defined for equally likely outcomes?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "فضای نمونه",
+          "پیشامد",
+          "هم‌شانس"
+        ],
+        "en": [
+          "sample space",
+          "event",
+          "equally likely"
+        ]
+      }
+    },
+    {
+      "id": "probability.intermediate.question",
+      "topic": "probability",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "با قاعده جمع، احتمال زوج یا دست‌کم ۵ آمدن در پرتاب یک تاس سالم را بیاب.",
+        "en": "Using the addition rule, find the probability of an even result or a result of at least 5 on a fair die."
+      },
+      "expected_concepts": {
+        "fa": [
+          "قاعده جمع",
+          "اشتراک",
+          "2/3"
+        ],
+        "en": [
+          "addition rule",
+          "intersection",
+          "2/3"
+        ]
+      }
+    },
+    {
+      "id": "probability.advanced.question",
+      "topic": "probability",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "آزمونی با حساسیت 0.99 و ویژگی 0.95 و شیوع 0.001؛ احتمال بیماری به شرط مثبت را بیاب.",
+        "en": "A test with sensitivity 0.99, specificity 0.95 and prevalence 0.001; find the probability of disease given a positive result."
+      },
+      "expected_concepts": {
+        "fa": [
+          "بیز",
+          "نرخ پایه",
+          "0.0194"
+        ],
+        "en": [
+          "Bayes",
+          "base rate",
+          "0.0194"
+        ]
+      }
+    },
+    {
+      "id": "probability.advanced.probe",
+      "topic": "probability",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "اگر آزمونی ۹۹ درصد حساس باشد، آیا نتیجه مثبت یعنی ۹۹ درصد احتمال بیماری؟",
+        "en": "If a test is 99 percent sensitive, does a positive result mean a 99 percent chance of disease?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "نرخ پایه"
+        ],
+        "en": [
+          "not",
+          "base rate"
+        ]
+      },
+      "misconception": "Ignoring the base rate and reading sensitivity as the post-test probability.",
+      "correct": "No. The post-test probability is P(disease | positive), which for a rare condition is far below the sensitivity."
+    },
+    {
+      "id": "optimization.beginner.question",
+      "topic": "optimization",
+      "learner_level": "beginner",
+      "kind": "question",
+      "prompt": {
+        "fa": "در یک مسئله بهینه‌سازی تابع هدف، متغیرها، قید و دامنه شدنی چه هستند؟",
+        "en": "In an optimization problem, what are the objective, the variables, the constraint and the feasible domain?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "تابع هدف",
+          "قید",
+          "دامنه شدنی"
+        ],
+        "en": [
+          "objective",
+          "constraint",
+          "feasible domain"
+        ]
+      }
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "topic": "optimization",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "prompt": {
+        "fa": "مستطیلی محیط ۲۰ دارد؛ بزرگ‌ترین مساحت ممکن را بیاب.",
+        "en": "A rectangle has perimeter 20; find the largest possible area."
+      },
+      "expected_concepts": {
+        "fa": [
+          "قید",
+          "x = 5",
+          "25"
+        ],
+        "en": [
+          "constraint",
+          "x = 5",
+          "25"
+        ]
+      }
+    },
+    {
+      "id": "optimization.advanced.question",
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "kind": "question",
+      "prompt": {
+        "fa": "تابع x + 1/x را روی x > 0 کمینه کن و بگو آیا کمینه به دست می‌آید.",
+        "en": "Minimize x + 1/x on x > 0 and state whether the minimum is attained."
+      },
+      "expected_concepts": {
+        "fa": [
+          "مشتق",
+          "x = 1",
+          "به دست می‌آید"
+        ],
+        "en": [
+          "derivative",
+          "x = 1",
+          "attained"
+        ]
+      }
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "prompt": {
+        "fa": "آیا هر نقطه بحرانی بیشینه یا کمینه است؟",
+        "en": "Is every critical point a maximum or a minimum?"
+      },
+      "expected_concepts": {
+        "fa": [
+          "نادرست",
+          "هیچ‌کدام"
+        ],
+        "en": [
+          "not",
+          "neither"
+        ]
+      },
+      "misconception": "Assuming a vanishing derivative always marks an extremum.",
+      "correct": "A critical point can be a maximum, a minimum or neither; the sign change or the second derivative must be checked."
+    }
+  ]
+}

@@ -22,7 +22,7 @@ BASE = "https://tutorial.math.lamar.edu/Classes/"
 TERMS = "https://tutorial.math.lamar.edu/terms.aspx"
 NOTICE = "© 2003 - 2026 Paul Dawkins. All rights reserved. Private noncommercial reference copy; retain notices. Product incorporation and networked redistribution require express written consent."
 LEVELS = ("beginner", "intermediate", "advanced")
-# Manually selected from eight existing linked lesson pages. Difficulty is local
+# Manually selected from existing linked lesson pages. Difficulty is local
 # editorial judgment; the source itself does not label these learner levels.
 POOLS = [
     ("algebra", "linear equations", "Alg/SolveLinearEqns", ["1:a 1:b", "1:c 1:d", "2:a 2:b"],
@@ -33,6 +33,18 @@ POOLS = [
      ["", "", "Rational quadratic requiring domain restrictions and formula"]),
     ("derivative", "power rule", "CalcI/DiffFormulas", ["1:a 1:b 1:c", "1:d 2:a 2:b", "1:e 3 4"],
      ["Direct integer power rule", "Rewrite products, quotients and radicals first", "Irrational exponents, monotonicity or tangent application"]),
+    ("derivative", "definition of derivative", "CalcI/DefnOfDerivative", ["1", "2 3", "4"],
+     ["Polynomial difference quotient and tangent slope", "Rational and radical difference quotients with domain restrictions", "One-sided derivative limits and a nondifferentiable corner"]),
+    ("derivative", "product and quotient rules", "CalcI/ProductQuotientRule", ["1:b 2:a 2:d", "1:a 2:b 2:c", "3"],
+     ["Polynomial products and simple quotients", "Fractional powers and denominator restrictions", "Interpreting the sign of a volume rate at a specified time"]),
+    ("derivative", "chain rule", "CalcI/ChainRule", ["1 2:a 2:c", "2:b 2:d 2:f", "4:b 4:c 5:b"],
+     ["One inner function with a radical, sine or exponential", "Large powers, logarithmic domains and contrasting compositions", "Combining product/quotient rules and nested compositions"]),
+    ("derivative", "implicit differentiation", "CalcI/ImplicitDIff", ["1 3", "2:a 2:b 4", "5:a 5:b 6"],
+     ["Simple implicit product and circle", "Dependent-function chain rules and an implicit tangent line", "Mixed implicit products, trigonometry and two time-dependent variables"]),
+    ("derivative", "higher order derivatives", "CalcI/HigherOrderDerivatives", ["1:b", "1:a 2:c", "1:c 2:b 3"],
+     ["Repeated sine/cosine cycle", "Repeated differentiation with radicals and logarithms", "Mixed transcendental functions and implicit second derivatives"]),
+    ("derivative", "linear approximations", "CalcI/LinearApproximations", ["2", "1", ""],
+     ["Sine tangent approximation at zero", "Cube-root approximation and why distant estimates fail", "No distinct advanced example on this linked page"]),
     ("integral", "antiderivatives", "CalcI/ComputingIndefiniteIntegrals", ["1:a 1:b 1:d", "1:c 1:e 1:f", "2:a 3 4:b"],
      ["Direct power rule and constant of integration", "Algebraic rewriting and logarithmic exceptions", "Mixed functions, trigonometric identities or initial conditions"]),
     ("matrix", "augmented systems", "Alg/AugmentedMatrix", ["1:a 1:b 1:c", "2:a 2:b", ""],
@@ -43,6 +55,19 @@ POOLS = [
      ["Simple area and square-base constraints", "Cost or cylinder constraints with several quantities", "Feasible domains, boundary comparison and multiple dimensions"]),
 ]
 CHECKS = {
+    "CalcI/DefnOfDerivative:1": ("differentiate", "2*x**2-16*x+35", "x", "4*x-16"),
+    "CalcI/DefnOfDerivative:2": ("differentiate", "t/(t+1)", "t", "1/(t+1)**2"),
+    "CalcI/DefnOfDerivative:3": ("differentiate", "sqrt(5*z-8)", "z", "5/(2*sqrt(5*z-8))"),
+    "CalcI/ProductQuotientRule:1:b": ("differentiate", "(6*x**3-x)*(10-20*x)", "x", "-480*x**3+180*x**2+40*x-10"),
+    "CalcI/ProductQuotientRule:2:a": ("differentiate", "(3*z+9)/(2-z)", "z", "15/(2-z)**2"),
+    "CalcI/ProductQuotientRule:2:b": ("differentiate", "4*sqrt(x)/(x**2-2)", "x", "-(6*x**2+4)/(sqrt(x)*(x**2-2)**2)"),
+    "CalcI/ProductQuotientRule:2:c": ("differentiate", "4/x**6", "x", "-24/x**7"),
+    "CalcI/ProductQuotientRule:2:d": ("differentiate", "w**6/5", "w", "6*w**5/5"),
+    "CalcI/ChainRule:1": ("differentiate", "sqrt(5*z-8)", "z", "5/(2*sqrt(5*z-8))"),
+    "CalcI/ChainRule:2:a": ("differentiate", "sin(3*x**2+x)", "x", "(6*x+1)*cos(3*x**2+x)"),
+    "CalcI/ChainRule:2:c": ("differentiate", "exp(w**4-3*w**2+9)", "w", "(4*w**3-6*w)*exp(w**4-3*w**2+9)"),
+    "CalcI/ChainRule:2:f": ("differentiate", "cos(t)**4+cos(t**4)", "t", "-4*cos(t)**3*sin(t)-4*t**3*sin(t**4)"),
+    "CalcI/ChainRule:4:b": ("differentiate", "sin(z*exp(z))", "z", "(1+z)*exp(z)*cos(z*exp(z))"),
     "CalcI/DiffFormulas:1:a": ("differentiate", "15*x**100-3*x**12+5*x-46", "x", "1500*x**99-36*x**11+5"),
     "CalcI/DiffFormulas:1:b": ("differentiate", "2*t**6+7*t**(-6)", "t", "12*t**5-42*t**(-7)"),
     "CalcI/DiffFormulas:1:c": ("differentiate", "8*z**3-1/(3*z**5)+z-23", "z", "24*z**2+5/(3*z**6)+1"),
@@ -200,7 +225,7 @@ def import_records(path, records):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--fetch", action="store_true", help="Fetch exactly the eight selected lesson pages; never follow links")
+    parser.add_argument("--fetch", action="store_true", help="Fetch exactly the selected lesson pages; never follow links")
     parser.add_argument("--verify", action="store_true", help="Run supported claims in the bounded SymPy worker")
     parser.add_argument("--retry-unverified", action="store_true", help="Reuse unchanged verified records and retry other supported claims")
     parser.add_argument("--import-jsonl", type=Path, help="Validate/deduplicate an existing selected bank, without fetching")

@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-10-13T16:59:21.433968+00:00",
+  "curation_phase": "W3",
+  "backend": "avalai",
+  "model": "text-embedding-3-large",
+  "revision": "provider-managed",
+  "dimension": 3072,
+  "max_tokens": 2048,
+  "cache_dir": ".cache\\retrieval\\avalai\\text-embedding-3-large",
+  "semantic_enabled": true,
+  "api_requests": 2,
+  "prompt_tokens": 15545,
+  "local_embedding_model_loaded": false,
+  "indexes": {
+    "sources": {
+      "sync": {
+        "status": "success",
+        "logical_records": 130,
+        "chunks": 130,
+        "embedded": 0,
+        "reused": 130,
+        "warnings": []
+      },
+      "cache": {
+        "exists": true,
+        "bytes": 1460078,
+        "settings": {
+          "model_id": "text-embedding-3-large",
+          "revision": "provider-managed",
+          "dimension": 3072,
+          "normalization": "l2",
+          "metric": "cosine",
+          "max_tokens": 2048,
+          "preprocessing_version": "structural-math-v1",
+          "document_prefix": "",
+          "query_prefix": "",
+          "provider": "avalai",
+          "endpoint": "https://api.avalai.ir/v1/embeddings",
+          "tokenizer": "cl100k_base"
+        },
+        "chunks": 130,
+        "records": 130,
+        "vector_shape": [
+          130,
+          3072
+        ],
+        "dtype": "float32",
+        "aggregate_content_hash": "81aab508cae5f88c028120f60477d703d3dd84a16739b3f4472e97e3b6930199",
+        "warnings": []
+      }
+    },
+    "examples": {
+      "sync": {
+        "status": "success",
+        "logical_records": 87,
+        "chunks": 87,
+        "embedded": 36,
+        "reused": 51,
+        "warnings": []
+      },
+      "cache": {
+        "exists": true,
+        "bytes": 971498,
+        "settings": {
+          "model_id": "text-embedding-3-large",
+          "revision": "provider-managed",
+          "dimension": 3072,
+          "normalization": "l2",
+          "metric": "cosine",
+          "max_tokens": 2048,
+          "preprocessing_version": "structural-math-v1",
+          "document_prefix": "",
+          "query_prefix": "",
+          "provider": "avalai",
+          "endpoint": "https://api.avalai.ir/v1/embeddings",
+          "tokenizer": "cl100k_base"
+        },
+        "chunks": 87,
+        "records": 87,
+        "vector_shape": [
+          87,
+          3072
+        ],
+        "dtype": "float32",
+        "aggregate_content_hash": "cb1011354d7ac8ade0af9b23ed6f9150487a4d306fdb1259e15bf588a13eb0af",
+        "warnings": []
+      }
+    }
+  },
+  "note": "'embedded' counts chunks sent to the provider this run; 'reused' counts chunks whose content hash was unchanged and whose stored vector was kept. Raw unreviewed book extracts are excluded from the index by extraction_status."
+}

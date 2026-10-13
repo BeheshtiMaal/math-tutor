@@ -1,0 +1,319 @@
+{
+  "generated_at": "2026-10-13T17:18:33.692899+00:00",
+  "curation_phase": "W3",
+  "channel": "web",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "search_backend": "avalai_tavily",
+  "concurrency": 4,
+  "scope": "unfinished-only(38 item/language pairs)",
+  "rerun_of": "sources/manifests/evaluation_run_aborted_42.json",
+  "selection_basis": "reconstructed from topic/level/language aggregates; raw rows lost",
+  "selected_pairs": [
+    {
+      "id": "integral.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "integral.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "integral.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "integral.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "integral.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "integral.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "limits.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "limits.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "limits.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "limits.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "limits.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "limits.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "limits.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "limits.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "matrix.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "matrix.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "probability.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "probability.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "probability.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "probability.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "probability.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "probability.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "en"
+    }
+  ],
+  "run_status": "aborted",
+  "items": 19,
+  "runs": 3,
+  "planned_runs": 38,
+  "scoring": "Concept terms are a coarse presence check for a human read, not automatic correctness.",
+  "totals": {
+    "complete": 3,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "degraded_runs": 3,
+  "clean_runs": 0,
+  "degraded_totals": {
+    "complete": 3,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "clean_totals": {
+    "complete": 0,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "by_topic": {
+    "integral": {
+      "complete": 3,
+      "partial": 0,
+      "missed": 0,
+      "error": 0
+    }
+  },
+  "quality_gaps": [],
+  "results": [
+    {
+      "id": "integral.advanced.question",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 13.3,
+      "degraded": true,
+      "expected": [
+        "حد",
+        "همگرا",
+        "واگرا"
+      ],
+      "found": [
+        "حد",
+        "همگرا",
+        "واگرا"
+      ],
+      "missing": [],
+      "answer_chars": 8993,
+      "answer": "تعریف دقیق، دلیل روش و محدودیت‌های آن را بررسی می‌کنیم.\n\n### Worked example / مثال حل‌شده\nDecide whether the improper integral of 1/x^2 from 1 to infinity converges, and if so compute it. Replace the infinite bound by a finite b and evaluate the proper integral first: the antiderivative of x^(-2) is -x^(-1) = -1/x, so the integral from 1 to b is (-1/b) - (-1) = 1 - 1/b. Now take the limit as b tends to infinity: 1 - 1/b tends to 1, which exists and is finite, so the integral converges and its value is 1. Contrast this with 1/x from 1 to infinity, where the antiderivative is ln(x) and the integral from 1 to b is ln(b), which grows without bound, so that integral diverges. The comparison shows that convergence is a property of the integrand's decay rate and must be established by the limit, not assumed from the shape of the formula.\nتصمیم بگیر که انتگرال ناسره 1/x^2 از ۱ تا بی‌نهایت همگراست یا نه، و اگر هست حسابش کن. کران بی‌کران را با b متناهی جانشین کن و نخست انتگرال سره را ارزیابی کن: پادمشتق x^(-2) برابر -x^(-1) = -1/x است، پس انتگرال از ۱ تا b برابر (-1/b) - (-1) = 1 - 1/b. اکنون حد را هنگامی که b به بی‌نهایت میل می‌کند بگیر: 1 - 1/b به ۱ میل می‌کند که وجود دارد و متناهی است، پس انتگرال همگراست و مقدارش ۱ است. این را با 1/x از ۱ تا بی‌نهایت مقایسه کن، که پادمشتقش ln(x) و انتگرال از ۱ تا b برابر ln(b) است و بی‌کران رشد می‌کند، پس آن انتگرال واگراست. این مقایسه نشان می‌دهد همگرایی خاصیتی از آهنگ کاهش انتگرال‌ده است و باید با حد برقرار شود نه از شکل فرمول فرض.\n\n### Common mistakes / اشتباه‌های رایج\nApplying the fundamental theorem across a singularity is the error that produces a finite answer for a divergent integral, as when 1/x^2 is integrated from -1 to 1 and the two parts are allowed to cancel. A second is treating a numerical quadrature as proof of convergence; a quadrature approximates a proper integral and says nothing about a limit that may not exist. A third is reporting an initial-value problem as solved after finding the antiderivative but before determining the constant. A fourth is verifying an antiderivative by checking a single value instead of differentiating it, which confirms nothing about the function as a whole.\nبه‌کارگیری قضیه بنیادی روی نقطه تکین خطایی است که برای انتگرال واگرا پاسخ متناهی تولید می‌کند، مانند انتگرال 1/x^2 از -1 تا 1 وقتی دو بخش اجازه ساده شدن می‌یابند. خطای دوم اثبات پنداشتن یک تقریب عددی برای همگرایی است؛ تقریب عددی انتگرالی سره را تخمین می‌زند و درباره حدی که ممکن است وجود نداشته باشد چیزی نمی‌گوید. خطای سوم گزارش حل یک مسئله مقدار اولیه پس از یافتن پادمشتق و پیش از تعیین ثابت است. خطای چهارم بررسی پادمشتق با آزمودن یک مقدار به‌جای مشتق‌گیری از آن است که درباره تابع به‌عنوان یک کل چیزی تأیید نمی‌کند.\n\n### Rule and conditions / قاعده و شرطها\nThe fundamental theorem requires f to be continuous on the interval, or at least integrable with an antiderivative that is continuous there; applying it across a point where f is undefined is invalid. An improper integral over an infinite interval is defined as the limit of a proper integral as the endpoint tends to infinity, and it diverges when that limit fails to exist or is infinite. Splitting an improper integral at a singularity requires both resulting integrals to converge separately; cancellation across a singularity is not legitimate. When an antiderivative is built by substitution or by parts, the domain of the result must be checked against the domain of the original integrand, because the algebraic manipulation may appear defined where the original was not.\nقضیه بنیادی مستلزم پیوستگی f روی بازه است، یا دست‌کم انتگرال‌پذیری با پادمشتقی که آنجا پیوسته باشد؛ به‌کارگیری آن روی نقطه‌ای که f تعریف‌نشده است نامعتبر است. انتگرال ناسره روی بازه بی‌کران به‌عنوان حد یک انتگرال سره هنگامی که کران به بی‌نهایت میل می‌کند تعریف می‌شود و هنگامی واگرا می‌شود که آن حد وجود نداشته باشد یا بی‌نهایت باشد. شکستن انتگرال ناسره در نقطه تکین مستلزم همگرایی جداگانه هر دو انتگرال حاصل است؛ ساده کردن روی نقطه تکین مجاز نیست. هنگامی که پادمشتق با تغییر متغیر یا جزءبه‌جزء ساخته می‌شود، دامنه نتیجه باید با دامنه انتگرال‌ده اصلی مقایسه شود، چون دستکاری جبری ممکن است جایی تعریف‌شده به نظر برسد که عبارت اصلی نبود.\n\n### Definition / تعریف\nAt this level the learner checks the hypotheses of the fundamental theorem, handles improper endpoints explicitly, and separates computing a value from proving that it exists. The Riemann integral is defined as a limit of sums over partitions, so it exists only when that limit is independent of the choice of partition and sample points. Continuity on a closed bounded interval is sufficient for integrability, but it is not necessary: a bounded function with finitely many discontinuities is still integrable. An improper integral extends the definition to an unbounded interval or an unbounded integrand by taking a limit of proper integrals, and it is said to converge only when that limit exists and is finite. An initial-value problem is solved only when both the antiderivative and the constant fixed by the initial condition have been determined.\nدر این سطح یادگیرنده فرض‌های قضیه بنیادی را بررسی می‌کند، نقاط انتهایی ناسره را صریح مدیریت می‌کند و محاسبه مقدار را از اثبات وجود آن جدا می‌سازد. انتگرال ریمان به‌عنوان حدی از مجموع‌ها روی افرازها تعریف می‌شود، پس تنها هنگامی وجود دارد که آن حد مستقل از انتخاب افراز و نقاط نمونه باشد. پیوستگی روی بازه بسته کران‌دار برای انتگرال‌پذیری کافی است اما لازم نیست: تابع کران‌داری که تعداد متناهی ناپیوستگی دارد همچنان انتگرال‌پذیر است. انتگرال ناسره تعریف را به بازه بی‌کران یا انتگرال‌ده بی‌کران با گرفتن حدی از انتگرال‌های سره گسترش می‌دهد و تنها هنگامی همگرا نامیده می‌شود که آن حد وجود داشته باشد و متناهی باشد. مسئله مقدار اولیه تنها وقتی حل شده است که هم پادمشتق و هم ثابتی که شرط اولیه تعیین می‌کند مشخص شده باشند.\n\nمثال:\nGiven the following information determine the function \\(f\\left( x \\right)\\).\n\n\\(f''\\left( x \\right) = 15\\sqrt x  + 5{x^3} + 6,\\,\\,\\,\\,f\\left( 1 \\right) =  - \\frac{5}{4},\\,\\,\\,f\\left( 4 \\right) = 404\\)\nIn both of these we will need to remember that\n\n              \\[f\\left( x \\right) = \\int{{f'\\left( x \\right)\\,dx}}\\]\r\n\nAlso note that because we are giving values of the function at specific points we are also going to be determining what the constant of integration will be in these problems.\n\nThis one is a little different form the first one.  In order to get the function we will need the first derivative and we have the second derivative.  We can however, use an integral to get the first derivative from the second derivative, just as we used an integral to get the function from the first derivative.\n\nSo, let’s first get the most general possible first derivative by integrating the second derivative.\n\n            \\[\\begin{align*}f'\\left( x \\right) & = \\int{{f''\\left( x \\right)\\,dx}}\\\\ &  = \\int{{15{x^{\\frac{1}{2}}} + 5{x^3} + 6\\,dx}}\\\\ &  = 15\\left( {\\frac{2}{3}} \\right){x^{\\frac{3}{2}}} + \\frac{5}{4}{x^4} + 6x + c\\\\ &  = 10{x^{\\frac{3}{2}}} + \\frac{5}{4}{x^4} + 6x + c\\end{align*}\\]\r\n\nDon’t forget the constant of integration!\n\nWe can now find the most general possible function by integrating the first derivative which we found above.\n\n            \\[\\begin{align*}f\\left( x \\right) & = \\int{{10{x^{\\frac{3}{2}}} + \\frac{5}{4}{x^4} + 6x + c\\,dx}}\\\\ &  = 4{x^{\\frac{5}{2}}} + \\frac{1}{4}{x^5} + 3{x^2} + cx + d\\end{align*}\\]\r\n\nDo not get excited about integrating the \\(c\\).  It’s just a constant and we know how to integrate constants.  Also, there will be no reason to think the constants of integration from the integration in each step will be the same and so we’ll need to call each constant of integration something different, \\(d\\) in this case.\n\nNow, plug in the two values of the function that we’ve got.\n\n            \\[\\begin{align*} - \\frac{5}{4} & = f\\left( 1 \\right) = 4 + \\frac{1}{4} + 3 + c + d = \\frac{{29}}{4} + c + d\\\\ 404 & = f\\left( 4 \\right) = 4\\left( {32} \\right) + \\frac{1}{4}\\left( {1024} \\right) + 3\\left( {16} \\right) + c\\left( 4 \\right) + d = 432 + 4c + d\\end{align*}\\]\r\n\nThis gives us a system of two equations in two unknowns that we can solve.\n\n            \\[\\begin{align*} - \\frac{5}{4} & = \\frac{{29}}{4} + c + d\\\\ 404 & = 432 + 4c + d\\end{align*}\\hspace{0.5in} \\Rightarrow \\hspace{0.5in} \\begin{aligned}c & =  - \\frac{{13}}{2}  \\\\d & =  - 2\\end{aligned}\\]\r\n\nThe function is then,\n\n            \\[f\\left( x \\right) = 4{x^{\\frac{5}{2}}} + \\frac{1}{4}{x^5} + 3{x^2} - \\frac{{13}}{2}x - 2\\]\r\n\nDon’t remember how to solve systems?  Check out the Solving Systems portion of the Algebra/Trig Review.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nیادداشت موضوع: success — AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.\n\nمثال‌های پاول: success — AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.\n\nجست‌وجوی وب: error — Web search failed or timed out; local evidence remains available.\n\nExplanation synthesis failed; displaying actual local passages instead.",
+      "warnings": [
+        "AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.",
+        "AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.",
+        "Web search failed or timed out; local evidence remains available.",
+        "Explanation synthesis failed; displaying actual local passages instead."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.beginner.question",
+      "topic": "integral",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 15.6,
+      "degraded": true,
+      "expected": [
+        "پادمشتق",
+        "خانواده",
+        "مشتق"
+      ],
+      "found": [
+        "پادمشتق",
+        "خانواده",
+        "مشتق"
+      ],
+      "missing": [],
+      "answer_chars": 7395,
+      "answer": "ابتدا مفهوم و معنی نمادها را بررسی می‌کنیم.\n\n### Definition / تعریف\nAn integral undoes a derivative. Separate the two questions from the start: an indefinite integral answers \"which function has this as its derivative?\" and a definite integral answers \"how much accumulates between two points?\". An antiderivative of a function f on an interval is a function F whose derivative equals f there, so F'(x) = f(x) for every x in the interval. Because constants differentiate to zero, if F is one antiderivative then F(x) + C is another for any constant C, and the indefinite integral written with the symbol and the differential represents that whole family. The definite integral of f from a to b is a single number, the signed accumulation of f over the interval, and it is defined as a limit of sums of the form f(x_i)*delta_x.\nانتگرال مشتق را وارون می‌کند. از همان آغاز دو پرسش را جدا کن: انتگرال نامعین پاسخ می‌دهد «کدام تابع این را مشتق دارد؟» و انتگرال معین پاسخ می‌دهد «بین دو نقطه چقدر انباشته می‌شود؟». پادمشتق تابع f روی یک بازه تابعی مانند F است که مشتقش آنجا برابر f باشد، یعنی F'(x) = f(x) برای هر x در بازه. چون مشتق ثابت صفر است، اگر F یک پادمشتق باشد آنگاه F(x) + C برای هر ثابت C پادمشتق دیگری است و انتگرال نامعین که با نماد و دیفرانسیل نوشته می‌شود همان خانواده کامل را نشان می‌دهد. انتگرال معین f از a تا b یک عدد یگانه است، انباشت علامت‌دار f روی بازه، و به‌عنوان حدی از مجموع‌های شکل f(x_i)*delta_x تعریف می‌شود.\n\n### Worked example / مثال حل‌شده\nFind the indefinite integral of 3*x^2. Raise the exponent by one and divide by the new exponent: the antiderivative is 3 * x^3/3 + C = x^3 + C. Verify by differentiating: d(x^3 + C)/dx = 3*x^2, which returns the integrand, and the derivative of C is zero so the constant is invisible to this check, exactly as expected. Now evaluate the definite integral of 3*x^2 from 0 to 2. Using the antiderivative, the value is (2^3) - (0^3) = 8 - 0 = 8. Check by a rough sum: splitting [0, 2] into four equal pieces and evaluating 3*x^2 at the right endpoint of each gives the sum 3*(0.25 + 1 + 2.25 + 4) = 22.5, so the right-endpoint Riemann sum is 0.5*22.5 = 11.25, a coarse overestimate of 8; refining the pieces brings it down toward 8.\nانتگرال نامعین 3*x^2 را بیاب. توان را یک واحد بالا ببر و بر توان جدید تقسیم کن: پادمشتق 3 * x^3/3 + C = x^3 + C است. با مشتق‌گیری بررسی کن: d(x^3 + C)/dx = 3*x^2 که خود انتگرال‌ده را برمی‌گرداند، و مشتق C صفر است پس ثابت در این بررسی نامرئی است، دقیقاً همان‌طور که انتظار می‌رود. اکنون انتگرال معین 3*x^2 را از ۰ تا ۲ حساب کن. با پادمشتق مقدار (2^3) - (0^3) = 8 - 0 = 8 است. با یک مجموع تقریبی بررسی کن: تقسیم [0, 2] به چهار بخش مساوی و استفاده از نقطه راست هر بخش 3*(0.25 + 1 + 2.25 + 4) = 22.5 می‌دهد، پس مجموع ریمان با نقطه راست 0.5*22.5 = 11.25 است که بیش‌برآوردی درشت از ۸ است؛ ریزتر کردن بخش‌ها آن را به سمت ۸ پایین می‌آورد.\n\n### Common mistakes / اشتباه‌های رایج\nForgetting the constant C in an indefinite integral is the most common error, because it makes a family of functions look like a single function. A second is applying the power rule at n = -1, writing the antiderivative of 1/x as x^0/0, which is meaningless; that case needs the logarithm. A third is dropping the absolute value and writing ln(x) instead of ln(|x|), which silently restricts the answer to positive inputs. A fourth is treating a definite integral as area without regard to sign, so that a region below the axis is reported as a positive quantity.\nفراموش کردن ثابت C در انتگرال نامعین رایج‌ترین خطا است، چون خانواده‌ای از توابع را به‌صورت یک تابع نشان می‌دهد. خطای دوم به‌کارگیری قاعده توان در n = -1 و نوشتن پادمشتق 1/x به‌صورت x^0/0 است که بی‌معناست؛ آن حالت به لگاریتم نیاز دارد. خطای سوم حذف قدر مطلق و نوشتن ln(x) به‌جای ln(|x|) است که بی‌صدا پاسخ را به ورودی‌های مثبت محدود می‌کند. خطای چهارم برخورد با انتگرال معین به‌عنوان مساحت بدون توجه به علامت است، به‌طوری که ناحیه‌ای زیر محور به‌صورت کمیتی مثبت گزارش شود.\n\n### Rule and conditions / قاعده و شرطها\nFor an integer n != -1, the antiderivative of x^n is x^(n+1)/(n+1) + C, valid on an interval that respects the original domain. The exceptional case is n = -1: the antiderivative of 1/x is ln(|x|) + C on any interval that excludes zero, and the absolute value is required because 1/x is defined on both negative and positive inputs. The fundamental theorem of calculus states that if f is continuous on [a, b] and F is an antiderivative of f there, then the definite integral from a to b equals F(b) - F(a). Reversing the bounds reverses the sign. A definite integral is signed accumulation, not always geometric area, and it is negative where f is negative.\nبرای عدد صحیح n != -1 پادمشتق x^n برابر x^(n+1)/(n+1) + C است و روی بازه‌ای معتبر است که دامنه اصلی را رعایت کند. حالت استثنایی n = -1 است: پادمشتق 1/x برابر ln(|x|) + C روی هر بازه‌ای که صفر را در بر نگیرد، و قدر مطلق لازم است چون 1/x روی ورودی‌های منفی و مثبت تعریف شده است. قضیه بنیادی حساب دیفرانسیل و انتگرال بیان می‌کند اگر f روی [a, b] پیوسته و F پادمشتق آن باشد، انتگرال معین از a تا b برابر F(b) - F(a) است. جابه‌جا کردن کران‌ها علامت را برمی‌گرداند. انتگرال معین انباشت علامت‌دار است نه همیشه مساحت هندسی، و جایی که f منفی است منفی می‌شود.\n\n# Integrals / انتگرال\n\nOriginal MathTutor curated notes (Phase W3). Project exposition, not a textbook transcript. Reference: Calculus Volume 1, sections 5.3–5.4, and Calculus Volume 2, chapter 1. Checkable formulas were verified with SymPy; see `sources/manifests/curated_verification.json`.\n\nمثال:\nEvaluate each of the following indefinite integrals.\n\n\\(\\displaystyle \\int{{5{t^3} - 10{t^{ - 6}} + 4\\,dt}}\\)\nOkay, in all of these remember the basic rules of indefinite integrals.  First, to integrate sums and differences all we really do is integrate the individual terms and then put the terms back together with the appropriate signs.  Next, we can ignore any coefficients until we are done with integrating that particular term and then put the coefficient back in.  Also, do not forget the “+\\(c\\)” at the end it is important and must be there.\n\nSo, let’s evaluate some integrals.\n\nThere’s not really a whole lot to do here other than use the first two formulas from the beginning of this section.  Remember that when integrating powers (that aren’t -1 of course) we just add one onto the exponent and then divide by the new exponent.\n\n            \\[\\begin{align*}\\int{{5{t^3} - 10{t^{ - 6}} + 4\\,dt}} & = 5\\left( {\\frac{1}{4}} \\right){t^4} - 10\\left( {\\frac{1}{{ - 5}}} \\right){t^{ - 5}} + 4t + c\\\\ &  = \\frac{5}{4}{t^4} + 2{t^{ - 5}} + 4t + c\\end{align*}\\]\r\n\nBe careful when integrating negative exponents.  Remember to add one onto the exponent.  One of the more common mistakes that students make when integrating negative exponents is to “add one” and end up with an exponent of “-7” instead of the correct exponent of “-5”.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: Ne(t, 0); 4 != 0; t**5 != 0; t != 0; t**6 != 0\n\nیادداشت موضوع: success — AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.\n\nمثال‌های پاول: success — AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.\n\nجست‌وجوی وب: error — Web search failed or timed out; local evidence remains available.\n\nExplanation synthesis failed; displaying actual local passages instead.",
+      "warnings": [
+        "AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.",
+        "AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.",
+        "Web search failed or timed out; local evidence remains available.",
+        "Explanation synthesis failed; displaying actual local passages instead."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.beginner.question",
+      "topic": "integral",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 15.7,
+      "degraded": true,
+      "expected": [
+        "antiderivative",
+        "family",
+        "derivative"
+      ],
+      "found": [
+        "antiderivative",
+        "family",
+        "derivative"
+      ],
+      "missing": [],
+      "answer_chars": 7446,
+      "answer": "Start with intuition, explain every symbol and prerequisite, and use short concrete sentences.\n\n### Definition / تعریف\nAn integral undoes a derivative. Separate the two questions from the start: an indefinite integral answers \"which function has this as its derivative?\" and a definite integral answers \"how much accumulates between two points?\". An antiderivative of a function f on an interval is a function F whose derivative equals f there, so F'(x) = f(x) for every x in the interval. Because constants differentiate to zero, if F is one antiderivative then F(x) + C is another for any constant C, and the indefinite integral written with the symbol and the differential represents that whole family. The definite integral of f from a to b is a single number, the signed accumulation of f over the interval, and it is defined as a limit of sums of the form f(x_i)*delta_x.\nانتگرال مشتق را وارون می‌کند. از همان آغاز دو پرسش را جدا کن: انتگرال نامعین پاسخ می‌دهد «کدام تابع این را مشتق دارد؟» و انتگرال معین پاسخ می‌دهد «بین دو نقطه چقدر انباشته می‌شود؟». پادمشتق تابع f روی یک بازه تابعی مانند F است که مشتقش آنجا برابر f باشد، یعنی F'(x) = f(x) برای هر x در بازه. چون مشتق ثابت صفر است، اگر F یک پادمشتق باشد آنگاه F(x) + C برای هر ثابت C پادمشتق دیگری است و انتگرال نامعین که با نماد و دیفرانسیل نوشته می‌شود همان خانواده کامل را نشان می‌دهد. انتگرال معین f از a تا b یک عدد یگانه است، انباشت علامت‌دار f روی بازه، و به‌عنوان حدی از مجموع‌های شکل f(x_i)*delta_x تعریف می‌شود.\n\n### Common mistakes / اشتباه‌های رایج\nForgetting the constant C in an indefinite integral is the most common error, because it makes a family of functions look like a single function. A second is applying the power rule at n = -1, writing the antiderivative of 1/x as x^0/0, which is meaningless; that case needs the logarithm. A third is dropping the absolute value and writing ln(x) instead of ln(|x|), which silently restricts the answer to positive inputs. A fourth is treating a definite integral as area without regard to sign, so that a region below the axis is reported as a positive quantity.\nفراموش کردن ثابت C در انتگرال نامعین رایج‌ترین خطا است، چون خانواده‌ای از توابع را به‌صورت یک تابع نشان می‌دهد. خطای دوم به‌کارگیری قاعده توان در n = -1 و نوشتن پادمشتق 1/x به‌صورت x^0/0 است که بی‌معناست؛ آن حالت به لگاریتم نیاز دارد. خطای سوم حذف قدر مطلق و نوشتن ln(x) به‌جای ln(|x|) است که بی‌صدا پاسخ را به ورودی‌های مثبت محدود می‌کند. خطای چهارم برخورد با انتگرال معین به‌عنوان مساحت بدون توجه به علامت است، به‌طوری که ناحیه‌ای زیر محور به‌صورت کمیتی مثبت گزارش شود.\n\n### Rule and conditions / قاعده و شرطها\nFor an integer n != -1, the antiderivative of x^n is x^(n+1)/(n+1) + C, valid on an interval that respects the original domain. The exceptional case is n = -1: the antiderivative of 1/x is ln(|x|) + C on any interval that excludes zero, and the absolute value is required because 1/x is defined on both negative and positive inputs. The fundamental theorem of calculus states that if f is continuous on [a, b] and F is an antiderivative of f there, then the definite integral from a to b equals F(b) - F(a). Reversing the bounds reverses the sign. A definite integral is signed accumulation, not always geometric area, and it is negative where f is negative.\nبرای عدد صحیح n != -1 پادمشتق x^n برابر x^(n+1)/(n+1) + C است و روی بازه‌ای معتبر است که دامنه اصلی را رعایت کند. حالت استثنایی n = -1 است: پادمشتق 1/x برابر ln(|x|) + C روی هر بازه‌ای که صفر را در بر نگیرد، و قدر مطلق لازم است چون 1/x روی ورودی‌های منفی و مثبت تعریف شده است. قضیه بنیادی حساب دیفرانسیل و انتگرال بیان می‌کند اگر f روی [a, b] پیوسته و F پادمشتق آن باشد، انتگرال معین از a تا b برابر F(b) - F(a) است. جابه‌جا کردن کران‌ها علامت را برمی‌گرداند. انتگرال معین انباشت علامت‌دار است نه همیشه مساحت هندسی، و جایی که f منفی است منفی می‌شود.\n\n### Worked example / مثال حل‌شده\nFind the indefinite integral of 3*x^2. Raise the exponent by one and divide by the new exponent: the antiderivative is 3 * x^3/3 + C = x^3 + C. Verify by differentiating: d(x^3 + C)/dx = 3*x^2, which returns the integrand, and the derivative of C is zero so the constant is invisible to this check, exactly as expected. Now evaluate the definite integral of 3*x^2 from 0 to 2. Using the antiderivative, the value is (2^3) - (0^3) = 8 - 0 = 8. Check by a rough sum: splitting [0, 2] into four equal pieces and evaluating 3*x^2 at the right endpoint of each gives the sum 3*(0.25 + 1 + 2.25 + 4) = 22.5, so the right-endpoint Riemann sum is 0.5*22.5 = 11.25, a coarse overestimate of 8; refining the pieces brings it down toward 8.\nانتگرال نامعین 3*x^2 را بیاب. توان را یک واحد بالا ببر و بر توان جدید تقسیم کن: پادمشتق 3 * x^3/3 + C = x^3 + C است. با مشتق‌گیری بررسی کن: d(x^3 + C)/dx = 3*x^2 که خود انتگرال‌ده را برمی‌گرداند، و مشتق C صفر است پس ثابت در این بررسی نامرئی است، دقیقاً همان‌طور که انتظار می‌رود. اکنون انتگرال معین 3*x^2 را از ۰ تا ۲ حساب کن. با پادمشتق مقدار (2^3) - (0^3) = 8 - 0 = 8 است. با یک مجموع تقریبی بررسی کن: تقسیم [0, 2] به چهار بخش مساوی و استفاده از نقطه راست هر بخش 3*(0.25 + 1 + 2.25 + 4) = 22.5 می‌دهد، پس مجموع ریمان با نقطه راست 0.5*22.5 = 11.25 است که بیش‌برآوردی درشت از ۸ است؛ ریزتر کردن بخش‌ها آن را به سمت ۸ پایین می‌آورد.\n\n# Integrals / انتگرال\n\nOriginal MathTutor curated notes (Phase W3). Project exposition, not a textbook transcript. Reference: Calculus Volume 1, sections 5.3–5.4, and Calculus Volume 2, chapter 1. Checkable formulas were verified with SymPy; see `sources/manifests/curated_verification.json`.\n\nExample:\nEvaluate each of the following indefinite integrals.\n\n\\(\\displaystyle \\int{{5{t^3} - 10{t^{ - 6}} + 4\\,dt}}\\)\nOkay, in all of these remember the basic rules of indefinite integrals.  First, to integrate sums and differences all we really do is integrate the individual terms and then put the terms back together with the appropriate signs.  Next, we can ignore any coefficients until we are done with integrating that particular term and then put the coefficient back in.  Also, do not forget the “+\\(c\\)” at the end it is important and must be there.\n\nSo, let’s evaluate some integrals.\n\nThere’s not really a whole lot to do here other than use the first two formulas from the beginning of this section.  Remember that when integrating powers (that aren’t -1 of course) we just add one onto the exponent and then divide by the new exponent.\n\n            \\[\\begin{align*}\\int{{5{t^3} - 10{t^{ - 6}} + 4\\,dt}} & = 5\\left( {\\frac{1}{4}} \\right){t^4} - 10\\left( {\\frac{1}{{ - 5}}} \\right){t^{ - 5}} + 4t + c\\\\ &  = \\frac{5}{4}{t^4} + 2{t^{ - 5}} + 4t + c\\end{align*}\\]\r\n\nBe careful when integrating negative exponents.  Remember to add one onto the exponent.  One of the more common mistakes that students make when integrating negative exponents is to “add one” and end up with an exponent of “-7” instead of the correct exponent of “-5”.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: Ne(t, 0); 4 != 0; t**5 != 0; t != 0; t**6 != 0\n\nTopic notes: success — AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.\n\nPaul examples: success — AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.\n\nWeb search: error — Web search failed or timed out; local evidence remains available.\n\nExplanation synthesis failed; displaying actual local passages instead.",
+      "warnings": [
+        "AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.",
+        "AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback.",
+        "Web search failed or timed out; local evidence remains available.",
+        "Explanation synthesis failed; displaying actual local passages instead."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    }
+  ]
+}

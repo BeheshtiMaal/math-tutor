@@ -535,7 +535,8 @@ class TopicKindChecks(unittest.TestCase):
         _, service, _ = make_app()
         self.assertEqual(service.topic_kind("derivative"), "core")
         self.assertEqual(service.topic_kind("limits"), "core")
-        self.assertEqual(service.topic_kind("logarithms"), "open")
+        # Phase W3 promoted logarithms into the curated core list.
+        self.assertEqual(service.topic_kind("logarithms"), "core")
         self.assertEqual(service.topic_kind(None), "open")
 
     def test_answer_mode_reports_the_topic_kind_in_the_response(self):

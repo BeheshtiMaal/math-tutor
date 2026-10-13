@@ -1,0 +1,179 @@
+{
+  "generated_at": "2026-10-13T17:01:29.845348+00:00",
+  "scope": "three live model/retrieval probes via ASGI HTTP handlers; no mode or topic supplied",
+  "rows": [
+    {
+      "query": "hey explain me logarithm",
+      "http_status": 200,
+      "degraded": false,
+      "response": {
+        "status": "ok",
+        "thread_id": "thr_7V9VN8GK0RGSAS1M7MNKCN0JGV",
+        "turn_id": "turn_27JCK2N1P5NMXV4A22SQA1F1Y2",
+        "language": "en",
+        "language_source": "detected",
+        "topic": "logarithms",
+        "topic_kind": "core",
+        "mode": "learn",
+        "delivery": "full",
+        "learner_level": "beginner",
+        "level_source": "manual",
+        "level_suggestion": null,
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Let's learn what a logarithm is step by step.\n\nFirst, do you know what an exponent or power means? For example, in 2^3, we say \"2 to the power 3\" which equals 2 × 2 × 2 = 8. Here, 2 is the base and 3 is the exponent.\n\nNow, a logarithm answers this question: \"What exponent do we need to raise a base to get a certain number?\"\n\nMore formally: Suppose you have a base number \\( b \\) which must be positive and not equal to 1 (\\( b > 0 \\) and \\( b \\neq 1 \\)). Then, the logarithm of a positive number \\( x \\) to the base \\( b \\) is the power \\( y \\) such that \\( b^y = x \\). We write this as:\n\n\\[ \\log_b(x) = y \\quad \\text{exactly when} \\quad b^y = x. \\]\n\nHere:\n\n- \\( b \\) is the base,\n- \\( x \\) is the argument (it must be positive),\n- \\( y \\) is the exponent we want to find.\n\nTwo important quick facts to remember:\n\n\\[ \\log_b(1) = 0 \\quad \\text{because} \\quad b^0 = 1, \\]\n\\[ \\log_b(b) = 1 \\quad \\text{because} \\quad b^1 = b. \\]\n\nThe logarithm is the inverse operation of exponentiation, meaning:\n\n- If you raise \\( b \\) to \\( \\log_b(x) \\), you get \\( x \\).\n- If you take \\( \\log_b(b^y) \\), you get \\( y \\).\n\nRemember the following condition: the argument \\( x \\) must be greater than 0; logarithm is not defined for zero or negative numbers in real numbers.\n\nIn simple terms:\n\nIf you know how many times to multiply the base to get a number, that count is the logarithm.\n\nThis is very useful because instead of multiplying many times, logarithms let us \"count\" the number of multiplications.\n\nFor example, asking \"How many 2s multiply together to get 8?\" is the same as \\( \\log_2(8) = 3 \\) because \\( 2^3 = 8 \\).\n\nBy learning this, you understand that logarithms turn multiplication into addition and powers into multiplication, which is very helpful in math and science.\n\nWould you like to try finding the logarithm of a number to a base yourself?"
+          },
+          {
+            "kind": "text",
+            "text": "No suitable Paul example is available for this topic and learner level."
+          },
+          {
+            "kind": "text",
+            "text": "Paul examples: empty — No suitable Paul example exists for this topic and learner level."
+          },
+          {
+            "kind": "text",
+            "text": "Web search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations."
+          }
+        ],
+        "blocks": [],
+        "lesson": {
+          "step_index": 0,
+          "total_steps": 0,
+          "awaiting_user": true,
+          "can_continue": false
+        },
+        "interrupt": {
+          "kind": "lesson",
+          "prompt": "Ask a follow-up question, or reply 'done' to end this lesson.",
+          "delivery_mode": "full",
+          "step_index": 0,
+          "lesson_complete": true
+        },
+        "next_request": null,
+        "profile_status": "absent",
+        "warnings": [
+          "No suitable Paul example exists for this topic and learner level.",
+          "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+        ],
+        "usage": {
+          "prompt_tokens": null,
+          "completion_tokens": null
+        }
+      }
+    },
+    {
+      "query": "Explain the definition of derivative",
+      "http_status": 200,
+      "degraded": false,
+      "response": {
+        "status": "ok",
+        "thread_id": "thr_5622WM9YXKEXFP9PW4RAQ197XB",
+        "turn_id": "turn_3F8NK0T59PE65D57SSXMF53YRF",
+        "language": "en",
+        "language_source": "detected",
+        "topic": "derivative",
+        "topic_kind": "core",
+        "mode": "learn",
+        "delivery": "full",
+        "learner_level": "beginner",
+        "level_source": "manual",
+        "level_suggestion": null,
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Let me explain the definition of a derivative step by step. Imagine you have a function, which is like a machine. It takes an input number x and gives an output number f(x).\n\nFor example, if f(x) = x^2, then when you put x=2, the output f(2) = 2^2 = 4.\n\nNow, a derivative measures how fast this output changes if the input changes a little bit. To see this, pick a point a on the input, like a=2. We look at the output at a, which is f(a), and also at a point very close to a, called a+h, where h is a very small number that is not zero.\n\nWe compute the change in output: f(a+h) - f(a). And we divide this by the change in input: h. So we get the difference quotient:\n\n\\[\n\\frac{f(a+h) - f(a)}{h}\n\\]\n\nThis quotient is the average change in output per unit change in input, between the points a and a+h.\n\nThen, we let h get closer and closer to zero, which means the two points come closer together. If this limit exists and is finite, we call it the derivative of f at a, written as f'(a):\n\n\\[\nf'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}\n\\]\n\nThis value f'(a) represents the slope of the tangent line to the graph of f at the point (a, f(a)). The tangent line touches the graph at exactly one point and shows how the function is changing right there.\n\nWhen you do the same process for every input x, you get the derivative function f'(x).\n\nA function is called differentiable at a point if this derivative exists there. Differentiability implies the function is continuous at that point, but not all continuous functions are differentiable. For example, the absolute value function at zero has a corner and is continuous but not differentiable there.\n\nSo in short, the derivative tells us how sensitive the function's output is to small changes in the input, describing the instantaneous rate of change or the slope at that point."
+          },
+          {
+            "kind": "text",
+            "text": "Example:\nFind the derivative of the following function using the definition of the derivative.\r\n\n        \\[f\\left( x \\right) = 2{x^2} - 16x + 35\\]\nSo, all we really need to do is to plug this function into the definition of the derivative, \\(\\eqref{eq:eq2}\\), and do some algebra.  While, admittedly, the algebra will get somewhat unpleasant at times, but it’s just algebra so don’t get excited about the fact that we’re now computing derivatives.\n\nFirst plug the function into the definition of the derivative.\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{f\\left( {x + h} \\right) - f\\left( x \\right)}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{2{{\\left( {x + h} \\right)}^2} - 16\\left( {x + h} \\right) + 35 - \\left( {2{x^2} - 16x + 35} \\right)}}{h}\\end{align*}\\]\r\n\nBe careful and make sure that you properly deal with parenthesis when doing the subtracting.\n\nNow, we know from the previous chapter that we can’t just plug in \\(h = 0\\) since this will give us a division by zero error.  So, we are going to have to do some work.  In this case that means multiplying everything out and distributing the minus sign through on the second term.  Doing this gives,\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{2{x^2} + 4xh + 2{h^2} - 16x - 16h + 35 - 2{x^2} + 16x - 35}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{4xh + 2{h^2} - 16h}}{h}\\end{align*}\\]\r\n\nNotice that every term in the numerator that didn’t have an h in it canceled out and we can now factor an h out of the numerator which will cancel against the h in the denominator.  After that we can compute the limit.\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{h\\left( {4x + 2h - 16} \\right)}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} 4x + 2h - 16\\\\ &  = 4x - 16\\end{align*}\\]\r\n\nSo, the derivative is,\n\n        \\[f'\\left( x \\right) = 4x - 16\\]\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: none supplied"
+          },
+          {
+            "kind": "text",
+            "text": "Web search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations."
+          }
+        ],
+        "blocks": [],
+        "lesson": {
+          "step_index": 0,
+          "total_steps": 0,
+          "awaiting_user": true,
+          "can_continue": false
+        },
+        "interrupt": {
+          "kind": "lesson",
+          "prompt": "Ask a follow-up question, or reply 'done' to end this lesson.",
+          "delivery_mode": "full",
+          "step_index": 0,
+          "lesson_complete": true
+        },
+        "next_request": null,
+        "profile_status": "absent",
+        "warnings": [
+          "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+        ],
+        "usage": {
+          "prompt_tokens": null,
+          "completion_tokens": null
+        }
+      }
+    },
+    {
+      "query": "Explain the chain rule for derivatives",
+      "http_status": 200,
+      "degraded": false,
+      "response": {
+        "status": "ok",
+        "thread_id": "thr_2BQVK3M570JM09VJAM6AW33A4H",
+        "turn_id": "turn_35V3FFFQZQEB04HPXSJR21M06A",
+        "language": "en",
+        "language_source": "detected",
+        "topic": "derivative",
+        "topic_kind": "core",
+        "mode": "learn",
+        "delivery": "full",
+        "learner_level": "beginner",
+        "level_source": "manual",
+        "level_suggestion": null,
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Let's learn the chain rule for derivatives. First, what is a derivative? The derivative of a function measures how fast the output changes when you change the input. For example, if you have a function f(x), its derivative f'(x) tells you the slope of the graph at any point x.\n\nSometimes, functions are composed, meaning one function is inside another. For example, h(x) = z(y(x)) means you plug x into y, then plug y(x) into z. The chain rule helps us find the derivative of such compositions.\n\nNow, the chain rule says:\n\nIf you have h(x) = z(y(x)), then the derivative h'(x) is found by taking the derivative of the outer function z at y(x), and multiplying it by the derivative of the inner function y at x.\n\nIn symbols:\n\n$$\nh'(x) = z'(y(x)) \\cdot y'(x)\n$$\n\nHere:\n- $h'(x)$ is the derivative of the composite function.\n- $z'(y(x))$ is derivative of the outer function evaluated at the inner function.\n- $y'(x)$ is the derivative of the inner function.\n\nWe can think of this as \"take the derivative of the outside function, leave the inside function alone, then multiply by the derivative of the inside function.\"\n\nThis rule is very useful when differentiating expressions like \\( (3x + 1)^7 \\). The outside function is raising to the 7th power, and the inside is \\(3x + 1\\).\n\nLet's see an example:\n\nFind the derivative of \\( f(x) = (3x + 1)^7 \\).\n\nStep 1: Identify outer and inner functions.\n- Outer function: \\( u^7 \\)\n- Inner function: \\( u = 3x + 1 \\)\n\nStep 2: Take derivative of outer function w.r.t. \\( u \\):\n\n$$\n\\frac{d}{du} u^7 = 7u^{6}\n$$\n\nStep 3: Take derivative of inner function \\( u = 3x + 1 \\) w.r.t. \\( x \\):\n\n$$\n\\frac{d}{dx} (3x + 1) = 3\n$$\n\nStep 4: Multiply these results using the chain rule:\n\n$$\nf'(x) = 7 (3x + 1)^6 \\times 3 = 21 (3x + 1)^6\n$$\n\nThis is the derivative using the chain rule.\n\nRemember, the chain rule helps us correctly differentiate functions inside functions without expanding everything. It keeps calculus simpler.\n\nDo you have any questions about the terms or steps so far?"
+          },
+          {
+            "kind": "text",
+            "text": "Example:\nDifferentiate each of the following.\n\n\\(f\\left( x \\right) = \\sin \\left( {3{x^2} + x} \\right)\\)\nIt looks like the outside function is the sine and the inside function is 3x^{2}+x.  The derivative is then.\n\n              \\[f'\\left( x \\right) = \\underbrace {\\,\\,\\,\\,\\,\\,\\cos \\,\\,\\,\\,\\,\\,}_{{\\mbox{derivative of}}\\atop{\\mbox{outside function}}}\\,\\,\\,\\,\\,\\underbrace {\\left( {3{x^2} + x} \\right)}_{{\\mbox{leave inside}}\\atop{\\mbox{function alone}}}\\,\\,\\,\\,\\underbrace {\\,\\,\\left( {6x + 1} \\right)\\,\\,}_{{\\mbox{times derivative}}\\atop{\\mbox{of inside function}}}\\]\r\n\nOr with a little rewriting,\n\n              \\[f'\\left( x \\right) = \\left( {6x + 1} \\right)\\cos \\left( {3{x^2} + x} \\right)\\]\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: none supplied"
+          },
+          {
+            "kind": "text",
+            "text": "Web search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations."
+          }
+        ],
+        "blocks": [],
+        "lesson": {
+          "step_index": 0,
+          "total_steps": 0,
+          "awaiting_user": true,
+          "can_continue": false
+        },
+        "interrupt": {
+          "kind": "lesson",
+          "prompt": "Ask a follow-up question, or reply 'done' to end this lesson.",
+          "delivery_mode": "full",
+          "step_index": 0,
+          "lesson_complete": true
+        },
+        "next_request": null,
+        "profile_status": "absent",
+        "warnings": [
+          "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+        ],
+        "usage": {
+          "prompt_tokens": null,
+          "completion_tokens": null
+        }
+      }
+    }
+  ]
+}

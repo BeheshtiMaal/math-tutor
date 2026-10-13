@@ -84,13 +84,17 @@ class Phase3Checks(unittest.TestCase):
 
     def test_plan_is_finite_unique_and_records_level_gaps(self):
         plan = paul.plan()
-        self.assertEqual(len(plan), 51)
-        self.assertEqual(len({r["page"] for r in plan}), 8)
-        self.assertEqual(len({(r["page"], r["example"], r["part"]) for r in plan}), 51)
+        self.assertEqual(len(plan), 87)
+        self.assertEqual(len({r["page"] for r in plan}), 14)
+        self.assertEqual(len({(r["page"], r["example"], r["part"]) for r in plan}), 87)
         from collections import Counter
         counts = Counter((r["topic"], r["subtopic"], r["level"]) for r in plan)
         self.assertLessEqual(max(counts.values()), 3)
         self.assertEqual(counts[("matrix", "augmented systems", "advanced")], 0)
+        derivative_subtopics = {r["subtopic"] for r in plan if r["topic"] == "derivative"}
+        self.assertEqual(len(derivative_subtopics), 7)
+        self.assertIn("definition of derivative", derivative_subtopics)
+        self.assertIn("implicit differentiation", derivative_subtopics)
 
     def test_repeat_inventory_preserves_reviews_but_never_invents_missing_downloads(self):
         with tempfile.TemporaryDirectory() as temporary:

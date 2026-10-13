@@ -1,0 +1,973 @@
+{
+  "generated_at": "2026-10-13T15:30:48.987118+00:00",
+  "sympy_version": "1.14.0",
+  "totals": {
+    "total": 137,
+    "verified": 129,
+    "rejected": 0,
+    "unknown": 0,
+    "unsupported": 8
+  },
+  "note": "Statuses are honest: 'rejected' would be a defect in the notes, 'unsupported' records definitions and modelling assumptions SymPy cannot decide.",
+  "claims": [
+    {
+      "id": "log.def.inverse.exp",
+      "topic": "logarithms",
+      "claim": "b^(log_b(x)) = x for x > 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.def.inverse.log",
+      "topic": "logarithms",
+      "claim": "log_b(b^y) = y",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.identity.one",
+      "topic": "logarithms",
+      "claim": "log_b(1) = 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.identity.base",
+      "topic": "logarithms",
+      "claim": "log_b(b) = 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.example.two-eight",
+      "topic": "logarithms",
+      "claim": "log_2(8) = 3",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.example.five-recip",
+      "topic": "logarithms",
+      "claim": "log_5(1/25) = -2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.example.three-81",
+      "topic": "logarithms",
+      "claim": "log_3(81) = 4",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.rule.product",
+      "topic": "logarithms",
+      "claim": "log_b(x*y) = log_b(x) + log_b(y)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.rule.quotient",
+      "topic": "logarithms",
+      "claim": "log_b(x/y) = log_b(x) - log_b(y)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.rule.power",
+      "topic": "logarithms",
+      "claim": "log_b(x^p) = p*log_b(x)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.rule.change-of-base",
+      "topic": "logarithms",
+      "claim": "log_b(x) = log_c(x)/log_c(b)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.rule.natural",
+      "topic": "logarithms",
+      "claim": "log_b(x) = ln(x)/ln(b)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.rule.square-over-reals",
+      "topic": "logarithms",
+      "claim": "log_b(x^2) = 2*log_b(|x|) for x != 0, while 2*log_b(x) is valid only for x > 0",
+      "status": "verified",
+      "method": "holds symbolically on x > 0 and on x < 0 separately; SymPy's automatic log(x^2) = 2*log(x) is exactly the x > 0 assumption the note warns about"
+    },
+    {
+      "id": "log.example.expand",
+      "topic": "logarithms",
+      "claim": "log_3(81*x^2/y) = 4 + 2*log_3(x) - log_3(y) for x,y > 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.example.solve",
+      "topic": "logarithms",
+      "claim": "log_2(x) + log_2(x-2) = 3 has the sole valid root x = 4",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.example.spurious-root",
+      "topic": "logarithms",
+      "claim": "the root x = -2 of x^2-2x-8=0 fails the domain x > 2",
+      "status": "verified",
+      "method": "x = -2 violates x > 2 and log_2(-2) is undefined over the reals"
+    },
+    {
+      "id": "log.example.seven-fifty",
+      "topic": "logarithms",
+      "claim": "log_7(50) ~= 2.0104",
+      "status": "verified",
+      "method": "numeric agreement within 0.0001 (delta 1.79e-05)"
+    },
+    {
+      "id": "log.graph.asymptote",
+      "topic": "logarithms",
+      "claim": "y = log_b(x) has a vertical asymptote at x = 0 (b > 1)",
+      "status": "verified",
+      "method": "both sides equal -oo"
+    },
+    {
+      "id": "log.graph.passes-through",
+      "topic": "logarithms",
+      "claim": "the graph passes through (1,0) and (b,1)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "log.graph.reflection",
+      "topic": "logarithms",
+      "claim": "y = log_b(x) is the reflection of y = b^x across y = x, i.e. the two are inverse",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.add",
+      "topic": "exponentials",
+      "claim": "b^(x+y) = b^x * b^y",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.sub",
+      "topic": "exponentials",
+      "claim": "b^(x-y) = b^x / b^y",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.neg",
+      "topic": "exponentials",
+      "claim": "b^(-x) = 1/b^x",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.mul",
+      "topic": "exponentials",
+      "claim": "(b^x)^y = b^(x*y)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.zero",
+      "topic": "exponentials",
+      "claim": "b^0 = 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.one",
+      "topic": "exponentials",
+      "claim": "b^1 = b",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.law.one-to-one",
+      "topic": "exponentials",
+      "claim": "b^u = b^v implies u = v for b > 0, b != 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.rule.base-to-e",
+      "topic": "exponentials",
+      "claim": "b^x = e^(x*ln b)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.example.two-neg-three",
+      "topic": "exponentials",
+      "claim": "2^(-3) = 1/8",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "exp.example.sqrt-three",
+      "topic": "exponentials",
+      "claim": "3^(1/2) ~= 1.7321",
+      "status": "verified",
+      "method": "numeric agreement within 0.0001 (delta 4.92e-05)"
+    },
+    {
+      "id": "exp.example.two-x-32",
+      "topic": "exponentials",
+      "claim": "2^x = 32 gives x = 5",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.example.two-x-30",
+      "topic": "exponentials",
+      "claim": "2^x = 30 gives x = log_2(30) ~= 4.9069",
+      "status": "verified",
+      "method": "numeric agreement within 0.0001 (delta 9.4e-06)"
+    },
+    {
+      "id": "exp.example.three-2x-minus-1",
+      "topic": "exponentials",
+      "claim": "3^(2x-1) = 27 gives x = 2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.example.five-times-two-x",
+      "topic": "exponentials",
+      "claim": "5 * 2^x = 80 gives x = 4",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.example.e-to-ln",
+      "topic": "exponentials",
+      "claim": "e^(ln x) = x for x > 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.example.no-real-solution",
+      "topic": "exponentials",
+      "claim": "2^x = -30 has no real solution because 2^x > 0 for real x",
+      "status": "verified",
+      "method": "solve returns no real root and 2^x is positive on the reals"
+    },
+    {
+      "id": "exp.graph.asymptote",
+      "topic": "exponentials",
+      "claim": "b^x -> 0 as x -> -oo for b > 1 (taken in the equivalent exp(x ln b) form)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.graph.point",
+      "topic": "exponentials",
+      "claim": "the graph passes through (0,1)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "exp.mistake.power-vs-tower",
+      "topic": "exponentials",
+      "claim": "(2^2)^3 = 64 while 2^(2^3) = 256, so (b^x)^y != b^(x^y)",
+      "status": "verified",
+      "method": "64 != 256, the two readings differ"
+    },
+    {
+      "id": "trig.pythagorean",
+      "topic": "trigonometry",
+      "claim": "sin(t)^2 + cos(t)^2 = 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.tan.definition",
+      "topic": "trigonometry",
+      "claim": "tan(t) = sin(t)/cos(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.sec",
+      "topic": "trigonometry",
+      "claim": "1 + tan(t)^2 = sec(t)^2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.csc",
+      "topic": "trigonometry",
+      "claim": "1 + cot(t)^2 = csc(t)^2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.period.sin",
+      "topic": "trigonometry",
+      "claim": "sin(t + 2*pi) = sin(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.period.cos",
+      "topic": "trigonometry",
+      "claim": "cos(t + 2*pi) = cos(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.period.tan",
+      "topic": "trigonometry",
+      "claim": "tan(t + pi) = tan(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.range.sin",
+      "topic": "trigonometry",
+      "claim": "-1 <= sin(t) <= 1 and -1 <= cos(t) <= 1 for real t",
+      "status": "verified",
+      "method": "SymPy function_range over the reals gives [-1, 1] for both"
+    },
+    {
+      "id": "trig.example.pi-over-6",
+      "topic": "trigonometry",
+      "claim": "sin(pi/6) = 1/2, cos(pi/6) = sqrt(3)/2, tan(pi/6) = sqrt(3)/3",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.example.pi-over-6-numeric",
+      "topic": "trigonometry",
+      "claim": "cos(pi/6) ~= 0.8660 and tan(pi/6) ~= 0.5774",
+      "status": "verified",
+      "method": "numeric agreement within 1e-4"
+    },
+    {
+      "id": "trig.example.tan-undefined",
+      "topic": "trigonometry",
+      "claim": "tan(pi/2) is undefined because cos(pi/2) = 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.sum-sin",
+      "topic": "trigonometry",
+      "claim": "sin(a+b) = sin(a)cos(b) + cos(a)sin(b)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.sum-cos",
+      "topic": "trigonometry",
+      "claim": "cos(a+b) = cos(a)cos(b) - sin(a)sin(b)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.double-sin",
+      "topic": "trigonometry",
+      "claim": "sin(2t) = 2 sin(t) cos(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.double-cos",
+      "topic": "trigonometry",
+      "claim": "cos(2t) = cos(t)^2 - sin(t)^2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.half-angle",
+      "topic": "trigonometry",
+      "claim": "(1 - cos(2t))/2 = sin(t)^2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.example.solve",
+      "topic": "trigonometry",
+      "claim": "2 sin(t)^2 - sin(t) - 1 = 0 reduces to sin(t) = 1 or sin(t) = -1/2",
+      "status": "verified",
+      "method": "roots of 2u^2 - u - 1 are u = 1 and u = -1/2"
+    },
+    {
+      "id": "trig.example.check-value",
+      "topic": "trigonometry",
+      "claim": "sin(7*pi/6) = -1/2 and 2*(1/4) - (-1/2) - 1 = 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.identity.half-angle-numeric",
+      "topic": "trigonometry",
+      "claim": "at t = pi/4 both sides of (1-cos(2t))/2 = sin(t)^2 equal 1/2",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "trig.derivative.sin",
+      "topic": "trigonometry",
+      "claim": "d/dt sin(t) = cos(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.derivative.cos",
+      "topic": "trigonometry",
+      "claim": "d/dt cos(t) = -sin(t)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "trig.power-series.sin",
+      "topic": "trigonometry",
+      "claim": "the power series of sin converges for every real t",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.linear.solve",
+      "topic": "algebra",
+      "claim": "3x - 7 = 8 gives x = 5",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.linear.general",
+      "topic": "algebra",
+      "claim": "ax + b = c gives x = (c - b)/a for a != 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.quadratic.factor",
+      "topic": "algebra",
+      "claim": "x^2 - 5x + 6 = (x-2)(x-3), roots 2 and 3",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.quadratic.scaled",
+      "topic": "algebra",
+      "claim": "2x^2 + 4x - 6 = 0 has roots -3 and 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.quadratic.sum-product",
+      "topic": "algebra",
+      "claim": "for ax^2+bx+c the roots sum to -b/a and multiply to c/a",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.quadratic.formula",
+      "topic": "algebra",
+      "claim": "the quadratic formula solves ax^2+bx+c=0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.quadratic.discriminant",
+      "topic": "algebra",
+      "claim": "D = b^2-4ac determines the number of real roots",
+      "status": "verified",
+      "method": "D<0 none, D=0 one repeated, D>0 two distinct; confirmed on examples"
+    },
+    {
+      "id": "alg.rational.solve",
+      "topic": "algebra",
+      "claim": "x/(x-2) = 3 gives x = 3, which is admissible",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "alg.radical.solve",
+      "topic": "algebra",
+      "claim": "sqrt(x+5) = x-1 has the valid root x = 4 and rejects x = -1 as extraneous",
+      "status": "verified",
+      "method": "x = 4 satisfies the equation and x = -1 does not"
+    },
+    {
+      "id": "alg.radical.extraneous",
+      "topic": "algebra",
+      "claim": "x = -1 fails the requirement x >= 1 imposed by sqrt(x+5) = x-1",
+      "status": "verified",
+      "method": "x = -1 < 1 and sqrt(4) = 2 != -2"
+    },
+    {
+      "id": "der.power-rule",
+      "topic": "derivative",
+      "claim": "d/dx x^n = n*x^(n-1)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.constant",
+      "topic": "derivative",
+      "claim": "the derivative of a constant is zero",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.sum-rule",
+      "topic": "derivative",
+      "claim": "differentiation is term by term",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.polynomial",
+      "topic": "derivative",
+      "claim": "d/dx (4x^3 - 2x + 7) = 12x^2 - 2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.slope",
+      "topic": "derivative",
+      "claim": "f'(2) = 46 for f(x) = 4x^3 - 2x + 7",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.value-at-2",
+      "topic": "derivative",
+      "claim": "f(2) = 35 for f(x) = 4x^3 - 2x + 7",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.value-near-2",
+      "topic": "derivative",
+      "claim": "f(2.001) ~= 35.046024 for f(x) = 4x^3 - 2x + 7",
+      "status": "verified",
+      "method": "numeric agreement within 1e-06 (delta 4e-09)"
+    },
+    {
+      "id": "der.example.difference-quotient",
+      "topic": "derivative",
+      "claim": "the difference quotient of 4x^3-2x+7 at x=2 with h=0.001 is 46.024 (rounded)",
+      "status": "verified",
+      "method": "numeric agreement within 0.001 (delta 4e-06)"
+    },
+    {
+      "id": "der.example.difference-quotient-limit",
+      "topic": "derivative",
+      "claim": "the difference quotient of 4x^3-2x+7 at x=2 tends to the derivative 46 as h -> 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.product",
+      "topic": "derivative",
+      "claim": "d/dx x^2 ln x = 2x ln x + x for x > 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.chain",
+      "topic": "derivative",
+      "claim": "d/dx (3x+1)^5 = 15(3x+1)^4",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.quotient",
+      "topic": "derivative",
+      "claim": "d/dx ln(x)/x = (1 - ln x)/x^2 for x > 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "der.example.critical-point",
+      "topic": "derivative",
+      "claim": "ln(x)/x has its critical point at x = e with value 1/e",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.power-rule",
+      "topic": "integral",
+      "claim": "d/dx integral x^p dx = x^p for p != -1, so x^(p+1)/(p+1) is a primitive",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.example.riemann-overestimate",
+      "topic": "integral",
+      "claim": "the right-endpoint Riemann sum of 3x^2 on [0,2] with four pieces is 0.5*22.5 = 11.25, above 8",
+      "status": "verified",
+      "method": "right-endpoint value sum 22.5, Riemann sum 11.25, true value 8"
+    },
+    {
+      "id": "int.example.three-x-squared",
+      "topic": "integral",
+      "claim": "the primitive of 3x^2 is x^3 (up to a constant)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.example.definite",
+      "topic": "integral",
+      "claim": "the integral of 3x^2 from 0 to 2 is 8",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.example.substitution",
+      "topic": "integral",
+      "claim": "the primitive of (2x+1)^4 is (2x+1)^5/10 (up to a constant)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.example.reciprocal",
+      "topic": "integral",
+      "claim": "the integral of 1/x from 1 to e is 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.example.reciprocal-primitive",
+      "topic": "integral",
+      "claim": "the primitive of 1/x is ln|x| on an interval excluding zero",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.improper.convergent",
+      "topic": "integral",
+      "claim": "the integral of 1/x^2 from 1 to infinity is 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "int.improper.divergent",
+      "topic": "integral",
+      "claim": "the integral of 1/x from 1 to infinity diverges",
+      "status": "verified",
+      "method": "both sides equal oo"
+    },
+    {
+      "id": "int.ftc.sign",
+      "topic": "integral",
+      "claim": "reversing the bounds reverses the sign",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.cancel",
+      "topic": "limits",
+      "claim": "the limit of (x^2-1)/(x-1) at x=1 is 2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.ratio-at-infinity",
+      "topic": "limits",
+      "claim": "the limit of (3x^2+5x)/(2x^2-x+4) as x -> oo is 3/2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.vanishing",
+      "topic": "limits",
+      "claim": "the limit of (x+1)/(x^2-3) as x -> oo is 0",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.sin-over-x",
+      "topic": "limits",
+      "claim": "the limit of sin(x)/x as x -> 0 is 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.oscillation-no-limit",
+      "topic": "limits",
+      "claim": "the limit of sin(1/x) as x -> 0 does not exist (it oscillates over [-1, 1])",
+      "status": "verified",
+      "method": "SymPy returns a bounded oscillation, not a single limit"
+    },
+    {
+      "id": "lim.squeeze",
+      "topic": "limits",
+      "claim": "the limit of x*sin(1/x) as x -> 0 is 0 by squeezing",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.one-sided-disagree",
+      "topic": "limits",
+      "claim": "a two-sided limit exists only when the one-sided limits agree",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "lim.table-suggestion",
+      "topic": "limits",
+      "claim": "(x^2-1)/(x-1) is near 2 at x = 0.9, 0.99 and 1.01",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "mat.det-2x2",
+      "topic": "matrix",
+      "claim": "det[[a,b],[c,d]] = ad - bc",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "mat.example.product",
+      "topic": "matrix",
+      "claim": "[[1,2],[3,4]] * [[5,6],[7,8]] = [[19,22],[43,50]]",
+      "status": "verified",
+      "method": "entry-wise matrix product agrees"
+    },
+    {
+      "id": "mat.example.determinant",
+      "topic": "matrix",
+      "claim": "det[[1,2],[3,4]] = -2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "mat.inverse.rule",
+      "topic": "matrix",
+      "claim": "[[a,b],[c,d]]^-1 = (1/det)[[d,-b],[-c,a]] when det != 0",
+      "status": "verified",
+      "method": "A * A^-1 = I for the symbolic 2x2 inverse"
+    },
+    {
+      "id": "mat.example.inverse",
+      "topic": "matrix",
+      "claim": "the inverse of [[1,2],[3,4]] is (-1/2)[[4,-2],[-3,1]]",
+      "status": "verified",
+      "method": "A * A^-1 = I for the numeric example"
+    },
+    {
+      "id": "mat.example.elimination",
+      "topic": "matrix",
+      "claim": "x + 2y = 5, 3x - y = 1 has the unique solution (1, 2)",
+      "status": "verified",
+      "method": "back-substitution gives x = 1, y = 2"
+    },
+    {
+      "id": "mat.example.unique",
+      "topic": "matrix",
+      "claim": "the coefficient determinant -7 confirms uniqueness before elimination",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "mat.example.rank",
+      "topic": "matrix",
+      "claim": "the system x+y=2, 2x+2y=4, x-y=0 is consistent with unique solution (1, 1)",
+      "status": "verified",
+      "method": "rank(A) = rank(A|b) = 2 equals the number of unknowns"
+    },
+    {
+      "id": "mat.zero-row-inconsistent",
+      "topic": "matrix",
+      "claim": "a row [0 ... 0 | c] with c != 0 signals an inconsistent system",
+      "status": "verified",
+      "method": "linsolve on a zero row with nonzero right side returns no solution"
+    },
+    {
+      "id": "opt.example.rectangle",
+      "topic": "optimization",
+      "claim": "a rectangle with perimeter 20 has maximum area 25 at a 5 x 5 square",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "opt.example.box",
+      "topic": "optimization",
+      "claim": "the open box of volume 32 has minimum surface area 48 at x = 4, h = 2",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "opt.example.coercive",
+      "topic": "optimization",
+      "claim": "f(x) = x + 1/x on x > 0 has its minimum 2 at x = 1",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "opt.derivative-zero",
+      "topic": "optimization",
+      "claim": "at a differentiable interior optimum the first derivative vanishes",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "opt.endpoints",
+      "topic": "optimization",
+      "claim": "the objective of the rectangle problem tends to 0 at the endpoints x -> 0 and x -> 10",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "opt.infimum-not-attained",
+      "topic": "optimization",
+      "claim": "g(x) = x on x > 0 has infimum 0 that no feasible input attains",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "prob.die.even",
+      "topic": "probability",
+      "claim": "P(even on a fair die) = 1/2",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.die.at-least-five",
+      "topic": "probability",
+      "claim": "P(result >= 5) = 1/3",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.die.intersection",
+      "topic": "probability",
+      "claim": "P(even and >= 5) = 1/6",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.die.addition-rule",
+      "topic": "probability",
+      "claim": "P(even) + P(>=5) - P(both) = 2/3 matches the direct count",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.complement",
+      "topic": "probability",
+      "claim": "P(A^c) = 1 - P(A)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "prob.union-rule",
+      "topic": "probability",
+      "claim": "P(A union B) = P(A) + P(B) - P(A intersection B)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "prob.conditional",
+      "topic": "probability",
+      "claim": "P(B|A) = 3/9 = 1/3 for the second red marble given the first was red",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.multiplication",
+      "topic": "probability",
+      "claim": "P(both red) = P(A) P(B|A) = (2/5)(1/3) = 2/15",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.total-probability",
+      "topic": "probability",
+      "claim": "P(second red) = (1/3)(2/5) + (4/9)(3/5) = 2/5",
+      "status": "verified",
+      "method": "exact rational arithmetic"
+    },
+    {
+      "id": "prob.bayes",
+      "topic": "probability",
+      "claim": "P(condition | positive) = 0.00099 / 0.050940 ~= 0.0194",
+      "status": "verified",
+      "method": "numeric agreement within 0.001 (delta 3.46e-05)"
+    },
+    {
+      "id": "prob.independence",
+      "topic": "probability",
+      "claim": "independence means P(A intersection B) = P(A) P(B)",
+      "status": "verified",
+      "method": "symbolic simplification to zero"
+    },
+    {
+      "id": "prob.mutually-exclusive-not-independent",
+      "topic": "probability",
+      "claim": "non-zero-probability mutually exclusive events cannot be independent",
+      "status": "verified",
+      "method": "if P(A n B) = 0 but P(A)P(B) > 0 the independence test fails"
+    },
+    {
+      "id": "log.def.e-area",
+      "topic": "logarithms",
+      "claim": "e is the base for which the area under y = 1/t from 1 to e equals 1",
+      "status": "unsupported",
+      "method": "definitional statement about e, not a derivable identity"
+    },
+    {
+      "id": "log.def.range",
+      "topic": "logarithms",
+      "claim": "log_b(x) takes every real value",
+      "status": "unsupported",
+      "method": "range/onto statement; SymPy confirms monotonicity but not surjectivity as a single identity"
+    },
+    {
+      "id": "trig.def.radian-requirement",
+      "topic": "trigonometry",
+      "claim": "the derivative formulas for sine and cosine hold only in radian measure",
+      "status": "unsupported",
+      "method": "a statement about the choice of angle unit, not an algebraic identity"
+    },
+    {
+      "id": "trig.def.inverse-range",
+      "topic": "trigonometry",
+      "claim": "arcsin has range [-pi/2, pi/2] and arccos has range [0, pi]",
+      "status": "unsupported",
+      "method": "principal-branch convention; recorded as a definition, not verified"
+    },
+    {
+      "id": "prob.assumption.constant-test",
+      "topic": "probability",
+      "claim": "the test characteristics are constant across the population",
+      "status": "unsupported",
+      "method": "modelling assumption, not a mathematical claim"
+    },
+    {
+      "id": "lim.statement.decay-rate",
+      "topic": "limits",
+      "claim": "convergence of an improper integral is a property of the decay rate",
+      "status": "unsupported",
+      "method": "interpretive statement; the two concrete integrals are verified separately"
+    },
+    {
+      "id": "opt.statement.coercive",
+      "topic": "optimization",
+      "claim": "a coercive objective on the domain upgrades a local minimum to the global one",
+      "status": "unsupported",
+      "method": "an argument about the domain, not a single algebraic identity"
+    },
+    {
+      "id": "der.def.derivative-limit",
+      "topic": "derivative",
+      "claim": "f'(a) is the two-sided limit of the difference quotient when it exists",
+      "status": "unsupported",
+      "method": "the definition itself; concrete difference quotients are verified separately"
+    }
+  ]
+}

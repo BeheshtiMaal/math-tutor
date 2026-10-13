@@ -23,9 +23,19 @@ from lesson_steps import LessonPlanDraft, StepDraft, fallback_plan, parse_reply
 
 
 ALIASES = {
-    "derivative": ("derivative", "derivatives", "differentiate", "مشتق"),
-    "integral": ("integral", "integrals", "integration", "انتگرال"),
+    "derivative": ("derivative", "derivatives", "differentiate", "مشتق", "مشتق‌گیری"),
+    "integral": ("integral", "integrals", "integration", "integrate", "antiderivative",
+                 "antiderivatives", "انتگرال", "انتگرال‌گیری", "پادمشتق", "پادمشتق‌ها"),
     "limits": ("limit", "limits", "حد"),
+    # Phase W3 core topics. Without these, a bare query (no explicit topic) falls
+    # back to "mathematics" and the curated notes are never retrieved. They are
+    # listed before "algebra" because infer_topic returns the first topic that
+    # matches, and a query such as "معادله نمایی را حل کن" is an exponential
+    # question, not an algebra one, even though it contains "معادله".
+    "logarithms": ("logarithm", "logarithms", "log", "logs", "لگاریتم", "لگاریتمی"),
+    "exponentials": ("exponential", "exponentials", "exponent", "exponents", "نمایی"),
+    "trigonometry": ("trigonometry", "trigonometric", "trig", "sine", "cosine", "tangent",
+                     "مثلثات", "مثلثاتی", "سینوس", "کسینوس", "تانژانت"),
     "algebra": ("algebra", "equation", "equations", "جبر", "معادله"),
     "matrix": ("matrix", "matrices", "ماتریس"),
     "probability": ("probability", "احتمال"),
@@ -137,12 +147,24 @@ class LocalRetrievalClient:
                     metadata = json.loads(self.read_file(sidecar))
                     provenance = Provenance.model_validate(metadata["provenance"])
                     candidates = []
+                    level = None
                     for index, text in enumerate(re.split(r"(?m)(?=^#{1,6} )", self.read_file(path))[:256]):
                         if not text.strip():
                             continue
-                        title = text.splitlines()[0].lstrip("# ")
+                        heading, _, body = text.partition("\n")
+                        # Curated notes use the contract "# Title", "## Level", "### Unit".
+                        # A level heading sets the learner level for the units beneath it, so
+                        # level filtering (spec section 8) can actually select beginner material.
+                        level_match = re.match(r"^##\s+(Beginner|Intermediate|Advanced)\b", heading)
+                        if level_match:
+                            level = level_match.group(1).lower()
+                        # A heading with no body is navigational scaffolding, not evidence;
+                        # indexing it would add a generic chunk that can outrank real content.
+                        if not body.strip():
+                            continue
+                        title = heading.lstrip("# ")
                         candidates.append(SourceRecord(id=f"{path.stem}:{index}", topic=metadata["topic"],
-                            subtopic=metadata.get("subtopic"), learner_level=metadata.get("learner_level"),
+                            subtopic=metadata.get("subtopic"), learner_level=level,
                             text=text.strip(), provenance=provenance.model_copy(update={"section_title": title})))
                 records.extend(candidates)
             except (OSError, ValueError, KeyError, TypeError):
@@ -388,6 +410,11 @@ def learning_nodes(config, model, retrieval, resource_workers=None, *, search_cl
             max_chars=config.limits.max_evidence_chars)
         for subtopic, aliases in {"power rule": ("power rule", "قاعده توان"),
                                  "chain rule": ("chain rule", "قاعده زنجیره"),
+                                 "definition of derivative": ("definition of derivative", "derivative definition", "تعریف مشتق"),
+                                 "product and quotient rules": ("product rule", "quotient rule", "قاعده ضرب", "قاعده خارج قسمت"),
+                                 "implicit differentiation": ("implicit differentiation", "implicit derivative", "مشتق ضمنی", "مشتق گیری ضمنی", "مشتق‌گیری ضمنی"),
+                                 "higher order derivatives": ("higher order derivative", "second derivative", "مشتق مرتبه", "مشتق دوم"),
+                                 "linear approximations": ("linear approximation", "linearization", "تقریب خطی"),
                                  "substitution": ("substitution", "تغییر متغیر")}.items():
             if any(alias in state["query"].lower() for alias in aliases):
                 request.subtopic = subtopic

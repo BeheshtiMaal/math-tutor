@@ -1,0 +1,1246 @@
+{
+  "generated_at": "2026-10-13T17:21:24.851327+00:00",
+  "curation_phase": "W3",
+  "channel": "web",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "search_backend": "avalai_tavily",
+  "concurrency": 4,
+  "scope": "unfinished-only(38 item/language pairs)",
+  "rerun_of": "sources/manifests/evaluation_run_aborted_42.json",
+  "selection_basis": "reconstructed from topic/level/language aggregates; raw rows lost",
+  "selected_pairs": [
+    {
+      "id": "integral.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "integral.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "integral.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "integral.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "integral.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "integral.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "limits.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "limits.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "limits.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "limits.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "limits.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "limits.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "limits.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "limits.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "matrix.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "matrix.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "probability.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "probability.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "probability.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "probability.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "probability.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "probability.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "en"
+    }
+  ],
+  "run_status": "aborted",
+  "items": 19,
+  "runs": 28,
+  "planned_runs": 38,
+  "scoring": "Concept terms are a coarse presence check for a human read, not automatic correctness.",
+  "totals": {
+    "complete": 20,
+    "partial": 7,
+    "missed": 1,
+    "error": 0
+  },
+  "degraded_runs": 0,
+  "clean_runs": 28,
+  "degraded_totals": {
+    "complete": 0,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "clean_totals": {
+    "complete": 20,
+    "partial": 7,
+    "missed": 1,
+    "error": 0
+  },
+  "by_topic": {
+    "integral": {
+      "complete": 5,
+      "partial": 0,
+      "missed": 1,
+      "error": 0
+    },
+    "limits": {
+      "complete": 4,
+      "partial": 4,
+      "missed": 0,
+      "error": 0
+    },
+    "matrix": {
+      "complete": 7,
+      "partial": 1,
+      "missed": 0,
+      "error": 0
+    },
+    "probability": {
+      "complete": 4,
+      "partial": 2,
+      "missed": 0,
+      "error": 0
+    }
+  },
+  "quality_gaps": [
+    "integral.advanced.probe/fa: missed missing=['نادرست', 'علامت\\u200cدار']",
+    "limits.advanced.probe/fa: partial missing=['نادرست']",
+    "limits.beginner.question/en: partial missing=['two-sided']",
+    "limits.beginner.question/fa: partial missing=['لزومی ندارد']",
+    "limits.intermediate.question/fa: partial missing=['تجزیه']",
+    "matrix.advanced.probe/fa: partial missing=['نادرست']",
+    "probability.intermediate.question/en: partial missing=['2/3']",
+    "probability.intermediate.question/fa: partial missing=['2/3']"
+  ],
+  "results": [
+    {
+      "id": "integral.advanced.question",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 33.7,
+      "degraded": false,
+      "expected": [
+        "حد",
+        "همگرا",
+        "واگرا"
+      ],
+      "found": [
+        "حد",
+        "همگرا",
+        "واگرا"
+      ],
+      "missing": [],
+      "answer_chars": 3832,
+      "answer": "در این درس، پاسخ به سؤال \"آیا انتگرال ناسره \\( \\int_1^{\\infty} \\frac{1}{x^2} dx \\) همگراست؟\" مطرح و روش مقایسه آن با تابع \\( \\frac{1}{x} \\) ارائه می‌شود.\n\n**تعریف و روش:**\nانتگرال ناسره روی بازه بی‌نهایت به صورت حد یک انتگرال سره تعریف می‌شود:\n\\[\n\\int_1^{\\infty} f(x) dx = \\lim_{b\\to\\infty} \\int_1^{b} f(x) dx\n\\]\nاین انتگرال همگرا است اگر و تنها اگر این حد وجود داشته باشد و متناهی باشد.\n\n**محاسبه انتگرال \\( \\frac{1}{x^2} \\):**\n1. ابتدا تابع را انتگرال می‌گیریم:\n\\[\n\\int \\frac{1}{x^2} dx = \\int x^{-2} dx = -x^{-1} + C = -\\frac{1}{x} + C\n\\]\n2. انتگرال از 1 تا \\( b \\) می‌شود:\n\\[\n\\int_1^{b} \\frac{1}{x^2} dx = \\left(-\\frac{1}{x}\\right)_1^b = -\\frac{1}{b} + 1 = 1 - \\frac{1}{b}\n\\]\n3. حال حد وقتی \\( b \\to \\infty \\) است را می‌گیریم:\n\\[\n\\lim_{b\\to\\infty} \\left(1 - \\frac{1}{b}\\right) = 1\n\\]\nچون این حد عددی متناهی است، انتگرال همگراست و مقدار آن برابر 1 است.\n\n**مقایسه با انتگرال \\( \\frac{1}{x} \\):**\n1. پادمشتق تابع \\( \\frac{1}{x} \\) برابر \\( \\ln|x| + C \\) است.\n2. انتگرال از 1 تا b برابر است با:\n\\[\n\\int_1^{b} \\frac{1}{x} dx = \\ln b - \\ln 1 = \\ln b\n\\]\n3. چون \\( \\lim_{b \\to \\infty} \\ln b = +\\infty \\) است، انتگرال همگرا نیست (واگراست).\n\n**شرح نتیجه:**\nهمگرایی یا واگرایی انتگرال ناسره به میزان کاهش تابع \\( f(x) \\) در بی‌نهایت بستگی دارد. به طور کلی، انتگرال‌های از نوع \\( \\int_1^{\\infty} \\frac{1}{x^p} dx \\) برای \\( p > 1 \\) همگرا و برای \\( p \\leq 1 \\) واگرا هستند.\n\n**فرض‌ها و محدودیت‌ها:**\n- تابع \\( f(x) = \\frac{1}{x^2} \\) برای \\( x\\geq 1 \\) پیوسته و تعریف شده است.\n- به‌کارگیری قضیه بنیادی حسابان در این زمینه صحیح است چون پادمشتق پیوسته است و نقطه تکین در بازه انتگرال‌گیری وجود ندارد.\n- انتگرال ناسره به عنوان حد یک انتگرال سره تعریف می‌شود، بنابراین بدون گرفتن این حد نمی‌توان درباره همگرایی اظهار نظر کرد.\n\n**اشتباهات رایج:**\n- اعمال قضیه بنیادی روی نقاط تکین می‌تواند منجر به نتیجه اشتباه شود.\n- فرض همگرایی صرفاً بر اساس ظاهر تابع بدون بررسی حد نادرست است.\n\nدر نهایت، این موضوع نشان می‌دهد که همگرایی انتگرال ناسره به سرعت کاهش تابع وابسته است و باید همیشه با محاسبه حد ارزیابی شود.\n\nمنابع استفاده‌شده:\n- مثال حل‌شده بررسی همگرایی انتگرال ناسره \\( 1/x^2 \\)\n- تعریف انتگرال ناسره و همگرایی\n- اشتباهات رایج در انتگرال‌های ناسره\n- مقایسه همگرایی بین توابع \\( 1/x^2 \\) و \\( 1/x \\)\n\nمثال:\nIntegrate \\(\\displaystyle \\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}}\\).\nThere are several ways to do this integral and most of them require the next section.  However, there is a way to do this integral using only the material from this section.  All that is required is to remember the trig formula that we can use to simplify the integrand up a little.  Recall the following double angle formula.\n\n              \\[\\sin \\left( {2t} \\right) = 2\\sin t\\cos t\\]\r\n\nA small rewrite of this formula gives,\n\n            \\[\\sin t\\cos t = \\frac{1}{2}\\sin \\left( {2t} \\right)\\]\r\n\nIf we now replace all the \\(t\\)’s with \\(\\frac{t}{2}\\) we get,\n\n            \\[\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right) = \\frac{1}{2}\\sin \\left( t \\right)\\]\r\n\nUsing this formula, the integral becomes something we can do.\n\n            \\[\\begin{align*}\\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}} & = \\int{{\\frac{1}{2}\\sin \\left( t \\right)dt}}\\\\ &  =  - \\frac{1}{2}\\cos \\left( t \\right) + c\\end{align*}\\]\r\n\nAs noted earlier there is another method for doing this integral.  In fact, there are two alternate methods.  To see all three check out the section on Constant of Integration in the Extras chapter but be aware that the other two do require the material covered in the next section.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: 2 != 0\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.beginner.question",
+      "topic": "integral",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 34.2,
+      "degraded": false,
+      "expected": [
+        "antiderivative",
+        "family",
+        "derivative"
+      ],
+      "found": [
+        "antiderivative",
+        "family",
+        "derivative"
+      ],
+      "missing": [],
+      "answer_chars": 3104,
+      "answer": "Let's learn about antiderivatives and why the constant $C$ appears.\n\nFirst, an antiderivative is a function that undoes the derivative operation. The derivative of a function $F(x)$, written as $F'(x)$, gives another function $f(x)$. If $F'(x) = f(x)$ for all $x$ in some interval, then $F(x)$ is an antiderivative of $f(x)$ on that interval.\n\nThe question we ask is: Which function has this given function $f(x)$ as its derivative? The answer is the antiderivative $F(x)$.\n\nHowever, because the derivative of a constant is zero (meaning if you differentiate a constant number, you get zero), if $F(x)$ is an antiderivative of $f(x)$, then $F(x) + C$ is also an antiderivative for any constant $C$. This is because adding a constant does not change the derivative.\n\nSo the constant $C$ appears to represent all the possible vertical shifts of the antiderivative graph. Different values of $C$ give different antiderivatives, but they are all related by adding or subtracting some constant.\n\nLet's see an example for a beginner:\n\nFind the antiderivative of $3x^2$.\n\nStep 1: Increase the power (exponent) of $x$ by one. Here the exponent is 2, so $2 + 1 = 3$.\n\nStep 2: Divide by the new power: $3x^{3} / 3 = x^{3}$.\n\nStep 3: Add the constant $C$ to represent all antiderivatives: $x^3 + C$.\n\nCheck by differentiating $x^{3} + C$:\n\n$$\\frac{d}{dx}(x^{3} + C) = 3x^{2} + 0 = 3x^{2}$$\n\nThis matches the original function, confirming our antiderivative.\n\nIn summary:\n- An antiderivative $F(x)$ satisfies $F'(x) = f(x)$.\n- The constant $C$ appears because adding a constant does not change the derivative.\n- The full family of antiderivatives is written as $F(x) + C$.\n\nThis concept is important because integrals (indefinite integrals) represent these antiderivative families.\n\nSymbols explanation:\n- $x$: variable representing the input of the function.\n- $f(x)$: the given function.\n- $F(x)$: an antiderivative of $f(x)$.\n- $F'(x)$ or $\\frac{d}{dx}F(x)$: the derivative of $F(x)$.\n- $C$: the constant of integration.\n\nWould you like to try finding the antiderivative of the function $4x^3$ yourself?\n\nExample:\nEvaluate each of the following indefinite integrals.\n\n\\(\\displaystyle \\int{{dy}}\\)\nOkay, in all of these remember the basic rules of indefinite integrals.  First, to integrate sums and differences all we really do is integrate the individual terms and then put the terms back together with the appropriate signs.  Next, we can ignore any coefficients until we are done with integrating that particular term and then put the coefficient back in.  Also, do not forget the “+\\(c\\)” at the end it is important and must be there.\n\nSo, let’s evaluate some integrals.\n\nDon’t make this one harder than it is…\n\n              \\[\\int{{dy}} = \\int{{1\\,dy}} = y + c\\]\r\n\nIn this case we are really just integrating a one!\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.beginner.question",
+      "topic": "integral",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 41.1,
+      "degraded": false,
+      "expected": [
+        "پادمشتق",
+        "خانواده",
+        "مشتق"
+      ],
+      "found": [
+        "پادمشتق",
+        "خانواده",
+        "مشتق"
+      ],
+      "missing": [],
+      "answer_chars": 2991,
+      "answer": "پادمشتق یا آنتی‌درایو تابع به معنای تابعی است که اگر مشتق آن را بگیریم، به تابع اولیه برسیم. فرض کنید داریم تابعی به نام \\(f(x)\\). پادمشتق \\(f\\) تابعی مثل \\(F(x)\\) است که \\(F'(x) = f(x)\\) برای هر \\(x\\) در یک بازه معتبر. یعنی مشتق \\(F\\) برابر \\(f\\) است.\n\nیک نکته مهم این است که مشتق عدد ثابت صفر است. بنابراین اگر \\(F(x)\\) پادمشتق \\(f(x)\\) است، تمام توابعی که به شکل \\(F(x) + C\\) باشند (که در آن \\(C\\) یک عدد ثابت است) هم پادمشتق \\(f(x)\\) محسوب می‌شوند، چون مشتق \\(F(x) + C\\) برابر مشتق \\(F(x)\\) است که همان \\(f(x)\\) می‌شود. این دلیل ظهور ثابت \\(C\\) در جواب انتگرال نامعین است.\n\nبه طور خلاصه:\n- \\(F(x)\\) پادمشتق \\(f(x)\\) یعنی \\(F'(x) = f(x)\\).\n- \\(F(x) + C\\) (ثابت \\(C\\) هر عددی باشد) هم پادمشتق همان \\(f(x)\\) است.\n\nپس ثابت \\(C\\) بیانگر این است که پادمشتق‌ها خانواده‌ای از توابع هستند که فقط با عددی ثابت از هم تفاوت دارند؛ چون مشتق عدد ثابت صفر است و در مشتق‌گیری اثری ندارد.\n\nاین موضوع از قضیه مقدار میانگین هم پشتیبانی می‌شود که می‌گوید اگر دو تابع \\(F\\) و \\(G\\) مشتق‌پذیر باشند و مشتق‌هایشان برابر باشد، آنگاه تفاوت این دو تابع یک عدد ثابت است: \\(F(x) - G(x) = C\\).\n\nبنابراین هنگام حساب انتگرال نامعین که همان یافتن پادمشتق است، باید ثابت \\(C\\) را اضافه کنیم تا این خانواده کامل توابع را نشان دهیم.\n\nمراجع اصلی برای این توضیحات عبارتند از چند منبع که پادمشتق را تعریف کرده‌اند و دلیل وجود ثابت \\(C\\) را توضیح داده‌اند.\n\nمثال:\nEvaluate each of the following indefinite integrals.\n\n\\(\\displaystyle \\int{{5{t^3} - 10{t^{ - 6}} + 4\\,dt}}\\)\nOkay, in all of these remember the basic rules of indefinite integrals.  First, to integrate sums and differences all we really do is integrate the individual terms and then put the terms back together with the appropriate signs.  Next, we can ignore any coefficients until we are done with integrating that particular term and then put the coefficient back in.  Also, do not forget the “+\\(c\\)” at the end it is important and must be there.\n\nSo, let’s evaluate some integrals.\n\nThere’s not really a whole lot to do here other than use the first two formulas from the beginning of this section.  Remember that when integrating powers (that aren’t -1 of course) we just add one onto the exponent and then divide by the new exponent.\n\n            \\[\\begin{align*}\\int{{5{t^3} - 10{t^{ - 6}} + 4\\,dt}} & = 5\\left( {\\frac{1}{4}} \\right){t^4} - 10\\left( {\\frac{1}{{ - 5}}} \\right){t^{ - 5}} + 4t + c\\\\ &  = \\frac{5}{4}{t^4} + 2{t^{ - 5}} + 4t + c\\end{align*}\\]\r\n\nBe careful when integrating negative exponents.  Remember to add one onto the exponent.  One of the more common mistakes that students make when integrating negative exponents is to “add one” and end up with an exponent of “-7” instead of the correct exponent of “-5”.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: Ne(t, 0); 4 != 0; t**5 != 0; t != 0; t**6 != 0\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.advanced.question",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 47.9,
+      "degraded": false,
+      "expected": [
+        "limit",
+        "converge",
+        "diverge"
+      ],
+      "found": [
+        "limit",
+        "converge",
+        "diverge"
+      ],
+      "missing": [],
+      "answer_chars": 3867,
+      "answer": "We consider the improper integral of the function \\( f(x) = \\frac{1}{x^2} \\) from 1 to infinity:\n\n\\[\n\\int_1^\\infty \\frac{1}{x^2} \\, dx.\n\\]\n\nTo determine convergence, we replace the infinite upper bound with a finite \\( b \\) and evaluate the proper integral:\n\n\\[\n\\int_1^b x^{-2} \\, dx.\n\\]\n\nThe antiderivative of \\( x^{-2} \\) is \\( -x^{-1} = -\\frac{1}{x} \\). So,\n\n\\[\n\\int_1^b \\frac{1}{x^2} \\, dx = \\left[-\\frac{1}{x}\\right]_1^b = -\\frac{1}{b} + 1 = 1 - \\frac{1}{b}.\n\\]\n\nTaking the limit as \\( b \\to \\infty \\):\n\n\\[\n\\lim_{b \\to \\infty} \\left(1 - \\frac{1}{b}\\right) = 1.\n\\]\n\nSince this limit exists and is finite, the improper integral converges and its value is \\(1\\).\n\nIn contrast, consider the integral of \\( \\frac{1}{x} \\) from 1 to infinity:\n\n\\[\n\\int_1^\\infty \\frac{1}{x} \\, dx.\n\\]\n\nThe antiderivative of \\( \\frac{1}{x} \\) is \\( \\ln x \\), so\n\n\\[\n\\int_1^b \\frac{1}{x} \\, dx = \\ln b - \\ln 1 = \\ln b.\n\\]\n\nTaking the limit as \\( b \\to \\infty \\) yields\n\n\\[\n\\lim_{b \\to \\infty} \\ln b = \\infty.\n\\]\n\nSince this limit does not exist finitely, the integral diverges.\n\nThis comparison shows that whether an improper integral converges depends crucially on the rate at which the integrand decays. Specifically, for functions of the form \\( \\frac{1}{x^p} \\), the integral from 1 to infinity converges if and only if \\( p > 1 \\) and diverges otherwise.\n\n**Key definitions and assumptions:**\n- The integral is improper due to the infinite upper limit.\n- The improper integral is defined as a limit \\( \\lim_{b \\to \\infty} \\int_1^b f(x) \\, dx \\).\n- Continuity of \\( f(x) = 1/x^2 \\) on \\([1, \\infty)\\) ensures the fundamental theorem of calculus applies to the proper integral.\n\n**Limitations and remarks:**\n- One must verify the limit defining the improper integral exists and is finite to conclude convergence.\n- Directly substituting infinity without considering limits is invalid.\n- Comparing to \\( 1/x \\), a boundary case where \\( p=1 \\), highlights the importance of decay rate.\n\nThus, the improper integral \\( \\int_1^\\infty \\frac{1}{x^2} \\, dx \\) converges with value 1, in contrast to \\( \\int_1^\\infty \\frac{1}{x} \\, dx \\), which diverges.\n\nSource IDs: 9cb8be078a9f72cdb7e838a0, d9ff6dab0fb9be1743160a9b, 7ca4a91805357dea5a611c9b\n\nExample:\nIntegrate \\(\\displaystyle \\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}}\\).\nThere are several ways to do this integral and most of them require the next section.  However, there is a way to do this integral using only the material from this section.  All that is required is to remember the trig formula that we can use to simplify the integrand up a little.  Recall the following double angle formula.\n\n              \\[\\sin \\left( {2t} \\right) = 2\\sin t\\cos t\\]\r\n\nA small rewrite of this formula gives,\n\n            \\[\\sin t\\cos t = \\frac{1}{2}\\sin \\left( {2t} \\right)\\]\r\n\nIf we now replace all the \\(t\\)’s with \\(\\frac{t}{2}\\) we get,\n\n            \\[\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right) = \\frac{1}{2}\\sin \\left( t \\right)\\]\r\n\nUsing this formula, the integral becomes something we can do.\n\n            \\[\\begin{align*}\\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}} & = \\int{{\\frac{1}{2}\\sin \\left( t \\right)dt}}\\\\ &  =  - \\frac{1}{2}\\cos \\left( t \\right) + c\\end{align*}\\]\r\n\nAs noted earlier there is another method for doing this integral.  In fact, there are two alternate methods.  To see all three check out the section on Constant of Integration in the Extras chapter but be aware that the other two do require the material covered in the next section.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: 2 != 0\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.advanced.probe",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 26.9,
+      "degraded": false,
+      "expected": [
+        "not",
+        "signed"
+      ],
+      "found": [
+        "not",
+        "signed"
+      ],
+      "missing": [],
+      "answer_chars": 4569,
+      "answer": "A definite integral is a mathematical concept defined as the limit of Riemann sums over partitions of an interval. Formally, if a function \\(f(x)\\) is integrable on the interval \\([a,b]\\), the definite integral \\(\\int_a^b f(x) \\, dx\\) exists as a limit independent of the choice of partitions and sample points within each subinterval. This existence typically requires certain conditions such as continuity or a finite number of discontinuities on \\([a,b]\\).\n\nThe geometric interpretation of a definite integral is connected to the area under the curve \\(y = f(x)\\) between \\(x = a\\) and \\(x = b\\). However, the integral represents \\emph{net signed area}, meaning it counts areas above the x-axis as positive and below the x-axis as negative. This causes the definite integral to possibly differ from the purely geometric area (which is nonnegative).\n\nSpecifically:\n- When \\(f(x)\\) is nonnegative on the interval, the definite integral equals the geometric area under the curve.\n- When \\(f(x)\\) takes negative values, the definite integral is the positive area minus the negative area, i.e., the net signed area.\n\nThus, a definite integral is not always equal to the geometric area in the usual sense unless the integrand is nonnegative over the domain.\n\nAssumptions and conditions:\n- The function \\(f\\) must be integrable over \\([a,b]\\), which is guaranteed if \\(f\\) is continuous or has finitely many discontinuities.\n- The fundamental theorem of calculus connects the definite integral and antiderivatives but requires \\(f\\) to be continuous or at least integrable with a continuous antiderivative on \\([a,b]\\).\n- Improper integrals, extending over unbounded domains or with unbounded integrands, are defined as limits of proper integrals; their convergence and value must be examined separately.\n- Calculations involving singularities or discontinuities require splitting the interval and verifying separate convergence.\n\nLimitations:\n- A definite integral can exist without representing a simple geometric area if the function goes below the x-axis.\n- Net signed area may cancel positive and negative parts, resulting in zero integrations even with nonzero total geometric area.\n- Improper integrals and discontinuities present complications and may yield divergent values.\n\nSummary: The definite integral represents the net signed area under the curve \\(y = f(x)\\) over \\([a, b]\\). It is equal to the geometric area only when \\(f\\) is nonnegative. The definite integral generalizes the concept of area to include signed contributions.\n\nSource passages used include the rigorous definition and hypotheses of the integral, the role of continuity and integrability, the interpretation as net signed area, and warnings on common errors such as cancelling across singularities or misapplying the fundamental theorem.\n\nHence, the definite integral is not always the geometric area; it generally measures net signed area.\n\nExample:\nIntegrate \\(\\displaystyle \\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}}\\).\nThere are several ways to do this integral and most of them require the next section.  However, there is a way to do this integral using only the material from this section.  All that is required is to remember the trig formula that we can use to simplify the integrand up a little.  Recall the following double angle formula.\n\n              \\[\\sin \\left( {2t} \\right) = 2\\sin t\\cos t\\]\r\n\nA small rewrite of this formula gives,\n\n            \\[\\sin t\\cos t = \\frac{1}{2}\\sin \\left( {2t} \\right)\\]\r\n\nIf we now replace all the \\(t\\)’s with \\(\\frac{t}{2}\\) we get,\n\n            \\[\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right) = \\frac{1}{2}\\sin \\left( t \\right)\\]\r\n\nUsing this formula, the integral becomes something we can do.\n\n            \\[\\begin{align*}\\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}} & = \\int{{\\frac{1}{2}\\sin \\left( t \\right)dt}}\\\\ &  =  - \\frac{1}{2}\\cos \\left( t \\right) + c\\end{align*}\\]\r\n\nAs noted earlier there is another method for doing this integral.  In fact, there are two alternate methods.  To see all three check out the section on Constant of Integration in the Extras chapter but be aware that the other two do require the material covered in the next section.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: 2 != 0\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "integral.advanced.probe",
+      "topic": "integral",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "missed",
+      "elapsed_seconds": 32.5,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "علامت‌دار"
+      ],
+      "found": [],
+      "missing": [
+        "نادرست",
+        "علامت‌دار"
+      ],
+      "answer_chars": 4405,
+      "answer": "انتگرال معین در علوم ریاضی به‌عنوان حد مجموع‌های ریمان تعریف می‌شود؛ یعنی مساحت زیر منحنی تابع روی بازه‌ای بسته و کران‌دار وقتی وجود دارد که حد این مجموع‌ها مستقل از انتخاب افراز و نقاط نمونه باشد. بنابراین، انتگرال معین وقتی وجود دارد و مقدار آن معتبر است که تابع در بازه انتگرال‌پذیر باشد، یعنی به‌طور کلی باید تابع، کران‌دار باشد و تعداد ناپیوستگی‌های آن متناهی باشد یا بهتر، پیوسته روی بازه بسته باشد (ولی شرط پیوستگی لازم نیست و تنها کافی است).\n\nبا وجود اینکه معمولاً انتگرال معین به مفهوم مساحت زیر نمودار در نظر گرفته می‌شود، این دو همیشه برابر نیستند. در اصل، مساحت هندسی فقط مقادیری مثبت است، اما مقدار انتگرال معین می‌تواند به دلیل وجود بخش‌هایی از تابع که مقدار آن‌ها منفی است، منفی یا صفر شود؛ بنابراین مقدار انتگرال معین ملاک مساحت هندسی نیست مگر اینکه مقدار تابع در همه بازه مثبت باشد یا به اصطلاح عددی (مقدار تابع) منفی‌ها را با علامت منفی حساب نکنیم.\n\nاز سوی دیگر، انتگرال‌های ناسره که روی بازه‌های نامحدود یا نقاط تکین تعریف می‌شوند، با گرفتن حد انتگرال‌های معین در بازه‌های محدود و بررسی همگرایی آن‌ها تعریف می‌شوند؛ در صورتی که این حد وجود داشته باشد و متناهی باشد، می‌گوییم انتگرال ناسره همگرای است. در مواردی که تابع در نقطه‌ای تکین باشد، اعمال قضیه بنیادی روی نقطه تکین مجاز نیست و تقسیم انتگرال به دو بخش همگرا به صورت مستقل ضروری است.\n\nبنابراین:\n1. انتگرال معین، مقداری عددی است که می‌تواند بیانگر تجمع مقادیر تابع باشد، ولی همیشه همان مساحت هندسی زیر منحنی نیست.\n2. اگر تابع در بازه مثبت یا صفر باشد و انتگرال‌پذیر باشد، آن‌گاه مقدار انتگرال معین برابر مساحت است.\n3. وقتی تابع منفی یا دارای نقاط تکین است، مقدار عددی انتگرال معین ممکن است منفی یا صفر یا تغییریافته باشد و به‌طور مستقیم مساحت هندسی نیست.\n4. هر ادعایی در مورد مساحت از طریق انتگرال معین باید با بررسی دامنه و شرایط پیوستگی و وجود انتگرال و همچنین همگرایی در نقطه‌های ناسره تأیید شود.\n\nدر نتیجه، انتگرال معین همیشه همان مساحت هندسی نیست و بهتر است به‌عنوان مقدار عددی حاصل از حد مجموع‌های ریمان و با شرایط دقیق تعریف شود. این تعریف ریاضی و تحلیلی‌تر است و از مفهوم ساده مساحت هندسی فراتر می‌رود.\n\nقضیه بنیادی حسابان و شرط‌های لازم برای آن تاکید می‌کند که تابع باید پیوسته یا حداقل انتگرال‌پذیر با پادمشتقی پیوسته روی بازه مورد نظر باشد. این قیدها نشان می‌دهد که تعریف و محاسبه انتگرال نیاز به بررسی دقیق دامنه و نقاط تکین و همچنین شرایط وجود حد و همگرایی دارد.\n\nاز طرفی، اشتباه رایج این است که بدون دقت به این قیدها، مقدار انتگرال ناسره را به غلط برابر با مساحت یا عددی متناهی فرض کنیم؛ مثلاً انتگرال 1/x^2 از -1 تا 1 که روی نقطه صفر تکین است و واگرا است ولی اگر بخش راست و چپ را جداگانه انتگرال بگیریم و سپس نتایج را جمع کنیم، اشتباه می‌شود.\n\nدر نهایت، انتگرال معین علاوه بر کاربرد محاسبه مساحت، کاربردهای گسترده‌تر دیگری نیز دارد و محاسبه آن می‌تواند با روش‌های عددی نیز تخمین زده شود، ولی همیشه باید به فرض‌ها و شرایط توجه کرد تا مقدار انتگرال تعریف‌شده و معتبر باشد.\n\nمثال:\nIntegrate \\(\\displaystyle \\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}}\\).\nThere are several ways to do this integral and most of them require the next section.  However, there is a way to do this integral using only the material from this section.  All that is required is to remember the trig formula that we can use to simplify the integrand up a little.  Recall the following double angle formula.\n\n              \\[\\sin \\left( {2t} \\right) = 2\\sin t\\cos t\\]\r\n\nA small rewrite of this formula gives,\n\n            \\[\\sin t\\cos t = \\frac{1}{2}\\sin \\left( {2t} \\right)\\]\r\n\nIf we now replace all the \\(t\\)’s with \\(\\frac{t}{2}\\) we get,\n\n            \\[\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right) = \\frac{1}{2}\\sin \\left( t \\right)\\]\r\n\nUsing this formula, the integral becomes something we can do.\n\n            \\[\\begin{align*}\\int{{\\sin \\left( {\\frac{t}{2}} \\right)\\cos \\left( {\\frac{t}{2}} \\right)\\,dt}} & = \\int{{\\frac{1}{2}\\sin \\left( t \\right)dt}}\\\\ &  =  - \\frac{1}{2}\\cos \\left( t \\right) + c\\end{align*}\\]\r\n\nAs noted earlier there is another method for doing this integral.  In fact, there are two alternate methods.  To see all three check out the section on Constant of Integration in the Extras chapter but be aware that the other two do require the material covered in the next section.\nVerification: verified; Candidate antiderivative differentiated and compared symbolically with the integrand. Valid on the stated domains/assumptions.\nAssumptions: 2 != 0\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.beginner.question",
+      "topic": "limits",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "partial",
+      "elapsed_seconds": 21.8,
+      "degraded": false,
+      "expected": [
+        "near",
+        "two-sided",
+        "not necessarily"
+      ],
+      "found": [
+        "near",
+        "not necessarily"
+      ],
+      "missing": [
+        "two-sided"
+      ],
+      "answer_chars": 3222,
+      "answer": "Let's learn what it means when we say \"the limit of \\( f(x) \\) as \\( x \\) approaches \\( a \\)\". \n\nFirst, some symbols:\n- \\( x \\) is the input value to the function.\n- \\( a \\) is the value that \\( x \\) gets close to.\n- \\( f(x) \\) is the output of the function when the input is \\( x \\).\n- \\( L \\) is the value that \\( f(x) \\) gets close to when \\( x \\) gets close to \\( a \\).\n\nThe limit is written like this:\n\n$$\n\\lim_{x \\to a} f(x) = L\n$$\n\nThis reads: \"The limit of \\( f(x) \\) as \\( x \\) approaches \\( a \\) is \\( L \\).\" \n\nWhat does this mean? It means that when \\( x \\) gets very close to \\( a \\) (from both the left and the right), the values of \\( f(x) \\) get very close to \\( L \\). \n\nImportant points:\n- We do not need \\( f(x) \\) to be defined exactly at \\( x = a \\). \n- The value of \\( f(a) \\) (if it exists) might be different from \\( L \\).\n- The limit must be the same whether \\( x \\) approaches \\( a \\) from the left side or the right side.\n\nFor example, consider the function\n\n$$\n\\frac{x^2 - 1}{x - 1}\n$$\nand find the limit as \\( x \\to 1 \\). \n\nIf we try to plug in \\( x = 1 \\), both numerator and denominator become zero, which is an indeterminate form (0/0). This tells us we must simplify. \n\nFactor the numerator:\n\n$$\nx^2 - 1 = (x - 1)(x + 1)\n$$\n\nWe cancel out \\( (x - 1) \\) (this is allowed because we consider \\( x \\) near 1 but not exactly 1):\n\n$$\n\\frac{(x-1)(x+1)}{x-1} = x + 1\n$$\n\nSo the function behaves like \\( x + 1 \\) near 1 except at \\( x = 1 \\) itself. \n\nNow compute the limit:\n\n$$\n\\lim_{x \\to 1} (x + 1) = 2\n$$\n\nEven though the original function is not defined at \\( x = 1 \\), the limit exists and equals 2.\n\nWe can make a table of values to see:\n- At \\( x = 0.9, f(x) \\approx 1.9 \\)\n- At \\( x = 0.99, f(x) \\approx 1.99 \\)\n- At \\( x = 1.01, f(x) \\approx 2.01 \\)\n\nThis shows the outputs get closer to 2 as inputs get closer to 1.\n\nSummary:\n- The limit is about approaching a value, not necessarily the function value at that input.\n- The function's behavior close to \\( a \\) determines the limit.\n- Limits from left and right must agree.\n\nNow you understand what \"the limit of \\( f(x) \\) as \\( x \\to a \\)\" means!\n\nExample:\nGiven the function,\r\n\n          \\[g\\left( y \\right) = \\left\\{ \\begin{aligned}{y^2} + 5 & \\hspace{0.25in}{\\mbox{if }}y <  - 2\\\\ 1 - 3y & \\hspace{0.25in}{\\mbox{if }}y \\ge  - 2\\end{aligned} \\right.\\]\r\n\nCompute the following limits.\n\n\\(\\mathop {\\lim }\\limits_{y \\to 6} g\\left( y \\right)\\)\nIn this case there really isn’t a whole lot to do.  In doing limits recall that we must always look at what’s happening on both sides of the point in question as we move in towards it.  In this case \\(y = 6\\) is completely inside the second interval for the function and so there are values of \\(y\\) on both sides of \\(y = 6\\) that are also inside this interval.  This means that we can just use the fact to evaluate this limit.\n\n        \\[\\begin{align*}\\mathop {\\lim }\\limits_{y \\to 6} g\\left( y \\right) & = \\mathop {\\lim }\\limits_{y \\to 6}( 1 - 3y)\\\\ & =  - 17\\end{align*}\\]\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.beginner.question",
+      "topic": "limits",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 31.7,
+      "degraded": false,
+      "expected": [
+        "نزدیک",
+        "دوطرفه",
+        "لزومی ندارد"
+      ],
+      "found": [
+        "نزدیک",
+        "دوطرفه"
+      ],
+      "missing": [
+        "لزومی ندارد"
+      ],
+      "answer_chars": 2854,
+      "answer": "ابتدا یک تابع را در نظر بگیریم که ورودی آن عدد \\( x \\) است و خروجی آن \\( f(x) \\) نام دارد. وقتی می‌گوییم حد \\( f(x) \\) هنگامی که \\( x \\) به \\( a \\) نزدیک می‌شود، یعنی چه؟ این پرسش را با زبان ساده و روشن توضیح می‌دهیم.\n\nوقتی ورودی \\( x \\) به عدد \\( a \\) نزدیک می‌شود یعنی مقدار \\( x \\) هر چه بیشتر به \\( a \\) میل می‌کند، اما لزوماً برابر \\( a \\) نمی‌شود. در این وضعیت، ما به رفتار خروجی \\( f(x) \\) توجه می‌کنیم؛ یعنی می‌بینیم \\( f(x) \\) به چه مقداری میل می‌کند وقتی \\( x \\) به \\( a \\) نزدیک می‌شود.\n\nما مقدار حد را با نماد\n\n\\[\n\\lim_{x \\to a} f(x) = L\n\\]\n\nنشان می‌دهیم. این نماد به این معناست که وقتی \\( x \\) به \\( a \\) نزدیک می‌شود، مقدار تابع \\( f(x) \\) به عدد \\( L \\) نزدیک می‌شود.\n\nنکات مهم:\n\n1. لازم نیست تابع در \\( x = a \\) تعریف شده باشد.\n2. حتی اگر تعریف شده باشد، مقدار تابع ممکن است با حد آن برابر نباشد.\n3. حد دوطرفه به این معنا است که وقتی از سمت راست و سمت چپ به \\( a \\) نگاه می‌کنیم مقدار تابع به همان عدد \\( L \\) نزدیک شود.\n4. اگر حد چپ و حد راست برابر نباشند یا یکی از آنها وجود نداشته باشد، حد دوطرفه وجود ندارد.\n\nبرای درک بهتر، تصور کنید یک جدول یا نمودار داریم که نشان می‌دهد با نزدیک شدن \\( x \\) به \\( a \\) چه اتفاقی برای \\( f(x) \\) می‌افتد. این جدول یا نمودار فقط پیشنهاد می‌دهد و اثبات نمی‌کند، برای اثبات باید از تعریف دقیق حد استفاده کنیم.\n\nتعریف حد بیان می‌کند که برای هر فاصلهٔ خیلی کوچک \\( \\varepsilon > 0 \\)، می‌توان یک فاصله خیلی کوچک \\( \\delta > 0 \\) پیدا کرد که اگر \\( x \\) در بازه \\( (a-\\delta, a+\\delta) \\) ولی متفاوت از \\( a \\) باشد، مقدار \\( f(x) \\) در بازه \\( (L-\\varepsilon, L+\\varepsilon) \\) قرار گیرد. این یعنی خروجی تابع به اندازه دلخواهی به \\( L \\) نزدیک می‌شود.\n\nبه طور خلاصه، حد \\( f(x) \\) هنگامی که \\( x \\) به \\( a \\) نزدیک می‌شود، مقدار \\( L \\) است که خروجی‌ها \\( f(x) \\) به آن میل می‌کنند، نه لزوماً مقدار تابع در \\( a \\).\n\nمثال:\nGiven the function,\r\n\n          \\[g\\left( y \\right) = \\left\\{ \\begin{aligned}{y^2} + 5 & \\hspace{0.25in}{\\mbox{if }}y <  - 2\\\\ 1 - 3y & \\hspace{0.25in}{\\mbox{if }}y \\ge  - 2\\end{aligned} \\right.\\]\r\n\nCompute the following limits.\n\n\\(\\mathop {\\lim }\\limits_{y \\to 6} g\\left( y \\right)\\)\nIn this case there really isn’t a whole lot to do.  In doing limits recall that we must always look at what’s happening on both sides of the point in question as we move in towards it.  In this case \\(y = 6\\) is completely inside the second interval for the function and so there are values of \\(y\\) on both sides of \\(y = 6\\) that are also inside this interval.  This means that we can just use the fact to evaluate this limit.\n\n        \\[\\begin{align*}\\mathop {\\lim }\\limits_{y \\to 6} g\\left( y \\right) & = \\mathop {\\lim }\\limits_{y \\to 6}( 1 - 3y)\\\\ & =  - 17\\end{align*}\\]\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.intermediate.question",
+      "topic": "limits",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 21.4,
+      "degraded": false,
+      "expected": [
+        "مبهم",
+        "تجزیه",
+        "2"
+      ],
+      "found": [
+        "مبهم",
+        "2"
+      ],
+      "missing": [
+        "تجزیه"
+      ],
+      "answer_chars": 5127,
+      "answer": "برای یافتن حد عبارت \\( \\frac{x^2 - 1}{x - 1} \\) هنگامی که \\( x \\to 1 \\) می‌شود، ابتدا باید دقت کنیم که اگر مستقیماً \\( x = 1 \\) را جایگذاری کنیم، صورت عدد \\( 1^2 - 1 = 0 \\) و مخرج عدد \\( 1 - 1 = 0 \\) می‌شود؛ که به شکل مبهم \\( \\frac{0}{0} \\) منجر می‌شود. بنابراین، باید عبارت را ساده‌سازی کنیم تا بتوان حد را محاسبه کرد.\n\nعبارت صورت را می‌توان به شکل:\\\n\\[\nx^2 - 1 = (x - 1)(x + 1)\n\\]\nنوشت و سپس عبارت کلی را به صورت:\n\n\\[\n\\frac{x^2 - 1}{x - 1} = \\frac{(x - 1)(x + 1)}{x - 1}\n\\]\nدید. اکنون اگر \\( x \\neq 1 \\) باشد، می‌توانیم عبارت \\( x - 1 \\) را از صورت و مخرج ساده کنیم. پرسش: چرا نمی‌توانیم این ساده‌سازی را وقتی که \\( x = 1 \\) انجام دهیم؟\n\n(منتظر جواب شما)\n\nچون در \\( x = 1 \\) مخرج صفر می‌شود و تقسیم بر صفر معنی ندارد، ولی برای مقادیری از \\( x \\) که نزدیک به 1 هستند ولی برابر 1 نیستند، می‌توان این ساده‌سازی را انجام داد. این دقیقا مفهوم همسایگی سوراخ‌شده است؛ یعنی نقطه 1 را حذف می‌کنیم تا بتوانیم رفتار تابع را بررسی کنیم.\n\nبعد از ساده‌سازی عبارت به شکل زیر در می‌آید:\n\n\\[\n\\frac{(x - 1)(x + 1)}{x - 1} = x + 1\n\\]\nکه این عبارت برای همه \\( x \\neq 1 \\) معتبر است.\n\nاکنون حد عبارت برابر است با حد \\( x + 1 \\) هنگامی که \\( x \\to 1 \\):\n\n\\[\n\\lim_{x \\to 1} (x + 1) = 1 + 1 = 2\n\\]\n\nپس حد مورد نظر برابر 2 است، حتی اگر خود تابع در نقطه \\( x = 1 \\) تعریف نشده باشد.\n\nاین روش ساده‌سازی با توجه به تعریف حد درست است زیرا اصطلاح حد به رفتار تابع در همسایگی سوراخ‌شده نقطه مورد نظر می‌پردازد و مقدار تابع در آن نقطه تاثیری روی حد ندارد.\n\nسوال مرتبط: در مورد حدهای توابع گویا هنگامی که صورت و مخرج هر دو صفر می‌شوند، چه روشی معمول برای پیدا کردن حد به کار می‌رود؟\n\nمثال:\nEvaluate the following limit.\r\n\n          \\[\\mathop {\\lim }\\limits_{t \\to 4} \\frac{{t - \\sqrt {3t + 4} }}{{4 - t}}\\]\nThis limit is going to be a little more work than the previous two.  Once again however note that we get the indeterminate form 0/0 if we try to just evaluate the limit.  Also note that neither of the two examples will be of any help here, at least initially.  We can’t factor the equation and we can’t just multiply something out to get the equation to simplify.\n\nWhen there is a square root in the numerator or denominator we can try to rationalize and see if that helps.  Recall that rationalizing makes use of the fact that\n\n        \\[\\left( {a + b} \\right)\\left( {a - b} \\right) = {a^2} - {b^2}\\]\r\n\nSo, if either the first and/or the second term have a square root in them the rationalizing will eliminate the root(s).  This might help in evaluating the limit.\n\nLet’s try rationalizing the numerator in this case.  \n\n        \\[\\mathop {\\lim }\\limits_{t \\to 4} \\frac{{t - \\sqrt {3t + 4} }}{{4 - t}} = \\mathop {\\lim }\\limits_{t \\to 4} \\frac{{\\left( {t - \\sqrt {3t + 4} } \\right)}}{{\\left( {4 - t} \\right)}}\\,\\frac{{\\left( {t + \\sqrt {3t + 4} } \\right)}}{{\\left( {t + \\sqrt {3t + 4} } \\right)}}\\]\r\n\nRemember that to rationalize we just take the numerator (since that’s what we’re rationalizing), change the sign on the second term and multiply the numerator and denominator by this new term.\n\nNext, we multiply the numerator out being careful to watch minus signs.\n\n        \\[\\begin{align*}\\mathop {\\lim }\\limits_{t \\to 4} \\frac{{t - \\sqrt {3t + 4} }}{{4 - t}} & = \\mathop {\\lim }\\limits_{t \\to 4} \\frac{{{t^2} - \\left( {3t + 4} \\right)}}{{\\left( {4 - t} \\right)\\left( {t + \\sqrt {3t + 4} } \\right)}}\\\\ &  = \\mathop {\\lim }\\limits_{t \\to 4} \\frac{{{t^2} - 3t - 4}}{{\\left( {4 - t} \\right)\\left( {t + \\sqrt {3t + 4} } \\right)}}\\end{align*}\\]\r\n\nNotice that we didn’t multiply the denominator out as well.  Most students come out of an Algebra class having it beaten into their heads to always multiply this stuff out.  However, in this case multiplying out will make the problem very difficult and in the end you’ll just end up factoring it back out anyway.\n\nAt this stage we are almost done.  Notice that we can factor the numerator so let’s do that.\n\n        \\[\\mathop {\\lim }\\limits_{t \\to 4} \\frac{{t - \\sqrt {3t + 4} }}{{4 - t}} = \\mathop {\\lim }\\limits_{t \\to 4} \\frac{{\\left( {t - 4} \\right)\\left( {t + 1} \\right)}}{{\\left( {4 - t} \\right)\\left( {t + \\sqrt {3t + 4} } \\right)}}\\]\r\n\nNow all we need to do is notice that if we factor a “-1”out of the first term in the denominator we can do some canceling.  At that point the division by zero problem will go away and we can evaluate the limit.\n\n        \\[\\begin{align*}\\mathop {\\lim }\\limits_{t \\to 4} \\frac{{t - \\sqrt {3t + 4} }}{{4 - t}} & = \\mathop {\\lim }\\limits_{t \\to 4} \\frac{{\\left( {t - 4} \\right)\\left( {t + 1} \\right)}}{{ - \\left( {t - 4} \\right)\\left( {t + \\sqrt {3t + 4} } \\right)}}\\\\ & = \\mathop {\\lim }\\limits_{t \\to 4} \\frac{{t + 1}}{{ - \\left( {t + \\sqrt {3t + 4} } \\right)}}\\\\ & =  - \\frac{5}{8}\\end{align*}\\]\r\n\nNote that if we had multiplied the denominator out we would not have been able to do this canceling and in all likelihood would not have even seen that some canceling could have been done.\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: 4 - t != 0; 8 != 0\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+        "A requested visual was dropped because it did not match the block contract.",
+        "A requested visual was dropped because it did not match the block contract."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.advanced.question",
+      "topic": "limits",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 15.0,
+      "degraded": false,
+      "expected": [
+        "نوسان",
+        "دنباله",
+        "قضیه فشردگی"
+      ],
+      "found": [
+        "نوسان",
+        "دنباله",
+        "قضیه فشردگی"
+      ],
+      "missing": [],
+      "answer_chars": 4683,
+      "answer": "برای بررسی وجود یا عدم وجود حد تابع \\( \\sin(1/x) \\) هنگامی که \\( x \\) به صفر نزدیک می‌شود، لازم است ابتدا تعریف حد را به‌کار ببریم. اگر حد \\( \\lim_{x \\to 0} \\sin(1/x) \\) وجود داشته باشد، آنگاه برای هر دنباله \\( x_n \\) که به صفر میل می‌کند، باید \\( \\sin(1/x_n) \\) به یک عدد ثابت همگرا شود.\n\n\\textbf{عدم وجود حد \\( \\sin(1/x) \\) در صفر:}\n\nدو دنباله متفاوت را تعریف می‌کنیم:\n\n1. \\( x_n = \\frac{1}{\\frac{\\pi}{2} + 2\\pi n} \\)؛ در این دنباله \\( \\lim_{n \\to \\infty} x_n = 0 \\) و همچنین\n\\[\n\\sin\\left(\\frac{1}{x_n}\\right) = \\sin\\left(\\frac{\\pi}{2} + 2\\pi n\\right) = 1.\n\\]\n\n2. \\( y_n = \\frac{1}{\\frac{3\\pi}{2} + 2\\pi n} \\)؛ در این دنباله نیز \\( \\lim_{n \\to \\infty} y_n = 0 \\) ولی\n\\[\n\\sin\\left(\\frac{1}{y_n}\\right) = \\sin\\left(\\frac{3\\pi}{2} + 2\\pi n\\right) = -1.\n\\]\n\nچون دو دنباله متفاوت به صفر میل می‌کنند، ولی \\( \\sin(1/x_n) \\) به ۱ و \\( \\sin(1/y_n) \\) به -۱ میل می‌کند، حد \\( \\sin(1/x) \\) هنگام \\( x \\to 0 \\) وجود ندارد؛ زیرا حد باید یکتا باشد.\n\n\\textbf{وجود حد \\( x \\sin(1/x) \\) در صفر:}\n\nبا توجه به نامساوی معروف برای سینوس که\n\\[\n-1 \\leq \\sin(1/x) \\leq 1,\n\\]\nاگر طرفین را در \\( x \\) ضرب کنیم (برای \\( x > 0 \\)) داریم:\n\\[\n-|x| \\leq x \\sin(1/x) \\leq |x|.\n\\]\n\nاز طرفی \\( \\lim_{x \\to 0} -|x| = 0 = \\lim_{x \\to 0} |x| \\)، پس طبق قضیه فشردگی (Squeeze Theorem) حد\n\\[\n\\lim_{x \\to 0} x \\sin(1/x) = 0\n\\]\nوجود دارد و برابر صفر است.\n\n\\textbf{توضیح و اهمیت:}\nنوسان متناهی \\( \\sin(1/x) \\) در نزدیکی صفر دنباله‌هایی را می‌سازد که به مقادیر متفاوت میل می‌کنند، بنابراین حد وجود ندارد. اما وقتی این نوسان در کنار ضرب در \\( x \\) قرار می‌گیرد که به صفر میل می‌کند، نوسان‌ها کوچک شده و دامنه موثر تابع به صفر می‌رسد و این است که حد تابع حاصل وجود دارد.\n\n\\textbf{محدودیت‌ها و فرض‌ها:}\n- فرض کردیم که ضرب تابع در \\( x \\) برای \\( x > 0 \\) اعتبار دارد، اما برای حد دوطرفه نیز مشابه قابل تعمیم است.\n- برای استفاده از قضیه فشردگی، هر سه تابع باید در نقاط نزدیک صفر تعریف باشند.\n- بر اساس تعریف حد، باید رفتار دنباله‌ها در همه جهات نزدیک صفر بررسی شود که با نمونه‌های دنباله‌ ثابت کردیم حد \\( \\sin(1/x) \\) وجود ندارد.\n\nدر نتیجه، نوسان خود به خود باعث عدم وجود حد نمی‌شود بلکه نوسان با دامنه ثابت و غیرکوچک باعث چنین وضعیتی می‌شود، همانطور که در این مثال مشاهده کردیم.\n\n\\textbf{منابع اصلی مورد استفاده:}\n- مثال حل‌شده در کتاب‌های حسابان\n- نظریه قضیه فشردگی و تعریف حد در توابع گزاره‌ای\n\nمثال:\nEvaluate the following limit.\r\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right)\\]\nIn this example none of the previous examples can help us.  There’s no factoring or simplifying to do.  We can’t rationalize and one-sided limits won’t work.  There’s even a question as to whether this limit will exist since we have division by zero inside the cosine at \\(x=0\\).\n\nThe first thing to notice is that we know the following fact about cosine.\n\n        \\[ - 1 \\le \\cos \\left( x \\right) \\le 1\\]\r\n\nOur function doesn’t have just an \\(x\\) in the cosine, but as long as we avoid \\(x = 0\\) we can say the same thing for our cosine.\n\n        \\[ - 1 \\le \\cos \\left( {\\frac{1}{x}} \\right) \\le 1\\]\r\n\nIt’s okay for us to ignore \\(x = 0\\) here because we are taking a limit and we know that limits don’t care about what’s actually going on at the point in question, \\(x = 0\\) in this case.\n\nNow if we have the above inequality for our cosine we can just multiply everything by an \\(x^{2}\\) and get the following.\n\n        \\[ - {x^2} \\le {x^2}\\cos \\left( {\\frac{1}{x}} \\right) \\le {x^2}\\]\r\n\nIn other words we’ve managed to squeeze the function that we were interested in between two other functions that are very easy to deal with.  So, the limits of the two outer functions are.\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2} = 0\\hspace{0.25in}\\hspace{0.25in}\\mathop {\\lim }\\limits_{x \\to 0} \\left( { - {x^2}} \\right) = 0\\]\r\n\nThese are the same and so by the Squeeze theorem we must also have,\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right) = 0\\]\r\n\nWe can verify this with the graph of the three functions.  This is shown below.\n\n![This graph consists of three functions.  First is \\(f\\left(x\\right) = {{x}^{2}}\\cos \\left( \\frac{1}{x} \\right)\\) that is a wave function with decreasing amplitude as it approaches the y-axis.  Above this function is the graph of \\(x^{2}\\) and this graph just touches all the peaks of \\(f\\left(x\\right)\\).  Below the graph of \\(f\\left(x\\right)\\) is the graph of \\(-x^{2}\\) and this just touches all the valleys of \\(f\\left(x\\right)\\).](https://tutorial.math.lamar.edu/Classes/CalcI/ComputingLimits_Files/image002.webp)\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.intermediate.question",
+      "topic": "limits",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 18.8,
+      "degraded": false,
+      "expected": [
+        "indeterminate",
+        "factor",
+        "2"
+      ],
+      "found": [
+        "indeterminate",
+        "factor",
+        "2"
+      ],
+      "missing": [],
+      "answer_chars": 3149,
+      "answer": "Let's explore how to find the limit of the function \\(\n\\frac{x^2 - 1}{x - 1}\n\\) as \\(x\\) approaches 1. This is a classic problem involving limits where direct substitution would give an indeterminate form \\(\\frac{0}{0}\\), since substituting \\(x = 1\\) yields \\(\\frac{1 - 1}{1 - 1} = \\frac{0}{0}\\).\n\n### Step 1: Identify why direct substitution fails\nDirectly plugging in \\(x = 1\\) yields \\(0/0\\), an indeterminate form. This means we must manipulate the expression to find the limit, as the function is not defined at \\(x = 1\\) but may approach a finite value near it.\n\n### Step 2: Factor the numerator\nNotice that \\(x^2 - 1\\) is a difference of squares, which factors as:\n\n\\[\nx^2 - 1 = (x - 1)(x + 1)\n\\]\n\n### Step 3: Simplify the fraction\nSubstitute the factorized form into the original expression:\n\n\\[\n\\frac{x^2 - 1}{x - 1} = \\frac{(x - 1)(x + 1)}{x - 1}\n\\]\n\nFor every \\(x \\neq 1\\), this simplifies to:\n\n\\[\nx + 1\n\\]\n\nSince the limit definition considers behavior near \\(x = 1\\) but not at \\(x = 1\\) itself (punctured neighbourhood), we can replace the original function near \\(x = 1\\) by the simpler function \\(x + 1\\).\n\n### Step 4: Evaluate the limit of the simplified expression\nNow, compute the limit as \\(x\\) approaches 1:\n\n\\[\n\\lim_{x \\to 1} (x + 1) = 1 + 1 = 2\n\\]\n\n### Why does this method work?\nBecause the original fraction is undefined at \\(x=1\\) but behaves like \\(x+1\\) near 1 (due to factor cancellation), the limit of the original expression is the same as the limit of \\(x+1\\) at 1. This uses the property that limits depend on values arbitrarily close to \\(x=1\\), excluding \\(x=1\\) itself.\n\n### Recap\n- Direct substitution gave indeterminate form \\(0/0\\);\n- Factored numerator to cancel \\(x-1\\);\n- Simplified the expression to \\(x+1\\) valid near \\(x=1\\);\n- Evaluated the limit as \\(x \\to 1\\) of \\(x+1\\) to find 2.\n\n### Related question for you\nWhat would be the limit of \\(\n\\frac{x^2 - 4}{x - 2}\n\\) as \\(x\\) approaches 2? Try applying a similar factoring and simplification approach!\n\nExample:\nEvaluate the following limit.\r\n\n        \\[\\mathop {\\lim }\\limits_{y \\to  - 2} g\\left( y \\right)\\hspace{0.25in}{\\mbox{where,}}\\,\\,g\\left( y \\right) = \\left\\{ \\begin{aligned}{y^2} + 5 & \\hspace{0.25in}{\\mbox{if }}y <  - 2\\\\ 3 - 3y & \\hspace{0.25in}{\\mbox{if }}y \\ge  - 2\\end{aligned} \\right.\\]\nThe two one-sided limits this time are,\n\n        \\[\\begin{align*}\\mathop {\\lim }\\limits_{y \\to  - {2^ - }} g\\left( y \\right) & = \\mathop {\\lim }\\limits_{y \\to  - {2^ - }} ({y^2} + 5)\\hspace{0.25in}{\\mbox{since }}y \\to {-2^ - }{\\mbox{ implies }}y <  - 2\\\\ &  = 9\\end{align*}\\]\r\n\n          \\[\\begin{align*}\\mathop {\\lim }\\limits_{y \\to  - {2^ + }} g\\left( y \\right) & = \\mathop {\\lim }\\limits_{y \\to  - {2^ + }} (3 - 3y)\\hspace{0.25in}{\\mbox{since }}y \\to {-2^ + }{\\mbox{ implies }}y >  - 2\\\\ &  = 9\\end{align*}\\]\r\n\nThe one-sided limits are the same so we get,\n\n        \\[\\mathop {\\lim }\\limits_{y \\to  - 2} g\\left( y \\right) = 9\\]\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.advanced.question",
+      "topic": "limits",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 13.2,
+      "degraded": false,
+      "expected": [
+        "oscillation",
+        "sequence",
+        "squeeze"
+      ],
+      "found": [
+        "oscillation",
+        "sequence",
+        "squeeze"
+      ],
+      "missing": [],
+      "answer_chars": 5077,
+      "answer": "We are tasked with analyzing the limit behaviors of two functions: \\( \\sin(1/x) \\) as \\( x \\to 0 \\), and \\( x \\sin(1/x) \\) as \\( x \\to 0 \\). \n\n### 1. Definition and domain\nBoth functions are defined on \\( x \\in \\mathbb{R} \\setminus \\{0\\} \\) since \\( 1/x \\) is undefined at \\( x=0 \\).\n\n### 2. Limit of \\( \\sin(1/x) \\) as \\( x \\to 0 \\) does not exist\nThe function \\( \\sin(1/x) \\) oscillates increasingly rapidly as \\( x \\to 0 \\) because \\( 1/x \\to \\pm \\infty \\) and sine oscillates between -1 and 1 with period \\( 2\\pi \\).\n\nTo show the limit does not exist, consider the two sequences converging to zero:\n- \\( x_n = \\frac{1}{\\pi/2 + 2\\pi n} \\), so \\( 1/x_n = \\pi/2 + 2\\pi n \\) and \\( \\sin(1/x_n) = 1 \\)\n- \\( y_n = \\frac{1}{3\\pi/2 + 2\\pi n} \\), so \\( 1/y_n = 3\\pi/2 + 2\\pi n \\) and \\( \\sin(1/y_n) = -1 \\)\n\nBoth sequences \\( x_n, y_n \\to 0 \\) but their images under \\( \\sin(1/x) \\) approach distinct limits 1 and -1. Hence the two-sided limit at 0 does not exist.\n\n### 3. Limit of \\( x \\sin(1/x) \\) as \\( x \\to 0 \\) exists and equals 0\nSince \\( \\sin(1/x) \\) is bounded:\n\\[\n-1 \\leq \\sin(1/x) \\leq 1\n\\]\nMultiplying by \\( x \\) (considering \\( x \\to 0 \\) from both sides):\n\\[\n-|x| \\leq x \\sin(1/x) \\leq |x|\n\\]\nBoth bounding functions \\( -|x| \\) and \\( |x| \\) tend to 0 as \\( x \\to 0 \\).\n\nBy the **Squeeze (Sandwich) Theorem**, since the lower and upper bounds tend to 0, the squeezed function \\( x \\sin(1/x) \\) also tends to 0.\n\n### 4. Justifications and assumptions\n- For the Squeeze Theorem, the bounding inequalities must hold in some neighborhood of 0 (excluding 0 itself where \\( 1/x \\) is undefined).\n- The function \\( \\sin(1/x) \\) is bounded for all \\( x \\neq 0 \\).\n- Oscillations alone do not prevent a limit from existing; what matters is whether the amplitude of oscillations decreases to zero. Here, \\( \\sin(1/x) \\) oscillates with constant amplitude 1, so the limit fails.\n- For \\( x \\sin(1/x) \\), amplitude shrinks by factor \\( |x| \\to 0 \\), yielding a limit zero.\n\n### 5. Limitations and scope\n- This reasoning assumes real-valued functions and two-sided limits (from both positive and negative sides).\n- The domain excludes 0; the limit concerns behavior arbitrarily close to zero but not at zero.\n\n### Summary\n\\[\n\\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right) \\text{ does not exist,}\n\\quad\n\\lim_{x \\to 0} x \\sin\\left(\\frac{1}{x}\\right) = 0.\n\\]\nThis shows that high-frequency oscillation with non-vanishing amplitude (\n\\sin(1/x)\\)) prevents the existence of a limit, whereas oscillation combined with shrinking amplitude (\\( x \\sin(1/x) \\)) can have a limit.\n\n\\(\n\\qquad \\)\n\nIf you want, I can now answer your question based on this lesson.\n\nExample:\nEvaluate the following limit.\r\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right)\\]\nIn this example none of the previous examples can help us.  There’s no factoring or simplifying to do.  We can’t rationalize and one-sided limits won’t work.  There’s even a question as to whether this limit will exist since we have division by zero inside the cosine at \\(x=0\\).\n\nThe first thing to notice is that we know the following fact about cosine.\n\n        \\[ - 1 \\le \\cos \\left( x \\right) \\le 1\\]\r\n\nOur function doesn’t have just an \\(x\\) in the cosine, but as long as we avoid \\(x = 0\\) we can say the same thing for our cosine.\n\n        \\[ - 1 \\le \\cos \\left( {\\frac{1}{x}} \\right) \\le 1\\]\r\n\nIt’s okay for us to ignore \\(x = 0\\) here because we are taking a limit and we know that limits don’t care about what’s actually going on at the point in question, \\(x = 0\\) in this case.\n\nNow if we have the above inequality for our cosine we can just multiply everything by an \\(x^{2}\\) and get the following.\n\n        \\[ - {x^2} \\le {x^2}\\cos \\left( {\\frac{1}{x}} \\right) \\le {x^2}\\]\r\n\nIn other words we’ve managed to squeeze the function that we were interested in between two other functions that are very easy to deal with.  So, the limits of the two outer functions are.\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2} = 0\\hspace{0.25in}\\hspace{0.25in}\\mathop {\\lim }\\limits_{x \\to 0} \\left( { - {x^2}} \\right) = 0\\]\r\n\nThese are the same and so by the Squeeze theorem we must also have,\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right) = 0\\]\r\n\nWe can verify this with the graph of the three functions.  This is shown below.\n\n![This graph consists of three functions.  First is \\(f\\left(x\\right) = {{x}^{2}}\\cos \\left( \\frac{1}{x} \\right)\\) that is a wave function with decreasing amplitude as it approaches the y-axis.  Above this function is the graph of \\(x^{2}\\) and this graph just touches all the peaks of \\(f\\left(x\\right)\\).  Below the graph of \\(f\\left(x\\right)\\) is the graph of \\(-x^{2}\\) and this just touches all the valleys of \\(f\\left(x\\right)\\).](https://tutorial.math.lamar.edu/Classes/CalcI/ComputingLimits_Files/image002.webp)\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.beginner.question",
+      "topic": "matrix",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 7.5,
+      "degraded": false,
+      "expected": [
+        "سطر",
+        "ستون",
+        "ضرایب"
+      ],
+      "found": [
+        "سطر",
+        "ستون",
+        "ضرایب"
+      ],
+      "missing": [],
+      "answer_chars": 4226,
+      "answer": "در این درس می‌خواهیم بفهمیم ماتریس چیست و در دستگاه معادلات خطی، یک سطر از ماتریس چه معنایی دارد.\n\nابتدا تعریف ماتریس: ماتریس چیدمانی مستطیلی از اعداد است. این چیدمان از سطرها و ستون‌ها تشکیل شده است. فرض کنیم ماتریسی داریم که m سطر و n ستون دارد. می‌گوییم این ماتریس ابعاد m در n یا به صورت $m \\times n$ دارد. هر عدد در ماتریس یک درایه نامیده می‌شود و با دو اندیس مشخص می‌کنیم: اندیس‌ اول شماره سطر و اندیس دوم شماره ستون است. برای نمونه عدد در ردیف $i$ و ستون $j$ را با $a_{ij}$ نمایش می‌دهیم.\n\nماتریس‌هایی که تعداد سطرها و ستون‌هایشان برابر باشد، مربع نام دارند.\n\nدر دستگاه معادلات خطی، ماتریس افزوده (augmented matrix) برای نمایش معادلات استفاده می‌شود. در ماتریس افزوده، ستون‌های اول ضرایب مجهول‌ها را نگه می‌دارند و ستون آخر عدد ثابت معادله را. هر سطر از این ماتریس یک معادله را نشان می‌دهد. یعنی سطر اول ضرایب و عدد ثابت معادله اول، سطر دوم مربوط به معادله دوم و الی آخر.\n\nبرای مثال، در دستگاه معادلات با دو معادله و دو مجهول، ماتریسی داریم که هر سطر آن ضرایب یک معادله خطی است. این سطر در واقع یک معادله خطی را به صورت عددی نمایش می‌دهد.\n\nپس می‌توان گفت:\n- ماتریس یک آرایش عددی مستطیلی از اعداد است.\n- هر ردیف یا سطر از ماتریس افزوده، نمایانگر یک معادله خطی در دستگاه معادلات است.\n\nبا این تعریف ساده می‌توان دستگاه‌های خطی را در قالب ماتریس دید و عملیات ریاضی روی آن‌ها انجام داد.\n\nمثال:\nSolve each of the following systems of equations.\n\n\\(\\begin{align*}3x - 2y & = 14\\\\  x + 3y & = 1\\end{align*}\\)\nThe first step here is to write down the augmented matrix for this system.\n\n              \\[\\require{color}\\left[ {\\begin{array}{rr|r} {\\color{Red} 3}&{ - 2}&{14}\\\\1&3&1\\end{array}} \\right]\\]\r\n\nTo convert it into the final form we will start in the upper left corner and work in a counter-clockwise direction until the first two columns appear as they should be.\n\nSo, the first step is to make the red three in the augmented matrix above into a 1.  We can use any of the row operations that we’d like to.  We should always try to minimize the work as much as possible however.\n\nSo, since there is a one in the first column already it just isn’t in the correct row let’s use the first row operation and interchange the two rows.\n\n              \\[\\require{color}\\left[ {\\begin{array}{rr|r}3&{ - 2}&{14}\\\\1&3&1\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} \\leftrightarrow {R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&3&1\\\\{\\color{Red} 3}&{ - 2}&{14}\\end{array}} \\right]\\]\r\n\nThe next step is to get a zero below the 1 that we just got in the upper left hand corner.  This means that we need to change the red three into a zero.  This will almost always require us to use third row operation.  If we add -3 times row 1 onto row 2 we can convert that 3 into a 0.  Here is that operation.\n\n              \\[\\require{color}\\left[ {\\begin{array}{rr|r}1&3&1\\\\3&{ - 2}&{14}\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_2} - 3{R_1} \\to {R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&3&1\\\\0&{\\color{Red}  - 11}&{11}\\end{array}} \\right]\\]\r\n\nNext, we need to get a 1 into the lower right corner of the first two columns.  This means changing the red -11 into a 1.  This is usually accomplished with the second row operation.  If we divide the second row by -11 we will get the 1 in that spot that we need.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rr|r}1&3&1\\\\0&{ - 11}&{11}\\end{array}} \\right]\\begin{array}{*{20}{c}}{ - \\frac{1}{{11}}{R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&{\\color{Red} 3}&1\\\\0&1&{ - 1}\\end{array}} \\right]\\]\r\n\nOkay, we’re almost done.  The final step is to turn the red three into a zero.  Again, this almost always requires the third row operation.  Here is the operation for this final step.\n\n              \\[\\require{color}\\left[ {\\begin{array}{rr|r}1&3&1\\\\0&1&{ - 1}\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} - 3{R_2} \\to {R_1}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&0&4\\\\0&1&{ - 1}\\end{array}} \\right]\\]\r\n\nWe have the augmented matrix in the required form and so we’re done.  The solution to this system is \\(x = 4\\) and \\(y =  - 1\\).\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.advanced.probe",
+      "topic": "limits",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 12.2,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "نشانه"
+      ],
+      "found": [
+        "نشانه"
+      ],
+      "missing": [
+        "نادرست"
+      ],
+      "answer_chars": 4691,
+      "answer": "برای پاسخ به سؤال \"آیا یک جدول مقادیر، وجود حد را اثبات می‌کند؟\" ابتدا باید تعریف دقیق حد و روش‌های اثبات آن را توضیح دهیم.\\\n\\\n**تعریف حد:** حد تابع در نقطه‌ای، یعنی مقدار تابع وقتی متغیر به سمت آن نقطه نزدیک می‌شود، نزدیک به چه عددی می‌شود. این تعریف به صورت کمّی با کوانتیفایرهایی روی فاصله و تلورانس (دلتا و اپسیلون) بیان می‌شود که کل حوزه ورودی‌های نزدیک به نقطه را شامل می‌شود، نه فقط نمونه‌ای محدود از مقادیر تابع. به عبارت دیگر، تعریف حد طوری است که بر همه مقادیر تابع در همسایگی سوراخ‌شده نقطه محدود است، نه فقط بر یک سری نمونه‌هایی از آن.\\\n\\\n**محدودیت استفاده از جدول:** جدول مقادیر تابع فقط نمونه‌هایی محدود از مقادیر تابع را در نزدیکی نقطه می‌دهد. اما چون تعریف حد نیازمند بررسی همه ورودی‌های نزدیک است، یک نمونهٔ محدود نمی‌تواند اثبات وجود حد باشد. جدول می‌تواند تنها پیشنهاد یا سرنخی درباره مقدار حد باشد یا ناسازگاری را نشان دهد، اما اثبات دقیق حد به استفاده از روش‌های تحلیلی نظیر اثبات اپسیلون-دلتا یا استفاده از قضایای حد است.\\\n\\\n**قضیه‌های مرتبط:** مثلاً قضیه فشردگی (Squeeze theorem) نیازمند دو کران راست و چپ است که هر دو به یک حد میل کنند. اگر فقط کران‌ها از یک طرف باشد، تنها حد یک طرفه نتیجه می‌دهد، نه حد دوطرفه. همچنین قوانین حد نیازمند وجود حدهای سازنده و پیوستگی تابع برای اجرای جای‌گذاری مستقیم هستند. عدم اثبات پیوستگی، شکاف استدلالی است، نه میان‌بری.\\\n\\\n**اشتباه‌های رایج:** استفاده از جدول یا نمودار به عنوان اثبات، خطایی رایج است که با تعریف حد، رد می‌شود. چون جدول صرفاً نمونه‌ای متناهی است و نمی‌تواند گزاره‌ای که برای همه ورودی‌های نزدیک به نقطه است را ثابت کند. همچنین نوسان مقادیر بدون کوچک شدن دامنه آن نمی‌تواند وجود حد را تضمین کند.\\\n\\\n**مثال حل‌شده:** در مثالی که مقدار تابع \\(\\sin(1/x)\\) را وقتی \\(x \\to 0\\) نشان می‌دهد، مشاهده می‌کنیم که تابع نوسان می‌کند و حد وجود ندارد، زیرا دنباله‌هایی داریم که به صفر میل می‌کنند اما تصاویرشان به مقادیر متفاوت 1 و -1 میل می‌کند. اما برای \\(x \\sin(1/x)\\) چون کران‌های آن به صفر می‌رسند، با قضیه فشردگی حد صفر اثبات می‌شود.\\\n\\\n\\\n**نتیجه:** بنابراین، یک جدول مقادیر نمی‌تواند وجود حد را به عنوان اثبات رسمی اثبات کند. این تنها می‌تواند نشانه‌ای باشد که حد وجود دارد یا ندارد، اما اثبات قطعی نیازمند استدلال ریاضی دقیق بر اساس تعریف حد و قضیه‌های حد است.\\\n\\\nاین پاسخ فرض می‌کند که محدودیت جدول نمونه محدود بودن است و فرمول‌بندی حد بر اساس اپسیلون و دلتا بر همه ورودی‌ها تأکید دارد.\n\nمثال:\nEvaluate the following limit.\r\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right)\\]\nIn this example none of the previous examples can help us.  There’s no factoring or simplifying to do.  We can’t rationalize and one-sided limits won’t work.  There’s even a question as to whether this limit will exist since we have division by zero inside the cosine at \\(x=0\\).\n\nThe first thing to notice is that we know the following fact about cosine.\n\n        \\[ - 1 \\le \\cos \\left( x \\right) \\le 1\\]\r\n\nOur function doesn’t have just an \\(x\\) in the cosine, but as long as we avoid \\(x = 0\\) we can say the same thing for our cosine.\n\n        \\[ - 1 \\le \\cos \\left( {\\frac{1}{x}} \\right) \\le 1\\]\r\n\nIt’s okay for us to ignore \\(x = 0\\) here because we are taking a limit and we know that limits don’t care about what’s actually going on at the point in question, \\(x = 0\\) in this case.\n\nNow if we have the above inequality for our cosine we can just multiply everything by an \\(x^{2}\\) and get the following.\n\n        \\[ - {x^2} \\le {x^2}\\cos \\left( {\\frac{1}{x}} \\right) \\le {x^2}\\]\r\n\nIn other words we’ve managed to squeeze the function that we were interested in between two other functions that are very easy to deal with.  So, the limits of the two outer functions are.\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2} = 0\\hspace{0.25in}\\hspace{0.25in}\\mathop {\\lim }\\limits_{x \\to 0} \\left( { - {x^2}} \\right) = 0\\]\r\n\nThese are the same and so by the Squeeze theorem we must also have,\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right) = 0\\]\r\n\nWe can verify this with the graph of the three functions.  This is shown below.\n\n![This graph consists of three functions.  First is \\(f\\left(x\\right) = {{x}^{2}}\\cos \\left( \\frac{1}{x} \\right)\\) that is a wave function with decreasing amplitude as it approaches the y-axis.  Above this function is the graph of \\(x^{2}\\) and this graph just touches all the peaks of \\(f\\left(x\\right)\\).  Below the graph of \\(f\\left(x\\right)\\) is the graph of \\(-x^{2}\\) and this just touches all the valleys of \\(f\\left(x\\right)\\).](https://tutorial.math.lamar.edu/Classes/CalcI/ComputingLimits_Files/image002.webp)\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.beginner.question",
+      "topic": "matrix",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 11.6,
+      "degraded": false,
+      "expected": [
+        "row",
+        "column",
+        "coefficients"
+      ],
+      "found": [
+        "row",
+        "column",
+        "coefficients"
+      ],
+      "missing": [],
+      "answer_chars": 3770,
+      "answer": "Let's learn about matrices and their use in systems of equations step by step.\n\n1. What is a matrix?\nA matrix is a rectangular arrangement of numbers. Think of it like a table with rows and columns. \n- The shape of a matrix is given by the number of rows (m) and columns (n). We write it as m x n.\n- For example, a matrix with 3 rows and 2 columns has shape 3 x 2.\n- Each number inside is called an entry. The entry in row i and column j is written as \\(a_{ij}\\).\n- If the number of rows equals the number of columns, the matrix is called square.\n\n2. What does a row represent in a system of equations?\nA system of linear equations has multiple equations with multiple variables. \n- Each row of the matrix corresponds to one equation in the system.\n- The matrix includes the coefficients (numbers before variables) arranged by rows and columns.\n- In a special matrix called an augmented matrix, besides the coefficients in the leading columns, there is a final column for constants (numbers on the right side of the equation).\n \n3. Why matrices are used?\nMatrices help organize the coefficients and constants of a system neatly to solve it efficiently. Working with a matrix saves time and helps perform computations like addition, multiplication, and row operations to find solutions.\n\nDefinitions:\n- \\(m\\): number of rows\n- \\(n\\): number of columns\n- \\(a_{ij}\\): entry in row i and column j\n- Augmented matrix: coefficient matrix plus a column of constants, separated with a vertical line\n\nSummary:\n- A matrix holds numbers in rows and columns.\n- Each row in a system's matrix corresponds to one equation.\n- The augmented matrix shows the equations' coefficients and constants together.\n\nThis lesson helps you see what matrices are and how rows represent equations in systems to solve them using matrices.\n\nSource passages used: 0af6b5a59aa79213177dcc8f, web:77dc959282875adae6c0e68e\n\nExample:\nSolve each of the following systems of equations.\n\n\\(\\begin{align*} - 2x + y & =  - 3\\\\ x - 4y & =  - 2\\end{align*}\\)\nIn this part we won’t put in as much explanation for each step.  We will mark the next number that we need to change in red as we did in the previous part.\n\nWe’ll first write down the augmented matrix and then get started with the row operations.\n\n              \\[\\require{color}\\left[ {\\begin{array}{rr|r}{\\color{Red}  - 2}&1&{ - 3}\\\\1&{ - 4}&{ - 2}\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} \\leftrightarrow {R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&{ - 4}&{ - 2}\\\\{\\color{Red}  - 2}&1&{ - 3}\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_2} + 2{R_1} \\to {R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&{ - 4}&{ - 2}\\\\0&{\\color{Red}  - 7}&{ - 7}\\end{array}} \\right]\\]\r\n\nBefore proceeding with the next step let’s notice that in the second matrix we had one’s in both spots that we needed them.  However, the only way to change the -2 into a zero that we had to have as well was to also change the 1 in the lower right corner as well.  This is okay.  Sometimes it will happen and trying to keep both ones will only cause problems.\n\nLet’s finish the problem.\n\n              \\[\\require{color}\\left[ {\\begin{array}{rr|r}1&{ - 4}&{ - 2}\\\\0&{\\color{Red}  - 7}&{ - 7}\\end{array}} \\right]\\begin{array}{*{20}{c}}{ - \\frac{1}{7}{R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&{\\color{Red}  - 4}&{ - 2}\\\\0&1&1\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} + 4{R_2} \\to {R_1}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rr|r}1&0&2\\\\0&1&1\\end{array}} \\right]\\]\r\n\nThe solution to this system is then \\(x = 2\\) and \\(y = 1\\).\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "limits.advanced.probe",
+      "topic": "limits",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 16.9,
+      "degraded": false,
+      "expected": [
+        "not",
+        "suggest"
+      ],
+      "found": [
+        "not",
+        "suggest"
+      ],
+      "missing": [],
+      "answer_chars": 5501,
+      "answer": "### Definition of Limit Existence and Sample Evidence\nThe formal definition of a limit at a point involves quantifiers that apply to all inputs sufficiently close to that point, rather than to a finite or even infinite sample of inputs. Specifically, to say \\( \\lim_{x \\to a} f(x) = L \\) means:\n\n\\[ \\forall \\epsilon > 0, \\exists \\delta > 0 : \\text{if } 0 < |x - a| < \\delta \\implies |f(x) - L| < \\epsilon. \\]\n\nThis is a statement about *all* points near \\( a \\), not just some or many points. Hence:\n\n- A *finite* table of values (samples of \\( x \\) close to \\( a \\)) can *suggest* a limit value \\( L \\) or reveal possible inconsistencies, but cannot *prove* that the limit exists, because it cannot cover all points in a neighborhood.\n\n- Similarly, a graph or plot may indicate limit behavior or oscillation but cannot satisfy the strict quantifier conditions of the limit definition.\n\n### Why Tables Cannot Prove Limits\nBecause the limit definition demands properties for *every* point sufficiently close to \\( a \\), any finite or even countably infinite discrete selection of points (like those in a table) is incomplete. There may be infinitely many other points (including irrational points, or points in a dense neighborhood) where the behavior differs. Thus:\n\n- Tables only offer heuristic evidence, not rigorous proof.\n\n- To prove a limit rigorously, one must use the proper \\( \\epsilon \\)-\\( \\delta \\) framework or equivalent logical arguments (like comparing one-sided limits, sequences, or applying the squeeze theorem with required conditions).\n\n### Common Mistakes Related to Tables and Limits\n1. Presenting a table or graph as a *proof* of the limit, ignoring that the formal definition requires universality over all points near \\( a \\).\n2. Concluding the limit does not exist just from oscillations seen in sampled points, without checking if oscillations diminish in amplitude (i.e., whether they affect the \\( \\epsilon \\)-\\( \\delta \\) definition).\n3. Applying the squeeze theorem incorrectly using bounds that hold only on one side of \\( a \\), resulting in only one-sided conclusions.\n4. Assuming continuity to justify plugging in \\( a \\) directly without establishing continuity, which creates a logical gap.\n\n### Summary\n- The limit's existence is a universal claim over infinitely many points near \\( a \\).\n- Tables are finite and hence cannot demonstrate that claim completely.\n- They can, however, guide intuition and expose contradictions if values fail to approach any limit consistently.\n- Formal proof demands rigorous application of the limit definition or appropriate theorems with stated hypotheses.\n\n### Assumptions and Limitations\n- We assume the function \\( f(x) \\) is defined (at least in a punctured neighborhood of \\( a \\)).\n- The limit in question is a two-sided limit unless otherwise specified.\n- The argument applies equally whether \\( a \\) is finite or infinite, but relevant quantifiers pertain to distance or bounds accordingly.\n\n\nSource IDs used: f6de6d60eb7d19b32b27c874, 31ef3183fa31d0a29ff586e0, d54ce1d08afa51f1affce287\n\nExample:\nEvaluate the following limit.\r\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right)\\]\nIn this example none of the previous examples can help us.  There’s no factoring or simplifying to do.  We can’t rationalize and one-sided limits won’t work.  There’s even a question as to whether this limit will exist since we have division by zero inside the cosine at \\(x=0\\).\n\nThe first thing to notice is that we know the following fact about cosine.\n\n        \\[ - 1 \\le \\cos \\left( x \\right) \\le 1\\]\r\n\nOur function doesn’t have just an \\(x\\) in the cosine, but as long as we avoid \\(x = 0\\) we can say the same thing for our cosine.\n\n        \\[ - 1 \\le \\cos \\left( {\\frac{1}{x}} \\right) \\le 1\\]\r\n\nIt’s okay for us to ignore \\(x = 0\\) here because we are taking a limit and we know that limits don’t care about what’s actually going on at the point in question, \\(x = 0\\) in this case.\n\nNow if we have the above inequality for our cosine we can just multiply everything by an \\(x^{2}\\) and get the following.\n\n        \\[ - {x^2} \\le {x^2}\\cos \\left( {\\frac{1}{x}} \\right) \\le {x^2}\\]\r\n\nIn other words we’ve managed to squeeze the function that we were interested in between two other functions that are very easy to deal with.  So, the limits of the two outer functions are.\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2} = 0\\hspace{0.25in}\\hspace{0.25in}\\mathop {\\lim }\\limits_{x \\to 0} \\left( { - {x^2}} \\right) = 0\\]\r\n\nThese are the same and so by the Squeeze theorem we must also have,\n\n        \\[\\mathop {\\lim }\\limits_{x \\to 0} {x^2}\\cos \\left( {\\frac{1}{x}} \\right) = 0\\]\r\n\nWe can verify this with the graph of the three functions.  This is shown below.\n\n![This graph consists of three functions.  First is \\(f\\left(x\\right) = {{x}^{2}}\\cos \\left( \\frac{1}{x} \\right)\\) that is a wave function with decreasing amplitude as it approaches the y-axis.  Above this function is the graph of \\(x^{2}\\) and this graph just touches all the peaks of \\(f\\left(x\\right)\\).  Below the graph of \\(f\\left(x\\right)\\) is the graph of \\(-x^{2}\\) and this just touches all the valleys of \\(f\\left(x\\right)\\).](https://tutorial.math.lamar.edu/Classes/CalcI/ComputingLimits_Files/image002.webp)\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "topic": "matrix",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 14.5,
+      "degraded": false,
+      "expected": [
+        "ماتریس افزوده",
+        "عملیات سطری",
+        "x = 1"
+      ],
+      "found": [
+        "ماتریس افزوده",
+        "عملیات سطری",
+        "x = 1"
+      ],
+      "missing": [],
+      "answer_chars": 6515,
+      "answer": "در این درس، قصد داریم دستگاه معادلات خطی زیر را با استفاده از روش حذف گاوسی حل کنیم:\n\n\\[\nx + 2y = 5 \\\\\n3x - y = 1\n\\]\n\nروش حذف گاوسی به معنی انجام عملیات سطری مقدماتی (交換 سطرها، ضرب سطر در عدد ناصفر و جمع مضربی از یک سطر به سطر دیگر) روی ماتریس افزوده دستگاه است که هدف آن کاهش ماتریس به شکل مثلثی پایینی یا بالایی است تا بتوان مجهولات را مرحله‌به‌مرحله به‌دست آورد. این روش چند مزیت دارد:\n\n- حفظ مجموعه جواب‌ها به دلیل مجاز بودن عملیات سطری\n- امکان تشخیص سازگاری یا ناسازگاری دستگاه (با توجه به رد صفرها و مقدار ثابت در ستون افزوده)\n- ساده شدن سیستم برای جایگذاری معکوس\n\nحالا، ابتدا ماتریس افزوده دستگاه را می‌نویسیم:\n\n\\[\n\\left[\n\\begin{array}{cc|c}\n1 & 2 & 5 \\\\\n3 & -1 & 1\n\\end{array}\n\\right]\n\\]\n\nهدف این است که سطر دوم را طوری تغییر دهیم که ضریب x در آن صفر شود تا معادله را نسبت به y حل کنیم. برای این کار، از عملیات سطری مجاز \"جدا کردن سطر دوم منهای 3 برابر سطر اول\" استفاده می‌کنیم:\n\n\\[\n(3, -1 | 1) - 3 \\times (1, 2 | 5) = (3-3, -1-6 | 1-15) = (0, -7 | -14)\n\\]\n\nاکنون معادله دوم به شکل \\(-7 y = -14\\) است که از آن نتیجه می‌گیریم \\(y = 2\\).\n\nسپس مقدار \\(y\\) را در معادله اول جایگذاری می‌کنیم تا \\(x\\) را پیدا کنیم:\n\n\\[\nx + 2 \\times 2 = 5 \\implies x + 4 = 5 \\implies x = 1\n\\]\n\nبرای اطمینان، مقادیر بدست آمده را در هر دو معادله اصلی چک می‌کنیم:\n\n- معادله اول: \\(1 + 2 \\times 2 = 1 + 4 = 5\\) درست است.\n- معادله دوم: \\(3 \\times 1 - 2 = 3 - 2 = 1\\) درست است.\n\nدر نهایت، دترمینان ماتریس ضرایب را بررسی می‌کنیم:\n\n\\[\n\\det\\left(\\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}\\right) = 1 \\times (-1) - 2 \\times 3 = -1 - 6 = -7\n\\]\n\nاز آنجا که دترمینان ناصفر است، نتیجه می‌گیریم دستگاه جواب یکتا دارد و عملیات حذف گاوسی معتبر است.\n\nاکنون سوال: چرا در مرحله دوم، سطر دوم را با خودش منهای سه برابر سطر اول جایگزین کردیم؟ (این عملیات چه هدفی را دنبال می‌کند؟)\n\nمثال:\nSolve each of the following systems of equations.\n\n\\(\\begin{align*}3x + y - 2z & = 2\\\\  x - 2y + z & = 3\\\\ 2x - y - 3z & = 3\\end{align*}\\)\nLet’s first write down the augmented matrix for this system.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r} {\\color{Red} 3}&1&{ - 2}&2\\\\1&{ - 2}&1&3\\\\2&{ - 1}&{ - 3}&3\\end{array}} \\right]\\]\r\n\nAs with the previous examples we will mark the number(s) that we want to change in a given step in red.  The first step here is to get a 1 in the upper left hand corner and again, we have many ways to do this.  In this case we’ll notice that if we interchange the first and second row we can get a 1 in that spot with relatively little work.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}{\\color{Red} 3}&1&{ - 2}&2\\\\1&{ - 2}&1&3\\\\2&{ - 1}&{ - 3}&3\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} \\leftrightarrow {R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\{\\color{Red} 3}&1&{ - 2}&2\\\\{\\color{Red} 2}&{ - 1}&{ - 3}&3\\end{array}} \\right]\\]\r\n\nThe next step is to get the two numbers below this 1 to be 0’s.  Note as well that this will almost always require the third row operation to do.  Also, we can do both of these in one step as follows.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\{\\color{Red} 3}&1&{ - 2}&2\\\\{\\color{Red} 2}&{ - 1}&{ - 3}&3\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_2} - 3{R_1} \\to {R_2}}\\\\{{R_3} - 2{R_1} \\to {R_3}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&{\\color{Red} 7}&{ - 5}&{ - 7}\\\\0&3&{ - 5}&{ - 3}\\end{array}} \\right]\\]\r\n\nNext, we want to turn the 7 into a 1.  We can do this by dividing the second row by 7.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&{\\color{Red} 7}&{ - 5}&{ - 7}\\\\0&3&{ - 5}&{ - 3}\\end{array}} \\right]\\begin{array}{*{20}{c}}{\\frac{1}{7}{R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&{\\color{Red} 3}&{ - 5}&{ - 3}\\end{array}} \\right]\\]\r\n\nSo, we got a fraction showing up here.  That will happen on occasion so don’t get all that excited about it.  The next step is to change the 3 below this new 1 into a 0.  Note that we aren’t going to bother with the -2 above it quite yet.  Sometimes it is just as easy to turn this into a 0 in the same step.  In this case however, it’s probably just as easy to do it later as we’ll see.\n\nSo, using the third row operation we get,\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&{\\color{Red} 3}&{ - 5}&{ - 3}\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_3} - 3{R_2} \\to {R_3}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&0&{\\color{Red}  - \\frac{{20}}{7}}&0\\end{array}} \\right]\\]\r\n\nNext, we need to get the number in the bottom right corner into a 1.  We can do that with the second row operation.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&0&{\\color{Red}  - \\frac{{20}}{7}}&0\\end{array}} \\right]\\begin{array}{*{20}{c}}{ - \\frac{7}{{20}}{R_3}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&{\\color{Red} 1}&3\\\\0&1&{\\color{Red}  - \\frac{5}{7}}&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\]\r\n\nNow, we need zeroes above this new 1.  So, using the third row operation twice as follows will do what we need done.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&{\\color{Red} 1}&3\\\\0&1&{\\color{Red}  - \\frac{5}{7}}&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_2} + \\frac{5}{7}{R_3} \\to {R_2}}\\\\{{R_1} - {R_3} \\to {R_1}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{\\color{Red}  - 2}&0&3\\\\0&1&0&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\]\r\n\nNotice that in this case the final column didn’t change in this step.  That was only because the final entry in that column was zero.  In general, this won’t happen.\n\nThe final step is then to make the -2 above the 1 in the second column into a zero.  This can easily be done with the third row operation.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{\\color{Red}  - 2}&0&3\\\\0&1&0&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} + 2{R_2} \\to {R_1}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&0&0&1\\\\0&1&0&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\]\r\n\nSo, we have the augmented matrix in the final form and the solution will be,\n\n              \\[x = 1,\\,\\,\\,y =  - 1,\\,\\,\\,z = 0\\]\r\n\nThis can be verified by plugging these into all three equations and making sure that they are all satisfied.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.advanced.question",
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 17.3,
+      "degraded": false,
+      "expected": [
+        "rank",
+        "consistent",
+        "determinant"
+      ],
+      "found": [
+        "rank",
+        "consistent",
+        "determinant"
+      ],
+      "missing": [],
+      "answer_chars": 4644,
+      "answer": "In linear algebra, the concepts of rank and determinant play crucial roles in determining whether a system of linear equations is consistent (has at least one solution) and whether its solution is unique.\n\n1. **Definitions and Concepts**\n\n- **Rank of a matrix:** The rank of a matrix is the dimension of its row space (or equivalently, column space). It measures the maximum number of linearly independent rows or columns. \n\n- **Coefficient matrix and augmented matrix:** In a system \\(A\\mathbf{x} = \\mathbf{b}\\), \\(A\\) is the coefficient matrix and \\([A|\\mathbf{b}]\\) the augmented matrix.\n\n- **Determinant:** The determinant is a scalar value computed only for square matrices. It provides information about invertibility: a square matrix is invertible if and only if its determinant is non-zero.\n\n2. **Role of Rank in Consistency and Uniqueness**\n\n- The system is **consistent** if and only if the rank of the coefficient matrix \\(A\\) equals the rank of the augmented matrix \\([A|\\mathbf{b}]\\). This means the system has at least one solution.\n\n- If \\(\\mathrm{rank}(A) < \\mathrm{rank}([A|\\mathbf{b}])\\), the system is **inconsistent**, having no solutions.\n\n- When the system is consistent, the **uniqueness** of the solution is determined by comparing the rank with the number of unknowns \\(n\\):\n  - If \\(\\mathrm{rank}(A) = n\\), the system has a **unique solution** (no free variables).\n  - If \\(\\mathrm{rank}(A) < n\\), the system has **infinitely many solutions** (free variables exist).\n\n3. **Role of the Determinant**\n\n- For **square systems** (where the coefficient matrix \\(A\\) is \\(n \\times n\\)):\n  - If \\(\\det(A) \\neq 0\\), the system is consistent and has a unique solution because \\(A\\) is invertible.\n  - If \\(\\det(A) = 0\\), the system may have no solutions or infinitely many, depending on the augmented matrix.\n\n- The determinant alone **does not confirm** whether the arithmetic in row operations (like elimination) was done correctly. It confirms existence and uniqueness *if* \\(A\\) is square and invertible, but it does not verify consistency for rectangular systems.\n\n4. **Important Assumptions and Limitations**\n\n- **Invertibility and determinants apply only to square matrices**. For rectangular systems, rank comparisons are essential since no inverse or determinant of the coefficient matrix is defined.\n\n- Computing the determinant cannot replace proper elimination steps and their verification.\n\n- Confusing the rank of the coefficient matrix with the rank of the augmented matrix can lead to erroneous conclusions about consistency.\n\n- Claiming unique solutions when \\(\\mathrm{rank}(A) < n\\) is incorrect.\n\n5. **Summary via an Example**\n\nConsider a system with two variables and three equations, written as augmented matrix \\(\n\\begin{bmatrix}1 & 1 & 2 \\\\\n2 & 2 & 4 \\\\\n1 & -1 & 0\n\\end{bmatrix}\n\\).\n\n- Perform row operations to find ranks:\n  - The second row becomes zero, indicating dependency.\n  - The third row simplifies to one nonzero equation for \\(y\\).\n\n- The rank of the coefficient matrix is 2, same as the rank of the augmented matrix.\n\n- Since rank equals the number of variables, the system is consistent with a unique solution.\n\n**In conclusion:**\n- **Consistency:** determined by \\(\\mathrm{rank}(A) = \\mathrm{rank}([A|\\mathbf{b}])\\).\n- **Uniqueness:** determined by whether \\(\\mathrm{rank}(A) = \\text{number of variables}\\).\n- **Determinant:** For square matrices, nonzero determinant guarantees invertibility, uniqueness, and existence, but not correctness of row operations.\n\nThis framework avoids common mistakes such as confusing ranks, misinterpreting determinants, or incorrectly applying inverse matrix reasoning to non-square systems. It also separates calculation steps (like elimination) from theoretical existence and uniqueness proofs.\n\n\\(\\boxed{\\text{Key conditions for a system } A\\mathbf{x}=\\mathbf{b}:}\n\\begin{cases}\n\\mathrm{rank}(A) = \\mathrm{rank}([A|\\mathbf{b}]) & \\Rightarrow \\text{consistent} \\\\\n\\mathrm{rank}(A) & = \\text{number of variables} \\Rightarrow \\text{unique solution} \\\\\n\\mathrm{rank}(A) & < \\text{number of variables} \\Rightarrow \\text{infinitely many solutions} \\\\\n\\end{cases}\n\\)\n\nSource passages used: 3885efcc540c4e6277ac3c96, b54fc6725cc9b00b81b602b7, 223fafc308bbc4b8accdbf28, b6b112d89fcacfea928ca5af, web:13a7159610133acc0c79668c, web:915a426eaa14fc3dc2d54fa9, web:e4e36ddc9821282ceeb32fd0\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "topic": "matrix",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 24.5,
+      "degraded": false,
+      "expected": [
+        "augmented matrix",
+        "row operation",
+        "x = 1"
+      ],
+      "found": [
+        "augmented matrix",
+        "row operation",
+        "x = 1"
+      ],
+      "missing": [],
+      "answer_chars": 7513,
+      "answer": "Let's solve the system of linear equations\n\\[\nx + 2y = 5 \\\\\n3x - y = 1\n\\]\nusing Gaussian elimination.\n\n### Why Gaussian elimination?\nThis method is suitable because it systematically transforms the system into a simpler equivalent system, typically triangular form, allowing us to solve for variables step-by-step via back-substitution. Gaussian elimination uses **elementary row operations**—swapping rows, scaling rows, and adding multiples of one row to another—which preserve the solution set of the system.\n\n### Step 1: Write the augmented matrix\nThe system corresponds to the augmented matrix\n\\[\n\\begin{bmatrix}\n1 & 2 & | & 5 \\\\\n3 & -1 & | & 1\n\\end{bmatrix}\n\\]\nwith rows \\((1, 2 | 5)\\) and \\((3, -1 | 1)\\).\n\n### Step 2: Eliminate the \\(x\\) term in the second row\nWe want to create a zero below the leading coefficient of \\(x\\) in the first row. To do this, replace the second row by\n\\[\nR_2 - 3 \\, R_1 \to R_2\n\\]\nwhich means subtracting three times the first row from the second. Perform the operation:\n\n- For the first element: \\(3 - 3*1 = 0\\)\n- For the second element: \\(-1 - 3*2 = -1 - 6 = -7\\)\n- For the augmented part: \\(1 - 3*5 = 1 - 15 = -14\\)\n\nThis yields the new matrix:\n\\[\n\\begin{bmatrix}\n1 & 2 & | & 5 \\\\\n0 & -7 & | & -14\n\\end{bmatrix}\n\\]\n\n### Question:\nWhy is creating a zero in this position beneficial for solving the system?\n\n### Step 3: Solve for \\(y\\)\nFrom the second row (in equation form):\n\\[\n-7y = -14 \\implies y = 2\n\\]\n\n### Step 4: Back-substitute to find \\(x\\)\nSubstitute \\(y=2\\) into the first equation:\n\\[\nx + 2(2) = 5 \\implies x + 4 = 5 \\implies x = 1\n\\]\n\n### Check the solution:\nSubstitute \\(x=1, y=2\\) into both original equations:\n- \\(1 + 2*2 = 1 + 4 = 5\\), correct\n- \\(3*1 - 2 = 3 - 2 = 1\\), correct\n\n### Additional insight:\nThe coefficient matrix\n\\[\n\\begin{bmatrix}\n1 & 2 \\\\\n3 & -1\n\\end{bmatrix}\n\\]\nhas determinant \\(1*(-1) - 2*3 = -1 - 6 = -7 \\neq 0\\), which confirms that the system has a unique solution.\n\n### Summary:\nGaussian elimination works here by systematically simplifying the system to isolate variables stepwise. This method is guaranteed to preserve solutions and, if the determinant of the coefficient matrix is nonzero, yields a unique solution.\n\n### Important caution:\n- When performing row operations, always apply the operation to the entire row including the constants to avoid silently changing the system.\n- If you find a row of all zeros with a nonzero constant, the system has no solutions (inconsistent).\n- If the system has fewer independent equations than unknowns, it has infinitely many solutions parametrized by the free variables.\n\nThis procedure follows the method and domain assumptions for solving square consistent systems with unique solutions using Gaussian elimination.\n\nExample:\nSolve each of the following systems of equations.\n\n\\(\\begin{align*}3x + y - 2z & = 2\\\\  x - 2y + z & = 3\\\\ 2x - y - 3z & = 3\\end{align*}\\)\nLet’s first write down the augmented matrix for this system.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r} {\\color{Red} 3}&1&{ - 2}&2\\\\1&{ - 2}&1&3\\\\2&{ - 1}&{ - 3}&3\\end{array}} \\right]\\]\r\n\nAs with the previous examples we will mark the number(s) that we want to change in a given step in red.  The first step here is to get a 1 in the upper left hand corner and again, we have many ways to do this.  In this case we’ll notice that if we interchange the first and second row we can get a 1 in that spot with relatively little work.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}{\\color{Red} 3}&1&{ - 2}&2\\\\1&{ - 2}&1&3\\\\2&{ - 1}&{ - 3}&3\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} \\leftrightarrow {R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\{\\color{Red} 3}&1&{ - 2}&2\\\\{\\color{Red} 2}&{ - 1}&{ - 3}&3\\end{array}} \\right]\\]\r\n\nThe next step is to get the two numbers below this 1 to be 0’s.  Note as well that this will almost always require the third row operation to do.  Also, we can do both of these in one step as follows.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\{\\color{Red} 3}&1&{ - 2}&2\\\\{\\color{Red} 2}&{ - 1}&{ - 3}&3\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_2} - 3{R_1} \\to {R_2}}\\\\{{R_3} - 2{R_1} \\to {R_3}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&{\\color{Red} 7}&{ - 5}&{ - 7}\\\\0&3&{ - 5}&{ - 3}\\end{array}} \\right]\\]\r\n\nNext, we want to turn the 7 into a 1.  We can do this by dividing the second row by 7.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&{\\color{Red} 7}&{ - 5}&{ - 7}\\\\0&3&{ - 5}&{ - 3}\\end{array}} \\right]\\begin{array}{*{20}{c}}{\\frac{1}{7}{R_2}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&{\\color{Red} 3}&{ - 5}&{ - 3}\\end{array}} \\right]\\]\r\n\nSo, we got a fraction showing up here.  That will happen on occasion so don’t get all that excited about it.  The next step is to change the 3 below this new 1 into a 0.  Note that we aren’t going to bother with the -2 above it quite yet.  Sometimes it is just as easy to turn this into a 0 in the same step.  In this case however, it’s probably just as easy to do it later as we’ll see.\n\nSo, using the third row operation we get,\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&{\\color{Red} 3}&{ - 5}&{ - 3}\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_3} - 3{R_2} \\to {R_3}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&0&{\\color{Red}  - \\frac{{20}}{7}}&0\\end{array}} \\right]\\]\r\n\nNext, we need to get the number in the bottom right corner into a 1.  We can do that with the second row operation.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&1&3\\\\0&1&{ - \\frac{5}{7}}&{ - 1}\\\\0&0&{\\color{Red}  - \\frac{{20}}{7}}&0\\end{array}} \\right]\\begin{array}{*{20}{c}}{ - \\frac{7}{{20}}{R_3}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&{\\color{Red} 1}&3\\\\0&1&{\\color{Red}  - \\frac{5}{7}}&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\]\r\n\nNow, we need zeroes above this new 1.  So, using the third row operation twice as follows will do what we need done.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{ - 2}&{\\color{Red} 1}&3\\\\0&1&{\\color{Red}  - \\frac{5}{7}}&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_2} + \\frac{5}{7}{R_3} \\to {R_2}}\\\\{{R_1} - {R_3} \\to {R_1}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&{\\color{Red}  - 2}&0&3\\\\0&1&0&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\]\r\n\nNotice that in this case the final column didn’t change in this step.  That was only because the final entry in that column was zero.  In general, this won’t happen.\n\nThe final step is then to make the -2 above the 1 in the second column into a zero.  This can easily be done with the third row operation.\n\n            \\[\\require{color}\\left[ {\\begin{array}{rrr|r}1&{\\color{Red}  - 2}&0&3\\\\0&1&0&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\begin{array}{*{20}{c}}{{R_1} + 2{R_2} \\to {R_1}}\\\\ \\to \\end{array}\\left[ {\\begin{array}{rrr|r}1&0&0&1\\\\0&1&0&{ - 1}\\\\0&0&1&0\\end{array}} \\right]\\]\r\n\nSo, we have the augmented matrix in the final form and the solution will be,\n\n              \\[x = 1,\\,\\,\\,y =  - 1,\\,\\,\\,z = 0\\]\r\n\nThis can be verified by plugging these into all three equations and making sure that they are all satisfied.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 12.9,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "جابه‌جایی"
+      ],
+      "found": [
+        "جابه‌جایی"
+      ],
+      "missing": [
+        "نادرست"
+      ],
+      "answer_chars": 2135,
+      "answer": "ضرب ماتریس ها به طور کلی جابه‌جایی‌پذیر نیست؛ یعنی برای دو ماتریس مربعی A و B، معمولاً داریم \\(AB \\neq BA\\). این خاصیت وقتی رخ می‌دهد که عملیات ضرب ماتریس را به ترتیب معکوس انجام دهیم، حاصل متفاوت باشد. یعنی ترتیب ضرب اهمیت دارد و نمی‌توان بدون تغییر نتیجه، جای ماتریس‌ها را عوض کرد.\n\n\\textbf{تعریف}\\:\nدو ماتریس \\(A\\) و \\(B\\) را تعویض‌پذیر می‌نامیم اگر و فقط اگر \\(AB = BA\\) باشد. این یعنی حاصل‌ضرب آنها در هر دو ترتیب برابر باشد.\n\n\\textbf{دلایل و محدودیت‌ها}\\:\n- ضرب ماتریس در حالت کلی خاصیت جابه‌جایی ندارد چون ضرب شامل جمع های درایه‌ای ترکیبی است که ترتیب آنها تاثیرگذار است.\n- تنها در حالت خاص، مثلا اگر هر دو ماتریس قطری مربعی با ابعاد مشابه باشند، ضرب آنها جابه‌جایی است.\n- ماتریس‌های تعویض‌پذیر، ماتریس‌هایی هستند که با هم \"تعویض‌پذیر\" (commute) باشند، یعنی \\(AB = BA\\).\n\n\\textbf{آثار و کاربردها}\\:\nضرب ماتریس‌ها خاصیت توزیع بر نسبت به جمع دارد و همچنین خاصیت شرکت‌پذیری (associativity) دارد، اما خاصیت جابه‌جایی ندارد. این موضوع باعث می‌شود که در بسیاری از کاربردها و اثبات‌ها باید ترتیب ضرب ماتریس‌ها رعایت شود.\n\n\\textbf{توجه}\\:\nما در اینجا به موارد خاص تعویض‌پذیری مثل ماتریس‌های قطری اشاره کردیم و تأکید کردیم که در حالت کلی خاصیت جابه‌جایی برقرار نیست. بنابراین نمی‌توان به طور کلی و بدون قید گفت تمام ضرب ماتریس‌ها جابه‌جایی‌پذیر است.\n\n\\textbf{نتیجه}\\:\nضرب ماتریس‌ها عموماً جابه‌جایی‌پذیر نیست، مگر در شرایط خاص و خاص مانند ماتریس‌های قطری یا مواردی که به طور خاص بررسی شده و اثبات شده است که \\(AB=BA\\).\n\nمنابع به ما اجازه نمی‌دهند این موضوع را اثبات کنیم، اما ذکر کردند که این خاصیت عموماً برقرار نیست و مثال‌هایی از ماتریس‌های قطری به عنوان موارد خاص ارائه شده‌اند.\n\n\\textbf{پیش‌فرض‌ها}\\:\n- ماتریس‌ها مربعی و اندازه‌ها منطبق هستند تا ضرب تعریف شود.\n- ماتریس‌ها واقعی یا مختلط فرض شده اند.\n\n\\textbf{خلاصه}\\:\nضرب ماتریس‌ها برخلاف ضرب عددی، خاصیت جابه‌جایی ندارد. این نکته در تحلیل‌ها و محاسبات ماتریسی بسیار اهمیت دارد و باید دقت شود که همیشه ترتیب ضرب را رعایت کنیم.\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.advanced.question",
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 24.3,
+      "degraded": false,
+      "expected": [
+        "رتبه",
+        "سازگار",
+        "دترمینان"
+      ],
+      "found": [
+        "رتبه",
+        "سازگار",
+        "دترمینان"
+      ],
+      "missing": [],
+      "answer_chars": 2968,
+      "answer": "برای تعیین سازگاری و یگانگی جواب دستگاه معادلات خطی، دو مفهوم کلیدی مورد بررسی قرار می‌گیرند: رتبه ماتریس و دترمینان. در این درس به طور دقیق این مفاهیم را تعریف و تشریح می‌کنیم که چگونه با استفاده از رتبه و دترمینان می‌توان سازگاری و یگانگی جواب‌ها را تحلیل کرد.\n\n**تعریف رتبه و دترمینان:**\n- رتبه یک ماتریس برابر است با بعد بیشینه‌ی زیرمجموعه‌ای از سطرها (یا ستون‌ها) که مستقل خطی باشند. \n- دترمینان فقط برای ماتریس‌های مربعی تعریف شده است و عددی اسکالر است که ویژگی‌های وارون‌پذیری ماتریس را مشخص می‌کند.\n\n**سازگاری دستگاه معادلات:**\nبرای دستگاه معادلات خطی، ابتدا ماتریس ضرایب و ماتریس افزوده (ماتریس ضرایب به همراه ستون مقادیر مستقل) تشکیل می‌شود. سازگاری دستگاه زمانی برقرار است که رتبه ماتریس ضرایب با رتبه ماتریس افزوده برابر باشد:\n\n$$\\text{سیستم سازگار است} \\iff \\operatorname{rank}(A) = \\operatorname{rank}([A|b])$$\n\nکه در آن $A$ ماتریس ضرایب و $[A|b]$ ماتریس افزوده است.\n\n**یگانگی یا بی‌نهایتی جواب‌ها:**\n- اگر دستگاه سازگار باشد و رتبه ماتریس برابر با تعداد مجهولات باشد.\n\n$$\\operatorname{rank}(A) = n$$\n\nآنگاه جواب یگانه است.\n- اگر رتبه ماتریس کمتر از تعداد مجهولات باشد، جواب‌ها به صورت مجموعه‌ای آفین با بُعد برابر \n\n$$n - \\operatorname{rank}(A)$$\n\nخواهد بود که در نتیجه جواب‌ها بی‌نهایت هستند.\n\n**نقش دترمینان:**\n- برای ماتریس‌های مربعی، دترمینان ناصفر معادل وارون‌پذیری ماتریس است؛ یعنی \n\n$$\\det(A) \\neq 0 \\implies A \\text{ معکوس‌پذیر است.}$$\n- وارون‌پذیری ماتریس دقیقا بیانگر این است که دستگاه معادلات متناظر جواب یگانه دارد.\n- وجود دترمینان صفر نشان می‌دهد که ماتریس دچار تکینی است و برداری ناصفر وجود دارد که به صفر نگاشت می‌شود.\n\n**روش تشخیص:**\n- ابتدا با استفاده از عملیات سطری مقدماتی رتبه ماتریس ضرایب و ماتریس افزوده تعیین می‌شود. این عملیات رتبه را حفظ می‌کنند و تغییر ظاهر سیستم باعث تغییر مجموعه جواب نمی‌شود.\n- اگر رتبه‌ها برابر نباشند سیستم ناسازگار است (جوابی ندارد).\n- اگر برابر باشند و برابر تعداد مجهولات باشند جواب یگانه است.\n- اگر برابر باشند و کمتر از تعداد مجهولات باشند جواب‌ها بی‌نهایت (دارای متغیرهای آزاد) هستند.\n\n**محدودیت‌ها و اشتباهات رایج:**\n- دترمینان تنها برای ماتریس‌های مربعی کاربرد دارد و برای دستگاه‌های مستطیلی (که تعداد معادلات با مجهولات برابر نیست) نمی‌توان به آن تکیه کرد.\n- رتبه ماتریس ضرایب و رتبه ماتریس افزوده را نباید با هم اشتباه گرفت، این تفاوت کلید تشخیص سازگاری است.\n- کسر از ادعای یگانگی جواب بدون توجه به رتبه دستگاه خطاست.\n- عملیات سطری غلط ممکن است منجر به نتایج نادرست شود، پس دترمینان ناصفر تضمین درستی محاسبه حذف نیست.\n\n**نتیجه‌گیری:**\nرتبه و دترمینان دو پارامتر اساسی برای تعیین سازگاری و یگانگی جواب دستگاه معادلات خطی هستند. مقایسه رتبه ماتریس ضرایب و افزوده سازگاری را مشخص می‌کند و دترمینان ناصفر ماتریس مربعی تضمین یگانگی جواب است. در دستگاه‌های غیرمربعی باید به جای دترمینان، به رتبه توجه کرد؛ زیرا وارون‌پذیری در این حالت معنی ندارد.\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 10.6,
+      "degraded": false,
+      "expected": [
+        "not",
+        "commutative"
+      ],
+      "found": [
+        "not",
+        "commutative"
+      ],
+      "missing": [],
+      "answer_chars": 2322,
+      "answer": "Matrix multiplication is a fundamental operation on matrices. Given two matrices \\(A\\) and \\(B\\), their product \\(AB\\) is defined when the number of columns of \\(A\\) equals the number of rows of \\(B\\). The result is a new matrix formed by the row-by-column sum of products of corresponding entries.\n\n**Definition of commutativity:** An operation \\(\\star\\) on elements \\(A\\) and \\(B\\) is commutative if \\(A \\star B = B \\star A\\) whenever both products are defined.\n\n**Matrix multiplication and commutativity:**\n- In general, for matrices \\(A\\) and \\(B\\) (square or rectangular), \\(AB \\neq BA\\); that is, matrix multiplication is not commutative.\n- Even when both \\(AB\\) and \\(BA\\) are defined and result in matrices of the same size, they often differ.\n- This non-commutative nature contrasts with multiplication of real numbers or scalars, where commutativity holds.\n\n**Examples and conditions:**\n- There exist special matrices where \\(AB = BA\\), such as when one matrix is the zero matrix, or when both matrices commute under multiplication. These are exceptions rather than the rule.\n- The product is associative, meaning \\((AB)C = A(BC)\\), and distributive over addition, e.g., \\(A(B + C) = AB + AC\\).\n\n**Assumptions and limitations:**\n- The typical setting is matrices over a field (like real numbers), but matrix entries may be over more general semirings where multiplication within entries need not be commutative.\n- The property of non-commutativity holds in full generality for matrix multiplication, except in special cases highlighted above.\n\n**Summary:**\nMatrix multiplication is not commutative in general; \\(AB \\neq BA\\) usually. This reflects the composition of linear transformations not commuting and influences the algebraic structure matrices form.\n\n**References used:** The explanations above rely on foundational knowledge of matrices, their multiplication, properties like associativity and distributivity, and the key fact of non-commutativity elaborated with examples and matrix algebra theory from the collected sources.\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.beginner.question",
+      "topic": "probability",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 13.9,
+      "degraded": false,
+      "expected": [
+        "فضای نمونه",
+        "پیشامد",
+        "هم‌شانس"
+      ],
+      "found": [
+        "فضای نمونه",
+        "پیشامد",
+        "هم‌شانس"
+      ],
+      "missing": [],
+      "answer_chars": 2272,
+      "answer": "در نظریه احتمال، ابتدا باید بفهمیم که فضاي نمونه چيست. فضای نمونه (که آن را با حرف S نشان می‌دهیم) مجموعهٔ تمام نتایج ممکن از یک آزمایش تصادفی است. آزمایش تصادفی یعنی آزمایشی که جواب آن از قبل قطعی نیست و ممکن است چند حالت مختلف رخ دهد.\n\nنماد S نشان‌دهنده کل فضای نمونه است، یعنی تمام اتفاق‌هایی که ممکن است رخ بدهد. به عنوان مثال، اگر یک تاس سالم شش‌وجهی بیندازیم، فضای نمونه ما شامل اعداد 1 تا 6 است. یعنی:\n\n$$S = \\{1, 2, 3, 4, 5, 6\\}$$\n\nهر کدام از این اعداد یک پیامد (نتیجهٔ ممکن) از آزمایش ما است.\n\nدقت کنید که پیامدها باید هم‌شانس باشند یعنی احتمال رخ دادن هر یک برابر باشد تا بتوانیم از قاعده شمارش ساده استفاده کنیم.\n\nحالا پیشامد چیست؟ پیشامد (event) مجموعه‌ای از پیامدهای فضای نمونه است. یعنی چند پیامد که ما به آن‌ها علاقه داریم یا آن‌ها را بررسی می‌کنیم.\n\nبرای مثال، پیشامد \"نتیجه زوج است\"، یعنی عدد 2، 4 یا 6 بیاید که به صورت مجموعه زیر است:\n\n$$A = \\{2, 4, 6\\}$$\n\nاحتمال پیشامد چیست؟ احتمال پیشامد یعنی عددی بین صفر و یک که می‌گوید چقدر احتمال دارد این پیشامد رخ دهد. صفر یعنی هرگز رخ نمی‌دهد و یک یعنی قطعا رخ می‌دهد.\n\nوقتی پیامدها هم‌شانس باشند و تعداد آن‌ها محدود باشد (متناهی باشد)، احتمال پیشامد A برابر است با تعداد پیامدهای پیشامد تقسیم بر تعداد پیامدهای کل فضای نمونه:\n\n$$P(A) = \\frac{n(A)}{n(S)}$$\n\nکه در آن $n(A)$ تعداد پیامدهای پیشامد و $n(S)$ تعداد پیامدهای کل فضای نمونه است.\n\nبیایید با مثال تاس ادامه دهیم:\n\nفضای نمونه: $S = \\{1, 2, 3, 4, 5, 6\\}$ (6 پیامد هم‌شانس)\n\nپیشامد $A$: \"نتیجه زوج است\" $= \\{2, 4, 6\\}$ که تعداد پیامدهایش 3 است.\n\nپس احتمال $A$ برابر است با:\n\n$$P(A) = \\frac{3}{6} = \\frac{1}{2}$$\n\nاین یعنی نصف مواقع، نتیجه تاس زوج خواهد بود.\n\nخلاصه:\n- فضای نمونه (نماد $S$): همه نتایج ممکن آزمایش\n- پیشامد (مثلا $A$): بخشی از این نتایج\n- احتمال پیشامد: نسبت تعداد پیامدهای آن پیشامد به کل پیامدهای فضای نمونه، زمانی که پیامدها هم‌شانس و فضای نمونه متناهی باشد.\n\nآیا سوالی در مورد یکی از این تعاریف دارید؟ اگر بله، بفرمایید تا آن را دقیق تر توضیح دهم.\n\nبرای تمرین، ببینید اگر فضاي نمونه انداختن یک سکه سالم برابر است با $\\{\\text{شیر}, \\text{خط}\\}$، احتمال پیشامد \"شیر آمدن\" چه عددی است؟\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.beginner.question",
+      "topic": "probability",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 13.4,
+      "degraded": false,
+      "expected": [
+        "sample space",
+        "event",
+        "equally likely"
+      ],
+      "found": [
+        "sample space",
+        "event",
+        "equally likely"
+      ],
+      "missing": [],
+      "answer_chars": 1822,
+      "answer": "Let's learn about the basics of probability.\n\n1. **Sample Space (S)**: This is the set of all possible outcomes of an experiment. For example, when you roll a regular six-sided die, the sample space is \\( S = \\{1, 2, 3, 4, 5, 6\\} \\), because these are all the possible results.\n\n2. **Probability \\(P(A)\\)**: This measures how likely an event \\(A\\) is to happen. An event \\(A\\) is a subset of the sample space. For example, the event \"rolling an even number\" on a die is \\( A = \\{2,4,6\\} \\).\n\n3. **Range of Probability**: Probability is always a number between 0 and 1 inclusive, \\(0 \\leq P(A) \\leq 1\\). If \\(P(A) = 0\\), the event cannot happen. If \\(P(A) = 1\\), the event must happen.\n\n4. **Equally Likely Outcomes**: When every possible outcome in \\(S\\) has the same chance of happening, the probability of an event \\(A\\) is:\n\n\\[\nP(A) = \\frac{\\text{number of outcomes in } A}{\\text{number of outcomes in } S}\n\\]\n\nThis means you count how many outcomes make the event happen and divide by the total outcomes.\n\n5. **Worked Example**:\n- Experiment: Roll one fair six-sided die.\n- Sample Space: \\( S = \\{1, 2, 3, 4, 5, 6\\} \\), six outcomes, all equally likely.\n- Event: \\( A = \\{2, 4, 6\\} \\) (rolling an even number).\n\nCalculate \\(P(A)\\):\n\\[\nP(A) = \\frac{3}{6} = \\frac{1}{2}\n\\]\nSo, the probability to roll an even number is \\(1/2\\).\n\nThis way, probability counts the favorable outcomes over total outcomes, but only if all outcomes are equally likely.\n\nWould you like to try finding the probability that the result is at least 5 using the same die?\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.intermediate.question",
+      "topic": "probability",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "partial",
+      "elapsed_seconds": 9.5,
+      "degraded": false,
+      "expected": [
+        "addition rule",
+        "intersection",
+        "2/3"
+      ],
+      "found": [
+        "addition rule",
+        "intersection"
+      ],
+      "missing": [
+        "2/3"
+      ],
+      "answer_chars": 1785,
+      "answer": "Let’s solve the problem of finding the probability of an even result or a result of at least 5 on a fair 6-sided die.\n\nWe are asked to use the addition rule of probability, which is the method applied when we want the probability of event A or event B happening. The addition rule is:\n\n$$\nP(A \\cup B) = P(A) + P(B) - P(A \\cap B)\n$$\n\nThis rule accounts for the fact that if events A and B can happen simultaneously, counting the probabilities separately and adding them would double-count the intersection. Therefore, we subtract the intersection once.\n\nHere’s how to identify the events:\n- Event A: Rolling an even number on the die. The even numbers on a 6-sided die are 2, 4, and 6.\n- Event B: Rolling a number at least 5. The numbers at least 5 are 5 and 6.\n\nLet's find each probability:\n1. Probability of event A (even result): \n\nThe favorable outcomes are {2, 4, 6}, so there are 3 outcomes out of 6 possible. Hence:\n\n$$\nP(A) = \\frac{3}{6} = \\frac{1}{2}\n$$\n\n2. Probability of event B (result at least 5): \n\nThe favorable outcomes are {5, 6}, so 2 outcomes out of 6. Hence:\n\n$$\nP(B) = \\frac{2}{6} = \\frac{1}{3}\n$$\n\n3. Probability of the intersection (even and at least 5): \n\nThe numbers that are even and at least 5 are only {6}, just one outcome.\n\n$$\nP(A \\cap B) = \\frac{1}{6}\n$$\n\nUsing the addition rule:\n\n$$\nP(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{6}\n$$\n\nBefore simplifying, can you explain why we subtract the intersection $P(A \\cap B)$ here rather than add it?\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.intermediate.question",
+      "topic": "probability",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 20.8,
+      "degraded": false,
+      "expected": [
+        "قاعده جمع",
+        "اشتراک",
+        "2/3"
+      ],
+      "found": [
+        "قاعده جمع",
+        "اشتراک"
+      ],
+      "missing": [
+        "2/3"
+      ],
+      "answer_chars": 1413,
+      "answer": "برای پیدا کردن احتمال اینکه در پرتاب یک تاس سالم عدد زوج یا عددی دست‌کم ۵ ظاهر شود، از قاعده جمع استفاده می‌کنیم. \\newline\n\nابتدا باید مجموعه پیشامدهای مطلوب را مشخص کنیم:\n- عدد زوج: ۲، ۴، ۶\n- عدد دست‌کم ۵: ۵، ۶\n\nحالا احتمال آمدن هر عدد در یک پرتاب تاس سالم برابر است با \\( \\frac{1}{6} \\). \n\nبنابراین احتمال آمدن عدد زوج:\n\\[ P(زوج) = P(2) + P(4) + P(6) = \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} = \\frac{3}{6} = \\frac{1}{2} \\]\n\nاحتمال آمدن عدد دست‌کم ۵:\n\\[ P(\\geq 5) = P(5) + P(6) = \\frac{1}{6} + \\frac{1}{6} = \\frac{2}{6} = \\frac{1}{3} \\]\n\nحال می‌خواهیم احتمال \\( P(زوج \\; یا \\; \\geq 5) \\) را بیابیم که برابر است با:\n\\[ P(زوج \\cup \\geq 5) = P(زوج) + P(\\geq 5) - P(زوج \\cap \\geq 5) \\]\n\nدقت کنید که عدد ۶ در هر دو مجموعه وجود دارد پس:\n\\[ P(زوج \\cap \\geq 5) = P(6) = \\frac{1}{6} \\]\n\nپس:\n\\[ P(زوج \\cup \\geq 5) = \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{6} = \\frac{3}{6} + \\frac{2}{6} - \\frac{1}{6} = \\frac{4}{6} = \\frac{2}{3} \\]\n\nقاعده جمع به این دلیل استفاده می‌شود که ما دو پیشامد داریم که ممکن است اشتراک داشته باشند (عدد ۶) و جرم احتمال اشتراک باید یک بار کم شود تا احتمال کل درست محاسبه گردد.\n\nسوال: چرا باید احتمال اشتراک (عدد ۶) را از مجموع احتمال‌ها کم کنیم؟\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+        "A requested visual was dropped because it did not match the block contract.",
+        "A requested visual was dropped because it did not match the block contract."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.advanced.question",
+      "topic": "probability",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 14.4,
+      "degraded": false,
+      "expected": [
+        "Bayes",
+        "base rate",
+        "0.0194"
+      ],
+      "found": [
+        "Bayes",
+        "base rate",
+        "0.0194"
+      ],
+      "missing": [],
+      "answer_chars": 2917,
+      "answer": "We want to find the probability that a person actually has a disease given that they tested positive for it. This is a classic application of Bayes' theorem in probability theory, which updates probabilities based on new evidence.\n\n\\textbf{Given values}:\n- Sensitivity (the probability the test is positive if the person has the disease): $P(T|D) = 0.99$\n- Specificity (the probability the test is negative if the person does not have the disease): $P(T^c|D^c) = 0.95$\n- Prevalence (the overall probability that a person has the disease before any test): $P(D) = 0.001$\n\n\\textbf{Goal}:\nFind the posterior probability $P(D|T)$, the probability that the person has the disease given the test is positive.\n\n---\n\n\\textbf{Step 1: Define events}\n- $D$: person has the disease\n- $D^c$: person does not have the disease\n- $T$: test is positive\n- $T^c$: test is negative\n\n---\n\n\\textbf{Step 2: Understand what is known}\n- Sensitivity: $P(T|D) = 0.99$\n- Specificity: $P(T^c|D^c) = 0.95$\n- Hence false positive rate: $P(T|D^c) = 1 - 0.95 = 0.05$\n- Prevalence: $P(D) = 0.001$ and $P(D^c) = 1 - 0.001 = 0.999$\n\n---\n\n\\textbf{Step 3: Calculate total probability of testing positive} $P(T)$ using the law of total probability:\n\n\\[\nP(T) = P(T|D)P(D) + P(T|D^c)P(D^c) = 0.99 \\times 0.001 + 0.05 \\times 0.999 = 0.00099 + 0.04995 = 0.05094\n\\]\n\n---\n\n\\textbf{Step 4: Apply Bayes' theorem}\nBayes' theorem states:\n\\[\nP(D|T) = \\frac{P(T|D)P(D)}{P(T)}\n\\]\nSubstitute values:\n\\[\nP(D|T) = \\frac{0.99 \\times 0.001}{0.05094} = \\frac{0.00099}{0.05094} \\approx 0.0194\n\\]\n\n---\n\n\\textbf{Interpretation:}\nEven though the sensitivity of the test is very high (99%), the probability that a person actually has the disease given a positive test is only about 1.94%. This occurs because the disease is very rare (prevalence 0.001), so false positives among healthy people dominate the positive test results.\n\n\\textbf{Assumptions and limitations:}\n- The sensitivity and specificity are assumed constant across the population; in practice, variations may exist.\n- The prior prevalence must be accurately known or estimated.\n- The calculations assume independence in testing outcomes according to the model.\n- Base rate neglect (ignoring prevalence) leads to wildly misleading conclusions.\n\nThis example teaches the crucial importance of using Bayesian updating to incorporate prior information (prevalence) into probability assessments.\n\n---\n\n\\textbf{Summary:}\n\\[\nP(D|T) = \\frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|D^c)P(D^c)} = \\frac{0.99 \\times 0.001}{0.99 \\times 0.001 + 0.05 \\times 0.999} \\approx 0.0194\n\\]\n\nHence the probability of disease given a positive test is approximately 1.94%.\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.advanced.question",
+      "topic": "probability",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 15.2,
+      "degraded": false,
+      "expected": [
+        "بیز",
+        "نرخ پایه",
+        "0.0194"
+      ],
+      "found": [
+        "بیز",
+        "نرخ پایه",
+        "0.0194"
+      ],
+      "missing": [],
+      "answer_chars": 2732,
+      "answer": "در مساله داده شده، هدف یافتن احتمال بیماری (D) به شرط مثبت شدن تست (T) است. برای این منظور باید نکات زیر را در نظر بگیریم:\n\n- حساسیت (sensitivity) آزمون: یعنی احتمال مثبت شدن تست به شرط اینکه بیمار واقعی باشد، برابر با \\(P(T|D)\\).\n- ویژگی (specificity) آزمون: یعنی احتمال منفی شدن تست به شرط اینکه بیمار نباشد، \\(P(T^c|D^c)\\).\n- شیوع بیماری (prevalence): احتمال بیماری در کل جمعیت، یعنی \\(P(D)\\).\n\nبرای محاسبه احتمال \\(P(D|T)\\) یعنی احتمال بیماری به شرط تست مثبت، از قاعده بیز استفاده می‌کنیم:\n\n\\[\nP(D|T) = \\frac{P(T|D) P(D)}{P(T)}\n\\]\n\nاما چون \\(P(T)\\) به صورت کلی ناشناخته است، از قانون احتمال کل استفاده می‌کنیم:\n\n\\[\nP(T) = P(T|D) P(D) + P(T|D^c) P(D^c)\n\\]\n\nدر اینجا \\(P(D^c) = 1 - P(D)\\) و \\(P(T|D^c) = 1 - \\text{specificity}\\) است.\n\n### تعاریف دقیق:\n- حساسیت: احتمال اینکه تست برای بیمار واقعی مثبت شود.\n- ویژگی: احتمال اینکه تست برای فرد غیر بیمار منفی باشد.\n- شیوع: احتمال عمومی بیماری در جامعه.\n\n### انجام محاسبه با داده‌های مساله:\n- حساسیت \\(P(T|D) = 0.99\\)\n- ویژگی \\(P(T^c|D^c) = 0.95 \\Rightarrow P(T|D^c) = 0.05\\)\n- شیوع \\(P(D) = 0.001\\)\n- \\(P(D^c) = 1 - 0.001 = 0.999\\)\n\nمحاسبه احتمال مثبت شدن تست:\n\\[\nP(T) = 0.99 \\times 0.001 + 0.05 \\times 0.999 = 0.00099 + 0.04995 = 0.05094\n\\]\n\nحالا احتمال بیماری به شرط مثبت شدن تست:\n\\[\nP(D|T) = \\frac{0.99 \\times 0.001}{0.05094} \\approx 0.0194\n\\]\n\nیعنی حتی پس از آزمایش مثبت، احتمال واقعی بودن بیماری فقط حدود 1.94 درصد است؛ که خیلی کمتر از مقدار حساسیت 0.99 است.\n\n### بحث و تحلیل:\n- این مثال نشان می‌دهد که حساسیت بالا به تنهایی نمی‌تواند تضمین کند که نتیجه مثبت تست حتما به معنای بیماری باشد، مخصوصا وقتی بیماری نادر است (شیوع کم).\n- وجود نرخ مثبت کاذب (1 - ویژگی) باعث می‌شود که تعداد زیادی از افراد سالم نیز تستشان مثبت شود و این موجب پایین آمدن احتمال واقعی بیماری به شرط مثبت می‌شود.\n- مدل محاسباتی فرض می‌کند که حساسیت و ویژگی ثابت و مستقل از جمعیت باشند که این فرض باید در کاربرد حقیقی بررسی شود.\n\n### محدودیت‌ها و فرض‌ها:\n- فرض ثابت بودن حساسیت و ویژگی در کل جمعیت.\n- فرض استقلال رخداد مثبت شدن آزمون از سایر عوامل بدون جایگذاری.\n- شرط مثبت بودن احتمال رویداد شرطی \\(P(T) > 0\\) ضروری است.\n- نرخ پایه (شیوع) باید دقیق تخمین زده شود؛ در غیر این صورت نتیجه بی‌اعتبار می‌شود.\n\n### نتیجه‌گیری:\nبرای کاربردهای واقعی در پزشکی یا سایر حوزه‌ها باید این نکات مدل و فرضیات را مدنظر قرار داد و همه پارامترها را دقیق برآورد نمود.\n\n\nمنابع استفاده شده برای این درس: مستندات داده شده شامل مثال حل‌شده، قاعده و شرط‌ها، و اشتباه‌های رایج (source_ids: [\"e3612037e0e06407dd026ccd\", \"856002d9f78145ad22224291\", \"94647ac4b3cd8cdd0bda62b0\"]).\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    }
+  ]
+}

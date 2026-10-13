@@ -1,96 +1,114 @@
-"""Write original starter explanations; never treat unreviewed PDF text as evidence."""
+"""Validate curated core notes and regenerate sidecars, the topic registry and the teaching rules.
+
+Phase W3 changed the contract of this script. The note bodies are now authored
+directly in ``sources/topics/<topic>.md`` and are the source of truth; they are
+rich bilingual documents (three levels, four structural units per level) and are
+deliberately *not* regenerated from a Python literal. This script:
+
+1. validates every curated note against the structural contract;
+2. writes the ``<topic>.metadata.json`` sidecars the evidence loader reads;
+3. regenerates ``sources/manifests/topic_registry.json``, which defines the core list;
+4. keeps ``sources/teaching_bestpractices.md`` in sync with the rule list.
+
+It fails loudly: on any structural defect it prints every problem and exits
+non-zero *without writing anything*, so a bad edit can never silently shrink the
+core list or ship a half-bilingual note.
+"""
 from __future__ import annotations
-from datetime import datetime, timezone
+
 import json
+import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-NOTES = {
-    "derivative": ("calculus-volume-1", "3.3 Differentiation Rules", "beginner: rate of change; intermediate: power rules; advanced: domain and local definition", r"""# Derivatives / مشتق
-These are original MathTutor starter notes, not an OpenStax transcript. Reference: Calculus Volume 1, section 3.3. The positive integer power rule was visually reviewed on PDF page 226 (printed page 218).
 
-## Meaning and notation / مفهوم و نمادها
-The derivative measures local change. For a function f, f'(a) is the limit of [f(a+h)-f(a)]/h as h approaches zero, if that finite two-sided limit exists. Here h is a nonzero change in the input. A corner may prevent a derivative even when the function is continuous.
-
-## Power rule / قاعده توان
-For a positive integer n, d(x^n)/dx = n*x^(n-1). Constants differentiate to zero; sums differentiate term by term. Negative powers require x != 0. For arbitrary real exponents, use x > 0 unless a wider real domain has been justified. A constant-base exponential needs its exponential rule, not the power rule.
-
-## Level adaptation / سطح یادگیری
-Beginner: define slope, input and output before the rule. Intermediate: rewrite polynomial terms before differentiating. Advanced: state the domain and distinguish a derivative formula from a proof that the function is differentiable. Connect a verified selected example to the rule; do not invent a replacement.
-"""),
-    "integral": ("calculus-volume-1", "5.3 The Fundamental Theorem of Calculus; 5.4 Integration Formulas", "beginner: primitive; intermediate: rewriting; advanced: convergence and conditions", r"""# Integrals / انتگرال
-Original MathTutor starter exposition, referencing Calculus Volume 1, sections 5.3–5.4, and Calculus Volume 2, chapter 1. Raw PDF extracts are not formula-reviewed teaching evidence.
-
-## Antiderivatives / پادمشتق
-An antiderivative F of f satisfies F'(x)=f(x) on the stated interval. An indefinite integral represents a family F(x)+C. For integer n != -1, integrate x^n as x^(n+1)/(n+1)+C, respecting the original domain. The exceptional case is integral 1/x dx = ln|x|+C on an interval excluding zero. Differentiating a proposed primitive checks its derivative, not an arbitrary value of C.
-
-## Definite integrals / انتگرال معین
-If f is continuous on [a,b] and F'=f there, the integral from a to b equals F(b)-F(a). Reversing the bounds reverses its sign. A definite integral is signed accumulation, not always geometric area. Singularities or infinite bounds require an improper-integral convergence argument before endpoint substitution.
-
-## Level adaptation / سطح یادگیری
-Beginner: separate definite and indefinite questions and define C. Intermediate: expand or simplify before choosing a rule, retaining exclusions. Advanced: check hypotheses of the fundamental theorem and every improper endpoint. Do not claim an initial-value problem solved until all conditions are checked.
-"""),
-    "limits": ("calculus-volume-1", "2.2 The Limit of a Function; 2.3 The Limit Laws", "beginner: approach; intermediate: one-sided comparison; advanced: squeeze and existence", r"""# Limits / حد
-Original MathTutor starter notes referencing Calculus Volume 1, sections 2.2–2.3.
-
-## Approaching a value / نزدیک شدن
-The limit describes outputs near an input a; f(a) itself may be missing or different. A two-sided finite limit exists only when the left and right limits exist and agree. Substitute directly only when continuity at the point justifies it.
-
-## Choosing a method / انتخاب روش
-For an indeterminate ratio 0/0, try factoring or a conjugate. Cancellation changes the expression only away from excluded inputs: preserve x != a while taking the limit. For piecewise definitions, compute both branches near the junction. A graph or decimal table suggests behavior but does not prove a limit.
-
-## Level adaptation / سطح یادگیری
-Beginner: explain 'near' with a simple input-output description. Intermediate: explain why a transformation preserves a punctured neighborhood. Advanced: justify existence, compare one-sided limits, or use the squeeze theorem with explicit bounds. Oscillation alone does not imply failure if its amplitude tends to zero.
-"""),
-    "algebra": ("college-algebra-2e", "2.2 Linear Equations in One Variable; 2.5 Quadratic Equations", "beginner: inverse operations; intermediate: method choice; advanced: excluded and repeated roots", r"""# Equations / معادله و جبر
-Original MathTutor starter notes referencing College Algebra 2e, sections 2.2 and 2.5.
-
-## Linear equations / معادلات خطی
-In ax+b=c with a != 0, x=(c-b)/a. Apply the same operation to both sides. If a=0, decide whether the resulting constant equality is true (all allowed values) or false (no solutions). Record denominator restrictions before clearing fractions.
-
-## Quadratic equations / معادلات درجه دوم
-For ax^2+bx+c=0 with a != 0, the discriminant is D=b^2-4ac. The quadratic formula is x=(-b ± sqrt(D))/(2a). Over the reals, D<0 has no roots, D=0 has one repeated root, and D>0 has two distinct roots. Factoring may be simpler. A transformation involving division by an unknown expression can lose roots; squaring or clearing denominators can introduce invalid candidates.
-
-## Level adaptation / سطح یادگیری
-Beginner: name the variable and inverse operation. Intermediate: compare factoring, completing the square and the formula. Advanced: justify equivalence of transformations, original domain restrictions and solution-set completeness. Substituting candidates proves that they are roots, not that every root was found.
-"""),
-    "matrix": ("college-algebra-2e", "7.5 Matrices and Matrix Operations; 7.6 Solving Systems with Gaussian Elimination", "beginner: entries and rows; intermediate: elimination; advanced: rank and solution families", r"""# Matrices / ماتریس
-Original MathTutor starter notes referencing College Algebra 2e, sections 7.5–7.6.
-
-## Shapes and multiplication / ابعاد و ضرب
-A matrix with m rows and n columns has shape m by n. Addition requires equal shapes. A product AB exists when the number of columns of A equals the number of rows of B; its (i,j) entry is the sum of A[i,k]*B[k,j] over k. In general AB differs from BA.
-
-## Systems and inverse / دستگاه و وارون
-An augmented matrix preserves the coefficients and right-hand sides of a linear system. Row swaps, nonzero row scaling and adding a multiple of another row preserve the solution set. A row [0 ... 0 | c] with c != 0 is inconsistent. For [[a,b],[c,d]], the determinant is ad-bc; an inverse exists exactly when this determinant is nonzero. An underdetermined consistent system needs free variables, not an invented unique solution.
-
-## Level adaptation / سطح یادگیری
-Beginner: label entries, shapes and what a row represents. Intermediate: show each row operation and recover the variables. Advanced: distinguish rank, consistency and a complete solution family. A determinant check alone does not verify a full worked elimination.
-"""),
-    "probability": ("introductory-statistics-2e", "3.1 Terminology; 3.3 Two Basic Rules of Probability", "beginner: outcomes; intermediate: conditional probability; advanced: independence assumptions", r"""# Probability / احتمال
-Original MathTutor starter notes referencing Introductory Statistics 2e, sections 3.1 and 3.3. No Paul probability examples are in the existing selected lesson links; this gap is explicit.
-
-## Outcomes and events / پیشامدها
-A sample space contains possible outcomes. An event A is a subset of those outcomes. Probability lies between zero and one. Counting favorable outcomes divided by all outcomes is valid only for a finite equally likely sample space.
-
-## Conditional and joint events / احتمال شرطی
-P(A complement)=1-P(A). P(A union B)=P(A)+P(B)-P(A intersection B). If P(B)>0, P(A|B)=P(A intersection B)/P(B). Independence means P(A intersection B)=P(A)*P(B); it must be justified. Mutually exclusive nonzero-probability events cannot also be independent.
-
-## Level adaptation / سطح یادگیری
-Beginner: identify outcomes and equally likely assumptions. Intermediate: distinguish 'and', 'or' and 'given'. Advanced: state conditioning assumptions and explain why dependence changes a calculation. Do not label unverified real-world frequency assumptions as mathematical facts.
-"""),
-    "optimization": ("calculus-volume-1", "4.7 Applied Optimization Problems", "beginner: objective; intermediate: constraint; advanced: global extremum and endpoints", r"""# Optimization / بهینه‌سازی
-Original MathTutor starter notes referencing Calculus Volume 1, section 4.7.
-
-## Model the question / مدل‌سازی
-Define the quantity to maximize or minimize, the variables, their units and the constraint. Express the objective as a function of one independent variable when justified. Translate physical restrictions into a feasible domain before differentiating.
-
-## Check candidates / بررسی جواب‌ها
-For a differentiable interior optimum, a vanishing derivative is a candidate condition. Also inspect nondifferentiable points and included endpoints. Compare objective values or give a global monotonicity argument. A critical point can be a minimum, maximum or neither; unbounded domains need additional analysis.
-
-## Level adaptation / سطح یادگیری
-Beginner: sketch the quantities and write a simple objective. Intermediate: substitute the constraint and retain units. Advanced: justify global optimality, feasible boundaries and whether a best value is attained. A derivative calculation alone does not verify a complete optimization solution.
-"""),
+# The core list is fixed here and must stay in sync with the notes on disk.
+# topic -> (book key, reference sections, level objectives)
+TOPICS = {
+    "derivative": (
+        "calculus-volume-1",
+        "3.3 Differentiation Rules",
+        "beginner: rate of change; intermediate: power rules; advanced: domain and local definition",
+    ),
+    "integral": (
+        "calculus-volume-1",
+        "5.3 The Fundamental Theorem of Calculus; 5.4 Integration Formulas",
+        "beginner: primitive; intermediate: rewriting; advanced: convergence and conditions",
+    ),
+    "limits": (
+        "calculus-volume-1",
+        "2.2 The Limit of a Function; 2.3 The Limit Laws",
+        "beginner: approach; intermediate: one-sided comparison; advanced: squeeze and existence",
+    ),
+    "algebra": (
+        "college-algebra-2e",
+        "1.5 Factoring Polynomials; 2.2 Linear Equations in One Variable; 2.5 Quadratic Equations",
+        "beginner: inverse operations; intermediate: method choice; advanced: excluded and repeated roots",
+    ),
+    "matrix": (
+        "college-algebra-2e",
+        "7.5 Matrices and Matrix Operations; 7.6 Solving Systems with Gaussian Elimination",
+        "beginner: entries and rows; intermediate: elimination; advanced: rank and solution families",
+    ),
+    "probability": (
+        "introductory-statistics-2e",
+        "3.1 Terminology; 3.3 Two Basic Rules of Probability",
+        "beginner: outcomes; intermediate: conditional probability; advanced: independence assumptions",
+    ),
+    "optimization": (
+        "calculus-volume-1",
+        "4.7 Applied Optimization Problems",
+        "beginner: objective; intermediate: constraint; advanced: global extremum and endpoints",
+    ),
+    "logarithms": (
+        "college-algebra-2e",
+        "6.3 Logarithmic Functions; 6.4 Graphs of Logarithmic Functions; "
+        "6.5 Logarithmic Properties; 6.6 Exponential and Logarithmic Equations",
+        "beginner: exponent question; intermediate: product/quotient/power rules and change of base; "
+        "advanced: domain and inverse-function conditions",
+    ),
+    "exponentials": (
+        "college-algebra-2e",
+        "6.1 Exponential Functions; 6.2 Graphs of Exponential Functions; "
+        "6.7 Exponential and Logarithmic Models",
+        "beginner: repeated growth; intermediate: compound and continuous models; "
+        "advanced: base conditions and model limits",
+    ),
+    "trigonometry": (
+        "calculus-volume-1",
+        "1.3 Trigonometric Functions; 3.5 Derivatives of Trigonometric Functions",
+        "beginner: right-triangle ratios; intermediate: unit circle and identities; "
+        "advanced: periodicity, domain and inverse branches",
+    ),
 }
+
+# Ordered structural contract for every note.
+LEVELS = (("Beginner", "مبتدی"), ("Intermediate", "متوسط"), ("Advanced", "پیشرفته"))
+UNITS = (
+    ("Definition", "تعریف"),
+    ("Rule and conditions", "قاعده و شرطها"),
+    ("Worked example", "مثال حل‌شده"),
+    ("Common mistakes", "اشتباه‌های رایج"),
+)
+
+# Roadmap W3 item 3 names the coverage logarithms must have. Checked case-insensitively.
+REQUIRED_TERMS = {
+    "logarithms": (
+        "inverse",
+        "base",
+        "change of base",
+        "product rule",
+        "quotient rule",
+        "power rule",
+        "domain",
+        "graph",
+        "natural logarithm",
+        "common mistakes",
+    ),
+}
+
+PERSIAN = re.compile(r"[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]")
 
 RULES = [
     "[beginner] Ask about one prerequisite and define every new symbol before using it.",
@@ -111,30 +129,199 @@ RULES = [
 ]
 
 
+def split_sections(text, level):
+    """Split ``text`` into (heading, body) blocks whose heading has exactly ``level`` hashes."""
+    pattern = re.compile(r"(?m)^#{%d}(?!#) " % level)
+    pieces, marks = [], [match.start() for match in pattern.finditer(text)]
+    for index, start in enumerate(marks):
+        end = marks[index + 1] if index + 1 < len(marks) else len(text)
+        block = text[start:end]
+        heading, _, body = block.partition("\n")
+        pieces.append((heading.strip(), body))
+    return pieces
+
+
+def paragraphs(body):
+    """One paragraph per non-empty line: the notes put the English line then its Persian line."""
+    return [line.strip() for line in body.splitlines() if line.strip()]
+
+
+def bilingual_unit(body):
+    """Return (has_english, has_persian) for a unit body."""
+    paras = paragraphs(body)
+    english = any(not PERSIAN.search(para) and re.search(r"[A-Za-z]", para) for para in paras)
+    persian = any(PERSIAN.search(para) for para in paras)
+    return english, persian
+
+
+def validate(topic, text, problems):
+    """Append a human-readable problem for every structural defect found in one note."""
+    lines = text.splitlines()
+    if not lines or not lines[0].startswith("# "):
+        problems.append(f"{topic}: missing a level-1 title line")
+        return None
+    title = lines[0][2:].strip()
+    parts = title.split(" / ")
+    if len(parts) != 2 or not all(part.strip() for part in parts):
+        problems.append(f"{topic}: title must be '# English / Persian', got {title!r}")
+        return None
+    english_title, persian_title = (part.strip() for part in parts)
+    if not PERSIAN.search(persian_title):
+        problems.append(f"{topic}: Persian half of the title has no Persian letters: {persian_title!r}")
+
+    levels = split_sections(text, 2)
+    expected_levels = [f"## {en} / {fa}" for en, fa in LEVELS]
+    got_levels = [heading for heading, _ in levels]
+    if got_levels != expected_levels:
+        problems.append(f"{topic}: level headings must be {expected_levels}, got {got_levels}")
+
+    for (level_english, _), (heading, body) in zip(LEVELS, levels):
+        label = f"{topic}/{level_english}"
+        intro = body.split("###", 1)[0]
+        if paragraphs(intro):
+            problems.append(f"{label}: the level heading must carry no prose; "
+                            f"fold any framing sentence into the Definition unit")
+
+        units = split_sections(body, 3)
+        expected_units = [f"### {en} / {fa}" for en, fa in UNITS]
+        got_units = [unit_heading for unit_heading, _ in units]
+        if got_units != expected_units:
+            problems.append(f"{label}: unit headings must be {expected_units}, got {got_units}")
+            continue
+
+        for (unit_english, _), (_, unit_body) in zip(UNITS, units):
+            has_en, has_fa = bilingual_unit(unit_body)
+            if not has_en:
+                problems.append(f"{label}/{unit_english}: no English paragraph")
+            if not has_fa:
+                problems.append(f"{label}/{unit_english}: no Persian paragraph")
+
+    for term in REQUIRED_TERMS.get(topic, ()):
+        if term.lower() not in text.lower():
+            problems.append(f"{topic}: required coverage term missing: {term!r}")
+
+    return dict(english=english_title, persian=persian_title)
+
+
+def verify_reference(book_key, book, section, topic, problems, warnings):
+    """Check the reference is not fabricated: the book must be local and each section must exist in it."""
+    text_path = ROOT / "sources/text/openstax" / f"{book_key}.md"
+    if not text_path.exists():
+        warnings.append(f"{topic}: extracted text for {book_key} is unavailable, section check skipped")
+        return
+    text = text_path.read_text(encoding="utf-8", errors="ignore")
+    for number in re.findall(r"\b\d+\.\d+\b", section):
+        if not re.search(r"(?m)^" + re.escape(number) + r"\s", text):
+            problems.append(f"{topic}: reference section {number} is not a heading in {book['title']}")
+
+
 def main():
     manifest = json.loads((ROOT / "sources/manifests/openstax_core.json").read_text(encoding="utf-8"))
-    books = {Path(b["raw_path"]).stem: b for b in manifest["books"]}
+    books = {Path(book["raw_path"]).stem: book for book in manifest["books"]}
     directory = ROOT / "sources/topics"
     directory.mkdir(parents=True, exist_ok=True)
-    registry = []
-    for topic, (book, section, levels, text) in NOTES.items():
-        record = books[book]
+
+    problems, warnings, notes, missing = [], [], {}, []
+    for topic, (book_key, section, _) in TOPICS.items():
         path = directory / (topic + ".md")
-        path.write_text(text.strip() + "\n", encoding="utf-8")
-        metadata = dict(topic=topic, provenance=dict(source_url=record["source_url"], section_title=section,
-            source_author="MathTutor project (original exposition), referencing " + record["title"],
-            retrieved_at=record["retrieved_at"], usage_terms_url=record["license_url"],
-            usage_terms="Original project exposition; reference textbook license observed: " + record["license"] + ". Raw extracted text has not been cleared for formula fidelity or embedding use."))
-        path.with_suffix(".metadata.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        registry.append(dict(topic=topic, english=topic, persian=text.splitlines()[0].split(" / ")[1],
-                             path=path.relative_to(ROOT).as_posix(), reference_book=record["title"], reference_section=section,
-                             level_objectives=levels, note_origin="original_project_exposition", textbook_transcript=False))
-    (ROOT / "sources/manifests/topic_registry.json").write_text(json.dumps(dict(phase=3, topics=registry, raw_book_retrieval_enabled=False,
-        limitation="Starter notes do not establish whole-book coverage. Calculus Volume 2 is acquired but no direct transcript is indexed."), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    header = "# Original teaching guidance\n\nProject-authored rules: five per level. Rules about spacing, worked examples, explanatory questions and connecting representations are informed by the IES practice guide [Organizing Instruction and Study to Improve Student Learning](https://ies.ed.gov/ncee/wwc/PracticeGuide/1). Other rules implement the tutor's own domain, verification and interaction policy. These are adaptations, not quoted rules or a claim of experimentally proven tutoring quality.\n\n"
-    (ROOT / "sources/teaching_bestpractices.md").write_text(header + "\n".join(f"{i}. {rule}" for i, rule in enumerate(RULES, 1)) + "\n", encoding="utf-8")
-    print("Prepared seven original starter topic notes and 15 level-specific teaching rules.")
+        if not path.exists():
+            missing.append(f"{topic}: no note file at {path.relative_to(ROOT).as_posix()}")
+            continue
+        text = path.read_text(encoding="utf-8")
+        titles = validate(topic, text, problems)
+        if titles:
+            notes[topic] = (path, titles)
+        if book_key not in books:
+            problems.append(f"{topic}: unknown reference book key {book_key!r}")
+        else:
+            verify_reference(book_key, books[book_key], section, topic, problems, warnings)
+
+    problems.extend(missing)
+    extra = sorted(p.stem for p in directory.glob("*.md") if p.stem not in TOPICS)
+    if extra:
+        problems.append(f"note files present but not in the core list: {extra}")
+
+    if problems:
+        print(f"Refusing to write: {len(problems)} structural problem(s).", file=sys.stderr)
+        for problem in problems:
+            print(f"  - {problem}", file=sys.stderr)
+        return 1
+
+    for warning in warnings:
+        print(f"warning: {warning}", file=sys.stderr)
+
+    registry = []
+    for topic, (book_key, section, levels) in TOPICS.items():
+        path, titles = notes[topic]
+        record = books[book_key]
+        metadata = dict(
+            topic=topic,
+            provenance=dict(
+                source_url=record["source_url"],
+                section_title=section,
+                source_author="MathTutor project (original exposition), referencing " + record["title"],
+                retrieved_at=record["retrieved_at"],
+                usage_terms_url=record["license_url"],
+                usage_terms="Original project exposition; reference textbook license observed: "
+                + record["license"]
+                + ". Raw extracted text has not been cleared for formula fidelity or embedding use.",
+            ),
+        )
+        # No learner_level key: every record matches every level, because the note
+        # carries all three levels and the loader must not filter two thirds of it.
+        path.with_suffix(".metadata.json").write_text(
+            json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        registry.append(
+            dict(
+                topic=topic,
+                english=titles["english"],
+                persian=titles["persian"],
+                path=path.relative_to(ROOT).as_posix(),
+                reference_book=record["title"],
+                reference_section=section,
+                level_objectives=levels,
+                note_origin="original_project_exposition",
+                textbook_transcript=False,
+            )
+        )
+
+    (ROOT / "sources/manifests/topic_registry.json").write_text(
+        json.dumps(
+            dict(
+                phase=3,
+                curation_phase="W3",
+                topics=registry,
+                raw_book_retrieval_enabled=False,
+                limitation="Curated notes cover the ten core topics at three levels. They do not "
+                "establish whole-book coverage: Calculus Volume 2 is acquired but no direct "
+                "transcript is indexed, and four core topics (probability, logarithms, "
+                "exponentials, trigonometry) have no source example in the selected example bank. "
+                "See sources/manifests/example_gap_report.json.",
+            ),
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    header = (
+        "# Original teaching guidance\n\nProject-authored rules: five per level. Rules about spacing, "
+        "worked examples, explanatory questions and connecting representations are informed by the IES "
+        "practice guide [Organizing Instruction and Study to Improve Student Learning]"
+        "(https://ies.ed.gov/ncee/wwc/PracticeGuide/1). Other rules implement the tutor's own domain, "
+        "verification and interaction policy. These are adaptations, not quoted rules or a claim of "
+        "experimentally proven tutoring quality.\n\n"
+    )
+    (ROOT / "sources/teaching_bestpractices.md").write_text(
+        header + "\n".join(f"{i}. {rule}" for i, rule in enumerate(RULES, 1)) + "\n", encoding="utf-8"
+    )
+
+    print(f"Validated {len(registry)} curated core topic notes (3 levels x 4 units each) and wrote sidecars, "
+          f"topic_registry.json and {len(RULES)} level-specific teaching rules.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -1,0 +1,598 @@
+{
+  "generated_at": "2026-10-13T17:14:57.926007+00:00",
+  "curation_phase": "W3",
+  "channel": "web",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "search_backend": "avalai_tavily",
+  "concurrency": 4,
+  "scope": "failed-only(13 item/language pairs)",
+  "rerun_of": "sources/manifests/evaluation_run_aborted_42.json",
+  "selected_pairs": [
+    {
+      "id": "logarithms.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "exponentials.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "exponentials.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "exponentials.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "exponentials.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "trigonometry.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "trigonometry.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "algebra.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "derivative.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "derivative.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "derivative.advanced.probe",
+      "language": "fa"
+    }
+  ],
+  "run_status": "complete",
+  "items": 8,
+  "runs": 13,
+  "planned_runs": 13,
+  "scoring": "Concept terms are a coarse presence check for a human read, not automatic correctness.",
+  "totals": {
+    "complete": 7,
+    "partial": 5,
+    "missed": 1,
+    "error": 0
+  },
+  "degraded_runs": 0,
+  "clean_runs": 13,
+  "degraded_totals": {
+    "complete": 0,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "clean_totals": {
+    "complete": 7,
+    "partial": 5,
+    "missed": 1,
+    "error": 0
+  },
+  "by_topic": {
+    "algebra": {
+      "complete": 0,
+      "partial": 1,
+      "missed": 0,
+      "error": 0
+    },
+    "derivative": {
+      "complete": 4,
+      "partial": 0,
+      "missed": 1,
+      "error": 0
+    },
+    "exponentials": {
+      "complete": 2,
+      "partial": 2,
+      "missed": 0,
+      "error": 0
+    },
+    "logarithms": {
+      "complete": 1,
+      "partial": 0,
+      "missed": 0,
+      "error": 0
+    },
+    "trigonometry": {
+      "complete": 0,
+      "partial": 2,
+      "missed": 0,
+      "error": 0
+    }
+  },
+  "quality_gaps": [
+    "algebra.advanced.probe/fa: partial missing=['ریشه ناخواسته']",
+    "derivative.advanced.probe/fa: missed missing=['نادرست', 'n*x^(n-1)']",
+    "exponentials.advanced.probe/en: partial missing=['multiply']",
+    "exponentials.intermediate.question/fa: partial missing=['پایه یکسان']",
+    "trigonometry.advanced.probe/en: partial missing=['sum formula']",
+    "trigonometry.advanced.probe/fa: partial missing=['نادرست']"
+  ],
+  "results": [
+    {
+      "id": "exponentials.advanced.probe",
+      "topic": "exponentials",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 10.4,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "ضرب"
+      ],
+      "found": [
+        "نادرست",
+        "ضرب"
+      ],
+      "missing": [],
+      "answer_chars": 1753,
+      "answer": "درس کامل دربارهٔ عبارت‌های توان به ویژه مقایسهٔ دو عبارت \\((b^x)^y\\) و \\(b^{x^y}\\):\n\nتعریف‌ها:\n- \\(b^x\\) یعنی عدد \\(b\\) را به توان \\(x\\) رساندن.\n- \\((b^x)^y\\) یعنی ابتدا \\(b\\) را به توان \\(x\\) برسانیم، نتیجه را به توان \\(y\\) برسانیم.\n- \\(b^{x^y}\\) یعنی ابتدا \\(x\\) را به توان \\(y\\) برسانیم، سپس \\(b\\) را به توان حاصل برسانیم.\n\nقاعده توان برای توانی از توانی:\n- به صورت کلی داریم \\((b^x)^y = b^{xy}\\) که مساوی با ضرب توان‌ها است.\n- این یکی از قوانین توان است که تحت شرایط خاصی برقرار است.\n\nآیا \\((b^x)^y = b^{x^y}\\)؟\n- پاسخ کوتاه: خیر، این دو عبارت معمولاً برابر نیستند.\n- توضیح: \\(b^{xy}\\) و \\(b^{x^y}\\) متفاوت‌اند مگر موارد خاص مثل \\(x=y=1\\) یا حالات محدودی که دو توان برابر شوند.\n- همچنین باید فرض کنیم \\(b > 0\\) و \\(b \\neq 1\\) تا قانون توان معتبر باشد.\n\nملاحظات و محدودیت‌ها:\n- فرض \\(b > 0\\) و \\(b \\neq 1\\) ضروری است زیرا برای \\(b=1\\) تابع نمایی ثابت است و قوانین توان یک‌به‌یک بودن را نقض می‌کند.\n- سرّی به اشتباه‌های رایج:\n    - اشتباه گرفتن \\((b^x)^y\\) و \\(b^{x^y}\\) رایج است ولی نادرست است.\n    - نتیجه باید با دقت و در نظر گرفتن دامنه انجام شود.\n\nروش مشاهده تفاوت:\n- در \\((b^x)^y = b^{xy}\\) توان‌ها ضرب می‌شوند.\n- در \\(b^{x^y}\\) اول توان \\(x^y\\) محاسبه و سپس پایه به آن به توان می‌رسد.\n\nجمع‌بندی:\n- \\((b^x)^y = b^{xy}\\) به شرط \\(b>0\\) و \\(b\\neq 1\\) صحیح است.\n- \\(b^{x^y}\\) ساختاری متفاوت دارد و فقط در موارد خاص برابر با \\(b^{xy}\\) می‌شود.\n- بنابراین \\((b^x)^y\\) با \\(b^{x^y}\\) معمولاً برابر نیستند.\n\nاین درس به‌طور دقیق فرض‌ها و قواعد مورد نیاز را توضیح داده و اشتباه رایج را تصحیح می‌کند.\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "exponentials.intermediate.question",
+      "topic": "exponentials",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 11.0,
+      "degraded": false,
+      "expected": [
+        "isolate",
+        "x = 4",
+        "same base"
+      ],
+      "found": [
+        "isolate",
+        "x = 4",
+        "same base"
+      ],
+      "missing": [],
+      "answer_chars": 1984,
+      "answer": "Let's solve the equation \\( 5 \\times 2^x = 80 \\) step by step, explaining why each step is valid.\n\n1. **Isolate the exponential term**: The equation involves a constant multiplier 5 and the exponential term \\( 2^x \\). To isolate \\( 2^x \\), divide both sides of the equation by 5. This is legitimate because 5 is a nonzero constant and does not depend on \\( x \\).\n\n\\[\n5 \\times 2^x = 80 \\quad \\Rightarrow \\quad 2^x = \\frac{80}{5} = 16\n\\]\n\n2. **Rewrite 16 as a power of 2**: Since the base on the left side is 2, we want to express 16 as \\( 2^n \\) for some integer \\( n \\).\n\n\\[ 16 = 2^4 \\]\n\n3. **Set exponents equal**: Because the exponential function with base greater than 1 is one-to-one (injective), if \\( 2^x = 2^4 \\), then the exponents must be equal.\n\n\\[ x = 4 \\]\n\n**Why does this method work?**\n- The step of dividing by 5 isolates the \\( 2^x \\) term, which allows us to compare pure exponential expressions.\n- The function \\( f(x) = 2^x \\) is strictly increasing and one-to-one, so \\( 2^u = 2^v \\) implies \\( u = v \\).\n- Expressing both sides with the same base enables direct comparison of exponents, simplifying the problem.\n\n**Common mistakes to avoid:**\n- Do not incorrectly combine 5 and \\( 2^x \\) into a single power like \\( 10^x \\).\n- Ensure the base is the same on both sides before equating exponents.\n\nThis approach follows the rule that equations of the form \\( b^u = b^v \\) reduce to \\( u = v \\) only when \\( b > 0 \\) and the exponential function is one-to-one.\n\n**Summary:**\n\\[\n5 \\cdot 2^x = 80 \\quad \\Rightarrow \\quad 2^x = 16 \\quad \\Rightarrow \\quad 2^x = 2^4 \\quad \\Rightarrow \\quad x = 4\n\\]\n\nWould you like to try explaining why we can set exponents equal in step 3 before proceeding?\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "exponentials.intermediate.question",
+      "topic": "exponentials",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 11.5,
+      "degraded": false,
+      "expected": [
+        "جدا کردن",
+        "x = 4",
+        "پایه یکسان"
+      ],
+      "found": [
+        "جدا کردن",
+        "x = 4"
+      ],
+      "missing": [
+        "پایه یکسان"
+      ],
+      "answer_chars": 2102,
+      "answer": "معادله‌ی مورد نظر ما به صورت\n\n$$5 \\times 2^x = 80$$\n\nاست. برای حل این معادله، از ویژگی‌های توانی استفاده می‌کنیم. \n\n\\textbf{گام 1: جدا کردن عبارت نمایی}\nبرای این که بتوانیم $2^x$ را جدا کنیم، دو طرف معادله را بر عدد 5 تقسیم می‌کنیم چون 5 عددی ثابت و غیرصفر است و به متغیر $x$ وابسته نیست. بنابراین:\n\n$$2^x = \\frac{80}{5} = 16$$\n\n\\textbf{چرا تقسیم بر 5 لازم است و مجاز؟}\nچون می‌خواهیم تنها قسمت نمایی را داشته باشیم تا بتوانیم گام بعدی حل را انجام دهیم. همچنین طبق قوانین معادلات، مجازیم که دو طرف معادله را بر یک عدد غیرصفر تقسیم کنیم بدون آنکه برابری خراب شود.\n\nحال، سوال: چرا نمی‌توانیم به جای این تقسیم مستقیم، به صورت $5 \\times 2^x = 80$ تبدیل کنیم $10^x = 80$؟ این اشتباه رایج به دلیل عدم شناخت قاعده توانی است؛ ضریب بیرون پایه نمی‌رود داخل توان! یعنی $5 \\times 2^x \\ne 10^x$.\n\n\\textbf{گام 2: یافتن توان مشابه}\nمی‌دانیم که عدد 16 را می‌توان به شکل توانی از 2 نوشت:\n\n$$16 = 2^4$$\n\nپس معادله ما به صورت زیر در می‌آید:\n\n$$2^x = 2^4$$\n\n\\textbf{گام 3: مساوی قرار دادن توان‌ها}\nتابع نمایی $b^x$ برای $b > 0$ یک‌به‌یک است؛ یعنی اگر پایه‌ها با هم مساوی باشند، مساوی بودن مقدار توانی آن‌ها به معنای مساوی بودن نماها است. بنابراین اگر:\n\n$$2^x = 2^4$$\nآنگاه باید داشته باشیم:\n\n$$x = 4$$\n\n\\textbf{بررسی جواب}\nبرای اطمینان، جایگذاری می‌کنیم:\n\n$$5 \\times 2^4 = 5 \\times 16 = 80$$\nکه درست است.\n\nبنابراین، مقدار مجهول $x$ جواب معادله است و برابر با 4 می‌باشد.\n\nاین روش مناسب است چون:\n1. معادله شامل نمایی است با یک پایه‌ی مشخص (2)، پس استفاده از قاعده \"قواعد توان‌ها\" که می‌گوید از معادله $b^u=b^v$ استنتاج می‌کنیم $u=v$ بسیار سریع و مستقیم است.\n2. حذف ضریب 5 اولین گام لازم برای جدا کردن جزء نمایی است.\n3. تبدیل عدد 16 به توان 2، باعث می‌شود پایه‌ها یکی شوند و بتوانیم از قاعده توانی استفاده کنیم.\n\nاگر پایه‌ها متفاوت می‌بودند، لازم بود از لگاریتم استفاده کنیم که در اینجا نیاز نیست.\n\n\n**اکنون شما می‌توانید پاسخ این سوال را با ذکر گام‌های بالا بیان کنید؟**\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "logarithms.advanced.probe",
+      "topic": "logarithms",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 12.9,
+      "degraded": false,
+      "expected": [
+        "ضرب",
+        "جمع",
+        "نادرست"
+      ],
+      "found": [
+        "ضرب",
+        "جمع",
+        "نادرست"
+      ],
+      "missing": [],
+      "answer_chars": 2596,
+      "answer": "تعریف لگاریتم به پایه b و آرگومان x به صورت زیر است:\n\n$$\\log_b(x) = y \\iff b^y = x$$\n\nیعنی لگاریتم عدد x به پایه b برابر است با توان y که باید پایه b را به آن برسانیم تا عدد x بدست آید.\n\nقاعده‌های اصلی لگاریتم روی اعداد حقیقی مثبت و پایه مثبت (و نابرابر 1) به صورت زیر است:\n\n- قاعده ضرب: $$\\log_b(xy) = \\log_b(x) + \\log_b(y)$$ برای $$x > 0, y > 0$$ و $$b > 0, b \\neq 1$$.\n- قاعده تقسیم: $$\\log_b(x/y) = \\log_b(x) - \\log_b(y)$$ برای $$x > 0, y > 0$$.\n- قاعده توان: $$\\log_b(x^r) = r \\log_b(x)$$ برای $$x > 0, r \\in \\mathbb{R}$$.\n\nدر هیچ‌کدام از قواعد بالا اشاره‌ای به لگاریتم جمع نشده است و مهم است بدانیم:\n\n$$\\log_b(x + y) \\neq \\log_b(x) + \\log_b(y)$$\n\nاین رابطه نادرست است؛ یعنی لگاریتم جمع دو عدد برابر جمع لگاریتم‌های آن اعداد نیست. این را با دقت بررسی می‌کنیم:\n\n- چون لگاریتم‌ها بر حسب توان‌ها تعریف شده‌اند و توان جمع‌ها را به جمع تبدیل نمی‌کند بلکه ضرب را به جمع تبدیل می‌کند، هیچ قاعده‌ای برای \"لگاریتم جمع\" وجود ندارد.\n- در واقع جمع داخل لگاریتم بصورت کلی قابل ساده‌سازی به شکل لگاریتم جمع دو لگاریتم نیست.\n\nبه عنوان نمونه، اگر سوالی باشد که بخواهیم لگاریتمی که جمع داخلش است را به ترکیبی از لگاریتم‌های جمع شده تبدیل کنیم، این کار نمی‌تواند صحت داشته باشد و خلاف قواعد اساسی لگاریتم است.\n\nهمچنین تذکر مهمی که در تمام قاعده‌های لگاریتمی وجود دارد رعایت شرایط دامنه است:\n\n- آرگومان‌های لگاریتم‌ها همیشه باید مثبت باشند؛ یعنی $$x > 0, y > 0$$.\n- پایه باید مثبت و نابرابر با 1 باشد.\n\nفرض کنیم شما لگاریتم‌هایی را با جمع داخل آرگومان دارید، برای ساده‌کردن لازم نیست و نمی‌توانید آن را به جمع لگاریتم‌ها شکسته و در واقع این کار اشتباه است.\n\nبا استناد به تمام قواعد و تعاریف بالا، پاسخ به پرسش شما: \n\n$$\\boxed{\\log_b(x + y) \\neq \\log_b(x) + \\log_b(y)}$$\n\n\n### محدودیت‌ها و فرضیات:\n- قواعد لگاریتم فقط برای اعداد حقیقی مثبت معتبرند.\n- پایه لگاریتم باید مثبت و متفاوت از 1 باشد.\n- لگاریتم جمع هیچ قاعده ساده‌شونده‌ای ندارد و این خود یک اصل مهم در درس لگاریتم است.\n- در اعداد مختلط بحث پیچیده‌تر و چندمقداری بودن لگاریتم و قواعد مختلف است که در اینجا مطرح نیست.\n\n\n### نتیجه‌گیری:\nلگاریتم حاصل جمع دو عدد برابر جمع لگاریتم‌های آن دو عدد نیست و حتی در ساده‌ترین دامنه‌ها نیز این رابطه برقرار نیست. بنابراین نباید چنین اشتباهی در محاسبات رخ دهد.\n\n\n### منابع استفاده شده:\n- ساختار و قاعده‌های لگاریتم بر اساس تعریف و قاعده محصول، تقسیم و توان\n- هشدار صریح درباره نبود قاعده برای لگاریتم جمع\n- رعایت دامنه اعداد حقیقی مثبت برای معتبر بودن قاعده‌ها\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "exponentials.advanced.probe",
+      "topic": "exponentials",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "partial",
+      "elapsed_seconds": 10.3,
+      "degraded": false,
+      "expected": [
+        "not",
+        "multiply"
+      ],
+      "found": [
+        "not"
+      ],
+      "missing": [
+        "multiply"
+      ],
+      "answer_chars": 1652,
+      "answer": "Let's analyze the question: Is \\((b^x)^y = b^{x^y}\\) true in general?\n\n**Recall the exponentiation law:**\n\nFor any positive base \\(b > 0\\) and real exponents \\(x, y\\), the law\n\n\\[\n(b^x)^y = b^{xy}\n\\]\n\nholds. Here, the exponentiation of \\(b^x\\) to the power \\(y\\) means \\(b\\) raised to the product \\(xy\\), not \\(x\\) raised to the power \\(y\\).\n\nSo, the expression \\(b^{x^y}\\) means \\(b\\) raised to the exponent \\(x^y\\), where \\(x^y\\) itself is an exponentiation.\n\n\n**Therefore, in general:**\n\n\\[\n(b^x)^y = b^{xy} \\neq b^{x^y}.\n\\]\n\nThey are equal only under special circumstances when \\(xy = x^y\\), which is not true in general. For example, take \\(b=2, x=3, y=2\\):\n\n- \\((2^3)^2 = 2^{3 \\times 2} = 2^6 = 64\\)\n\n- \\(2^{3^2} = 2^9 = 512\\)\n\nThese are not equal.\n\n**Assumptions and domain restrictions:**\n- The base \\(b\\) must be positive and not equal to 1 (i.e. \\(b > 0, b \\neq 1\\)) to satisfy the standard exponent laws.\n- Exponents \\(x, y\\) are real numbers.\n\n**Summary:**\nThe equality \\((b^x)^y = b^{x^y}\\) is generally false because exponent laws state \\((b^x)^y = b^{xy}\\), and \\(xy\\) and \\(x^y\\) are different operations.\n\n**In conclusion:**\nNo, \\((b^x)^y\\) is not equal to \\(b^{x^y}\\) in general. The correct identity is \\((b^x)^y = b^{xy}\\).\n\nThis completes the lesson on this equality question with domain and law justifications.\n\nSource IDs used: caf0614e599bcf25371244f5\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "trigonometry.advanced.probe",
+      "topic": "trigonometry",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 13.6,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "فرمول جمع"
+      ],
+      "found": [
+        "فرمول جمع"
+      ],
+      "missing": [
+        "نادرست"
+      ],
+      "answer_chars": 2096,
+      "answer": "مسأله: آیا \\( \\sin(a + b) = \\sin(a) + \\sin(b) \\) است؟\n\n1. تعریف و قاعده اصلی:\nتابع سینوس از جمع دو زاویه \\(a\\) و \\(b\\) توسط فرمول جمع سینوس‌ها به صورت زیر تعریف می‌شود:\n\\[\n\\sin(a + b) = \\sin(a) \\cos(b) + \\cos(a) \\sin(b)\n\\]\nاین فرمول یکی از روابط بنیادین مثلثاتی است و نشان می‌دهد که سینوس جمع دو زاویه، برابر با جمع سینوس یک زاویه ضرب در کسینوس زاویه دیگر و بالعکس است.\n\n2. آیا \\( \\sin(a + b) \\) مساوی \\( \\sin(a) + \\sin(b) \\) است؟\nبا توجه به فرمول فوق، داریم:\n\\[\n\\sin(a + b) = \\sin(a) \\cos(b) + \\cos(a) \\sin(b) \n\\]\nاما \\( \\sin(a) + \\sin(b) \\) به صورت جداگانه فقط جمع دو سینوس است و لزوماً برابر با مقدار بالا نیست مگر حالت‌های خاص که \\( \\cos(b) = 1 \\) و \\( \\cos(a) = 1 \\) صدق کند (مثلاً \\(a\\) یا \\(b\\) برابر صفر باشد). لذا به طور کلی:\n\\[\n\\sin(a + b) \\neq \\sin(a) + \\sin(b)\n\\]\n\n3. روابط مربوط به جمع سینوس‌ها:\nرابطه تبدیل جمع دو سینوس به ضرب عبارت است از:\n\\[\n\\sin(a) + \\sin(b) = 2 \\sin\\left( \\frac{a + b}{2} \\right) \\cos\\left( \\frac{a - b}{2} \\right)\n\\]\nاین رابطه با استفاده از هویت‌های جمع و تفریق سینوس و کسینوس اثبات می‌شود و فرمول‌هایی برای تبدیل جمع به ضرب هستند که در مباحث پیشرفته کاربرد دارند.\n\n4. اهمیت رعایت دامنه‌ها و محدودیت‌ها:\nتمامی هویت‌های مثلثاتی در دامنه اشتراک تعریف شده طرفین معتبرند. باید مراقب بود که در اثبات‌ها و کاربردها، دامنه تعریف توابع را نیز در نظر بگیریم تا جواب‌های غیراصلی را وارد نکنیم.\n\n5. نتیجه‌گیری:\nبا توجه به فرمول جمع سینوس‌ها، \\( \\sin(a + b) \\) برابر با \\( \\sin(a) + \\sin(b) \\) نیست. این دو عبارت متفاوت هستند و مقایسه آن‌ها نیازمند توجه دقیق به روابط مثلثاتی و دامنه‌های تعریف شده است.\n\n\nبنابراین، پاسخ به سؤال شما: خیر، \\( \\sin(a + b) \\) برابر با \\( \\sin(a) + \\sin(b) \\) نیست بلکه معادله صحیح:\n\\[\n\\sin(a + b) = \\sin(a) \\cos(b) + \\cos(a) \\sin(b)\n\\]\nاست.\n\nمنبع‌ها و شواهد مورد استفاده شامل تعریف فرمول جمع سینوس، اثبات روابط تبدیل جمع به ضرب، و قواعد مربوط به دامنه و اعتبار هویت‌های مثلثاتی می‌باشند.\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "trigonometry.advanced.probe",
+      "topic": "trigonometry",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "partial",
+      "elapsed_seconds": 14.5,
+      "degraded": false,
+      "expected": [
+        "not",
+        "sum formula"
+      ],
+      "found": [
+        "not"
+      ],
+      "missing": [
+        "sum formula"
+      ],
+      "answer_chars": 2708,
+      "answer": "We explore whether the identity \\( \\sin(a + b) = \\sin(a) + \\sin(b) \\) holds for all real numbers \\( a, b \\).\n\n### Exact Definitions\n- **Sine function** \\( \\sin(t) \\): For real \\( t \\) in radians, \\( \\sin(t) \\) can be defined via its power series:\n  \\[\n  \\sin(t) = t - \\frac{t^3}{3!} + \\frac{t^5}{5!} - \\cdots\n  \\]\n  This series converges for every real \\( t \\).\n\n- **Sine of a sum**: The canonical trigonometric identity for \\( \\sin(a + b) \\) is\n  \\[\n  \\sin(a + b) = \\sin(a) \\cos(b) + \\cos(a) \\sin(b).\n  \\]\n\n### Justification and Method\nThe question asks if \\( \\sin(a + b) \\) equals \\( \\sin(a) + \\sin(b) \\). Using the sine addition formula above, if \\( \\sin(a + b) = \\sin(a) + \\sin(b) \\), then\n\n\\[\n\\sin(a) \\cos(b) + \\cos(a) \\sin(b) = \\sin(a) + \\sin(b).\n\\]\n\nRearranged,\n\n\\[\n\\sin(a)(\\cos(b) - 1) + \\sin(b)(\\cos(a) - 1) = 0.\n\\]\n\nThis must hold for all real \\( a, b \\) for equality. But generally, \\( \\cos(b) - 1 \\) and \\( \\cos(a) - 1 \\) are not zero except when \\( a \\) and \\( b \\) are multiples of \\( 2\\pi \\).\n\n### Conclusion and Limitations\n- The identity \\( \\sin(a + b) = \\sin(a) + \\sin(b) \\) **does not hold** in general.\n- It only holds for special cases where \\( \\cos(a) = 1 \\) and \\( \\cos(b) = 1 \\), i.e., when \\( a = 2k\\pi \\) and \\( b = 2m\\pi \\) for integers \\( k, m \\).\n- Otherwise, the sine addition formula includes cosine terms which prevent a simple additive identity.\n\n### Domain Restrictions\n- The identities used are valid for all real \\( a, b \\) in radians.\n- No domain restrictions arise except if one tries to simplify incorrectly or omit terms.\n\n### Additional Clarification\nA formula exists for \\( \\sin(a) + \\sin(b) \\) expressed as a product:\n\n\\[\n\\sin(a) + \\sin(b) = 2 \\sin\\left( \\frac{a+b}{2} \\right) \\cos\\left( \\frac{a-b}{2} \\right).\n\\]\n\nThis formula highlights that \\( \\sin(a) + \\sin(b) \\) is **not** equal to \\( \\sin(a + b) \\), except in trivial instances.\n\nThus, the claim \\( \\sin(a + b) = \\sin(a) + \\sin(b) \\) is false beyond trivial points.\n\n#### Summary:\n- \\( \\sin(a+b) \\neq \\sin(a) + \\sin(b) \\) in general.\n- The correct sine addition identity contains cosine factors.\n- Equality holds only when \\( a, b \\) correspond to angles where cosine equals 1, i.e., multiples of \\( 2\\pi \\).\n\nThis covers the complete lesson respecting definitions, domain considerations, and assumptions.\n\n[source_ids: 3f99fc623da8ce9491cc2455, web:6a32ab12c4321de8eb5533bb, web:3c3f6624ead4a415852749e1, 708212be105dcce8632b2b72]\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "topic": "derivative",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 14.1,
+      "degraded": false,
+      "expected": [
+        "12*x^2 - 2",
+        "46"
+      ],
+      "found": [
+        "12*x^2 - 2",
+        "46"
+      ],
+      "missing": [],
+      "answer_chars": 3481,
+      "answer": "در این درس می‌خواهیم مشتق تابع \\( f(x) = 4x^3 - 2x + 7 \\) را پیدا کنیم و سپس مقدار مشتق در \\( x=2 \\) را بیابیم. برای این کار از قاعده مشتق‌گیری چند جمله‌ای استفاده می‌کنیم که به شرح زیر است:\n\nاگر \\( f(x) = ax^n \\) (چند جمله‌ای درجه \\( n \\)) باشد، مشتق آن برابر است با:\n\n\\[\nf'(x) = a n x^{n-1}\n\\]\n\nهمچنین مشتق هر عدد ثابت، صفر است. بنابراین مشتق جمله \\( 7 \\) صفر می‌شود.\n\n---\n\nتابع ما سه جمله دارد:\n\n1. \\( 4x^3 \\) که مشتق آن طبق فرمول بالا، \\( 4 \times 3 x^{3-1} = 12x^2 \\) است.\n\n2. \\( -2x \\) که این همان حالت \\( ax \\) است و مشتق آن برابر با ضریب \\( -2 \\) یعنی \\( -2 \\) می‌شود.\n\n3. \\( 7 \\) که عدد ثابتی است و مشتق آن صفر است.\n\nحالا از شما می‌پرسم: چرا برای مشتق گرفتن از هر جمله به صورت جداگانه اقدام کردیم؟ (پاسخ را بدهید تا ادامه دهیم.)\n\n---\n\nپاسخ: چون مشتق تابع جمعی برابر است با جمع مشتق هر جمله به صورت جداگانه؛ یعنی مشتق جمع برابر است با جمع مشتق‌ها. بنابراین می‌توانیم هر جمله را جداگانه مشتق بگیریم و سپس آنها را جمع کنیم.\n\nحال مشتق کل تابع را می‌نویسیم:\n\n\\[\nf'(x) = 12x^2 - 2\n\\]\n\nاکنون مقدار مشتق را در نقطه \\( x=2 \\) محاسبه می‌کنیم:\n\n\\[\nf'(2) = 12 \\times 2^2 - 2 = 12 \\times 4 - 2 = 48 - 2 = 46\n\\]\n\nپس پاسخ نهایی:\n\n\\[\nf'(x) = 12x^2 - 2 \\quad \\text{و} \\quad f'(2) = 46\n\\]\n\nاین روش به دلیل استفاده از قواعد مشتق‌گیری چند جمله‌ای بسیار ساده و مستقیم است و به دلیل پیاده بودن هر جمله و غیر پیچیده بودن تابع، نیازی به قواعدی مانند قاعده ضرب یا قاعده زنجیره‌ای نیست. در نتیجه، روشی که انتخاب کردیم کاملاً مناسب و مؤثر است.\n\nشناخت قوانین کلی مشتق‌گیری و دامنه مناسب هر قاعده، به ما کمک می‌کند در انتخاب روش صحیح مشتق‌گیری دقت کنیم و اشتباهات رایجی مانند از دست دادن ضریب‌ها (که در قاعده زنجیره‌ای رخ می‌دهد) را جلوگیری کنیم.\n\nمثال:\nDifferentiate each of the following functions.\n\n\\(\\displaystyle f\\left( x \\right) = \\frac{4}{{{x^6}}}\\)\nIt seems strange to have this one here rather than being the first part of this example given that it definitely appears to be easier than any of the previous two.  In fact, it is easier.  There is a point to doing it here rather than first.  In this case there are two ways to do compute this derivative.  There is an easy way and a hard way and in this case the hard way is the quotient rule.  That’s the point of this example.\n\nLet’s do the quotient rule and see what we get.\n\n            \\[f'\\left( x \\right) = \\frac{{\\left( 0 \\right)\\left( {{x^6}} \\right) - 4\\left( {6{x^5}} \\right)}}{{{{\\left( {{x^6}} \\right)}^2}}} = \\frac{{ - 24{x^5}}}{{{x^{12}}}} =  - \\frac{{24}}{{{x^7}}}\\]\r\n\nNow, that was the “hard” way.  So, what was so hard about it?  Well actually it wasn’t that hard, there is just an easier way to do it that’s all.  However, having said that, a common mistake here is to do the derivative of the numerator (a constant) incorrectly.  For some reason many people will give the derivative of the numerator in these kinds of problems as a 1 instead of 0!  Also, there is some simplification that needs to be done in these kinds of problems if you do the quotient rule.\n\nThe easy way is to do what we did in the previous section.\n\n              \\[f\\left( x \\right) = 4{x^{ - 6}} \\hspace{0.5in}  f'\\left( x \\right)  =  - 24{x^{ - 7}} =  - \\frac{{24}}{{{x^7}}}\\]\r\n\nEither way will work, but I’d rather take the easier route if I had the choice.\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: Ne(x, 0); x**6 != 0; x**7 != 0\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "topic": "derivative",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 12.2,
+      "degraded": false,
+      "expected": [
+        "12*x^2 - 2",
+        "46"
+      ],
+      "found": [
+        "12*x^2 - 2",
+        "46"
+      ],
+      "missing": [],
+      "answer_chars": 3318,
+      "answer": "Let's differentiate the function \n\n$$ f(x) = 4x^3 - 2x + 7. $$\n\nThis is a polynomial function where each term is a power of $x$ multiplied by a constant coefficient.\n\n### Step 1: Understand the method — power rule\n\nFor polynomial terms like $ax^n$, the derivative is found using the **power rule** which says:\n\n$$ \\frac{d}{dx} (x^n) = n x^{n-1}. $$\n\nWhen a constant multiplies the power, it stays as a factor:\n\n$$ \\frac{d}{dx} (a x^n) = a n x^{n-1}. $$\n\n### Step 2: Differentiate each term\n\nApply the power rule term by term:\n\n- For $4x^3$, the derivative is:\n\n  $$ 4 \\times 3 x^{3-1} = 12 x^2. $$\n\n- For $-2x$, recognize this as $-2 x^1$, so the derivative is:\n\n  $$ -2 \\times 1 x^{1-1} = -2 x^0 = -2. $$\n\n- For the constant term $7$, the derivative is zero, since constants do not change:\n\n  $$ \\frac{d}{dx} 7 = 0. $$\n\n### Step 3: Write the derivative function\n\nCombine the derivatives:\n\n$$ f'(x) = 12 x^2 - 2. $$\n\n### Step 4: Evaluate $f'(2)$\n\nPlug in $x=2$:\n\n$$ f'(2) = 12 \\times 2^2 - 2 = 12 \\times 4 - 2 = 48 - 2 = 46. $$\n\n**Why does the power rule work here?**\n\nEach term of the polynomial is a simple power of $x$, so differentiating each term separately and summing is valid because differentiation is a linear operation. The power rule is the fundamental method for differentiating powers of $x$.\n\n---\n\n**Question:** Before calculating $f'(2)$, explain why the derivative of the constant term $7$ is zero.\n\n*Take your time to consider this question.*\n\nExample:\nDifferentiate each of the following functions.\n\n\\(\\displaystyle f\\left( x \\right) = \\frac{4}{{{x^6}}}\\)\nIt seems strange to have this one here rather than being the first part of this example given that it definitely appears to be easier than any of the previous two.  In fact, it is easier.  There is a point to doing it here rather than first.  In this case there are two ways to do compute this derivative.  There is an easy way and a hard way and in this case the hard way is the quotient rule.  That’s the point of this example.\n\nLet’s do the quotient rule and see what we get.\n\n            \\[f'\\left( x \\right) = \\frac{{\\left( 0 \\right)\\left( {{x^6}} \\right) - 4\\left( {6{x^5}} \\right)}}{{{{\\left( {{x^6}} \\right)}^2}}} = \\frac{{ - 24{x^5}}}{{{x^{12}}}} =  - \\frac{{24}}{{{x^7}}}\\]\r\n\nNow, that was the “hard” way.  So, what was so hard about it?  Well actually it wasn’t that hard, there is just an easier way to do it that’s all.  However, having said that, a common mistake here is to do the derivative of the numerator (a constant) incorrectly.  For some reason many people will give the derivative of the numerator in these kinds of problems as a 1 instead of 0!  Also, there is some simplification that needs to be done in these kinds of problems if you do the quotient rule.\n\nThe easy way is to do what we did in the previous section.\n\n              \\[f\\left( x \\right) = 4{x^{ - 6}} \\hspace{0.5in}  f'\\left( x \\right)  =  - 24{x^{ - 7}} =  - \\frac{{24}}{{{x^7}}}\\]\r\n\nEither way will work, but I’d rather take the easier route if I had the choice.\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: Ne(x, 0); x**6 != 0; x**7 != 0\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+        "A requested visual was dropped because it did not match the block contract.",
+        "A requested visual was dropped because it did not match the block contract."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "algebra.advanced.probe",
+      "topic": "algebra",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "partial",
+      "elapsed_seconds": 31.9,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "ریشه ناخواسته"
+      ],
+      "found": [
+        "نادرست"
+      ],
+      "missing": [
+        "ریشه ناخواسته"
+      ],
+      "answer_chars": 4472,
+      "answer": "در حل معادلات، انجام عملیات ریاضیاتی به موازات در دو طرف معادله معمولاً مجموعهٔ جواب را حفظ می‌کند، ولی باید توجه داشت که همهٔ عملیات این ویژگی را ندارند و در مواردی اثرات خاصی بر مجموعه جواب دارند. این درس با استناد به منابع موجود به بیان دقیق این موضوع می‌پردازد.\n\n**تعاریف و قاعده‌ها:**\n- *عمل بازگشت‌پذیر* مانند افزودن یا تفریق عدد ثابت، ضرب یا تقسیم طرفین بر عددی غیر صفر، و جایگذاری عبارت‌های معادل، دقیقاً مجموعه جواب معادله را حفظ می‌کند.\n- *توان رساندن دو طرف معادله (مثلاً به توان ۲) یک عملیاتی است که فقط به صورت «استلزام» معتبر است؛ یعنی اگر دو طرف معادل باشند، توان دوم‌شان هم برابر است، ولی عکس این قضیه صادق نیست (\n$A = B \\Rightarrow A^2 = B^2$ ولی\n$A^2 = B^2 \\nRightarrow A = B$\n). پس، معادله‌ای که با توان رساندن به دست آمده است ممکن است جواب‌های اضافی (ریشه‌های ناخواسته) داشته باشد و باید جواب‌های کاندید شده در معادله اصلی آزموده شوند.\n- *ضرب کردن معادله در یک عبارت $E(x)$* باعث می‌شود مجموعه جواب جدید شامل تمام جواب‌های قبلی باشد ولی ممکن است جواب اضافه‌ای به دلیل نقاطی که $E(x) = 0$\n می‌شود، به مجموعه افزوده شود.\n\n**فرض‌ها و محدودیت‌ها:**\n- در معادلات گویا (کسر دار) باید از مقداری که مخرج برابر صفر شود، صرف‌نظر کرد؛ یعنی آن مقادیر باید کنار گذاشته شوند.\n- در معادلات حاوی رادیکال، عبارت زیر رادیکال باید در همهٔ نقاط کاندید، نامنفی باشد.\n\n**مثال محدودکننده:**\nدر معادله‌ای مانند \n$\\sqrt{x + 5} = x -1$\n، برای توان رساندن دو طرف به توان ۲، شرط نامنفی بودن طرف راستیمستقیماً باید بررسی شود (یعنی $x-1 \\geq 0$ و زیر رادیکال $x+5 \\geq 0$). پس کاندیداهایی که در معادله توان دوم یافته می‌شوند باید به معادله اصلی بازگردانده و بررسی شوند، چرا که ممکن است از توان رساندن، جواب اضافی ظاهر شده باشد.\n\n**اشتباه‌های رایج که منجر به تغییر مجموعه جواب می‌شوند:**\n1. فرض نا درستی که عملیات غیر بازگشت‌پذیر مانند توان رساندن را بازگشت‌پذیر دانستن است؛ که باعث پذیرفتن ریشه‌های ناخواسته می‌شود.\n2. اثبات کامل بودن جواب فقط با جایگذاری و آزمون، که نمی‌تواند تضمین کند جوابی از قلم نیفتاده باشد.\n3. تقسیم طرفین معادله بر عبارتی که شامل مجهول است، که مخفیانه ممکن است مجموعه جواب را تنگ یا تغییر دهد.\n\n**نتیجه‌گیری:**\nتوان رساندن دو طرف معادله همیشه باعث حفظ دقیق مجموعه جواب نمی‌شود و در صورت استفاده از آن باید مراحل آزمون و بررسی جواب‌ها را در معادله اصلی انجام داد. عملیات بازگشت‌پذیر مانند جمع، تفریق، ضرب و تقسیم (بر عدد غیر صفر) ضامن حفظ دقیق مجموعه جواب است.\n\nفرمول مهم:\n\nاگر $A = B$, آنگاه\n\n$$\nA^2 = B^2,\n$$\nولی معکوس آن\n\n$$\nA^2 = B^2 \\nRightarrow A = B\n$$\nصادق نیست و ممکن است معادله توان دوم، جواب‌های اضافی داشته باشد.\n\nبنابراین، لازم است در حل معادله پس از انجام عملیات غیربازگشت‌پذیر، جواب‌های به دست آمده را حتماً در معادله اصلی تست کنیم تا به جواب درست و کامل برسیم.\n\n***\n\nمنابع استفاده شده: 09471b3fe9b8b9f1be507296, 27d10fde4c1b4bbc9e9b5f2a, 54cc61156b5c9900e4fec130\n\nمثال:\nUse the quadratic formula to solve each of the following equations.\n\n\\(\\frac{3}{{y - 2}} = \\frac{1}{y} + 1\\)\nThe important part here is to make sure that before we start using the quadratic formula that we have the equation in standard form first.\n\nSo, an equation with fractions in it. The first step then is to identify the LCD.\n\n             \\[{\\mbox{LCD : }}y\\left( {y - 2} \\right)\\]\r\n\nSo, it looks like we’ll need to make sure that neither \\(y = 0\\) or \\(y = 2\\) is in our answers so that we don’t get division by zero.\n\nMultiply both sides by the LCD and then put the result in standard form.\n\n            \\[\\begin{align*}\\left( y \\right)\\left( {y - 2} \\right)\\left( {\\frac{3}{{y - 2}}} \\right) & = \\left( {\\frac{1}{y} + 1} \\right)\\left( y \\right)\\left( {y - 2} \\right)\\\\ 3y & = y - 2 + y\\left( {y - 2} \\right)\\\\ 3y & = y - 2 + {y^2} - 2y\\\\  0 & = {y^2} - 4y - 2\\end{align*}\\]\r\n\nOkay, it looks like we’ve got the following values for the quadratic formula.\n\n             \\[a = 1\\hspace{0.25in}b = - 4\\hspace{0.25in}c = - 2\\]\r\n\nPlugging into the quadratic formula gives,\n\n            \\[\\begin{align*}y & = \\frac{{ - \\left( { - 4} \\right) \\pm \\sqrt {{{\\left( { - 4} \\right)}^2} - 4\\left( 1 \\right)\\left( { - 2} \\right)} }}{{2\\left( 1 \\right)}}\\\\ & = \\frac{{4 \\pm \\sqrt {24} }}{2}\\\\ & = \\frac{{4 \\pm 2\\sqrt 6 }}{2}\\\\ & = 2 \\pm \\sqrt 6 \\end{align*}\\]\r\n\nNote that both of these are going to be solutions since neither of them are the values that we need to avoid.\nVerification: verified; Complete finite solveset result compared by exact symbolic root-set equality on the original domain, including denominator exclusions.\nAssumptions: y - 1*2 != 0; y != 0\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "derivative.advanced.probe",
+      "topic": "derivative",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "missed",
+      "elapsed_seconds": 9.6,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "n*x^(n-1)"
+      ],
+      "found": [],
+      "missing": [
+        "نادرست",
+        "n*x^(n-1)"
+      ],
+      "answer_chars": 2375,
+      "answer": "برای پاسخ به سؤال «آیا مشتق \\(x^n\\) برابر \\(x^{n-1}\\) است؟»، ابتدا باید تعریف و قاعده مشتق‌گیری توابع توانی را به دقت بررسی کنیم. قانون اصلی مشتق توابع از نوع \\(x^n\\) به صورت زیر است:\n\n\\[\n\\frac{d}{dx} x^n = n \\cdot x^{n-1}\n\\]\n\nیعنی هنگام مشتق‌گیری از \\(x^n\\)، ضریب توان \\(n\\) از توان به جلو منتقل می‌شود و توان عدد \\(1\\) کم می‌شود. این قاعده برای هر عدد حقیقی \\(n\\) به شرطی که دامنه تابع و مشتق کنترل شود صحیح است.\n\nشرایط و دامنه این قاعده عبارتند از:\n- اگر \\(n\\) عدد حقیقی دلخواه باشد، قاعده روی بازه \\(x > 0\\) برقرار است. علت این است که برای \\(x < 0\\) ممکن است \\(x^n\\) مقدار حقیقی نداشته باشد که قاعده مشتق‌پذیری روی اعداد حقیقی به درستی اجرا شود.\n- برای توان‌های گویا که مخرج آن‌ها عدد فرد باشد، می‌توان دامنه را به طور صریح بررسی کرد و قاعده را گسترش داد.\n\nبنابراین پاسخ سؤال این است که مشتق تابع \\(x^n\\) نه برابر \\(x^{n-1}\\) بلکه برابر \\(n \\cdot x^{n-1}\\) است.\n\nمحدودیت‌ها و نکات مهم:\n- اشتباه معمول این است که ضریب \\(n\\) را فراموش کنیم. این ضریب نقش مهمی در مقدار مشتق دارد.\n- دامنه‌ی تابع بعد از مشتق‌گیری معمولاً کوچکتر از دامنه اولیه‌ی تابع است؛ مثلاً مشتق \\(1/x\\) در \\(x=0\\) تعریف ندارد.\n\nنتیجه‌گیری:\nقاعده مشتق تابع توان بیان می‌کند که:\n\n\\[\n\\frac{d}{dx} x^n = n x^{n-1}\n\\]\n\nالبته با شرط رعایت دامنه و توجه به اینکه \\(x\\) باید در محدوده‌ای باشد که \\(x^n\\) و مشتق آن تعریف و حقیقی باشد.\n\nبنابراین، اذعان داریم که مشتق \\(x^n\\) مساوی \\(x^{n-1}\\) نیست و باید ضریب \\(n\\) را نیز در نظر گرفت.\n\nهمچنین، برای درک بهتر، مثال‌هایی مانند مشتق \\(x^3\\) برابر با \\(3x^2\\) و مشتق \\(x\\) برابر با 1 را می‌توان بررسی کرد که با قانون فوق سازگارند.\n\nمثال:\nDifferentiate each of the following functions.\n\n\\(h\\left( x \\right) = {x^\\pi } - {x^{\\sqrt 2 }}\\)\nIn all of the previous examples the exponents have been nice integers or fractions.  That is usually what we’ll see in this class.  However, the exponent only needs to be a number so don’t get excited about problems like this one.  They work exactly the same.\n\n              \\[h'\\left( x \\right) = \\pi {x^{\\pi  - 1}} - \\sqrt 2 {x^{\\sqrt 2  - 1}}\\]\r\n\nThe answer is a little messy and we won’t reduce the exponents down to decimals.  However, this problem is not terribly difficult it just looks that way initially.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "derivative.beginner.question",
+      "topic": "derivative",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 20.6,
+      "degraded": false,
+      "expected": [
+        "نرخ تغییر",
+        "حد",
+        "خارج قسمت تفاضلی"
+      ],
+      "found": [
+        "نرخ تغییر",
+        "حد",
+        "خارج قسمت تفاضلی"
+      ],
+      "missing": [],
+      "answer_chars": 4095,
+      "answer": "درس امروز درباره مشتق است. مشتق اندازه می‌گیرد که خروجی یک تابع چقدر سریع با تغییر ورودی تغییر می‌کند. حال بیایید قدم به قدم مفهوم را توضیح دهیم:\n\nابتدا اجازه دهید هر نماد را تعریف کنیم. فرض کنیم \\(f\\) یک تابع است که به هر مقدار ورودی، یک مقدار خروجی می‌دهد. مثلاً تابع \\(f\\) ممکن است \\(f(x) = x^2\\) باشد، یعنی به هر عدد \\(x\\)، مربع آن عدد را نسبت می‌دهد.\n\nحالا فرض کنید می‌خواهیم بدانیم در یک نقطه‌ی خاص \\(a\\) چقدر مقدار خروجی تابع \\(f\\) سریع تغییر می‌کند اگر \\(x\\) کمی بزرگ‌تر یا کوچکتر از \\(a\\) شود. برای این کار از \\(h\\) استفاده می‌کنیم که نشان‌دهنده تغییر کوچکی در ورودی است، یعنی مقدار ورودی \\(a+h\\) است.\n\nمقدار تغییر خروجی تابع نسبت به مقدار تغییر ورودی برابر است با اختلاف \\(f(a+h) - f(a)\\) تقسیم بر \\(h\\). این عبارت را خارج قسمت تفاضلی می‌نامیم:\n\n\\[\n\\frac{f(a+h) - f(a)}{h}\n\\]\n\nاما این نسبت وقتی که \\(h\\) بسیار کوچک شود، یعنی \\(h \\to 0\\)، به یک مقدار محدود می‌رسد. این حد را تعریف مشتق تابع در نقطه \\(a\\) می‌نامیم:\n\n\\[\nf'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}\n\\]\n\nجایی که:\n- \\(f'(a)\\) علامت مشتق تابع \\(f\\) در نقطه \\(a\\) است.\n- \\(\\lim_{h \\to 0}\\) یعنی وقتی که \\(h\\) به سمت صفر می‌رود (تغییر ورودی خیلی کوچک می‌شود).\n\nاگر این حد وجود داشته و مقدار نهایی آن عددی متناهی باشد، می‌گوییم \\(f\\) در نقطه \\(a\\) مشتق‌پذیر است.\n\nمقدار \\(f'(a)\\) نشان‌دهنده شیب خط مماس بر نمودار تابع \\(f\\) در نقطه \\(a\\) است. این مقدار نشان می‌دهد که چقدر نمودار تابع در آن نقطه به صورت خطی و سریع تغییر می‌کند. برای مثال، اگر مقدار \\(f'(a)\\) بزرگ باشد، تابع سریع تغییر می‌کند، و اگر صفر باشد، تابع در آن نقطه تخت است.\n\nخلاصه:\n- \\(f'(a)\\) مشتق تابع \\(f\\) در نقطه \\(a\\) است.\n- مشتق نشان‌دهنده نرخ تغییر خروجی تابع نسبت به ورودی است.\n- مشتق با حد خارج قسمت تفاضلی تعریف می‌شود.\n\nامیدوارم مفهوم واضح شده باشد! اگر سوالی دارید بپرسید.\n\nبرای تمرین، می‌توانید فرض کنید \\(f(x) = x^2\\) و مشتق را در نقطه \\(x=3\\) با تعریف حد حساب کنید و نتیجه \\(f'(3) = 6\\) را بیابید.\n\nمنبع‌ها: منابع محلی و منابع وب موجود.\n\nمثال:\nFind the derivative of the following function using the definition of the derivative.\r\n\n        \\[f\\left( x \\right) = 2{x^2} - 16x + 35\\]\nSo, all we really need to do is to plug this function into the definition of the derivative, \\(\\eqref{eq:eq2}\\), and do some algebra.  While, admittedly, the algebra will get somewhat unpleasant at times, but it’s just algebra so don’t get excited about the fact that we’re now computing derivatives.\n\nFirst plug the function into the definition of the derivative.\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{f\\left( {x + h} \\right) - f\\left( x \\right)}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{2{{\\left( {x + h} \\right)}^2} - 16\\left( {x + h} \\right) + 35 - \\left( {2{x^2} - 16x + 35} \\right)}}{h}\\end{align*}\\]\r\n\nBe careful and make sure that you properly deal with parenthesis when doing the subtracting.\n\nNow, we know from the previous chapter that we can’t just plug in \\(h = 0\\) since this will give us a division by zero error.  So, we are going to have to do some work.  In this case that means multiplying everything out and distributing the minus sign through on the second term.  Doing this gives,\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{2{x^2} + 4xh + 2{h^2} - 16x - 16h + 35 - 2{x^2} + 16x - 35}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{4xh + 2{h^2} - 16h}}{h}\\end{align*}\\]\r\n\nNotice that every term in the numerator that didn’t have an h in it canceled out and we can now factor an h out of the numerator which will cancel against the h in the denominator.  After that we can compute the limit.\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{h\\left( {4x + 2h - 16} \\right)}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} 4x + 2h - 16\\\\ &  = 4x - 16\\end{align*}\\]\r\n\nSo, the derivative is,\n\n        \\[f'\\left( x \\right) = 4x - 16\\]\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: none supplied\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "derivative.beginner.question",
+      "topic": "derivative",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 17.8,
+      "degraded": false,
+      "expected": [
+        "rate of change",
+        "limit",
+        "difference quotient"
+      ],
+      "found": [
+        "rate of change",
+        "limit",
+        "difference quotient"
+      ],
+      "missing": [],
+      "answer_chars": 4200,
+      "answer": "Let's learn about derivatives step-by-step.\n\n**What the derivative measures:**\nThe derivative measures how fast the output of a function changes when the input changes. Imagine you have a graph of a function \\(f(x)\\). The derivative at a specific point \\(x = a\\) tells you the instantaneous rate of change of \\(f\\) at that point.\n\n**Intuition:**\nFirst, think about the slope of a straight line. The slope is \"rise over run\": how much the y-value changes for a given change in x. For a curve, the slope changes at every point.\n\n**Goal:**\nWe want to find the slope of the curve exactly at \\(x=a\\). This slope is the slope of the tangent line to the graph at \\((a, f(a))\\).\n\n**Symbols:**\n- \\(f(x)\\): the function, which outputs \\(f(x)\\) for input \\(x\\).\n- \\(a\\): a particular input value.\n- \\(h\\): a small nonzero change in input, moving from \\(a\\) to \\(a+h\\).\n- \\(f'(a)\\) or \\(\\frac{df}{dx}\\bigg|_{x=a}\\): the derivative of \\(f\\) evaluated at \\(a\\), representing the slope of the tangent line at \\(x=a\\).\n\n**Definition of \\(f'(a)\\):**\n\\[\nf'(a) = \\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}\n\\]\nThis formula means: as the change \\(h\\) gets smaller and smaller, we look at the average rate of change \\(\\frac{f(a+h) - f(a)}{h}\\) over the interval from \\(a\\) to \\(a + h\\). The limit finds the exact slope at \\(a\\).\n\n**Interpretation:**\n- If the limit exists and is a finite number, \\(f\\) is said to be \"differentiable\" at \\(a\\).\n- This finite number is the slope of the tangent line to \\(y = f(x)\\) at \\((a, f(a))\\).\n- The derivative function \\(f'(x)\\) is the function you get when you apply the derivative definition at every point \\(x\\) where it exists.\n\n**Summary:**\n- The derivative measures how fast \\(f(x)\\) changes as \\(x\\) changes.\n- \\(f'(a)\\) is defined as the limit of the difference quotient as \\(h\\) approaches zero.\n- \\(f'(a)\\) equals the slope of the tangent line to the graph at \\(a\\).\n\nNext, we'll see a worked example to clarify how to compute derivatives and interpret \\(f'(a)\\).\n\nExample:\nFind the derivative of the following function using the definition of the derivative.\r\n\n        \\[f\\left( x \\right) = 2{x^2} - 16x + 35\\]\nSo, all we really need to do is to plug this function into the definition of the derivative, \\(\\eqref{eq:eq2}\\), and do some algebra.  While, admittedly, the algebra will get somewhat unpleasant at times, but it’s just algebra so don’t get excited about the fact that we’re now computing derivatives.\n\nFirst plug the function into the definition of the derivative.\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{f\\left( {x + h} \\right) - f\\left( x \\right)}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{2{{\\left( {x + h} \\right)}^2} - 16\\left( {x + h} \\right) + 35 - \\left( {2{x^2} - 16x + 35} \\right)}}{h}\\end{align*}\\]\r\n\nBe careful and make sure that you properly deal with parenthesis when doing the subtracting.\n\nNow, we know from the previous chapter that we can’t just plug in \\(h = 0\\) since this will give us a division by zero error.  So, we are going to have to do some work.  In this case that means multiplying everything out and distributing the minus sign through on the second term.  Doing this gives,\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{2{x^2} + 4xh + 2{h^2} - 16x - 16h + 35 - 2{x^2} + 16x - 35}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{4xh + 2{h^2} - 16h}}{h}\\end{align*}\\]\r\n\nNotice that every term in the numerator that didn’t have an h in it canceled out and we can now factor an h out of the numerator which will cancel against the h in the denominator.  After that we can compute the limit.\n\n        \\[\\begin{align*}f'\\left( x \\right) & = \\mathop {\\lim }\\limits_{h \\to 0} \\frac{{h\\left( {4x + 2h - 16} \\right)}}{h}\\\\ &  = \\mathop {\\lim }\\limits_{h \\to 0} 4x + 2h - 16\\\\ &  = 4x - 16\\end{align*}\\]\r\n\nSo, the derivative is,\n\n        \\[f'\\left( x \\right) = 4x - 16\\]\nVerification: verified; Symbolic difference from a domain-checked worker result is zero. Valid on the stated domains/assumptions.\nAssumptions: none supplied\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    }
+  ]
+}

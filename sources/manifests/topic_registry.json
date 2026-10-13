@@ -1,9 +1,10 @@
 {
   "phase": 3,
+  "curation_phase": "W3",
   "topics": [
     {
       "topic": "derivative",
-      "english": "derivative",
+      "english": "Derivatives",
       "persian": "مشتق",
       "path": "sources/topics/derivative.md",
       "reference_book": "Calculus Volume 1",
@@ -14,7 +15,7 @@
     },
     {
       "topic": "integral",
-      "english": "integral",
+      "english": "Integrals",
       "persian": "انتگرال",
       "path": "sources/topics/integral.md",
       "reference_book": "Calculus Volume 1",
@@ -25,7 +26,7 @@
     },
     {
       "topic": "limits",
-      "english": "limits",
+      "english": "Limits",
       "persian": "حد",
       "path": "sources/topics/limits.md",
       "reference_book": "Calculus Volume 1",
@@ -36,18 +37,18 @@
     },
     {
       "topic": "algebra",
-      "english": "algebra",
-      "persian": "معادله و جبر",
+      "english": "Algebra: equations and factoring",
+      "persian": "جبر: معادله‌ها و تجزیه",
       "path": "sources/topics/algebra.md",
       "reference_book": "College Algebra 2e",
-      "reference_section": "2.2 Linear Equations in One Variable; 2.5 Quadratic Equations",
+      "reference_section": "1.5 Factoring Polynomials; 2.2 Linear Equations in One Variable; 2.5 Quadratic Equations",
       "level_objectives": "beginner: inverse operations; intermediate: method choice; advanced: excluded and repeated roots",
       "note_origin": "original_project_exposition",
       "textbook_transcript": false
     },
     {
       "topic": "matrix",
-      "english": "matrix",
+      "english": "Matrices",
       "persian": "ماتریس",
       "path": "sources/topics/matrix.md",
       "reference_book": "College Algebra 2e",
@@ -58,7 +59,7 @@
     },
     {
       "topic": "probability",
-      "english": "probability",
+      "english": "Probability",
       "persian": "احتمال",
       "path": "sources/topics/probability.md",
       "reference_book": "Introductory Statistics 2e",
@@ -69,7 +70,7 @@
     },
     {
       "topic": "optimization",
-      "english": "optimization",
+      "english": "Optimization",
       "persian": "بهینه‌سازی",
       "path": "sources/topics/optimization.md",
       "reference_book": "Calculus Volume 1",
@@ -77,8 +78,41 @@
       "level_objectives": "beginner: objective; intermediate: constraint; advanced: global extremum and endpoints",
       "note_origin": "original_project_exposition",
       "textbook_transcript": false
+    },
+    {
+      "topic": "logarithms",
+      "english": "Logarithms",
+      "persian": "لگاریتم",
+      "path": "sources/topics/logarithms.md",
+      "reference_book": "College Algebra 2e",
+      "reference_section": "6.3 Logarithmic Functions; 6.4 Graphs of Logarithmic Functions; 6.5 Logarithmic Properties; 6.6 Exponential and Logarithmic Equations",
+      "level_objectives": "beginner: exponent question; intermediate: product/quotient/power rules and change of base; advanced: domain and inverse-function conditions",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "exponentials",
+      "english": "Exponentials",
+      "persian": "توابع نمایی",
+      "path": "sources/topics/exponentials.md",
+      "reference_book": "College Algebra 2e",
+      "reference_section": "6.1 Exponential Functions; 6.2 Graphs of Exponential Functions; 6.7 Exponential and Logarithmic Models",
+      "level_objectives": "beginner: repeated growth; intermediate: compound and continuous models; advanced: base conditions and model limits",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
+    },
+    {
+      "topic": "trigonometry",
+      "english": "Trigonometry",
+      "persian": "مثلثات",
+      "path": "sources/topics/trigonometry.md",
+      "reference_book": "Calculus Volume 1",
+      "reference_section": "1.3 Trigonometric Functions; 3.5 Derivatives of Trigonometric Functions",
+      "level_objectives": "beginner: right-triangle ratios; intermediate: unit circle and identities; advanced: periodicity, domain and inverse branches",
+      "note_origin": "original_project_exposition",
+      "textbook_transcript": false
     }
   ],
   "raw_book_retrieval_enabled": false,
-  "limitation": "Starter notes do not establish whole-book coverage. Calculus Volume 2 is acquired but no direct transcript is indexed."
+  "limitation": "Curated notes cover the ten core topics at three levels. They do not establish whole-book coverage: Calculus Volume 2 is acquired but no direct transcript is indexed, and four core topics (probability, logarithms, exponentials, trigonometry) have no source example in the selected example bank. See sources/manifests/example_gap_report.json."
 }

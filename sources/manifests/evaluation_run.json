@@ -1,0 +1,198 @@
+{
+  "generated_at": "2026-10-13T16:08:39.707200+00:00",
+  "curation_phase": "W3",
+  "channel": "web",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "search_backend": "avalai_tavily",
+  "concurrency": 4,
+  "run_status": "complete",
+  "items": 2,
+  "runs": 4,
+  "planned_runs": 4,
+  "scoring": "Concept terms are a coarse presence check for a human read, not automatic correctness.",
+  "totals": {
+    "complete": 3,
+    "partial": 1,
+    "missed": 0,
+    "error": 0
+  },
+  "degraded_runs": 0,
+  "clean_runs": 4,
+  "degraded_totals": {
+    "complete": 0,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "clean_totals": {
+    "complete": 3,
+    "partial": 1,
+    "missed": 0,
+    "error": 0
+  },
+  "by_topic": {
+    "logarithms": {
+      "complete": 3,
+      "partial": 1,
+      "missed": 0,
+      "error": 0
+    }
+  },
+  "quality_gaps": [],
+  "results": [
+    {
+      "id": "logarithms.intermediate.question",
+      "topic": "logarithms",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 12.1,
+      "degraded": false,
+      "expected": [
+        "قاعده ضرب",
+        "قاعده توان",
+        "دامنه"
+      ],
+      "found": [
+        "قاعده ضرب",
+        "قاعده توان",
+        "دامنه"
+      ],
+      "missing": [],
+      "answer_chars": 1994,
+      "answer": "در این درس، به نحوه باز کردن عبارت لگاریتمی \\( \\log_b(x^2 y) \\) با استفاده از قواعد لگاریتم‌ها می‌پردازیم و علت درستی هر قاعده را توضیح می‌دهیم.\n\nتعریف پایه‌ای لگاریتم می‌گوید که \\( \\log_b(x) = y \\) یعنی «\\( b^y = x \\)». این تعریف مانند واژه‌نامه‌ای است که جمله‌ای درباره توان‌ها را به جمله‌ای درباره لگاریتم تبدیل می‌کند. از این تعریف، قواعد لگاریتم استخراج می‌شوند.\n\nقواعد اصلی لگاریتم عبارت‌اند از:\n\n1. قاعده ضرب: \\( \\log_b(xy) = \\log_b(x) + \\log_b(y) \\) (برای \\( x > 0 \\) و \\( y > 0 \\))\n\n2. قاعده توان: \\( \\log_b(x^p) = p \\cdot \\log_b(x) \\) (برای \\( x > 0 \\) و هر عدد حقیقی \\( p \\))\n\nدر عبارت \\( \\log_b(x^2 y) \\) ابتدا می‌بینیم که داخل لگاریتم حاصل‌ضرب \\( x^2 \\) و \\( y \\) است. بنابراین می‌توانیم قاعده ضرب را اعمال کنیم:\n\n\\[ \\log_b(x^2 y) = \\log_b(x^2) + \\log_b(y) \\]\n\nچرا این قاعده مناسب است؟ چون لگاریتم اساساً نمایانگر توان است و \\( b^m \\times b^n = b^{m+n} \\). پس لگاریتم حاصل‌ضرب برابر است با جمع لگاریتم‌ها.\n\nحال عبارت \\( \\log_b(x^2) \\) را داریم که لگاریتم توان است. بر اساس قاعده توان:\n\n\\[ \\log_b(x^2) = 2 \\cdot \\log_b(x) \\]\n\nدر این‌جا نیز علت این قاعده به صورت مشابه از تعریف لگاریتم است: \\( b^y = x \\) پس \\( x^2 = b^{2y} \\)، یعنی توان در بیرون لگاریتم ضریب می‌شود.\n\nپس در نهایت:\n\n\\[ \\log_b(x^2 y) = 2 \\cdot \\log_b(x) + \\log_b(y) \\]\n\n**نکات مهم:**\n- برای اینکه این قواعد معتبر باشند، باید آرگومان‌های داخل لگاریتم (یعنی \\( x \\) و \\( y \\)) مثبت باشند.\n- اشتباه رایج این است که قاعده توان را اشتباهاً روی تامی لگاریتم (مثلاً \\( \\log_b(x)^2 \\)) اعمال کنند که معنای متفاوتی دارد.\n\nاین قواعد، با استفاده از ارتباط بین توان‌ها و لگاریتم‌ها از تعریف \\( \\log_b(x) = y \\) که بیان می‌کند \"\\( b^y = x \\)\"، اثبات شده‌اند.\n\nبه این ترتیب، با شناخت دقیق دامنه و علت هر قاعده می‌توانیم عبارت لگاریتمی را به شکل ساده‌تر و قابل فهم‌تر باز کنیم.\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "logarithms.intermediate.question",
+      "topic": "logarithms",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "partial",
+      "elapsed_seconds": 14.1,
+      "degraded": false,
+      "expected": [
+        "product rule",
+        "power rule",
+        "domain"
+      ],
+      "found": [
+        "product rule",
+        "power rule"
+      ],
+      "missing": [
+        "domain"
+      ],
+      "answer_chars": 2326,
+      "answer": "Let's expand the logarithmic expression \\(\\log_b(x^2 y)\\) step by step using the properties of logarithms, explaining why each rule applies at each step.\n\n### Step 1: Recognize the expression as a logarithm of a product\nThe argument inside the logarithm is \\(x^2 y\\), which is a product of two factors: \\(x^2\\) and \\(y\\). According to the **product rule** of logarithms,\n\n\\[\n\\log_b(M N) = \\log_b(M) + \\log_b(N), \\quad \\text{for } M > 0, N > 0.\n\\]\n\nWe apply this because the logarithm of a product can be written as the sum of the logarithms of each factor, provided the factors are positive (which we assume here since logarithms are defined only for positive arguments). \n\nApplying the product rule:\n\n\\[\n\\log_b(x^2 y) = \\log_b(x^2) + \\log_b(y).\n\\]\n\n### Step 2: Apply the power rule to \\(\\log_b(x^2)\\)\nHere, \\(x^2\\) means \\(x\\) raised to the power 2. The **power rule** of logarithms states:\n\n\\[\n\\log_b(M^p) = p \\log_b(M), \\quad \\text{for } M > 0 \\text{ and real } p.\n\\]\n\nThis rule works because by definition, \\(\\log_b(M) = y\\) means \\(b^y = M\\). Then:\n\n\\[\n\\log_b(M^p) = \\log_b((b^y)^p) = \\log_b(b^{p y}) = p y = p \\log_b(M).\n\\]\n\nThe power rule is valid only if \\(M > 0\\) to keep the logarithm defined.\n\nApplying the power rule to \\(\\log_b(x^2)\\):\n\n\\[\n\\log_b(x^2) = 2 \\log_b(x).\n\\]\n\n### Step 3: Combine the results\nSubstitute back:\n\n\\[\n\\log_b(x^2 y) = 2 \\log_b(x) + \\log_b(y).\n\\]\n\n### Summary\n- We began with \\(\\log_b(x^2 y)\\).\n- The **product rule** allowed us to split the log of a product into a sum of logs because inside the logarithm was a product \\(x^2 \\cdot y\\).\n- The **power rule** allowed us to bring down the exponent \\(2\\) in \\(x^2\\) as a coefficient.\n\n### Important conditions\n- We must assume \\(x > 0\\) and \\(y > 0\\) so that each logarithm is defined.\n- Do not confuse \\(\\log_b(x)^2\\) (which is \\((\\log_b(x))^2\\)) with \\(\\log_b(x^2)\\).\n- The rules only apply to products and powers inside the argument of the logarithm, not sums or subtractions.\n\nWould you like to explain why the product rule fits this expression before we move on?\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "logarithms.beginner.question",
+      "topic": "logarithms",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 16.9,
+      "degraded": false,
+      "expected": [
+        "logarithm",
+        "base",
+        "exponent",
+        "inverse"
+      ],
+      "found": [
+        "logarithm",
+        "base",
+        "exponent",
+        "inverse"
+      ],
+      "missing": [],
+      "answer_chars": 2479,
+      "answer": "Let's learn what a logarithm is and how it relates to exponentiation. Start by thinking about an exponent. If you see $b^y = x$, it means \"b raised to the power y equals x.\" Here, $b$ is called the base, $y$ is the exponent, and $x$ is the result.\n\nNow, suppose you know the base $b$ and the result $x$, but you want to find the exponent $y$. This is exactly what a logarithm does: it tells you the exponent you need. We write this as\n\n$$\\log_b(x) = y$$\n\nwhich means \"the logarithm of $x$ with base $b$ equals $y$.\" In other words, $y$ is the number such that $b^y = x$.\n\nThere are some rules for base $b$: it must be positive $(b > 0)$ and not equal to 1 $(b \\neq 1)$. The number $x$, which is inside the logarithm (called the argument), must be positive $(x > 0)$.\n\nImportant values to remember:\n- $\\log_b(1) = 0$ because $b^0 = 1$.\n- $\\log_b(b) = 1$ because $b^1 = b$.\n\nIn what sense is the logarithm the inverse of exponentiation? The logarithm \"undoes\" exponentiation:\n\n- If you take $b$ to the power of $\\log_b(x)$, you get $x$ back:\n  $$b^{\\log_b(x)} = x$$\n- If you take the logarithm base $b$ of $b^y$, you get $y$ back:\n  $$\\log_b(b^y) = y$$\n\nThis means exponentiation and logarithms are inverse functions. Graphically, reflecting the curve of $y = b^x$ across the line $y = x$ gives the curve of $y = \\log_b(x)$.\n\nLet's see a worked example:\n\nFind $\\log_2(8)$. This means: what exponent $y$ satisfies $2^y = 8$? Since $8 = 2^3$, the exponent is $3$. Therefore,\n\n$$\\log_2(8) = 3$$\n\nCheck by raising the base again:\n\n$$2^3 = 8$$\n\nwhich is true.\n\nTry thinking about $\\log_5(\\frac{1}{25})$. Express $\\frac{1}{25}$ as $5^{-2}$ because\n\n$$5^{-2} = \\frac{1}{5^2} = \\frac{1}{25}$$\n\nSo,\n\n$$\\log_5\\left(\\frac{1}{25}\\right) = -2$$\n\nRemember, the logarithm can be negative if the argument is between 0 and 1!\n\nSummary:\n- A logarithm asks: \"To what power must we raise the base $b$ to get $x$?\"\n- Logarithms \"undo\" exponentiation.\n- The base $b$ must be positive and not 1; the argument $x$ must be positive.\n- $b^{\\log_b(x)} = x$ and $\\log_b(b^y) = y$ show the inverse relationship.\n\nThis is the core idea of logarithms and their relation to exponentiation. Now you can try finding $\\log_3(27)$ yourself!\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "logarithms.beginner.question",
+      "topic": "logarithms",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 24.2,
+      "degraded": false,
+      "expected": [
+        "لگاریتم",
+        "پایه",
+        "توان",
+        "وارون"
+      ],
+      "found": [
+        "لگاریتم",
+        "پایه",
+        "توان",
+        "وارون"
+      ],
+      "missing": [],
+      "answer_chars": 1974,
+      "answer": "لگاریتم یک تابع ریاضی است که به ما می‌گوید برای رسیدن به یک عدد خاص، باید پایه را چند بار با خودش ضرب کنیم. در واقع، لگاریتم پرسش «چه توانی لازم است؟» را پاسخ می‌دهد. \n\nفرض کنید پایه عددی مثبت است که برابر با b است، به شرط اینکه b بزرگ‌تر از صفر باشد و برابر ۱ نباشد (b > 0 و b \\neq 1). همچنین عددی مثبت به نام x داریم. لگاریتم پایه b از x، که به صورت \\( \\log_{b}(x) \\) نوشته می‌شود، عدد y است که اگر b را به توان y برسانیم، برابر x می‌شود. یعنی:\n\n\\[\n\\log_{b}(x) = y \\quad \\text{زمانی که} \\quad b^{y} = x\n\\]\n\nدر این تعریف:\n- b پایه (base) لگاریتم است که باید مثبت و مخالف یک باشد.\n- x آرگومان (argument) است و باید مثبت باشد.\n- y همان توان مورد نظر است.\n\nدو مقدار مهم که باید حفظ شوند عبارتند از:\n\\[\n\\log_{b}(1) = 0 \\quad \\text{چون} \\quad b^{0} = 1\n\\]\n\\[\n\\log_{b}(b) = 1 \\quad \\text{چون} \\quad b^{1} = b\n\\]\n\nدامنه تابع لگاریتم یعنی x باید بزرگ‌تر از صفر باشد (x > 0). مثلا لگاریتم صفر یا اعداد منفی تعریف نشده است. همچنین پایه b باید مثبت و نیروی یک نباشد. برد لگاریتم همه اعداد حقیقی است، یعنی خروجی لگاریتم می‌تواند هر عدد حقیقی باشد.\n\nنکته بسیار مهم: لگاریتم وارون توان‌رسانی است. یعنی اگر ابتدا لگاریتم بگیریم و بعد توان رسانی کنیم، به عدد اصلی می‌رسیم. به صورت دقیق:\n\n\\[\nb^{\\log_{b}(x)} = x \\quad \\text{برای هر} \\quad x > 0\n\\]\n\nو همچنین:\n\n\\[\n\\log_{b}(b^{y}) = y \\quad \\text{برای هر عدد حقیقی} \\quad y\n\\]\n\nاین یعنی لگاریتم و توان‌رسانی در پایه یکسان، کار وارونه هم را انجام می‌دهند و نمودارهای آنها نسبت به خط y = x قرینه هستند.\n\nبه طور خلاصه، لگاریتم راهی برای یافتن توان مورد نیاز برای رسیدن به یک عدد خاص است و تابع وارون تابع توان‌رسانی محسوب می‌شود.\n\nمنابع استفاده شده: b21926aa07aa3d5d7c9ae707, b2c53a83a0a71ddba92436cf, web:4221dad7e1fb08aff4d2b2b1, web:860ce4d767e759682efe93aa, web:d2ac5eceb7dfaf2a5fcc0d76\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: success — Search snippets are supplementary, not complete reviewed sources or verified calculations.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level.",
+        "Search snippets are supplementary, not complete reviewed sources or verified calculations."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    }
+  ]
+}

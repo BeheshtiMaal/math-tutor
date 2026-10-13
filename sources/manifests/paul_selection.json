@@ -1,12 +1,18 @@
 {
   "phase": 3,
-  "prepared_at": "2026-10-09T19:18:30.147691+00:00",
-  "selected_count": 51,
+  "prepared_at": "2026-10-13T16:57:23.779663+00:00",
+  "selected_count": 87,
   "fetched_pages": [
     "Alg/SolveLinearEqns",
     "Alg/SolveQuadraticEqnsI",
     "Alg/SolveQuadraticEqnsII",
     "CalcI/DiffFormulas",
+    "CalcI/DefnOfDerivative",
+    "CalcI/ProductQuotientRule",
+    "CalcI/ChainRule",
+    "CalcI/ImplicitDIff",
+    "CalcI/HigherOrderDerivatives",
+    "CalcI/LinearApproximations",
     "CalcI/ComputingIndefiniteIntegrals",
     "Alg/AugmentedMatrix",
     "CalcI/ComputingLimits",
@@ -275,6 +281,402 @@
       "level": "advanced",
       "level_rationale": "Irrational exponents, monotonicity or tangent application",
       "example_id": "paul:CalcI/DiffFormulas:4",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/DefnOfDerivative",
+      "example": 1,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "level": "beginner",
+      "level_rationale": "Polynomial difference quotient and tangent slope",
+      "example_id": "paul:CalcI/DefnOfDerivative:1",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DefnOfDerivative",
+      "example": 2,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "level": "intermediate",
+      "level_rationale": "Rational and radical difference quotients with domain restrictions",
+      "example_id": "paul:CalcI/DefnOfDerivative:2",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DefnOfDerivative",
+      "example": 3,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "level": "intermediate",
+      "level_rationale": "Rational and radical difference quotients with domain restrictions",
+      "example_id": "paul:CalcI/DefnOfDerivative:3",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/DefnOfDerivative",
+      "example": 4,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "level": "advanced",
+      "level_rationale": "One-sided derivative limits and a nondifferentiable corner",
+      "example_id": "paul:CalcI/DefnOfDerivative:4",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 1,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "beginner",
+      "level_rationale": "Polynomial products and simple quotients",
+      "example_id": "paul:CalcI/ProductQuotientRule:1:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 2,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "beginner",
+      "level_rationale": "Polynomial products and simple quotients",
+      "example_id": "paul:CalcI/ProductQuotientRule:2:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 2,
+      "part": "d",
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "beginner",
+      "level_rationale": "Polynomial products and simple quotients",
+      "example_id": "paul:CalcI/ProductQuotientRule:2:d",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 1,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "intermediate",
+      "level_rationale": "Fractional powers and denominator restrictions",
+      "example_id": "paul:CalcI/ProductQuotientRule:1:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 2,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "intermediate",
+      "level_rationale": "Fractional powers and denominator restrictions",
+      "example_id": "paul:CalcI/ProductQuotientRule:2:b",
+      "verification_status": "unknown"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 2,
+      "part": "c",
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "intermediate",
+      "level_rationale": "Fractional powers and denominator restrictions",
+      "example_id": "paul:CalcI/ProductQuotientRule:2:c",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ProductQuotientRule",
+      "example": 3,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "level": "advanced",
+      "level_rationale": "Interpreting the sign of a volume rate at a specified time",
+      "example_id": "paul:CalcI/ProductQuotientRule:3",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 1,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "beginner",
+      "level_rationale": "One inner function with a radical, sine or exponential",
+      "example_id": "paul:CalcI/ChainRule:1",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 2,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "beginner",
+      "level_rationale": "One inner function with a radical, sine or exponential",
+      "example_id": "paul:CalcI/ChainRule:2:a",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 2,
+      "part": "c",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "beginner",
+      "level_rationale": "One inner function with a radical, sine or exponential",
+      "example_id": "paul:CalcI/ChainRule:2:c",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 2,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "intermediate",
+      "level_rationale": "Large powers, logarithmic domains and contrasting compositions",
+      "example_id": "paul:CalcI/ChainRule:2:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 2,
+      "part": "d",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "intermediate",
+      "level_rationale": "Large powers, logarithmic domains and contrasting compositions",
+      "example_id": "paul:CalcI/ChainRule:2:d",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 2,
+      "part": "f",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "intermediate",
+      "level_rationale": "Large powers, logarithmic domains and contrasting compositions",
+      "example_id": "paul:CalcI/ChainRule:2:f",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 4,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "advanced",
+      "level_rationale": "Combining product/quotient rules and nested compositions",
+      "example_id": "paul:CalcI/ChainRule:4:b",
+      "verification_status": "verified"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 4,
+      "part": "c",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "advanced",
+      "level_rationale": "Combining product/quotient rules and nested compositions",
+      "example_id": "paul:CalcI/ChainRule:4:c",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ChainRule",
+      "example": 5,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "level": "advanced",
+      "level_rationale": "Combining product/quotient rules and nested compositions",
+      "example_id": "paul:CalcI/ChainRule:5:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 1,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "beginner",
+      "level_rationale": "Simple implicit product and circle",
+      "example_id": "paul:CalcI/ImplicitDIff:1",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 3,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "beginner",
+      "level_rationale": "Simple implicit product and circle",
+      "example_id": "paul:CalcI/ImplicitDIff:3",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 2,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "intermediate",
+      "level_rationale": "Dependent-function chain rules and an implicit tangent line",
+      "example_id": "paul:CalcI/ImplicitDIff:2:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 2,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "intermediate",
+      "level_rationale": "Dependent-function chain rules and an implicit tangent line",
+      "example_id": "paul:CalcI/ImplicitDIff:2:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 4,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "intermediate",
+      "level_rationale": "Dependent-function chain rules and an implicit tangent line",
+      "example_id": "paul:CalcI/ImplicitDIff:4",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 5,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "advanced",
+      "level_rationale": "Mixed implicit products, trigonometry and two time-dependent variables",
+      "example_id": "paul:CalcI/ImplicitDIff:5:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 5,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "advanced",
+      "level_rationale": "Mixed implicit products, trigonometry and two time-dependent variables",
+      "example_id": "paul:CalcI/ImplicitDIff:5:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/ImplicitDIff",
+      "example": 6,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "level": "advanced",
+      "level_rationale": "Mixed implicit products, trigonometry and two time-dependent variables",
+      "example_id": "paul:CalcI/ImplicitDIff:6",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/HigherOrderDerivatives",
+      "example": 1,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "level": "beginner",
+      "level_rationale": "Repeated sine/cosine cycle",
+      "example_id": "paul:CalcI/HigherOrderDerivatives:1:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/HigherOrderDerivatives",
+      "example": 1,
+      "part": "a",
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "level": "intermediate",
+      "level_rationale": "Repeated differentiation with radicals and logarithms",
+      "example_id": "paul:CalcI/HigherOrderDerivatives:1:a",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/HigherOrderDerivatives",
+      "example": 2,
+      "part": "c",
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "level": "intermediate",
+      "level_rationale": "Repeated differentiation with radicals and logarithms",
+      "example_id": "paul:CalcI/HigherOrderDerivatives:2:c",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/HigherOrderDerivatives",
+      "example": 1,
+      "part": "c",
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "level": "advanced",
+      "level_rationale": "Mixed transcendental functions and implicit second derivatives",
+      "example_id": "paul:CalcI/HigherOrderDerivatives:1:c",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/HigherOrderDerivatives",
+      "example": 2,
+      "part": "b",
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "level": "advanced",
+      "level_rationale": "Mixed transcendental functions and implicit second derivatives",
+      "example_id": "paul:CalcI/HigherOrderDerivatives:2:b",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/HigherOrderDerivatives",
+      "example": 3,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "level": "advanced",
+      "level_rationale": "Mixed transcendental functions and implicit second derivatives",
+      "example_id": "paul:CalcI/HigherOrderDerivatives:3",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/LinearApproximations",
+      "example": 2,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "linear approximations",
+      "level": "beginner",
+      "level_rationale": "Sine tangent approximation at zero",
+      "example_id": "paul:CalcI/LinearApproximations:2",
+      "verification_status": "unsupported"
+    },
+    {
+      "page": "CalcI/LinearApproximations",
+      "example": 1,
+      "part": null,
+      "topic": "derivative",
+      "subtopic": "linear approximations",
+      "level": "intermediate",
+      "level_rationale": "Cube-root approximation and why distant estimates fail",
+      "example_id": "paul:CalcI/LinearApproximations:1",
       "verification_status": "unsupported"
     },
     {
@@ -649,6 +1051,150 @@
       "missing": 0
     },
     {
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "learner_level": "beginner",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "definition of derivative",
+      "learner_level": "advanced",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "product and quotient rules",
+      "learner_level": "advanced",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "chain rule",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "learner_level": "beginner",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "implicit differentiation",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "learner_level": "beginner",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "missing": 1
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "higher order derivatives",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "missing": 0
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "linear approximations",
+      "learner_level": "beginner",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "linear approximations",
+      "learner_level": "intermediate",
+      "selected": 1,
+      "target": 3,
+      "missing": 2
+    },
+    {
+      "topic": "derivative",
+      "subtopic": "linear approximations",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "missing": 3
+    },
+    {
       "topic": "integral",
       "subtopic": "antiderivatives",
       "learner_level": "beginner",
@@ -771,9 +1317,9 @@
   ],
   "failures": [],
   "verification_counts": {
-    "unsupported": 23,
-    "verified": 27,
-    "unknown": 1
+    "unsupported": 46,
+    "verified": 39,
+    "unknown": 2
   },
   "notice": "© 2003 - 2026 Paul Dawkins. All rights reserved. Private noncommercial reference copy; retain notices. Product incorporation and networked redistribution require express written consent.",
   "limitations": "Difficulty is editorial. Gaps reflect this finite selection, not proof that no other suitable examples exist. Unknown/unsupported examples remain source-backed, not mathematically verified. Diagram URLs and alt descriptions retained; no images downloaded."

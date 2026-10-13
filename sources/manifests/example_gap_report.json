@@ -1,0 +1,382 @@
+{
+  "generated_at": "2026-10-13T16:57:50.141452+00:00",
+  "curation_phase": "W3",
+  "bank": "sources/examples/paul/selected.jsonl",
+  "bank_size": 87,
+  "bank_origin": [
+    "paul"
+  ],
+  "bank_courses": [
+    "Algebra",
+    "Calculus I"
+  ],
+  "bank_verification": {
+    "unsupported": 46,
+    "verified": 39,
+    "unknown": 2
+  },
+  "source_pages": [
+    "Alg/SolveLinearEqns",
+    "Alg/SolveQuadraticEqnsI",
+    "Alg/SolveQuadraticEqnsII",
+    "CalcI/DiffFormulas",
+    "CalcI/DefnOfDerivative",
+    "CalcI/ProductQuotientRule",
+    "CalcI/ChainRule",
+    "CalcI/ImplicitDIff",
+    "CalcI/HigherOrderDerivatives",
+    "CalcI/LinearApproximations",
+    "CalcI/ComputingIndefiniteIntegrals",
+    "Alg/AugmentedMatrix",
+    "CalcI/ComputingLimits",
+    "CalcI/Optimization"
+  ],
+  "totals": {
+    "slots": 30,
+    "covered": 12,
+    "sparse": 5,
+    "missing": 13
+  },
+  "topics_with_no_examples": [
+    "probability",
+    "logarithms",
+    "exponentials",
+    "trigonometry"
+  ],
+  "covered_slots": [
+    "derivative/beginner",
+    "derivative/intermediate",
+    "derivative/advanced",
+    "integral/beginner",
+    "integral/intermediate",
+    "integral/advanced",
+    "limits/beginner",
+    "limits/intermediate",
+    "algebra/beginner",
+    "algebra/intermediate",
+    "algebra/advanced",
+    "matrix/beginner"
+  ],
+  "sparse_slots": [
+    "limits/advanced",
+    "matrix/intermediate",
+    "optimization/beginner",
+    "optimization/intermediate",
+    "optimization/advanced"
+  ],
+  "missing_slots": [
+    "matrix/advanced",
+    "probability/beginner",
+    "probability/intermediate",
+    "probability/advanced",
+    "logarithms/beginner",
+    "logarithms/intermediate",
+    "logarithms/advanced",
+    "exponentials/beginner",
+    "exponentials/intermediate",
+    "exponentials/advanced",
+    "trigonometry/beginner",
+    "trigonometry/intermediate",
+    "trigonometry/advanced"
+  ],
+  "slots": [
+    {
+      "topic": "derivative",
+      "learner_level": "beginner",
+      "selected": 14,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "chain rule",
+        "definition of derivative",
+        "higher order derivatives",
+        "implicit differentiation",
+        "linear approximations",
+        "power rule",
+        "product and quotient rules"
+      ]
+    },
+    {
+      "topic": "derivative",
+      "learner_level": "intermediate",
+      "selected": 17,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "chain rule",
+        "definition of derivative",
+        "higher order derivatives",
+        "implicit differentiation",
+        "linear approximations",
+        "power rule",
+        "product and quotient rules"
+      ]
+    },
+    {
+      "topic": "derivative",
+      "learner_level": "advanced",
+      "selected": 14,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "chain rule",
+        "definition of derivative",
+        "higher order derivatives",
+        "implicit differentiation",
+        "linear approximations",
+        "power rule",
+        "product and quotient rules"
+      ]
+    },
+    {
+      "topic": "integral",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "antiderivatives"
+      ]
+    },
+    {
+      "topic": "integral",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "antiderivatives"
+      ]
+    },
+    {
+      "topic": "integral",
+      "learner_level": "advanced",
+      "selected": 3,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "antiderivatives"
+      ]
+    },
+    {
+      "topic": "limits",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "evaluating limits"
+      ]
+    },
+    {
+      "topic": "limits",
+      "learner_level": "intermediate",
+      "selected": 3,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "evaluating limits"
+      ]
+    },
+    {
+      "topic": "limits",
+      "learner_level": "advanced",
+      "selected": 1,
+      "target": 3,
+      "status": "sparse",
+      "subtopics": [
+        "evaluating limits"
+      ]
+    },
+    {
+      "topic": "algebra",
+      "learner_level": "beginner",
+      "selected": 5,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "linear equations",
+        "quadratic equations"
+      ]
+    },
+    {
+      "topic": "algebra",
+      "learner_level": "intermediate",
+      "selected": 5,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "linear equations",
+        "quadratic equations"
+      ]
+    },
+    {
+      "topic": "algebra",
+      "learner_level": "advanced",
+      "selected": 5,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "linear equations",
+        "quadratic equations"
+      ]
+    },
+    {
+      "topic": "matrix",
+      "learner_level": "beginner",
+      "selected": 3,
+      "target": 3,
+      "status": "covered",
+      "subtopics": [
+        "augmented systems"
+      ]
+    },
+    {
+      "topic": "matrix",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "status": "sparse",
+      "subtopics": [
+        "augmented systems"
+      ]
+    },
+    {
+      "topic": "matrix",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": [
+        "augmented systems"
+      ]
+    },
+    {
+      "topic": "probability",
+      "learner_level": "beginner",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "probability",
+      "learner_level": "intermediate",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "probability",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "optimization",
+      "learner_level": "beginner",
+      "selected": 2,
+      "target": 3,
+      "status": "sparse",
+      "subtopics": [
+        "constrained optimization"
+      ]
+    },
+    {
+      "topic": "optimization",
+      "learner_level": "intermediate",
+      "selected": 2,
+      "target": 3,
+      "status": "sparse",
+      "subtopics": [
+        "constrained optimization"
+      ]
+    },
+    {
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "selected": 2,
+      "target": 3,
+      "status": "sparse",
+      "subtopics": [
+        "constrained optimization"
+      ]
+    },
+    {
+      "topic": "logarithms",
+      "learner_level": "beginner",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "logarithms",
+      "learner_level": "intermediate",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "logarithms",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "exponentials",
+      "learner_level": "beginner",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "exponentials",
+      "learner_level": "intermediate",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "exponentials",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "trigonometry",
+      "learner_level": "beginner",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "trigonometry",
+      "learner_level": "intermediate",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    },
+    {
+      "topic": "trigonometry",
+      "learner_level": "advanced",
+      "selected": 0,
+      "target": 3,
+      "status": "missing",
+      "subtopics": []
+    }
+  ],
+  "limitation": "Coverage counts source examples only; 'covered' means three or more selected examples exist, not that they are pedagogically sufficient. Every gap is recorded rather than filled by invention, and unsupported examples remain source-backed but not mathematically verified."
+}

@@ -1,0 +1,219 @@
+{
+  "generated_at": "2026-10-13T15:29:00+00:00",
+  "curation_phase": "W3",
+  "channel": "web",
+  "model": "gpt-4.1-mini",
+  "provider": "avalai",
+  "search_backend": "avalai_tavily",
+  "concurrency": 8,
+  "run_status": "aborted",
+  "items": 40,
+  "planned_runs": 80,
+  "runs": 42,
+  "aborted_note": "Stopped at the user's request after 42 of 80 planned runs. Every recorded run was provider-degraded: the learn-mode writer's structured-output call failed on every turn, so the reply displayed the local curated passages instead of a synthesised lesson. See writer_provider_diagnosis.json.",
+  "provenance_warning": "RECONSTRUCTED. The raw per-row data was overwritten by a later 4-run smoke test that wrote to the same path. The aggregates, the per-language/per-topic/per-level splits and the full list of the 13 non-complete runs below were captured from the live run before it was overwritten. Individual answer texts are not recoverable.",
+  "scoring": "Concept terms are a coarse presence check for a human read, not automatic correctness.",
+  "totals": {
+    "complete": 29,
+    "partial": 9,
+    "missed": 4,
+    "error": 0
+  },
+  "degraded_runs": 42,
+  "clean_runs": 0,
+  "degraded_totals": {
+    "complete": 29,
+    "partial": 9,
+    "missed": 4,
+    "error": 0
+  },
+  "clean_totals": {
+    "complete": 0,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "by_language": {
+    "fa": {
+      "complete": 13,
+      "partial": 5,
+      "missed": 3,
+      "error": 0
+    },
+    "en": {
+      "complete": 16,
+      "partial": 4,
+      "missed": 1,
+      "error": 0
+    }
+  },
+  "by_topic": {
+    "algebra": {
+      "complete": 7,
+      "partial": 1,
+      "missed": 0
+    },
+    "derivative": {
+      "complete": 3,
+      "partial": 2,
+      "missed": 3
+    },
+    "exponentials": {
+      "complete": 4,
+      "partial": 4,
+      "missed": 0
+    },
+    "integral": {
+      "complete": 2,
+      "partial": 0,
+      "missed": 0
+    },
+    "logarithms": {
+      "complete": 7,
+      "partial": 1,
+      "missed": 0
+    },
+    "trigonometry": {
+      "complete": 6,
+      "partial": 1,
+      "missed": 1
+    }
+  },
+  "by_level": {
+    "beginner": {
+      "n": 10,
+      "complete": 8,
+      "partial": 2,
+      "missed": 0
+    },
+    "intermediate": {
+      "n": 12,
+      "complete": 8,
+      "partial": 2,
+      "missed": 2
+    },
+    "advanced": {
+      "n": 20,
+      "complete": 13,
+      "partial": 5,
+      "missed": 2
+    }
+  },
+  "topics_not_reached": [
+    "limits",
+    "matrix",
+    "optimization",
+    "probability"
+  ],
+  "non_complete_runs": [
+    {
+      "status": "partial",
+      "id": "logarithms.advanced.probe",
+      "language": "fa",
+      "missing": [
+        "جمع",
+        "نادرست"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "exponentials.intermediate.question",
+      "language": "fa",
+      "missing": [
+        "جدا کردن"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "exponentials.advanced.probe",
+      "language": "fa",
+      "missing": [
+        "نادرست"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "exponentials.intermediate.question",
+      "language": "en",
+      "missing": [
+        "same base"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "exponentials.advanced.probe",
+      "language": "en",
+      "missing": [
+        "multiply"
+      ]
+    },
+    {
+      "status": "missed",
+      "id": "trigonometry.advanced.probe",
+      "language": "fa",
+      "missing": [
+        "نادرست",
+        "فرمول جمع"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "trigonometry.advanced.probe",
+      "language": "en",
+      "missing": [
+        "sum formula"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "algebra.advanced.probe",
+      "language": "fa",
+      "missing": [
+        "نادرست"
+      ]
+    },
+    {
+      "status": "missed",
+      "id": "derivative.intermediate.question",
+      "language": "fa",
+      "missing": [
+        "12*x^2 - 2",
+        "46"
+      ]
+    },
+    {
+      "status": "missed",
+      "id": "derivative.intermediate.question",
+      "language": "en",
+      "missing": [
+        "12*x^2 - 2",
+        "46"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "derivative.beginner.question",
+      "language": "fa",
+      "missing": [
+        "نرخ تغییر"
+      ]
+    },
+    {
+      "status": "partial",
+      "id": "derivative.beginner.question",
+      "language": "en",
+      "missing": [
+        "rate of change"
+      ]
+    },
+    {
+      "status": "missed",
+      "id": "derivative.advanced.probe",
+      "language": "fa",
+      "missing": [
+        "نادرست",
+        "n*x^(n-1)"
+      ]
+    }
+  ]
+}

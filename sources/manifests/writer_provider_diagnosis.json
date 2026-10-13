@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-10-13T15:29:27.497420+00:00",
+  "curation_phase": "W3",
+  "provider": "avalai",
+  "endpoint": "https://api.avalai.ir/v1",
+  "model": "gpt-4.1-mini",
+  "summary": "Learn mode never synthesises a lesson against AvalAI. The writer's structured-output call fails on every turn, so `write_explanation` falls back to displaying the local curated passages. This is a deterministic provider/schema incompatibility, not a transient outage.",
+  "isolation": {
+    "not_prompt_size": "A trivial {ok: bool} schema succeeds with a 19,615-character prompt.",
+    "not_schema_size_generally": "Nested objects and arrays of concrete models succeed (cases D, E, F).",
+    "cause": "`LessonDraft.block_requests: list[Any]` serialises to `\"items\": {}`, an untyped array item. AvalAI rejects that request with 400 invalid_request or 503 service_unavailable (it returns both for the same input). Removing that one property makes the same call succeed (case A)."
+  },
+  "evidence": [
+    {
+      "case": "A",
+      "schema": "explanation + source_ids: list[str]",
+      "items": "n/a",
+      "result": "OK"
+    },
+    {
+      "case": "B",
+      "schema": "A + block_requests: list[Any]",
+      "items": "{}",
+      "result": "FAIL"
+    },
+    {
+      "case": "C",
+      "schema": "A + block_requests: list[dict]",
+      "items": "additionalProperties only",
+      "result": "FAIL"
+    },
+    {
+      "case": "D",
+      "schema": "nested object property",
+      "items": "typed object",
+      "result": "OK"
+    },
+    {
+      "case": "E",
+      "schema": "list[<concrete model>]",
+      "items": "typed object",
+      "result": "OK"
+    },
+    {
+      "case": "F",
+      "schema": "list[str]",
+      "items": "type: string",
+      "result": "OK"
+    },
+    {
+      "case": "G",
+      "schema": "list[str] min_length/max_length",
+      "items": "type: string",
+      "result": "OK"
+    },
+    {
+      "case": "H",
+      "schema": "list[Any] without constraints",
+      "items": "{}",
+      "result": "FAIL"
+    },
+    {
+      "case": "I",
+      "schema": "list[str] max_length=2",
+      "items": "type: string",
+      "result": "OK"
+    },
+    {
+      "case": "J",
+      "schema": "real LessonDraft (control)",
+      "items": "{}",
+      "result": "FAIL"
+    }
+  ],
+  "verified_workaround": {
+    "finding": "`with_structured_output(schema, method=\"function_calling\")` succeeds where the default method fails, on the unmodified LessonDraft schema.",
+    "attempted_fix_that_did_not_work": "Re-typing block_requests as a model with all-optional `str | None` fields still fails: the resulting `anyOf` item schema is also rejected.",
+    "not_yet_applied": true,
+    "location": "agent.py:780 OpenAIModelClient.structured"
+  },
+  "side_observation": "One probe returned HTTP 429 'insufficient credit' for the AvalAI account; the account balance is worth checking before a long live run.",
+  "impact": "Answer mode is unaffected (its schema has no untyped array). Only the learn-mode writer is degraded, and it degrades safely: the reply still carries the curated content, with an explicit warning."
+}

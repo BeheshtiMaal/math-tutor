@@ -1,0 +1,633 @@
+{
+  "generated_at": "2026-10-13T14:51:34.441951+00:00",
+  "curation_phase": "W3",
+  "model": "text-embedding-3-large",
+  "dimension": 3072,
+  "design": "end_to_end and distractor are the exit-gate families. semantic leaves the topic unconstrained so every curated chunk competes; its misses are listed as gaps.",
+  "gate_families": [
+    "distractor",
+    "end_to_end"
+  ],
+  "gate": {
+    "passed": true,
+    "failures": []
+  },
+  "by_family": {
+    "end_to_end": {
+      "cases": 20,
+      "passed": 20
+    },
+    "semantic": {
+      "cases": 20,
+      "passed": 19
+    },
+    "paired": {
+      "cases": 10,
+      "passed": 9
+    },
+    "distractor": {
+      "cases": 9,
+      "passed": 9
+    }
+  },
+  "totals": {
+    "cases": 59,
+    "passed": 57
+  },
+  "semantic_quality_gaps": [
+    "limits (fa): got derivative",
+    "limits: fa gave derivative but en gave limits"
+  ],
+  "cases": [
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "logarithms",
+      "inferred_topic": "logarithms",
+      "actual_topic": "logarithms",
+      "method": "semantic",
+      "query": "لگاریتم چیست و چه نسبتی با توان دارد؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "logarithms",
+      "inferred_topic": "logarithms",
+      "actual_topic": "logarithms",
+      "method": "semantic",
+      "query": "What is a logarithm and how is it related to exponentiation?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "exponentials",
+      "inferred_topic": "exponentials",
+      "actual_topic": "exponentials",
+      "method": "semantic",
+      "query": "تابع نمایی چیست و چگونه رشد را مدل می‌کند؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "exponentials",
+      "inferred_topic": "exponentials",
+      "actual_topic": "exponentials",
+      "method": "semantic",
+      "query": "What is an exponential function and how does it model growth?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "trigonometry",
+      "inferred_topic": "trigonometry",
+      "actual_topic": "trigonometry",
+      "method": "semantic",
+      "query": "سینوس و کسینوس روی دایره واحد چگونه تعریف می‌شوند؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "trigonometry",
+      "inferred_topic": "trigonometry",
+      "actual_topic": "trigonometry",
+      "method": "semantic",
+      "query": "How are sine and cosine defined on the unit circle?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "algebra",
+      "inferred_topic": "algebra",
+      "actual_topic": "algebra",
+      "method": "semantic",
+      "query": "معادله درجه دوم را چگونه حل کنم؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "algebra",
+      "inferred_topic": "algebra",
+      "actual_topic": "algebra",
+      "method": "semantic",
+      "query": "How do I solve a quadratic equation?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "derivative",
+      "inferred_topic": "derivative",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "query": "مشتق یک تابع چگونه محاسبه می‌شود؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "derivative",
+      "inferred_topic": "derivative",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "query": "How is the derivative of a function computed?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "integral",
+      "inferred_topic": "integral",
+      "actual_topic": "integral",
+      "method": "semantic",
+      "query": "انتگرال معین را چگونه حساب کنم؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "integral",
+      "inferred_topic": "integral",
+      "actual_topic": "integral",
+      "method": "semantic",
+      "query": "How do I evaluate a definite integral?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "limits",
+      "inferred_topic": "limits",
+      "actual_topic": "limits",
+      "method": "semantic",
+      "query": "حد یک تابع به چه معناست؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "limits",
+      "inferred_topic": "limits",
+      "actual_topic": "limits",
+      "method": "semantic",
+      "query": "What does the limit of a function mean?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "matrix",
+      "inferred_topic": "matrix",
+      "actual_topic": "matrix",
+      "method": "semantic",
+      "query": "ماتریس و دترمینان چه کاربردهایی دارند؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "matrix",
+      "inferred_topic": "matrix",
+      "actual_topic": "matrix",
+      "method": "semantic",
+      "query": "What are matrices and determinants used for?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "probability",
+      "inferred_topic": "probability",
+      "actual_topic": "probability",
+      "method": "semantic",
+      "query": "احتمال شرطی چگونه محاسبه می‌شود؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "probability",
+      "inferred_topic": "probability",
+      "actual_topic": "probability",
+      "method": "semantic",
+      "query": "How is conditional probability computed?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "fa",
+      "expected_topic": "optimization",
+      "inferred_topic": "optimization",
+      "actual_topic": "optimization",
+      "method": "semantic",
+      "query": "مسئله بهینه‌سازی را چگونه حل کنم؟",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "end_to_end",
+      "language": "en",
+      "expected_topic": "optimization",
+      "inferred_topic": "optimization",
+      "actual_topic": "optimization",
+      "method": "semantic",
+      "query": "How do I solve an optimization problem?",
+      "status": "passed",
+      "warning": null
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "logarithms",
+      "actual_topic": "logarithms",
+      "method": "semantic",
+      "query": "لگاریتم چیست و چه نسبتی با توان دارد؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "logarithms",
+      "actual_topic": "logarithms",
+      "method": "semantic",
+      "query": "What is a logarithm and how is it related to exponentiation?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "exponentials",
+      "actual_topic": "exponentials",
+      "method": "semantic",
+      "query": "تابع نمایی چیست و چگونه رشد را مدل می‌کند؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "exponentials",
+      "actual_topic": "exponentials",
+      "method": "semantic",
+      "query": "What is an exponential function and how does it model growth?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "trigonometry",
+      "actual_topic": "trigonometry",
+      "method": "semantic",
+      "query": "سینوس و کسینوس روی دایره واحد چگونه تعریف می‌شوند؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "trigonometry",
+      "actual_topic": "trigonometry",
+      "method": "semantic",
+      "query": "How are sine and cosine defined on the unit circle?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "algebra",
+      "actual_topic": "algebra",
+      "method": "semantic",
+      "query": "معادله درجه دوم را چگونه حل کنم؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "algebra",
+      "actual_topic": "algebra",
+      "method": "semantic",
+      "query": "How do I solve a quadratic equation?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "derivative",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "query": "مشتق یک تابع چگونه محاسبه می‌شود؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "derivative",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "query": "How is the derivative of a function computed?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "integral",
+      "actual_topic": "integral",
+      "method": "semantic",
+      "query": "انتگرال معین را چگونه حساب کنم؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "integral",
+      "actual_topic": "integral",
+      "method": "semantic",
+      "query": "How do I evaluate a definite integral?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "limits",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "query": "حد یک تابع به چه معناست؟",
+      "status": "failed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "limits",
+      "actual_topic": "limits",
+      "method": "semantic",
+      "query": "What does the limit of a function mean?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "matrix",
+      "actual_topic": "matrix",
+      "method": "semantic",
+      "query": "ماتریس و دترمینان چه کاربردهایی دارند؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "matrix",
+      "actual_topic": "matrix",
+      "method": "semantic",
+      "query": "What are matrices and determinants used for?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "probability",
+      "actual_topic": "probability",
+      "method": "semantic",
+      "query": "احتمال شرطی چگونه محاسبه می‌شود؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "probability",
+      "actual_topic": "probability",
+      "method": "semantic",
+      "query": "How is conditional probability computed?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "fa",
+      "expected_topic": "optimization",
+      "actual_topic": "optimization",
+      "method": "semantic",
+      "query": "مسئله بهینه‌سازی را چگونه حل کنم؟",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "semantic",
+      "language": "en",
+      "expected_topic": "optimization",
+      "actual_topic": "optimization",
+      "method": "semantic",
+      "query": "How do I solve an optimization problem?",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "paired",
+      "topic": "logarithms",
+      "fa_topic": "logarithms",
+      "en_topic": "logarithms",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "exponentials",
+      "fa_topic": "exponentials",
+      "en_topic": "exponentials",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "trigonometry",
+      "fa_topic": "trigonometry",
+      "en_topic": "trigonometry",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "algebra",
+      "fa_topic": "algebra",
+      "en_topic": "algebra",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "derivative",
+      "fa_topic": "derivative",
+      "en_topic": "derivative",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "integral",
+      "fa_topic": "integral",
+      "en_topic": "integral",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "limits",
+      "fa_topic": "derivative",
+      "en_topic": "limits",
+      "status": "failed"
+    },
+    {
+      "kind": "paired",
+      "topic": "matrix",
+      "fa_topic": "matrix",
+      "en_topic": "matrix",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "probability",
+      "fa_topic": "probability",
+      "en_topic": "probability",
+      "status": "passed"
+    },
+    {
+      "kind": "paired",
+      "topic": "optimization",
+      "fa_topic": "optimization",
+      "en_topic": "optimization",
+      "status": "passed"
+    },
+    {
+      "kind": "distractor",
+      "language": "fa",
+      "query": "لگاریتم و پایه آن",
+      "expected_topic": "logarithms",
+      "forbidden_topic": "exponentials",
+      "actual_topic": "logarithms",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "en",
+      "query": "logarithm change of base",
+      "expected_topic": "logarithms",
+      "forbidden_topic": "exponentials",
+      "actual_topic": "logarithms",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "fa",
+      "query": "مشتق تابع را چطور حساب کنم؟",
+      "expected_topic": "derivative",
+      "forbidden_topic": "integral",
+      "actual_topic": "derivative",
+      "method": "keyword",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used. AvalAI embedding connection failed or timed out. Using labelled keyword/metadata fallback."
+    },
+    {
+      "kind": "distractor",
+      "language": "en",
+      "query": "derivative and tangent slope",
+      "expected_topic": "derivative",
+      "forbidden_topic": "integral",
+      "actual_topic": "derivative",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "fa",
+      "query": "انتگرال و پادمشتق",
+      "expected_topic": "integral",
+      "forbidden_topic": "derivative",
+      "actual_topic": "integral",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "en",
+      "query": "matrix determinant and elimination",
+      "expected_topic": "matrix",
+      "forbidden_topic": "algebra",
+      "actual_topic": "matrix",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "fa",
+      "query": "احتمال شرطی و بیز",
+      "expected_topic": "probability",
+      "forbidden_topic": "algebra",
+      "actual_topic": "probability",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "en",
+      "query": "unit circle and sine cosine",
+      "expected_topic": "trigonometry",
+      "forbidden_topic": "algebra",
+      "actual_topic": "trigonometry",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    },
+    {
+      "kind": "distractor",
+      "language": "fa",
+      "query": "حد و قضیه فشردگی",
+      "expected_topic": "limits",
+      "forbidden_topic": "derivative",
+      "actual_topic": "limits",
+      "method": "semantic",
+      "status": "passed",
+      "warning": "No exact inferred-topic coverage; a broader compatible-source search was used."
+    }
+  ],
+  "query_api_requests": 48
+}

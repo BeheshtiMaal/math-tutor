@@ -722,6 +722,13 @@ def new_request_state(request: Request, config: AppConfig, history: list[BaseMes
         preferences["mode"] = "learn"
         if request.delivery_mode is None:
             preferences["delivery_mode"] = "step"
+    elif request.mode is None and re.search(
+        r"(?i)\b(?:explain|teach|learn|understand)\b|توضیح|آموزش|یاد[‌ ]?بگیر|یاد[‌ ]?بده",
+        request.query,
+    ):
+        # Explicit teaching intent takes the existing learn edge; a supplied
+        # mode remains authoritative, including an explicit answer request.
+        preferences["mode"] = "learn"
     override = request.language if request.language is not None else config.preferences.language
     messages = list(history or [])[-(config.limits.max_history_messages - 1):]
     messages.append(HumanMessage(content=request.query))
@@ -778,7 +785,14 @@ class OpenAIModelClient:
                                   base_url=config.model_base_url, timeout=config.limits.request_timeout_seconds, max_retries=0)
 
     async def structured(self, messages: list[BaseMessage], schema: type[Schema]) -> Schema:
-        result = await self._client.with_structured_output(schema).ainvoke(messages)
+        # Phase W3: the default structured-output method is rejected by the AvalAI
+        # endpoint whenever the schema contains an untyped array item. ``LessonDraft``
+        # carries ``block_requests: list[Any]``, which serialises to ``"items": {}``;
+        # every learn-mode writer call then failed (400 invalid_request or 503
+        # service_unavailable interchangeably) and the lesson silently fell back to
+        # displaying raw passages. The function-calling method accepts the same schema
+        # unchanged. See sources/manifests/writer_provider_diagnosis.json.
+        result = await self._client.with_structured_output(schema, method="function_calling").ainvoke(messages)
         return schema.model_validate(result)
 
     async def text(self, messages: list[BaseMessage]) -> str:
