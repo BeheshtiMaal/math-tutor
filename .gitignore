@@ -24,3 +24,9 @@ frontend/.next-w9-build/
 frontend/playwright-report/
 frontend/test-results/
 *.tsbuildinfo
+# Installed agent tooling and local archives stay on this machine.
+.agents/skills/
+.harness/skills/
+skills-lock.json
+skill-audit-*.md
+*.zip
