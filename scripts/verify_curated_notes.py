@@ -109,6 +109,16 @@ def unsupported(reason):
 
 # Each entry: id, topic, claim (human readable), and a callable returning (status, method).
 CLAIMS = [
+    # W3 closure claims: prepared but not executed at the user's request.
+    dict(id="trig.closure.opposite-angles", topic="trigonometry",
+         claim="sin(t + (-t)) = sin(t) + sin(-t) for every real t",
+         check=lambda: equals(sin(t - t) - sin(t) - sin(-t), 0)),
+    dict(id="opt.closure.stationary-cubic", topic="optimization",
+         claim="d(x^3)/dx = 3*x^2, which vanishes at zero",
+         check=lambda: equals(diff(x**3, x) - 3*x**2, 0)),
+    dict(id="opt.closure.cubic-neither", topic="optimization",
+         claim="zero is neither a local maximum nor a local minimum of x^3",
+         check=lambda: unsupported("requires a sign/neighborhood argument; derivative-zero alone is insufficient")),
     # ------------------------------------------------------------------ logarithms
     dict(id="log.def.inverse.exp", topic="logarithms", claim="b^(log_b(x)) = x for x > 0",
          check=lambda: equals(b ** log(x, b), x)),
@@ -536,8 +546,8 @@ CLAIMS = [
          claim="convergence of an improper integral is a property of the decay rate",
          check=lambda: unsupported("interpretive statement; the two concrete integrals are verified separately")),
     dict(id="opt.statement.coercive", topic="optimization",
-         claim="a coercive objective on the domain upgrades a local minimum to the global one",
-         check=lambda: unsupported("an argument about the domain, not a single algebraic identity")),
+         claim="for x+1/x on x>0, the derivative changes from negative to positive at 1, proving its global minimum",
+         check=lambda: unsupported("a domain-wide monotonicity argument, not a single algebraic identity")),
     dict(id="der.def.derivative-limit", topic="derivative",
          claim="f'(a) is the two-sided limit of the difference quotient when it exists",
          check=lambda: unsupported("the definition itself; concrete difference quotients are verified separately")),

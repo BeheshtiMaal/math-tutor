@@ -162,7 +162,8 @@ class SearchChecks(unittest.IsolatedAsyncioTestCase):
         result = await graph.ainvoke(agent.new_request_state(agent.Request(query="Explain derivatives"), self.config), {"configurable": {"thread_id": "repair"}})
         self.assertEqual(len(model.calls), 3)
         self.assertNotIn("verified by SymPy", result["explanation"])
-        self.assertIn("synthesis failed", result["explanation"])
+        self.assertTrue(any("synthesis failed" in warning for warning in result["warnings"]))
+        self.assertNotIn("synthesis failed", result["explanation"])
 
     async def test_cli_full_and_step_reset_finish_and_exit(self):
         for delivery in ["full", "step"]:

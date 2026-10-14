@@ -1,0 +1,19 @@
+{
+  "tests": 290,
+  "passed": 288,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 2,
+  "elapsed_seconds": 124.781,
+  "failed_cases": [],
+  "skip_reasons": [
+    {
+      "case": "test_answer_graph.ParserAndWorkerChecks.test_missing_sympy_is_readable_from_actual_spawned_worker",
+      "reason": "Specifically tests the missing SymPy environment"
+    },
+    {
+      "case": "test_semantic_retrieval.ActualE5Checks.test_real_model_persian_english_paraphrases_against_english_passages",
+      "reason": "Optional local E5 acceptance: set TUTOR_TEST_LOCAL_E5=1 with package/model installed"
+    }
+  ]
+}

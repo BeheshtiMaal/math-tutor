@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-14",
+  "backend": "http://127.0.0.1:8765",
+  "live_model": true,
+  "checks": [
+    {
+      "topic": "logarithms",
+      "kind": "natural_request",
+      "delivery": "step",
+      "language": "fa",
+      "block_types": [
+        "function_graph"
+      ],
+      "persian_prose": true,
+      "visible_citations_or_coverage_notices": false,
+      "seconds": 16.7
+    },
+    {
+      "topic": "logarithms",
+      "kind": "followup",
+      "delivery": "step",
+      "language": "fa",
+      "block_types": [
+        "function_graph"
+      ],
+      "persian_prose": true,
+      "visible_citations_or_coverage_notices": false,
+      "seconds": null
+    },
+    {
+      "topic": "logarithms",
+      "kind": "followup",
+      "delivery": "full",
+      "language": "fa",
+      "block_types": [
+        "function_graph",
+        "step_reveal"
+      ],
+      "persian_prose": true,
+      "visible_citations_or_coverage_notices": false,
+      "seconds": null
+    },
+    {
+      "topic": "derivative",
+      "kind": "natural_request",
+      "delivery": "full",
+      "language": "fa",
+      "block_types": [
+        "function_graph"
+      ],
+      "persian_prose": true,
+      "visible_citations_or_coverage_notices": false,
+      "seconds": 29.3
+    }
+  ],
+  "browser": "Chrome, http://127.0.0.1:3000",
+  "history_inspection": "Read-only isolated snapshot of the authorized MathTutor IndexedDB origin; original chats unchanged",
+  "graph_topology": "Unchanged: 11 nodes",
+  "tavily": "Disabled as previously requested"
+}

@@ -8,6 +8,7 @@ from collections import deque
 import ast
 import asyncio
 from datetime import datetime, timedelta, timezone
+from dataclasses import dataclass
 from decimal import Decimal
 from functools import lru_cache
 import json
@@ -37,13 +38,13 @@ LearnerLevel = Literal["beginner", "intermediate", "advanced"]
 DeliveryMode = Literal["full", "step"]
 EvidenceStatus = Literal["success", "empty", "skipped", "error"]
 VerificationStatus = Literal["verified", "rejected", "unknown", "unsupported"]
-UserAction = Literal["next", "followup", "simplify", "full", "done"]
+UserAction = Literal["next", "followup", "simplify", "full", "done", "ui_event"]
 # W2 additions (spec v3.0 sections 5, 11, 12 and 13).
 Channel = Literal["web", "cli"]
 TopicKind = Literal["core", "open"]
 LanguageSource = Literal["detected", "override"]
 LevelSource = Literal["manual", "inferred", "default"]
-BlockType = Literal["function_graph", "step_reveal"]
+BlockType = Literal["function_graph", "step_reveal", "geometry_canvas"]
 LEVEL_LABELS = {"beginner": "مبتدی", "intermediate": "متوسط", "advanced": "پیشرفته"}
 PROJECT_ROOT = Path(__file__).resolve().parent
 
@@ -64,6 +65,8 @@ def detect_language(text: str) -> Language | None:
     """
     if not isinstance(text, str):
         return None
+    from lesson_presentation import prose_only
+    text = prose_only(text)
     persian = len(PERSIAN_SCRIPT.findall(text))
     latin = sum(len(match) for match in LATIN_WORD.findall(text))
     total = persian + latin
@@ -341,7 +344,7 @@ class LearnerProfile(Contract):
             raise ValueError("Profile topic key is too long")
         if any(len(value) > 120 for value in self.recent_topics):
             raise ValueError("Profile recent topic entry is too long")
-        if len(self.model_dump_json()) > MAX_PROFILE_BYTES:
+        if len(self.model_dump_json().encode('utf-8')) > MAX_PROFILE_BYTES:
             raise ValueError("Profile exceeds the size limit")
         return self
 
@@ -353,6 +356,14 @@ class LearnerProfile(Contract):
         if entry is None or entry.level_source != "manual":
             return None
         return entry.level
+
+
+@dataclass
+class LearnerRuntime:
+    """Per-invocation learning memory. Runtime context is not checkpoint state."""
+    profile: LearnerProfile | None = None
+    manual_level: LearnerLevel | None = None
+    automatic: bool = False
 
 
 class TextSegment(Contract):
@@ -367,7 +378,8 @@ class BlockRequest(Contract):
 
     The model supplies only the type, title, parameters and fallback text. The
     backend assigns the envelope ``id``, ``version`` and ``data_source`` when it
-    validates and emits the block in phase W5, so no block is emitted in W2.
+    validates and emits the block. Strict type-specific proposal and enriched
+    output schemas live in webapp/ui_blocks.py; this core record holds intent.
     """
 
     type: BlockType
@@ -424,6 +436,8 @@ class Expression(Contract):
             if self.op in {"add", "mul"}:
                 if count < 2:
                     raise ValueError("Addition/multiplication requires at least two operands")
+            elif self.op == "log" and count in {1, 2}:
+                pass
             elif count != expected:
                 raise ValueError("Incorrect operator operand count")
         return self
@@ -657,6 +671,7 @@ class LessonStep(Contract):
     kind: Literal["concept", "method", "example", "check"] = "concept"
     text: str = Field(default="", max_length=20000)
     source_ids: list[str] = Field(default_factory=list, max_length=32)
+    block_requests: list[Any] = Field(default_factory=list, max_length=2)
 
 
 class TraceEvent(Contract):
@@ -673,6 +688,8 @@ class TutorState(TypedDict, total=False):
     language_source: LanguageSource
     learner_level: LearnerLevel | None
     level_source: LevelSource
+    level_suggestion: LearnerLevel | None
+    plan_level: LearnerLevel | None
     delivery_mode: DeliveryMode
     messages: Annotated[list[BaseMessage], add_messages]
     problem: Problem | None
@@ -695,6 +712,7 @@ class TutorState(TypedDict, total=False):
     user_decision: Literal["moreQ", "done"] | None
     user_action: UserAction | None
     followup_query: str | None
+    ui_event: dict[str, Any] | None
     evidence_request: dict[str, Any]
     lesson_objective: str
     explanation_version: int
@@ -723,7 +741,7 @@ def new_request_state(request: Request, config: AppConfig, history: list[BaseMes
         if request.delivery_mode is None:
             preferences["delivery_mode"] = "step"
     elif request.mode is None and re.search(
-        r"(?i)\b(?:explain|teach|learn|understand)\b|توضیح|آموزش|یاد[‌ ]?بگیر|یاد[‌ ]?بده",
+        r"(?i)\b(?:explain|teach|learn|understand|examples?)\b|توضیح|آموزش|یاد[‌ ]?بگیر|یاد[‌ ]?بده|مثال|نمونه",
         request.query,
     ):
         # Explicit teaching intent takes the existing learn edge; a supplied
@@ -735,12 +753,12 @@ def new_request_state(request: Request, config: AppConfig, history: list[BaseMes
     state = TutorState(**preferences, query=request.query, topic=request.topic, messages=messages,
                        problem=None, math_result=None, source=None, examples=None, teaching_tips=None, websearch=None,
                        explanation="", final_answer="", lesson_plan=[], step_index=0, last_emitted_step=None,
-                       user_decision=None, user_action=None, followup_query=None, clarification_count=0,
+                       user_decision=None, user_action=None, followup_query=None, ui_event=None, clarification_count=0,
                        repair_count=0, warnings=[], execution_trace=[], evidence_request={},
                        lesson_objective="", explanation_version=0, selected_example_id=None, new_topic_query=None,
                        current_step_explanation="", lesson_complete=False, explanation_segments=[],
                        block_requests=[], ui_blocks=[], topic_kind="open",
-                       learner_profile=request.learner_profile, level_source="default")
+                       learner_profile=request.learner_profile, level_source="default", level_suggestion=None, plan_level=None)
     if override is not None:
         state["language"] = override
         state["language_source"] = "override"
@@ -792,11 +810,15 @@ class OpenAIModelClient:
         # service_unavailable interchangeably) and the lesson silently fell back to
         # displaying raw passages. The function-calling method accepts the same schema
         # unchanged. See sources/manifests/writer_provider_diagnosis.json.
-        result = await self._client.with_structured_output(schema, method="function_calling").ainvoke(messages)
+        from model_usage import model_call_config
+        call_config = model_call_config()
+        result = await self._client.with_structured_output(schema, method="function_calling").ainvoke(messages, **({'config':call_config} if call_config else {}))
         return schema.model_validate(result)
 
     async def text(self, messages: list[BaseMessage]) -> str:
-        result = await self._client.ainvoke(messages)
+        from model_usage import model_call_config
+        call_config = model_call_config()
+        result = await self._client.ainvoke(messages, **({'config':call_config} if call_config else {}))
         if not isinstance(result.content, str):
             raise ValueError("Expected a text model response")
         return result.content
@@ -866,8 +888,9 @@ def parse_expression(text: str, limits: Limits | None = None) -> Expression:
             return {"op": "neg", "args": [operand]} if isinstance(node.op, ast.USub) else operand
         if isinstance(node, ast.BinOp) and type(node.op) in operations:
             return {"op": operations[type(node.op)], "args": [convert(node.left, depth + 1), convert(node.right, depth + 1)]}
-        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in functions and len(node.args) == 1 and not node.keywords:
-            return {"op": node.func.id, "args": [convert(node.args[0], depth + 1)]}
+        if (isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in functions
+                and (len(node.args) == 1 or (node.func.id == "log" and len(node.args) == 2)) and not node.keywords):
+            return {"op": node.func.id, "args": [convert(arg, depth + 1) for arg in node.args]}
         raise ValueError("Only allowlisted scalar mathematics is supported")
 
     expression = convert(tree.body)
@@ -990,6 +1013,10 @@ def _compute_math(payload, limits: Limits) -> MathResult:
                 nonzero.append(args[0])
             return sp.Pow(*args, evaluate=False)
         function = {"sin": sp.sin, "cos": sp.cos, "tan": sp.tan, "exp": sp.exp, "log": sp.log, "sqrt": sp.sqrt, "abs": sp.Abs}[node.op]
+        if node.op == "log" and len(args) == 2:
+            if domain == "real" and (args[1].is_positive is not True or args[1] == 1):
+                raise ValueError("A real logarithm base must be positive and different from one")
+            return sp.Mul(sp.log(args[0], evaluate=False), sp.Pow(sp.log(args[1], evaluate=False), -1, evaluate=False), evaluate=False)
         return function(args[0], evaluate=False)
 
     conditions = []
@@ -1352,7 +1379,7 @@ def build_graph(config: AppConfig, model: ModelClient | None = None, search_clie
                 "explanation_segments": [TextSegment(kind="answer", text=answer)],
                 "block_requests": [], "ui_blocks": [], "execution_trace": trace("write_answer")}
 
-    builder = StateGraph(TutorState)
+    builder = StateGraph(TutorState, context_schema=LearnerRuntime)
     for name, node in [("classify", classify), ("answer", answer), ("math_tool", math_tool), ("write_answer", write_answer)]:
         builder.add_node(name, node)
     retrieval = retrieval_client or SemanticRetrievalClient(app_config, math_runner, embedding_client=embedding_client, credentials=embedding_credentials)

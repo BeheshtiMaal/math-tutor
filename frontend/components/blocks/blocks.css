@@ -1,0 +1,40 @@
+.ui-block {margin-block:20px;max-width:100%;min-width:0;}
+.ui-block h2 {margin:0;font:inherit;line-height:1.6;}
+.header-title h1 {margin:0;font:inherit;}
+.graph-content {display:flex;flex-direction:column;gap:16px;min-width:0;}
+.graph-expressions {display:flex;flex-direction:column;gap:6px;align-items:flex-start;overflow-wrap:anywhere;}
+.graph-legend {display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+.graph-legend>span {width:22px;height:3px;background:var(--curve);border-radius:2px;}
+.graph-legend .math-text p {margin:0;}
+.graph-legend code {font-family:inherit;direction:ltr;unicode-bidi:isolate;font-size:14px;}
+.graph-surface {background:var(--background);border-radius:8px;overflow:hidden;}
+.function-plot {width:100%;height:auto;display:block;direction:ltr;}
+.plot-grid line {stroke:var(--border);stroke-width:1;}
+.plot-grid text,.plot-axis-label {fill:var(--muted);font-size:13px;font-family:inherit;}
+.plot-axes {stroke:var(--muted);stroke-width:1.2;}
+.curve-0 {--curve:var(--primary);}.curve-1 {--curve:var(--plot-second);}.curve-2 {--curve:var(--plot-third);}
+.plot-curve {fill:none;stroke:var(--curve);stroke-width:2.5;vector-effect:non-scaling-stroke;stroke-linejoin:round;}
+.plot-gap {fill:var(--secondary);}
+.plot-highlight {fill:var(--curve);stroke:var(--card);stroke-width:1.5;}
+.graph-placeholder {min-height:230px;display:grid;place-content:center;padding:20px;text-align:center;color:var(--muted);font-size:13px;}
+.graph-parameters {gap:20px;}
+.parameter-heading {display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.parameter-heading output {font-variant-numeric:tabular-nums;unicode-bidi:isolate;}
+.graph-parameters [data-slot=slider] {min-height:44px;}
+.parameter-range {display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:-4px;}
+.graph-highlights {display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.graph-highlights .math-text {font-size:14px;}.graph-highlights .math-text p {margin:0;}
+.block-note,.block-status {font-size:12px;line-height:1.9;color:var(--muted);margin:0;}
+.reveal-position {display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:16px;}
+.reveal-equations {animation:reveal-arrive 180ms ease-out;}
+.previous-equation {color:var(--muted);font-size:14px;}
+.current-equation {min-height:72px;display:grid;place-content:center;margin-block:10px 14px;overflow-x:auto;padding:10px;}
+.current-equation .math-text {font-size:19px;}.current-equation .math-text p {margin:0;}
+.equation-sides {display:flex;align-items:center;justify-content:center;gap:10px;unicode-bidi:isolate;}
+.changed-math {background:var(--secondary);border-bottom:2px solid var(--primary);border-radius:5px;padding:6px 9px;}
+.step-justification {font-size:14px;line-height:2;margin-bottom:0;}
+.reveal-controls {display:flex;flex-wrap:wrap;gap:8px;}
+.block-fallback {border-inline-start:3px solid var(--border);padding-inline-start:14px;font-size:14px;line-height:2;overflow-wrap:anywhere;}
+@keyframes reveal-arrive {from {opacity:.55;transform:translateY(4px);}to {opacity:1;transform:translateY(0);}}
+@media(max-width:760px){.ui-block [data-slot=card-header],.ui-block [data-slot=card-content],.ui-block [data-slot=card-footer]{padding-inline:14px;}.current-equation .math-text{font-size:16px;}.reveal-controls button{min-height:44px;}.graph-placeholder{min-height:170px;}}
+@media(prefers-reduced-motion:reduce){.reveal-equations{animation:none;}}

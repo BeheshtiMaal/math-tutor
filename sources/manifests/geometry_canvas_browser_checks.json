@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "engine": "chromium",
+      "stats": {
+        "startTime": "2026-10-14T04:44:37.517Z",
+        "duration": 23891.725000000002,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "engine": "firefox",
+      "stats": {
+        "startTime": "2026-10-14T04:41:10.453Z",
+        "duration": 181631.855,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "fixture": "scripts/serve_geometry_fixture.py",
+  "actual_graph": true,
+  "actual_numeric_engine": true,
+  "external_model": "deterministic",
+  "scenarios": [
+    "unit circle keyboard/drag/reset/reload",
+    "triangle keyboard/reset",
+    "vector keyboard",
+    "no additional chat request on interaction",
+    "existing canvas reused on follow-up",
+    "375px light/dark no horizontal overflow",
+    "no page or KaTeX errors"
+  ],
+  "live_proxy_check_separate": true
+}

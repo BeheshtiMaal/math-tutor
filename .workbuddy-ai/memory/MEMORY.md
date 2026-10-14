@@ -6,7 +6,7 @@
 - **Report only what was actually run.** Do not claim success for anything not executed. Mark incomplete items as incomplete.
 - **Keep the existing regression tests passing.** Baseline after W2/W3: **206 tests, 204 passed, 2 skipped, 0 failures** (~150–250 s). W2 added 31 (`tests/test_web_refactors.py`); pre-W2 baseline was 175; W3 added none. The 2 skips are pre-existing: missing-SymPy (`test_answer_graph.py:190`) and optional local-E5 (`test_semantic_retrieval.py:338`). Record exactly which tests changed and why. Run it with `.venv/Scripts/python.exe -m unittest discover -s tests` — **pytest is not installed**.
 - The roadmap file lives outside the repo (`C:\Users\Alireza\Downloads\math_tutor_web_roadmap.md`); it is user-supplied, not stored in the workspace.
-- Phase progress: W0 done, W1 done, W2 done, W3 done (content). Next is **W4 (streaming)** — do not start without explicit go-ahead.
+- Phase progress: W0–W7 implemented; **W7 checked** (sources/manifests/phase_w7_report.md). Latest regression: 273 run, 271 passed, 2 skips; frontend 29 passed; Chromium 8/8 and Firefox 8/8; typecheck/build passed. Component state, sequence and pending replay identity persist in IndexedDB. W3 historical quality/content-verification limits remain in w3_completion.md. Next is **W8** — do not start without explicit go-ahead.
 
 ## Curated core content (phase W3, `sources/topics/`)
 
@@ -28,8 +28,8 @@
 - The compiled graph is built **once** in the FastAPI lifespan and reused. `service.py` only invokes/resumes; it never inspects `mode` to pick a branch.
 - Resume mirrors `cli.py`: `Command(resume=<text>)` on the same thread; the graph's own `user_input` node interprets the text.
 - The in-memory checkpointer is the **only** graph-state store. A restart loses lessons; the client gets `thread_not_found` and starts fresh from its saved transcript.
-- `ui_event` returns `400 bad_request` / `error.action_not_supported` until W7 — by design.
-- Contract placeholders that must not change shape in later phases: `blocks` always `[]` (W5), `level_suggestion` always `null` (W8), `usage` values always `null` (W9).
+- W7 `ui_event` is implemented: matching typed envelope and empty message required; issued step/slider binding, same-thread Command resume, checkpointed ID/sequence ordering and five-events/five-seconds limits. Informational actions stay local. See sources/manifests/phase_w7_report.md.
+- Remaining placeholders: `level_suggestion` is `null` until W8; `usage` values are `null` until W9. Blocks use the validated component union; W7 event replies expose accepted/duplicate/stale status.
 - `fastapi.sse` / `EventSourceResponse` / `app.frontend()` do **not** exist in FastAPI 0.121.2 + Starlette 0.49.3. W4 must use `StreamingResponse`.
 
 ## Core refactors (phase W2, `agent.py` / `learning.py`)
@@ -67,3 +67,27 @@
 - Active embedding backend is AvalAI `text-embedding-3-large` (3072-dim), endpoint `https://api.avalai.ir/v1`. No local embedding model is loaded for this backend.
 - Display policy: answers and lessons contain **no citations/source names/URLs**. Provenance stays in evidence records and manifests.
 - Persian digits in UI chrome only; Latin digits inside all math. Web channel uses LaTeX (KaTeX); CLI uses plain text.
+
+
+## Learner-facing language/GenUI policy (2026-10-14)
+
+- Select useful visuals automatically; the learner must not need to name components. Use source-grounded defaults when model blocks are absent/invalid, retaining real backend samples and checks.
+- Persian conversations and worked-example prose stay Persian; math/function names alone never switch the language. Preserve exact source math during translation. Intentional language changes remain supported.
+- Do not display citations, source IDs/equation references, or Paul/source coverage notices. Retain evidence provenance and retrieval/verification diagnostics internally.
+- W6 user-chat fixes checked with 249 Python tests (247 pass, 2 skips), actual model HTTP turns and Chrome SSE. Full details: sources/manifests/lesson_fixes_report.md. Original user history was read through an authorized copied snapshot and not modified. W7 remains unstarted.
+
+
+- Visual-frequency preference (2026-10-14): do not generate a new chart for every learner message. Existing chart content is checkpointed and reused across follow-ups, simplification and continuation. Only different function/derivation content warrants a new visual. Preserve automatic first-lesson selection. Verified with 65 targeted tests and four actual model turns; see sources/manifests/visual_frequency_report.md.
+
+
+- Example UI preference (2026-10-14): when the learner requests an example, prioritize step_reveal for that exact sourced example while preserving full text and current lesson index. English/Persian natural requests infer learn mode unless explicitly overridden. Topic-note examples can fill a missing bank. Fixed log examples are checked; formal named-function/derivative notation displays as unsupported, never falsely verified. Generic graphs are not added on ordinary follow-ups after an example reveal. Verified with 74 targeted tests, actual Persian logarithm/derivative requests and ten KaTeX formula renders; sources/manifests/example_ui_report.md.
+
+- Geometry canvas (2026-10-14): geometry_canvas:1 supports unit circle, triangle and vectors; bounded numerical backend geometry drives every drawn measurement. Natural topic requests select it; existing scenes are reused. Drag/keyboard/sliders/reset and saved scene/results work without new tutor turns. Degenerate/zero-vector angles stay undefined; no proof claim. Backend 265 pass/2 skip, frontend 24 pass, typecheck/build and both browser engines pass; actual Persian circle/normal update proxy checked. See sources/manifests/geometry_canvas_report.md. W7 unstarted; real servers on 3000/8765.
+
+- Latest phase: W7 complete (2026-10-14), W8 unstarted. Component confusion/current graph/text recovery reach the tutor without advancing or repeated retrieval/components; transparent messages and saved identity. Eleven nodes/edges unchanged; contracted ui_event state field populated. Backend 271 pass/2 skip, frontend 29 pass, typecheck/build, Chromium 8/8 and Firefox 8/8. Actual Persian event reactions checked; initial planner fallback remains disclosed. Updated bilingual fixtures; optional replay headers now forwarded correctly. See sources/manifests/phase_w7_report.md. Real servers 3000/8765 left running; wait for explicit W8 go-ahead.
+
+- Math rendering correction (2026-10-14): MathText uses lib/math-markdown.ts. Never use a replacement string containing $$ to normalize display math: JS collapses it to a single dollar. Preserve code/URLs, explicit inline/display modes and numerical notation. Latest copied Chrome chat went from 4 math/1 error to 14 math/0 errors; frontend 34 tests/typecheck and runtime checks passed. Saved originals untouched; refresh renders the fix. See sources/manifests/latex_rendering_fix_report.md. W8 remains unstarted.
+
+- Latest phase: W8 complete (2026-10-14); W9 unstarted. Header «حافظه یادگیری» manages bounded IndexedDB topic levels/weak points and local reset. Conservative bilingual automatic estimates are not proficiency assessments; session/stored manual choices win. Simplify/step confusion influences subsequent explanations; cached steps adapt after correction. HTTP profiles are ephemeral LearnerRuntime context, never checkpoint/config/cache state; legacy learner_profile key is null on web. Reset scrubs pending profiles and prevents old turns restoring memory, preserving chats/explicit session settings. Derived level_suggestion/plan_level added; eleven-node topology/Tavily-disabled preference unchanged. Backend 277 pass/2 skip, final affected 6+9+26 pass; frontend 40, typecheck/build; Chrome 10/10 and Firefox 10/10. Actual Persian levels/review checked, earlier planner fallbacks disclosed. See sources/manifests/phase_w8_report.md. Real servers 3000/8765 restored, fixture stopped, no commit requested. Stop before W9.
+
+- Conversational examples (2026-10-14): «یه مثال برام میزنی» already matches intent. On bank translation failure use localized worked notes; optional UI conversion can use safe source derivative endpoints. Never truncate unsupported math into a prefix or claim formal differentiation verified. Only explicit example requests can repeat step_reveal; automatic charts and ordinary follow-ups stay deduplicated. Exact live phrase twice rendered reveals with unchanged step and no extra chart/KaTeX/page error. Final 54 actual graph/SymPy in-process checks and 13 normal-worker example/history checks pass; early OS worker delays disclosed. Report sources/manifests/colloquial_example_report.md. Original Chrome history read through isolated copy only; frontend/schema/topology unchanged, real servers running, W9 unstarted.

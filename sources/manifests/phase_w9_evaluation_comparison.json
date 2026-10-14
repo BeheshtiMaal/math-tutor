@@ -1,0 +1,140 @@
+{
+  "current_runs": 80,
+  "current_planned": 80,
+  "run_status": "complete",
+  "current_totals": {
+    "complete": 54,
+    "partial": 24,
+    "missed": 2,
+    "error": 0
+  },
+  "current_degraded_runs": 80,
+  "baseline_raw_pairs": 51,
+  "baseline_totals": {
+    "complete": 36,
+    "partial": 12,
+    "missed": 3
+  },
+  "baseline_files": [
+    "evaluation_failed_rerun.json",
+    "evaluation_unfinished_live.json",
+    "evaluation_remaining_10.json"
+  ],
+  "regressions": [
+    {
+      "id": "logarithms.advanced.probe",
+      "language": "fa",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "exponentials.intermediate.question",
+      "language": "en",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "derivative.beginner.question",
+      "language": "fa",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "language": "fa",
+      "baseline": "complete",
+      "current": "missed",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "derivative.beginner.question",
+      "language": "en",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "derivative.intermediate.question",
+      "language": "en",
+      "baseline": "complete",
+      "current": "missed",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "integral.advanced.probe",
+      "language": "en",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "matrix.intermediate.question",
+      "language": "fa",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "matrix.advanced.probe",
+      "language": "en",
+      "baseline": "complete",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    }
+  ],
+  "improvements": [
+    {
+      "id": "algebra.advanced.probe",
+      "language": "fa",
+      "baseline": "partial",
+      "current": "complete",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "derivative.advanced.probe",
+      "language": "fa",
+      "baseline": "missed",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "integral.advanced.probe",
+      "language": "fa",
+      "baseline": "missed",
+      "current": "partial",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "limits.beginner.question",
+      "language": "fa",
+      "baseline": "partial",
+      "current": "complete",
+      "current_degraded": true,
+      "same_scoring_version": false
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "fa",
+      "baseline": "missed",
+      "current": "complete",
+      "current_degraded": true,
+      "same_scoring_version": false
+    }
+  ],
+  "interpretation": "Current 80/80 model fallbacks; separate probe returned AvalAI 429 insufficient_quota. These are infrastructure-affected score changes, not certified content regressions/improvements. Original 29 successful baseline rows remain aggregate-only; the raw baseline cohort covers 51 pairs. Search configuration and scoring versions differ in historical runs."
+}

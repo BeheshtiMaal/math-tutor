@@ -1,0 +1,46 @@
+{
+  "fixture": "scripts/serve_w8_fixture.py; real graph/SymPy, deterministic external services",
+  "files": [
+    "lesson.spec.ts",
+    "blocks.spec.ts",
+    "ui-events.spec.ts",
+    "learner-memory.spec.ts"
+  ],
+  "browsers": {
+    "chromium": {
+      "stats": {
+        "startTime": "2026-10-14T08:08:16.798Z",
+        "duration": 163077.88199999998,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": []
+    },
+    "firefox": {
+      "stats": {
+        "startTime": "2026-10-14T08:11:22.794Z",
+        "duration": 252503.866,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": []
+    }
+  },
+  "initial_failures": [
+    "Cold compile/startup timeout; not counted as passing.",
+    "Memory test assumed a reveal in a short review; fixed to request an example before step confusion."
+  ],
+  "agent_review": {
+    "mobile_width": 375,
+    "light_dark_screenshots_reviewed": true,
+    "horizontal_overflow": false,
+    "katex_errors": 0,
+    "keyboard_focus": "reset button within dialog",
+    "react": "LearnerMemory profile, open state and correction/reset callbacks inspected",
+    "private_capture_location": ".cache/; not published"
+  }
+}

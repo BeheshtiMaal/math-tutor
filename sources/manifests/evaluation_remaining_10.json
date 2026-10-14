@@ -1,0 +1,434 @@
+{
+  "generated_at": "2026-10-13T17:36:37.338622+00:00",
+  "curation_phase": "W3",
+  "channel": "web",
+  "model": "gpt-4.1-mini",
+  "provider": "openai",
+  "search_backend": "avalai_tavily",
+  "concurrency": 4,
+  "scope": "unfinished-only(10 item/language pairs)",
+  "rerun_of": "sources/manifests/evaluation_unfinished_live.json",
+  "selection_basis": "explicit item/language pairs",
+  "selected_pairs": [
+    {
+      "id": "probability.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "language": "en"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "language": "en"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "fa"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "language": "en"
+    }
+  ],
+  "run_status": "complete",
+  "items": 5,
+  "runs": 10,
+  "planned_runs": 10,
+  "scoring": "Concept terms are a coarse presence check for a human read, not automatic correctness.",
+  "totals": {
+    "complete": 9,
+    "partial": 0,
+    "missed": 1,
+    "error": 0
+  },
+  "degraded_runs": 0,
+  "clean_runs": 10,
+  "degraded_totals": {
+    "complete": 0,
+    "partial": 0,
+    "missed": 0,
+    "error": 0
+  },
+  "clean_totals": {
+    "complete": 9,
+    "partial": 0,
+    "missed": 1,
+    "error": 0
+  },
+  "by_topic": {
+    "optimization": {
+      "complete": 7,
+      "partial": 0,
+      "missed": 1,
+      "error": 0
+    },
+    "probability": {
+      "complete": 2,
+      "partial": 0,
+      "missed": 0,
+      "error": 0
+    }
+  },
+  "quality_gaps": [
+    "optimization.advanced.probe/fa: missed missing=['نادرست', 'هیچ\\u200cکدام']"
+  ],
+  "results": [
+    {
+      "id": "optimization.beginner.question",
+      "topic": "optimization",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 12.4,
+      "degraded": false,
+      "expected": [
+        "objective",
+        "constraint",
+        "feasible domain"
+      ],
+      "found": [
+        "objective",
+        "constraint",
+        "feasible domain"
+      ],
+      "missing": [],
+      "answer_chars": 6202,
+      "answer": "Let's learn about an optimization problem step by step. \n\nFirst, what is optimization? Optimization means finding the largest or smallest value of something while following some rules. Imagine you have a quantity to maximize or minimize. This quantity is called the objective. It has units, like meters, dollars, or liters. We want to make the objective as large or as small as possible.\n\nNow, in an optimization problem, we have variables. Variables are the inputs or unknowns we can change. We usually write the objective as a function of these variables. For example, let the variables be \\(x\\) and \\(y\\).\n\nWe also have a constraint. The constraint is a rule or condition that the variables must satisfy. For instance, if you have a fixed perimeter, the sum of the sides must be constant. The constraint links variables, such as \\(2x + 2y = 20\\).\n\nThe feasible domain is all the input values that satisfy the constraint and make physical sense. For example, side lengths must be positive numbers. So, the feasible domain might be \\(0 < x < 10\\) if \\(y = 10 - x\\).\n\nTo summarize:\n- Objective: The quantity to maximize or minimize (a function of variables).\n- Variables: The unknowns that affect the objective.\n- Constraint: A condition relating the variables.\n- Feasible domain: The set of all variable values that satisfy the constraint and are physically meaningful.\n\nTo see this in action, consider a rectangle with sides \\(x\\) and \\(y\\). We want the largest area. The constraint is the perimeter: \\(2x + 2y = 20\\), so \\(y = 10 - x\\). The objective is the area \\(A = xy\\). Replacing \\(y\\), the objective is \\(A(x) = x(10 - x) = 10x - x^2\\). The feasible domain is \\(0 < x < 10\\) because sides must be positive.\n\nThis example clearly shows the objective, variables, constraint, and feasible domain definitions.\n\nThis is the fundamental structure of optimization problems.\n\nExample:\nWe need to enclose a rectangular field with a fence.  We have 500 feet of fencing material and a building is on one side of the field and so won’t need any fencing.  Determine the dimensions of the field that will enclose the largest area.\nIn all of these problems we will have two functions.  The first is the function that we are actually trying to optimize and the second will be the constraint.  Sketching the situation will often help us to arrive at these equations so let’s do that.\n\n![This is a sketch of a rectangle.  The top is labeled “Building” the bottom is labeled “x” and the right side is labeled “y”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image001.webp)\n\nIn this problem we want to maximize the area of a field and we know that will use 500 ft of fencing material.  So, the area will be the function we are trying to optimize and the amount of fencing is the constraint. The two equations for these are,\n\n            \\[\\begin{align*}{\\mbox{Maximize : }} & A = xy\\\\ {\\mbox{Constraint : }} & 500 = x + 2y\\end{align*}\\]\r\n\nOkay, we know how to find the largest or smallest value of a function provided it’s only got a single variable.  The area function (as well as the constraint) has two variables in it and so what we know about finding absolute extrema won’t work.  However, if we solve the constraint for one of the two variables we can substitute this into the area and we will then have a function of a single variable.\n\nSo, let’s solve the constraint for \\(x\\).  Note that we could have just as easily solved for \\(y\\) but that would have led to fractions and so, in this case, solving for \\(x\\) will probably be best.\n\n              \\[x = 500 - 2y\\]\r\n\nSubstituting this into the area function gives a function of \\(y\\).\n\n              \\[A\\left( y \\right) = \\left( {500 - 2y} \\right)y = 500y - 2{y^2}\\]\r\n\nNow we want to find the largest value this will have on the interval \\(\\left[ {0,250} \\right]\\).  The limits in this interval corresponds to taking \\(y = 0\\) (i.e. no sides to the fence) and \\(y = 250\\) (i.e. only two sides and no width, also if there are two sides each must be 250 ft to use the whole 500ft).\n\nNote that the endpoints of the interval won’t make any sense from a physical standpoint if we actually want to enclose some area because they would both give zero area.  They do, however, give us a set of limits on \\(y\\) and so the Extreme Value Theorem tells us that we will have a maximum value of the area somewhere between the two endpoints.  Having these limits will also mean that we can use the process we discussed in the  Finding Absolute Extrema \r\n            section earlier in the chapter to find the maximum value of the area.\n\nSo, recall that the maximum value of a continuous function (which we’ve got here) on a closed interval (which we also have here) will occur at critical points and/or end points.  As we’ve already pointed out the end points in this case will give zero area and so don’t make any sense.  That means our only option will be the critical points.\n\nSo, let’s get the derivative and find the critical points.\n\n              \\[A'\\left( y \\right) = 500 - 4y\\]\r\n\nSetting this equal to zero and solving gives a lone critical point of \\(y = 125\\).  Plugging this into the area gives an area of \\(A\\left( {125} \\right) = 31250\\,{\\mbox{f}}{{\\mbox{t}}^2}\\).  So according to the method from Absolute Extrema section this must be the largest possible area, since the area at either endpoint is zero.\n\nFinally, let’s not forget to get the value of \\(x\\) and then we’ll have the dimensions since this is what the problem statement asked for.  We can get the \\(x\\) by plugging in our \\(y\\) into the constraint.\n\n              \\[x = 500 - 2\\left( {125} \\right) = 250\\]\r\n\nThe dimensions of the field that will give the largest area, subject to the fact that we used exactly 500 ft of fencing material, are 250 x 125.\n\nDon’t forget to actually read the problem and give the answer that was asked for.  These types of problems can take a fair amount of time/effort to solve and it’s not hard to sometimes forget what the problem was actually asking for.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.beginner.question",
+      "topic": "optimization",
+      "learner_level": "beginner",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 13.8,
+      "degraded": false,
+      "expected": [
+        "تابع هدف",
+        "قید",
+        "دامنه شدنی"
+      ],
+      "found": [
+        "تابع هدف",
+        "قید",
+        "دامنه شدنی"
+      ],
+      "missing": [],
+      "answer_chars": 5754,
+      "answer": "در مسئله بهینه‌سازی هدف ما یافتن بزرگ‌ترین یا کوچک‌ترین مقدار یک کمیت است. این کمیت را تابع هدف می‌نامیم. برای مثلاً فرض کن می‌خواهیم مساحت یک شکل را بیشینه کنیم. متغیرها مقدارهایی هستند که می‌توانند تغییر کنند، مانند طول و عرض مستطیل که آنها را به‌صورت $x$ و $y$ می‌نویسیم. اما این مقدارها آزاد نیستند؛ یک قید یا شرط وجود دارد که رابطه‌ای بین این متغیرها برقرار می‌کند. مثلاً محیط یک مستطیل برابر ۲۰ است؛ این قید یعنی باید $2x + 2y = 20$ برقرار باشد. دامنه شدنی مجموعه‌ای از مقادیر متغیرهاست که هم قیدها را رعایت می‌کند و هم از نظر فیزیکی معنی دارد؛ مثلاً طول‌ها نباید منفی باشند، پس $x > 0$ و $y > 0$. \n\nبنابراین:\n1. متغیرها (variables): کمیت‌هایی که مقدارشان تغییر می‌کند، مثلاً $x$ و $y$.\n2. قید (constraint): رابطه‌ای که متغیرها را محدود می‌کند، مثل $2x + 2y = 20$.\n3. دامنه شدنی (feasible domain): محدوده‌ای از مقدارها که قیدها را برآورده می‌کنند و معنی دارند، مثلاً $0 < x < 10$ وقتی $y = 10 - x$ است.\n\nدر مسئله بهینه‌سازی، ابتدا تابع هدف را می‌نویسیم، سپس قیدها را به‌کار می‌بریم تا تعداد متغیرها را کاهش دهیم و نهایتاً دامنه شدنی را مشخص می‌کنیم. مثلاً مساحت مستطیل را با $A = xy$ تعریف می‌کنیم، با قید $y = 10 - x$ جایگزین می‌کنیم تا $A$ را به صورت تابع یک متغیر $x$ داشته باشیم: \n\n$$ A(x) = x (10 - x) = 10x - x^2 $$\n\nدامنه شدنی همان $0 < x < 10$ است، چون $y$ باید مثبت باشد.\n\nدر این دامنه، با گرفتن مشتق و پیدا کردن نقاط بحرانی، می‌توان بیشینه یا کمینه تابع هدف را یافت.\n\nاین مفاهیم پایه‌ای حل مسائل بهینه‌سازی هستند.\n\nمثال:\nWe need to enclose a rectangular field with a fence.  We have 500 feet of fencing material and a building is on one side of the field and so won’t need any fencing.  Determine the dimensions of the field that will enclose the largest area.\nIn all of these problems we will have two functions.  The first is the function that we are actually trying to optimize and the second will be the constraint.  Sketching the situation will often help us to arrive at these equations so let’s do that.\n\n![This is a sketch of a rectangle.  The top is labeled “Building” the bottom is labeled “x” and the right side is labeled “y”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image001.webp)\n\nIn this problem we want to maximize the area of a field and we know that will use 500 ft of fencing material.  So, the area will be the function we are trying to optimize and the amount of fencing is the constraint. The two equations for these are,\n\n            \\[\\begin{align*}{\\mbox{Maximize : }} & A = xy\\\\ {\\mbox{Constraint : }} & 500 = x + 2y\\end{align*}\\]\r\n\nOkay, we know how to find the largest or smallest value of a function provided it’s only got a single variable.  The area function (as well as the constraint) has two variables in it and so what we know about finding absolute extrema won’t work.  However, if we solve the constraint for one of the two variables we can substitute this into the area and we will then have a function of a single variable.\n\nSo, let’s solve the constraint for \\(x\\).  Note that we could have just as easily solved for \\(y\\) but that would have led to fractions and so, in this case, solving for \\(x\\) will probably be best.\n\n              \\[x = 500 - 2y\\]\r\n\nSubstituting this into the area function gives a function of \\(y\\).\n\n              \\[A\\left( y \\right) = \\left( {500 - 2y} \\right)y = 500y - 2{y^2}\\]\r\n\nNow we want to find the largest value this will have on the interval \\(\\left[ {0,250} \\right]\\).  The limits in this interval corresponds to taking \\(y = 0\\) (i.e. no sides to the fence) and \\(y = 250\\) (i.e. only two sides and no width, also if there are two sides each must be 250 ft to use the whole 500ft).\n\nNote that the endpoints of the interval won’t make any sense from a physical standpoint if we actually want to enclose some area because they would both give zero area.  They do, however, give us a set of limits on \\(y\\) and so the Extreme Value Theorem tells us that we will have a maximum value of the area somewhere between the two endpoints.  Having these limits will also mean that we can use the process we discussed in the  Finding Absolute Extrema \r\n            section earlier in the chapter to find the maximum value of the area.\n\nSo, recall that the maximum value of a continuous function (which we’ve got here) on a closed interval (which we also have here) will occur at critical points and/or end points.  As we’ve already pointed out the end points in this case will give zero area and so don’t make any sense.  That means our only option will be the critical points.\n\nSo, let’s get the derivative and find the critical points.\n\n              \\[A'\\left( y \\right) = 500 - 4y\\]\r\n\nSetting this equal to zero and solving gives a lone critical point of \\(y = 125\\).  Plugging this into the area gives an area of \\(A\\left( {125} \\right) = 31250\\,{\\mbox{f}}{{\\mbox{t}}^2}\\).  So according to the method from Absolute Extrema section this must be the largest possible area, since the area at either endpoint is zero.\n\nFinally, let’s not forget to get the value of \\(x\\) and then we’ll have the dimensions since this is what the problem statement asked for.  We can get the \\(x\\) by plugging in our \\(y\\) into the constraint.\n\n              \\[x = 500 - 2\\left( {125} \\right) = 250\\]\r\n\nThe dimensions of the field that will give the largest area, subject to the fact that we used exactly 500 ft of fencing material, are 250 x 125.\n\nDon’t forget to actually read the problem and give the answer that was asked for.  These types of problems can take a fair amount of time/effort to solve and it’s not hard to sometimes forget what the problem was actually asking for.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "topic": "probability",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 16.4,
+      "degraded": false,
+      "expected": [
+        "not",
+        "base rate"
+      ],
+      "found": [
+        "not",
+        "base rate"
+      ],
+      "missing": [],
+      "answer_chars": 2493,
+      "answer": "We consider the question: If a test is 99 percent sensitive, does a positive result mean there is a 99 percent chance of having the disease? The sensitivity of a test is defined as the probability of testing positive given that one has the disease, denoted as \\( P(T|D) = 0.99 \\). Here \\(D\\) means \"has the disease\" and \\(T\\) means \"tests positive\".\n\nHowever, what we want to find is the probability that a person has the disease given that they tested positive, \\( P(D|T) \\). This is conceptually very different from sensitivity and involves using Bayes' rule:\n\n\\[\nP(D|T) = \\frac{P(T|D) P(D)}{P(T)}\n\\]\n\nwhere \\( P(D) \\) is the prior probability (prevalence) of the disease in the population, and \\( P(T) \\) is the total probability of testing positive, given by\n\n\\[\nP(T) = P(T|D) P(D) + P(T|D^c) P(D^c)\n\\]\n\nwith \\(D^c\\) meaning \"does not have the disease\" and \\( P(T|D^c) \\) is the false positive rate.\n\nA worked example is provided:\n- Sensitivity \\( P(T|D) = 0.99 \\)\n- Specificity \\( 0.95 \\) implies \\( P(T|D^c) = 0.05 \\)\n- Prior prevalence \\( P(D) = 0.001 \\)\n\nCalculating:\n\n\\[\nP(T) = 0.99 \\times 0.001 + 0.05 \\times 0.999 = 0.00099 + 0.04995 = 0.05094\n\\]\n\nThen,\n\n\\[\nP(D|T) = \\frac{0.99 \\times 0.001}{0.05094} \\approx 0.0194\n\\]\n\nwhich is about 1.94%, much smaller than the sensitivity of 99%.\n\nThis shows why a positive test result does not automatically mean a 99% chance of disease: the base rate (prevalence) of the disease strongly affects the posterior probability. When the disease is rare, the number of false positives can be much larger than true positives, drastically lowering the actual probability of disease post-test.\n\nKey assumptions include:\n- The test characteristics (sensitivity and false positive rate) are constant across the population.\n- The model assumes independence and the probabilities are well-defined; the conditioning event \\(T\\) has positive probability.\n\nA common mistake is confusing \\( P(D|T) \\) with \\( P(T|D) \\), ignoring the base rate.\n\nIn conclusion, a sensitivity of 99% alone does not imply that a positive test means a 99% chance of having the disease. Rather, the actual probability depends crucially on the disease prevalence and the false positive rate, and Bayes' theorem must be used to find \\( P(D|T) \\).\n\nNo suitable Paul example is available for this topic and learner level.\n\nPaul examples: empty — No suitable Paul example exists for this topic and learner level.\n\nWeb search: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "probability.advanced.probe",
+      "topic": "probability",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 19.8,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "نرخ پایه"
+      ],
+      "found": [
+        "نادرست",
+        "نرخ پایه"
+      ],
+      "missing": [],
+      "answer_chars": 2506,
+      "answer": "در این درس می‌خواهیم به این سؤال پاسخ دهیم که اگر یک آزمون حساسیت ۹۹ درصد (۰.۹۹) داشته باشد، آیا نتیجه مثبت آزمون به معنای ۹۹ درصد احتمال بیماری است یا خیر. \n\n**تعریف‌ها و مفاهیم اصلی:**\n- \\(D\\) رویداد «بیمار بودن فرد» است.\n- \\(T\\) رویداد «آزمون مثبت بودن» است.\n- حساسیت (Sensitivity) آزمون، مقدار \\(P(T|D)\\) است یعنی احتمال مثبت بودن آزمون برای فردی که واقعاً بیمار است.\n\n**مشخصات داده شده:**\n- \\(P(T|D) = 0.99\\) (حساسیت ۹۹ درصد)\n- فرض کنیم شیوع بیماری در جامعه \\(P(D) = 0.001\\) یعنی ۱ نفر در ۱۰۰۰ نفر بیمار است.\n- نرخ مثبت کاذب (False positive rate) \\(P(T|D^c) = 0.05\\) یعنی احتمال مثبت شدن آزمون برای فرد سالم.\n\n**سؤال:** آیا \\(P(D|T) = 0.99\\) است؟ یعنی آیا احتمال اینکه فردی که آزمونش مثبت شده واقعاً بیمار باشد برابر با ۹۹ درصد است؟\n\n**پاسخ و روش حل:**\nبرای یافتن \\(P(D|T)\\) از قاعده بیز استفاده می‌کنیم:\n\n\\[\nP(D|T) = \\frac{P(T|D) P(D)}{P(T)}\n\\]\n\nکه \\(P(T)\\) با قانون احتمال کل محاسبه می‌شود:\n\n\\[\nP(T) = P(T|D)P(D) + P(T|D^c)P(D^c)\n\\]\n\nجایگذاری اعداد:\n\\[\nP(T) = 0.99 \\times 0.001 + 0.05 \\times 0.999 = 0.00099 + 0.04995 = 0.05094\n\\]\n\nپس:\n\\[\nP(D|T) = \\frac{0.99 \\times 0.001}{0.05094} \\approx 0.0194\n\\]\n\nاین یعنی احتمال واقعی بیمار بودن فردی که آزمونش مثبت شده فقط حدود ۱.۹۴ درصد است، بسیار کمتر از ۹۹ درصد. \n\n**توضیح:**\nدلیل این تفاوت این است که وقتی بیماری نادر است (شیوع کم)، حتی خطاهای مثبت کاذب تعداد زیادی را تشکیل می‌دهد و بیشتر علایم مثبت به دلیل خطا هستند تا بیماری واقعی. بنابراین حساسیت آزمون تنها شرط نیست و باید نرخ پایه (Prevalence) بیماری در جامعه و نرخ مثبت کاذب را هم در نظر گرفت.\n\n**فرضیات و محدودیت‌ها:**\n- فرض بر این است که حساسیت و نرخ مثبت کاذب ثابت و مستقل از جمعیت است. در عمل ممکن است این فرض نیاز به بررسی و توجیه داشته باشد.\n- همچنین فرض شده رویدادهای مربوط به نتیجه آزمون به خوبی تعریف شده و به صورت صحیح گزارش شده‌اند.\n- قاعده بیز فرض می‌کند که توابع احتمال به درستی محاسبه شده‌اند و مستقل از متغیرهای پنهان و شرایط تست هستند.\n\n**اشتباه رایج:**\nاشتباه گرفتن \\(P(D|T)\\) با \\(P(T|D)\\) منجر به برداشت‌های نادرست و اغلب خیلی بزرگ‌تر از احتمال واقعی می‌شود، به‌ویژه زمانی که بیماری نادر است.\n\nنتیجه اینکه نتیجه مثبت آزمون با حساسیت ۹۹ درصد به معنای ۹۹ درصد اطمینان به بیماری نیست، بلکه باید با کمک نرخ شیوع بیماری و نرخ مثبت کاذب این احتمال به درستی محاسبه شود.\n\nاین محاسبه به صورت دقیق با قاعده بیز و قانون احتمال کل انجام می‌شود که در این درس به آن پرداخته شد.\n\nمثال مناسب پاول برای این موضوع و سطح موجود نیست.\n\nمثال‌های پاول: empty — No suitable Paul example exists for this topic and learner level.\n\nجست‌وجوی وب: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [
+        "No suitable Paul example exists for this topic and learner level."
+      ],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "topic": "optimization",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 10.4,
+      "degraded": false,
+      "expected": [
+        "constraint",
+        "x = 5",
+        "25"
+      ],
+      "found": [
+        "constraint",
+        "x = 5",
+        "25"
+      ],
+      "missing": [],
+      "answer_chars": 5875,
+      "answer": "We want to find the largest possible area of a rectangle whose perimeter is 20. This is a classic optimization problem where we use calculus to maximize an area given a constraint on the perimeter.\n\n1. Define variables:\n   Let the length be $x$ and the width be $y$.\n\n2. Express the given constraint (perimeter):\n   The perimeter $P$ is given by\n   \\[ P = 2x + 2y = 20. \\]\n\n3. Solve the constraint for one variable, say $y$:\n   \\[ 2x + 2y = 20 \\implies y = 10 - x. \\]\n   Note that physically the sides $x$ and $y$ must be positive, so the feasible domain is $0 < x < 10$.\n\n4. Express the objective function (area) in terms of one variable:\n   The area $A$ is\n   \\[ A = xy = x(10 - x) = 10x - x^2. \\]\n\n5. To find the maximum area, differentiate $A$ with respect to $x$:\n   \\[ A'(x) = 10 - 2x. \\]\n\n6. Set the derivative equal to zero to find critical points:\n   \\[ 10 - 2x = 0 \\implies x = 5. \\]\n\n7. Check that this critical point is a maximum by verifying the sign of the derivative around $x=5$:\n   - For $x=4$, $A'(4) = 10 - 8 = 2 > 0$ (derivative positive).\n   - For $x=6$, $A'(6) = 10 - 12 = -2 < 0$ (derivative negative).\n\n   Since derivative changes from positive to negative, $x=5$ is a local maximum.\n\n8. Determine $y$ at $x=5$:\n   \\[ y = 10 - 5 = 5. \\]\n\n9. Compute the maximum area:\n   \\[ A = 5 \\times 5 = 25. \\]\n\nBecause the domain is closed and bounded (lengths are between 0 and 10), the Extreme Value Theorem guarantees this local maximum is also the global maximum.\n\nThis method works because substituting the constraint reduces the problem of maximizing area in two variables to a single-variable calculus problem. The derivative test finds stationary points where maxima or minima occur, and checking the derivative signs confirms the nature of the critical point.\n\n**Now your turn: Why do we set the derivative $A'(x)$ to zero? What does this represent geometrically or physically?**\n\nExample:\nWe want to construct a box whose base length is 3 times the base width.  The material used to build the top and bottom cost $10/ft^{2} and the material used to build the sides cost $6/ft^{2}.  If the box must have a volume of 50ft^{3} determine the dimensions that will minimize the cost to build the box.\nFirst, a quick figure (probably not to scale…).\n\n![A sketch of a box.  The height is labeled as “h”, the width (or depth) is labeled as “w” and the length is labeled as “l = 3w”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image003.webp)\n\nWe want to minimize the cost of the materials subject to the constraint that the volume must be 50ft^{3}.  Note as well that the cost for each side is just the area of that side times the appropriate cost.\n\nThe two functions we’ll be working with here this time are,\n\n            \\[\\begin{align*}{\\mbox{Minimize : }} & C = 10\\left( {2lw} \\right) + 6\\left( {2wh + 2lh} \\right)\\, = 60{w^2} + 48wh\\\\ {\\mbox{Constraint :}}& 50 = lwh = 3{w^2}h\\end{align*}\\]\r\n\nAs with the first example, we will solve the constraint for one of the variables and plug this into the cost.  It will definitely be easier to solve the constraint for \\(h\\) so let’s do that.\n\n              \\[h = \\frac{{50}}{{3{w^2}}}\\]\r\n\nPlugging this into the cost gives,\n\n            \\[C\\left( w \\right) = 60{w^2} + 48w\\left( {\\frac{{50}}{{3{w^2}}}} \\right) = 60{w^2} + \\frac{{800}}{w}\\]\r\n\nNow, let’s get the first and second (we’ll be needing this later…) derivatives,\n\n              \\[C'\\left( w \\right) = 120w - 800{w^{ - 2}} = \\frac{{120{w^3} - 800}}{{{w^2}}}\\hspace{0.25in}\\hspace{0.25in}C''\\left( w \\right) = 120 + 1600{w^{ - 3}}\\]\r\n\nNow we need the critical point(s) for the cost function.  First, notice that \\(w = 0\\) is not a critical point.  Clearly the derivative does not exist at \\(w = 0\\) but then neither does the function and remember that values of \\(w\\) will only be critical points if the function also exists at that point.  Note that there is also a physical reason to avoid \\(w = 0\\).  We are constructing a box and it would make no sense to have a zero width of the box.\n\nSo it looks like the only critical point will come from determining where the numerator is zero.\n\n              \\[120{w^3} - 800 = 0\\hspace{0.25in} \\Rightarrow \\hspace{0.25in}\\,\\,w = \\sqrt[3]{{\\frac{{800}}{{120}}}} = \\sqrt[3]{{\\frac{{20}}{3}}} = 1.8821\\]\r\n\nSo, we’ve got a single critical point and we now have to verify that this is in fact the value that will give the absolute minimum cost.\n\nIn this case we can’t use Method 1 from above.  First, the function is not continuous at one of the endpoints, \\(w = 0\\), of our interval of possible values, i.e. \\(w > 0\\).  Secondly, there is no theoretical upper limit to the width that will give a box with volume of 50 ft^{3}.  If \\(w\\) is very large then we would just need to make \\(h\\) very small.\n\nThe second method listed above would work here, but that’s going to involve some calculations, not difficult calculations, but more work nonetheless.\n\nThe third method however, will work quickly and simply here.  First, we know that whatever the value of \\(w\\) that we get it will have to be positive and we can see second derivative above that provided \\(w > 0\\) we will have \\(C''\\left( w \\right) > 0\\) and so in the interval of possible optimal values the cost function will always be concave up and so \\(w = 1.8821\\) must give the absolute minimum cost.\n\nAll we need to do now is to find the remaining dimensions.\n\n            \\[\\begin{align*}w & = 1.8821\\\\ l & = 3w = 3\\left( {1.8821} \\right) = 5.6463\\\\  h & = \\frac{{50}}{{3{w^2}}} = \\frac{{50}}{{3{{\\left( {1.8821} \\right)}^2}}} = 4.7050\\end{align*}\\]\r\n\nAlso, even though it was not asked for, the minimum cost is : \\(C\\left( {1.8821} \\right) = \\$ 637.60\\).\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.intermediate.question",
+      "topic": "optimization",
+      "learner_level": "intermediate",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 13.2,
+      "degraded": false,
+      "expected": [
+        "قید",
+        "x = 5",
+        "25"
+      ],
+      "found": [
+        "قید",
+        "x = 5",
+        "25"
+      ],
+      "missing": [],
+      "answer_chars": 5955,
+      "answer": "برای حل این مسئله بهینه‌سازی، که بزرگ‌ترین مساحت ممکن مستطیل را با محیط ثابت ۲۰ می‌خواهد بیابد، باید از روش جای‌گذاری قید در تابع هدف و حساب دیفرانسیل تک‌متغیره استفاده کنیم. در اینجا متغیرهای طول و عرض مستطیل را فرض می‌کنیم: طول را x و عرض را y می‌نامیم. از شرط محیط ثابت داریم:\n\n$$ 2(x + y) = 20 \\implies x + y = 10 \\ \\implies y = 10 - x $$\n\nهدف ما بیشینه‌کردن مساحت مستطیل است که برابر است با:\n\n$$ A = x \\times y = x(10-x) = 10x - x^2 $$\n\nدامنه مجاز برای x این است که طول و عرض مثبت باشند، پس: \n\n$$ 0 < x < 10 $$\n\nاکنون تابع A را نسبت به x مشتق می‌گیریم تا نقاط بحرانی را بیابیم:\n\n$$ A'(x) = 10 - 2x $$\n\nحال مشتق را صفر می‌گذاریم تا نقاط کاندید برای بیشینه پیدا شود:\n\n$$ 10 - 2x = 0 \\implies 2x = 10 \\implies x = 5 $$\n\nاز آنجا که دامنه باز است، باید بررسی کنیم که این نقطه بحرانی واقعاً بیشینه موضعی است یا خیر. مشتق دوم تابع را محاسبه می‌کنیم:\n\n$$ A''(x) = -2 $$\n\nچون مشتق دوم منفی است، تابع در x=5، بیشینه موضعی دارد. همچنین نقطه ۵ در دامنه فیزیکی مسئله است (طول و عرض مثبت). \n\nبا x=5، مقدار y را محاسبه می‌کنیم:\n\n$$ y = 10 - 5 = 5 $$\n\nبنابراین مستطیلی با ابعاد ۵ در ۵ (مربع) بیشترین مساحت را می‌دهد.\n\nمساحت بزرگ‌ترین مستطیل ممکن نیز:\n\n$$ A = 5 \\times 5 = 25 $$\n\nپس مستطیل با محیط ۲۰ واحد، بیشترین مساحت ۲۵ واحد مربع دارد.\n\n---\n\n### توضیح روش:\n\nاین روش مبتنی‌بر جای‌گذاری قید محیط ثابت در تابع هدف مساحت است تا مسئله‌ای با دو متغیر به مسئله‌ای با یک متغیر تبدیل شود. سپس با استفاده از مشتق‌گیری و پیدا کردن نقاط بحرانی، بیشینه (یا کمینه) تابع تعیین می‌شود. علت صحت این روش: تابع مساحت درجه دوم است و دامنه باز و محدود به حالت‌های فیزیکی معنی‌دار است (طول‌ها مثبت). مشتق دوم منفی بیانگر انحنای نزولی است که تایید بیشینه موضعی است. از آنجا که در دامنه باز، بررسی‌کردن نقاط بحرانی و تحلیل علامت مشتق دوم بهترین راه برای شناخت بیشینه است.\n\n### نکته‌ مهم:\n\nباید توجه داشت که یک بیشینه موضعی لزوماً بیشینه مطلق نیست، ولی در این مثال و دامنه مساله، این نقطه بحرانی بیشینه مطلق است. همچنین باید مراقب باشیم طول‌ها منفی نشوند و خطاهای رایج مانند اشتباه در دامنه و حذف واحدها رعایت شود.\n\nمثال:\nWe want to construct a box whose base length is 3 times the base width.  The material used to build the top and bottom cost $10/ft^{2} and the material used to build the sides cost $6/ft^{2}.  If the box must have a volume of 50ft^{3} determine the dimensions that will minimize the cost to build the box.\nFirst, a quick figure (probably not to scale…).\n\n![A sketch of a box.  The height is labeled as “h”, the width (or depth) is labeled as “w” and the length is labeled as “l = 3w”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image003.webp)\n\nWe want to minimize the cost of the materials subject to the constraint that the volume must be 50ft^{3}.  Note as well that the cost for each side is just the area of that side times the appropriate cost.\n\nThe two functions we’ll be working with here this time are,\n\n            \\[\\begin{align*}{\\mbox{Minimize : }} & C = 10\\left( {2lw} \\right) + 6\\left( {2wh + 2lh} \\right)\\, = 60{w^2} + 48wh\\\\ {\\mbox{Constraint :}}& 50 = lwh = 3{w^2}h\\end{align*}\\]\r\n\nAs with the first example, we will solve the constraint for one of the variables and plug this into the cost.  It will definitely be easier to solve the constraint for \\(h\\) so let’s do that.\n\n              \\[h = \\frac{{50}}{{3{w^2}}}\\]\r\n\nPlugging this into the cost gives,\n\n            \\[C\\left( w \\right) = 60{w^2} + 48w\\left( {\\frac{{50}}{{3{w^2}}}} \\right) = 60{w^2} + \\frac{{800}}{w}\\]\r\n\nNow, let’s get the first and second (we’ll be needing this later…) derivatives,\n\n              \\[C'\\left( w \\right) = 120w - 800{w^{ - 2}} = \\frac{{120{w^3} - 800}}{{{w^2}}}\\hspace{0.25in}\\hspace{0.25in}C''\\left( w \\right) = 120 + 1600{w^{ - 3}}\\]\r\n\nNow we need the critical point(s) for the cost function.  First, notice that \\(w = 0\\) is not a critical point.  Clearly the derivative does not exist at \\(w = 0\\) but then neither does the function and remember that values of \\(w\\) will only be critical points if the function also exists at that point.  Note that there is also a physical reason to avoid \\(w = 0\\).  We are constructing a box and it would make no sense to have a zero width of the box.\n\nSo it looks like the only critical point will come from determining where the numerator is zero.\n\n              \\[120{w^3} - 800 = 0\\hspace{0.25in} \\Rightarrow \\hspace{0.25in}\\,\\,w = \\sqrt[3]{{\\frac{{800}}{{120}}}} = \\sqrt[3]{{\\frac{{20}}{3}}} = 1.8821\\]\r\n\nSo, we’ve got a single critical point and we now have to verify that this is in fact the value that will give the absolute minimum cost.\n\nIn this case we can’t use Method 1 from above.  First, the function is not continuous at one of the endpoints, \\(w = 0\\), of our interval of possible values, i.e. \\(w > 0\\).  Secondly, there is no theoretical upper limit to the width that will give a box with volume of 50 ft^{3}.  If \\(w\\) is very large then we would just need to make \\(h\\) very small.\n\nThe second method listed above would work here, but that’s going to involve some calculations, not difficult calculations, but more work nonetheless.\n\nThe third method however, will work quickly and simply here.  First, we know that whatever the value of \\(w\\) that we get it will have to be positive and we can see second derivative above that provided \\(w > 0\\) we will have \\(C''\\left( w \\right) > 0\\) and so in the interval of possible optimal values the cost function will always be concave up and so \\(w = 1.8821\\) must give the absolute minimum cost.\n\nAll we need to do now is to find the remaining dimensions.\n\n            \\[\\begin{align*}w & = 1.8821\\\\ l & = 3w = 3\\left( {1.8821} \\right) = 5.6463\\\\  h & = \\frac{{50}}{{3{w^2}}} = \\frac{{50}}{{3{{\\left( {1.8821} \\right)}^2}}} = 4.7050\\end{align*}\\]\r\n\nAlso, even though it was not asked for, the minimum cost is : \\(C\\left( {1.8821} \\right) = \\$ 637.60\\).\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 10.5,
+      "degraded": false,
+      "expected": [
+        "derivative",
+        "x = 1",
+        "attained"
+      ],
+      "found": [
+        "derivative",
+        "x = 1",
+        "attained"
+      ],
+      "missing": [],
+      "answer_chars": 6619,
+      "answer": "Consider the problem of minimizing the function\n\n$$f(x) = x + \\frac{1}{x}\\quad \\text{for } x > 0.\n$$\n\n**Step 1: Domain and hypotheses**\nThe domain restriction is that $x$ must be strictly positive, i.e., $x > 0$. We require $f$ to be differentiable on this domain.\n\n**Step 2: Finding critical points via differentiation**\nCompute the first derivative:\n\n$$f'(x) = 1 - \\frac{1}{x^2}.\n$$\n\nSet $f'(x) = 0$ to find critical points:\n\n$$1 - \\frac{1}{x^2} = 0 \\implies x^2 = 1 \\implies x = 1 \\text{ (since } x > 0\\text{)}.\n$$\n\n**Step 3: Verify local minima using the second derivative test**\nCompute the second derivative:\n\n$$f''(x) = \\frac{2}{x^3}.\n$$\n\nSince $x > 0$, $f''(x) > 0$, so $f$ is convex on the domain and the critical point $x = 1$ corresponds to a local minimum.\n\n**Step 4: Show the minimum is global and attained**\nAnalyze the behavior as $x \\to 0^+$ and as $x \\to \\infty$:\n\n- As $x \\to 0^+$, $f(x) = x + 1/x \\to +\\infty$.\n- As $x \\to \\infty$, $f(x) \\to +\\infty$.\n\nThis coercive behavior means the function values become arbitrarily large near the domain boundaries.\n\nSince the local minimum at $x=1$ is inside the domain and the function tends to infinity near boundaries, this local minimum is actually the global minimum.\n\n**Step 5: State the minimum value and that it is attained**\nAt $x=1$, the function value is\n\n$$f(1) = 1 + \\frac{1}{1} = 2.\n$$\nThe minimum value $2$ is attained at $x=1$, which lies in the domain $x > 0$.\n\n\n**Assumptions and limitations:**\n- The domain is strictly positive real numbers, an open set.\n- The derivatives exist and are continuous on this domain.\n- The function's coercive behavior (tending to infinity near domain boundaries) guarantees the global minimum is attained inside the domain.\n\n**Counterexample for clarity:**\nConsider $g(x) = x$ on $x > 0$. The infimum is $0$, but it is never attained since $0$ is not in the domain.\nThis demonstrates the importance of the function's growth and domain for minimum attainment.\n\n\n**Summary:**\nThe function $f(x) = x + 1/x$ defined on $x > 0$ has a unique global minimum at $x=1$ with value 2, and this minimum is attained because $1$ is inside the domain.\n\n\n**Source evidence used:** the explicit worked example shown in the source text, which details the differentiation, critical point analysis, second derivative test, boundary behavior, and the attainment argument.\n\nExample:\nWe have a piece of cardboard that is 14 inches by 10 inches and we’re going to cut out the corners as shown below and fold up the sides to form a box, also shown below.  Determine the height of the box that will give a maximum volume.\n\n![Two sketches side by side with an arrow pointing from the left sketch to the right one.  On the left is the flat piece of cardboard, 14 inches wide and 10 inches tall, with a small square cut out of each of the four corners and dashed fold lines marked.  On the right is the open-topped box that results when the four sides are folded up.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image006.webp)\nLet’s let the height of the box be \\(h\\).  So, the width/length of the corners being cut out is also \\(h\\) and so the vertical side will have a “new” height of \\(10 - 2h\\) and the horizontal side will have a “new” width of \\(14 - 2h\\).  Here is a sketch with all this information put in,\n\n![This sketch has two pieces to it.  On the right is a box where the height is labeled as “h”, the width (or depth) is labeled as “10-2h” and the length is labeled as “14-2h”.  On the left is the rectangular piece of cardboard that was used to construct the box.  Interior to this rectangle is another rectangle that will become the bottom of the box.  In each order there are squares, with sides labeled as “h” that are indicated with dashed lines.  These are the squares that must be cut out of the rectangle in order to fold up the remaining pieces to become the sides of the box.  The middle portion of the left side of the rectangle (i.e. the portion between the two “cut out” squares) is labeled “10-2h”.  The middle portion of the bottom side of the rectangle (i.e. the portion between the two “cut out” squares) is labeled “14-2h”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image007.webp)\n\nIn this example, for the first time, we’ve run into a problem where the constraint doesn’t really have an equation.  The constraint is simply the size of the piece of cardboard and has already been factored into the figure above.  This will happen on occasion and so don’t get excited about it when it does.  This just means that we have one less equation to worry about. In this case we want to maximize the volume. Here is the volume, in terms of \\(h\\) and its first derivative.\n\n          \\[V\\left( h \\right) = h\\left( {14 - 2h} \\right)\\left( {10 - 2h} \\right) = 140h - 48{h^2} + 4{h^3}\\hspace{0.25in}\\hspace{0.25in}V'\\left( h \\right) = 140 - 96h + 12{h^2}\\]\r\n\nSetting the first derivative equal to zero and solving gives the following two critical points,\n\n          \\[h = \\frac{{12 \\pm \\sqrt {39} }}{3} = 1.9183,\\,\\,\\,\\,6.0817\\]\r\n\nWe now have an apparent problem.  We have two critical points and we’ll need to determine which one is the value we need.  The fact that we have two critical points means that neither the first derivative test or the second derivative test can be used here as they both require a single critical point.  This isn’t a real problem however.  Go back to the figure at the start of the solution and notice that we can quite easily find limits on \\(h\\).  The smallest \\(h\\) can be is \\(h = 0\\) even though this doesn’t make much sense as we won’t get a box in this case.  Also, from the 10 inch side we can see that the largest \\(h\\) can be is \\(h = 5\\) although again, this doesn’t make much sense physically.\n\nSo, knowing that whatever \\(h\\) is it must be in the range \\(0 \\le h \\le 5\\) we can see that the second critical point is outside this range and so the only critical point that we need to worry about is 1.9183.\n\nFinally, since the volume is defined and continuous on \\(0 \\le h \\le 5\\) all we need to do is plug in the critical points and endpoints into the volume to determine which gives the largest volume.  Here are those function evaluations.\n\n            \\[V\\left( 0 \\right) = 0\\hspace{0.25in}\\hspace{0.25in}V\\left( {1.9183} \\right) = 120.1644\\hspace{0.25in}\\hspace{0.25in}V\\left( 5 \\right) = 0\\]\r\n\nSo, if we take \\(h = 1.9183\\) we get a maximum volume.\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.advanced.question",
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "kind": "question",
+      "language": "fa",
+      "status": "complete",
+      "elapsed_seconds": 14.3,
+      "degraded": false,
+      "expected": [
+        "مشتق",
+        "x = 1",
+        "به دست می‌آید"
+      ],
+      "found": [
+        "مشتق",
+        "x = 1",
+        "به دست می‌آید"
+      ],
+      "missing": [],
+      "answer_chars": 5729,
+      "answer": "برای کمینه کردن تابع \\( f(x) = x + \\frac{1}{x} \\) روی دامنه \\( x > 0 \\) و بررسی اینکه آیا کمینه به دست می‌آید یا خیر، به روش زیر عمل می‌کنیم:\n\n**1. مشتق‌گیری و یافتن نقاط بحرانی:**\nتابع داده شده مشتق‌پذیر است و دامنه آن باز و مثبت است. ابتدا مشتق \\( f'(x) \\) را محاسبه می‌کنیم:\n\\[\nf'(x) = 1 - \\frac{1}{x^2}\n\\]\nبرای یافتن نقاط بحرانی، مشتق را برابر صفر قرار می‌دهیم:\n\\[\n1 - \\frac{1}{x^2} = 0 \\implies x^2 = 1 \\implies x = 1 \\quad \\text{(تنها ریشه مثبت در دامنه)}\n\\]\n\n**2. استفاده از مشتق دوم برای تشخیص ماهیت نقطه بحرانی:**\nمشتق دوم تابع را محاسبه می‌کنیم:\n\\[\nf''(x) = \\frac{2}{x^3}\n\\]\nاز آنجا که دامنه \\( x > 0 \\) است، \\( f''(x) > 0 \\) برای همه \\( x > 0 \\) برقرار است. این به معنی این است که نقطه \\( x = 1 \\) کمینه موضعی است.\n\n**3. بررسی وجود کمینه مطلق:**\n\n- با توجه به رفتار تابع در حد \\( x \\to 0^+ \\) و \\( x \\to +\\infty \\) داریم:\n\\[\n\\lim_{x \\to 0^+} f(x) = +\\infty, \\quad \\lim_{x \\to +\\infty} f(x) = +\\infty\n\\]\nاین نشان می‌دهد تابع در این دو سمت به بی‌نهایت میل می‌کند (فشار به بی‌نهایت دارد یا به اصطلاح تابع رفتار هم‌کران دارد).\n\n- بنابراین کمینه موضعی \\( x = 1 \\) به کمینه مطلق تبدیل می‌شود و مقدار کمینه:\n\\[\nf(1) = 1 + 1 = 2\n\\]\n\n**4. بررسی خصوصیات دامنه:**\nدامنه باز است (\\( x > 0 \\))، ولی برخلاف مثال‌های مشابهی مانند \\( g(x) = x \\) روی \\( x > 0 \\) که کمینه ندارند، این تابع کمینه مطلق را دارد زیرا نقطه کمینه داخلی دامنه قرار دارد.\n\n\n**جمع‌بندی:**\n- شرط لازم کمینه داخلی، مشتق برابر صفر است که در \\( x = 1 \\) برقرار است.\n- شرط کافی محلی برای کمینه (مشتق دوم مثبت) نیز برقرار است.\n- به‌دلیل رفتار تابع در مرزهای دامنه هم‌گرایی به بی‌نهایت است و کمینه موضعی به کمینه مطلق ارتقا می‌یابد.\n- کمینه مطلق مقدار \\( 2 \\) در \\( x = 1 \\) است و این نقطه در دامنه است، پس کمینه به دست می‌آید.\n\n**ملاحظات و محدودیت‌ها:**\n- در مسائل بهینه‌سازی باید دامنه تابع مشخص باشد زیرا تابع روی دامنه‌های مختلف ممکن است بهینه‌های متفاوت داشته باشد.\n- مشتق صفر شرط لازم است اما کافی نیست مگر با بررسی مشتق دوم یا شرایط تکمیلی.\n- وجود مرزها در دامنه بسته، اهمیت مقایسه مقادیر تابع در نقاط بحرانی و سر دامنه را تقویت می‌کند، ولی در اینجا دامنه باز است و رفتار سمت مرز به کاهش تابع نمی‌انجامد.\n\nاز این توضیح، شاهد یک مثال کامل از بهینه‌سازی تابع در یک دامنه باز مثبت هستیم و چگونگی اطمینان از وجود کمینه اثبات می‌شود.\n\nمثال:\nA printer needs to make a poster that will have a total area of 200 in^{2} and will have 1 inch margins on the sides, a 2 inch margin on the top and a 1.5 inch margin on the bottom as shown below.  What dimensions will give the largest printed area?\n\n![A sketch of the poster.  The outer rectangle is the whole poster and an inner rectangle shows the printed area.  The gap between them is labeled as a 2 inch margin across the top, a 1.5 inch margin across the bottom and a 1 inch margin on each of the left and right sides.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image008.webp)\nThis problem is a little different from the previous problems.  Both the constraint and the function we are going to optimize are areas.  The constraint is that the overall area of the poster must be 200 in^{2} while we want to optimize the printed area (i.e. the area of the poster with the margins taken out).\n\nLet’s define the height of the poster to be \\(h\\) and the width of the poster to be \\(w\\).  Here is a new sketch of the poster and we can see that once we’ve taken the margins into account the width of the printed area is \\(w - 2\\) and the height of the printer area is \\(h - 3.5\\).\n\n![This is a rectangle with another rectangle sketched inside it.  The inner rectangle represents the area that will actually be printed.  The height of the outer rectangle is labeled “h” and the width of outer rectangle is labeled “w”.  The distance between the right/left sides of the outer rectangle and inner rectangle are labeled “1 inch margin”.  The distance between the tops of the two rectangles is labeled “2 inch margin”.  The distance between the bottoms of the two rectangles is labeled “1.5 inch margin”.   The height of the inner rectangle is labeled “h-3.5” and the width of the inner rectangle is labeled “w-2”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image009.webp)\n\nHere are the equations that we’ll be working with.\n\n            \\[\\begin{align*}{\\mbox{Maximize : }} & A = \\left( {w - 2} \\right)\\left( {h - 3.5} \\right)\\\\ {\\mbox{Constraint :}} & 200 = wh\\end{align*}\\]\r\n\nSolving the constraint for \\(h\\) and plugging into the equation for the printed area gives,\n\n            \\[A\\left( w \\right) = \\left( {w - 2} \\right)\\left( {\\frac{{200}}{w} - 3.5} \\right) = 207 - 3.5w - \\frac{{400}}{w}\\]\r\n\nThe first and second derivatives are,\n\n          \\[A'\\left( w \\right) =  - 3.5 + \\frac{{400}}{{{w^2}}} = \\frac{{400 - 3.5{w^2}}}{{{w^2}}}\\hspace{0.25in}\\hspace{0.25in}A''\\left( w \\right) =  - \\frac{{800}}{{{w^3}}}\\]\r\n\nFrom the first derivative we have the following two critical points (\\(w = 0\\) is not a critical point because the area function does not exist there).\n\n            \\[w =  \\pm \\,\\sqrt {\\frac{400}{3.5}}  =  \\pm \\,10.6904\\]\r\n\nHowever, since we’re dealing with the dimensions of a piece of paper we know that we must have \\(w > 0\\) and so only 10.6904 will make sense.\n\nAlso notice that provided \\(w > 0\\) the second derivative will always be negative and so in the range of possible optimal values of the width the area function is always concave down and so we know that the maximum printed area will be at \\(w = 10.6904\\,\\,{\\mbox{inches}}\\).\n\nThe height of the paper that gives the maximum printed area is then,\n\n            \\[h = \\frac{{200}}{{10.6904}} = 18.7084\\,\\,{\\mbox{inches}}\\]\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "en",
+      "status": "complete",
+      "elapsed_seconds": 12.8,
+      "degraded": false,
+      "expected": [
+        "not",
+        "neither"
+      ],
+      "found": [
+        "not",
+        "neither"
+      ],
+      "missing": [],
+      "answer_chars": 6977,
+      "answer": "### Is every critical point a maximum or a minimum?\n\n**Definition and context:**\nA *critical point* (or stationary point) of a differentiable function is a point in the interior of the domain where the derivative (or gradient) is zero. Such points are candidates for local extrema (maximum or minimum) but are not guaranteed to be such.\n\n**Necessary but not sufficient condition:**\nA *vanishing derivative* at an interior point is a **necessary condition** for that point to be a local extremum of a differentiable function. However, it is **not sufficient**, meaning that a critical point may not correspond to a maximum or minimum. It might be a saddle point or an inflection point.\n\n**Boundary points matter:**\nThe derivative condition only applies to interior points of the domain and says nothing about boundary points. On a closed bounded interval, the set of candidates for global optima is the union of interior critical points and the boundary points (endpoints). The global maximum or minimum must be found by evaluating the function at all these candidates and comparing values.\n\n**Example for illustration:**\nConsider minimizing \\( f(x) = x + \\frac{1}{x} \\) on the domain \\( x > 0 \\). The derivative \\( f'(x) = 1 - \\frac{1}{x^2} \\) vanishes at \\( x = 1 \\), which is a critical point. The second derivative \\( f''(x) = \\frac{2}{x^3} > 0 \\) for \\( x > 0 \\) confirms that this is a local minimum. Checking the behavior at the domain extremes (as \\( x \\to 0^+ \\) and \\( x \\to +\\infty \\)) shows \\( f(x) \\to +\\infty \\), ensuring that this local minimum is in fact a global minimum.\n\n**Limitations and assumptions:**\n- The function must be differentiable to apply derivative-based arguments.\n- The domain needs to be specified carefully, especially the boundary conditions, since the global optimum can lie at the boundary.\n- For unbounded domains, a global minimum or maximum may fail to exist even if the function is bounded below or above. For example, \\( g(x) = x \\) on \\( x > 0 \\) has an infimum \\( 0 \\) but no point in the domain attains this value.\n\n**Common mistakes:**\n- Treating the vanishing of the derivative as a proof that a point is a global optimum without further testing.\n- Ignoring the boundary of the domain where the optimum might be.\n- Reporting an infimum as a minimum when it is not attained.\n- Considering the critical points as the entire solution set without classification and boundary evaluation.\n\n### Summary answer\nNo, not every critical point is a maximum or a minimum. A critical point is only a necessary candidate for local extrema but must be further analyzed (second derivative test, boundary evaluation, and comparison) to confirm whether it is a maximum, minimum, or neither.\n\n---\n\n### Note on rigorous approach (Advanced rules)\n- Always state domain restrictions clearly when discussing critical points and extrema.\n- Separate finding critical points (calculation) from proving existence and completeness of optimum.\n- Consider boundary points explicitly.\n- Do not claim global optimality based solely on the derivative condition.\n- Preserve uncertainties; identify points requiring numeric or further analytic checks.\n\nThis lesson is based on foundational optimization principles in calculus, highlighting the importance of domain and boundary consideration in determining maxima and minima.\n\n\n\\textbf{Source IDs used:} 57ccb721157b7c85d95700aa, 3f6c3c5b50b08d469f71d31e, 7ba7ca1f74dc67652b85f813\n\nExample:\nA printer needs to make a poster that will have a total area of 200 in^{2} and will have 1 inch margins on the sides, a 2 inch margin on the top and a 1.5 inch margin on the bottom as shown below.  What dimensions will give the largest printed area?\n\n![A sketch of the poster.  The outer rectangle is the whole poster and an inner rectangle shows the printed area.  The gap between them is labeled as a 2 inch margin across the top, a 1.5 inch margin across the bottom and a 1 inch margin on each of the left and right sides.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image008.webp)\nThis problem is a little different from the previous problems.  Both the constraint and the function we are going to optimize are areas.  The constraint is that the overall area of the poster must be 200 in^{2} while we want to optimize the printed area (i.e. the area of the poster with the margins taken out).\n\nLet’s define the height of the poster to be \\(h\\) and the width of the poster to be \\(w\\).  Here is a new sketch of the poster and we can see that once we’ve taken the margins into account the width of the printed area is \\(w - 2\\) and the height of the printer area is \\(h - 3.5\\).\n\n![This is a rectangle with another rectangle sketched inside it.  The inner rectangle represents the area that will actually be printed.  The height of the outer rectangle is labeled “h” and the width of outer rectangle is labeled “w”.  The distance between the right/left sides of the outer rectangle and inner rectangle are labeled “1 inch margin”.  The distance between the tops of the two rectangles is labeled “2 inch margin”.  The distance between the bottoms of the two rectangles is labeled “1.5 inch margin”.   The height of the inner rectangle is labeled “h-3.5” and the width of the inner rectangle is labeled “w-2”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image009.webp)\n\nHere are the equations that we’ll be working with.\n\n            \\[\\begin{align*}{\\mbox{Maximize : }} & A = \\left( {w - 2} \\right)\\left( {h - 3.5} \\right)\\\\ {\\mbox{Constraint :}} & 200 = wh\\end{align*}\\]\r\n\nSolving the constraint for \\(h\\) and plugging into the equation for the printed area gives,\n\n            \\[A\\left( w \\right) = \\left( {w - 2} \\right)\\left( {\\frac{{200}}{w} - 3.5} \\right) = 207 - 3.5w - \\frac{{400}}{w}\\]\r\n\nThe first and second derivatives are,\n\n          \\[A'\\left( w \\right) =  - 3.5 + \\frac{{400}}{{{w^2}}} = \\frac{{400 - 3.5{w^2}}}{{{w^2}}}\\hspace{0.25in}\\hspace{0.25in}A''\\left( w \\right) =  - \\frac{{800}}{{{w^3}}}\\]\r\n\nFrom the first derivative we have the following two critical points (\\(w = 0\\) is not a critical point because the area function does not exist there).\n\n            \\[w =  \\pm \\,\\sqrt {\\frac{400}{3.5}}  =  \\pm \\,10.6904\\]\r\n\nHowever, since we’re dealing with the dimensions of a piece of paper we know that we must have \\(w > 0\\) and so only 10.6904 will make sense.\n\nAlso notice that provided \\(w > 0\\) the second derivative will always be negative and so in the range of possible optimal values of the width the area function is always concave down and so we know that the maximum printed area will be at \\(w = 10.6904\\,\\,{\\mbox{inches}}\\).\n\nThe height of the paper that gives the maximum printed area is then,\n\n            \\[h = \\frac{{200}}{{10.6904}} = 18.7084\\,\\,{\\mbox{inches}}\\]\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nWeb search: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    },
+    {
+      "id": "optimization.advanced.probe",
+      "topic": "optimization",
+      "learner_level": "advanced",
+      "kind": "probe",
+      "language": "fa",
+      "status": "missed",
+      "elapsed_seconds": 15.5,
+      "degraded": false,
+      "expected": [
+        "نادرست",
+        "هیچ‌کدام"
+      ],
+      "found": [],
+      "missing": [
+        "نادرست",
+        "هیچ‌کدام"
+      ],
+      "answer_chars": 6284,
+      "answer": "### آیا هر نقطه بحرانی بیشینه یا کمینه است؟\n\n**تعریف و شرط لازم اما ناکافی:**\nیک نقطه بحرانی از تابع مشتق‌گیرپذیر، جایی است که مشتق تابع \nصفر می‌شود (یا تعریف نشده است). این شرط \"صفر بودن مشتق\" یا همان vanishing derivative یک شرط لازم برای وجود یک اکسترمم (یعنی بیشینه یا کمینه) در داخل دامنه تابع است، ولی **کافی نیست**. به عبارت دیگر، هر نقطه‌ای که مشتقش صفر باشد، الزاماً یک نقطه بیشینه یا کمینه نیست.\n\n**لزوم بررسی مرز و مقایسه مطلق:**\nبرای تعیین بهینگی مطلق (global optimum) باید فقط نقاط بحرانی را بررسی نکرد بلکه نقاط مرزی دامنه نیز اهمیت دارند چون بهینه ممکن است آنجا واقع شده باشد. علاوه بر این، به‌منظور اثبات بهینگی مطلق، باید مقادیر تابع در نقاط بحرانی و مرزها مقایسه شوند تا مقدار کوچکتر یا بزرگتر (بسته به کمینه یا بیشینه بودن هدف) مشخص شود.\n\n**وجود بهینه مطلق و شرایط دامنه:**\n- در یک دامنه بسته و کران‌دار (مثلاً بازه بسته و محدود در یک بعد)، قضیه مقدار اکسترمم تضمین می‌کند که تابع پیوسته حداقل و حداکثر مطلق دارد.\n- اگر دامنه باز یا ناتهی و نامحدود باشد، کمینه یا بیشینه مطلق ممکن است وجود نداشته باشد حتی اگر تابع کران‌پایین (یا کران‌بالا) باشد؛ در این موارد باید \n\"اینفیمم\" (infimum) گزارش شود نه کمینه مطلق، مگر آنکه به وسیله استدلالی خاص ثابت شود که مقدار کمینه حاصل می‌شود.\n\n**اشتباه‌های رایج:**\n1. اعلام یک نقطه بحرانی به عنوان بهینه مطلق بدون استدلال یا مقایسه با دیگر کاندیداها.\n2. نادیده گرفتن مرزهای دامنه که ممکن است محل بهینه باشند.\n3. یکی دانستن اینفیمم و کمینه مطلق در دامنه‌های باز یا نامحدود.\n4. فرض اینکه فقط یافتن مشتق صفر کافی است، در حالی که مرحله‌های دسته‌بندی نقاط بحرانی، بررسی مرز و مقایسه برای اثبات بهینگی نیاز است.\n\n### مثال برای روشن شدن\nتابع $$f(x) = x + \\frac{1}{x}$$ را روی دامنه $$x > 0$$ در نظر بگیرید:\n- مشتق اول: $$f'(x) = 1 - \\frac{1}{x^2}$$ که صفر می‌شود وقتی $$x = 1$$ (روی دامنه مثبت).\n- مشتق دوم: $$f''(x) = \\frac{2}{x^3} > 0$$ برای همه $$x > 0$$ که تأیید می‌کند $$x=1$$ نقطه کمینه موضعی است.\n- با توجه به اینکه $$f(x) \\to \\infty$$ وقتی $$x \\to 0^+$$ یا $$x \\to \\infty$$، تابع هم‌کران است و کمینه موضعی در $$x=1$$ کمینه مطلق هم هست.\n- دامنه باز است اما کمینه در نقطه درونی دامنه واقع شده و به دست می‌آید.\n\n### نتیجه‌گیری\nپس **هر نقطه بحرانی نه تنها لازم است برای وجود اکسترمم داخلی بلکه کافی نیست** و برای اثبات بهینگی باید:\n- نقاط بحرانی را تعیین و دسته‌بندی کنیم.\n- مرزهای دامنه را بررسی کنیم.\n- مقدار تابع را در نقاط بحرانی و مرزها مقایسه کنیم.\n- همچنین وجود کمینه یا بیشینه مطلق را با شرایط دامنه و قضایای مرتبط بررسی کنیم.\n\n### فرضیات و محدودیت‌ها\n- این قاعده فقط روی توابع مشتق‌پذیر صادق است.\n- دامنه باید مشخص و شرایط آن اعلام شود تا بتوان وجود بهینه‌ها را بررسی کرد.\n- هنگامی که دامنه نامحدود است، وجود بهینه مطلق تضمین نمی‌شود مگر با استدلال اضافی.\n\n---\n\nاین آموزش بر مبنای منابع درباره بهینگی‌های توابع در مسائل بهینه‌سازی است که اهمیت رعایت مراحل کامل بررسی نقاط را برجسته کرده‌اند.\n\nمثال:\nA printer needs to make a poster that will have a total area of 200 in^{2} and will have 1 inch margins on the sides, a 2 inch margin on the top and a 1.5 inch margin on the bottom as shown below.  What dimensions will give the largest printed area?\n\n![A sketch of the poster.  The outer rectangle is the whole poster and an inner rectangle shows the printed area.  The gap between them is labeled as a 2 inch margin across the top, a 1.5 inch margin across the bottom and a 1 inch margin on each of the left and right sides.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image008.webp)\nThis problem is a little different from the previous problems.  Both the constraint and the function we are going to optimize are areas.  The constraint is that the overall area of the poster must be 200 in^{2} while we want to optimize the printed area (i.e. the area of the poster with the margins taken out).\n\nLet’s define the height of the poster to be \\(h\\) and the width of the poster to be \\(w\\).  Here is a new sketch of the poster and we can see that once we’ve taken the margins into account the width of the printed area is \\(w - 2\\) and the height of the printer area is \\(h - 3.5\\).\n\n![This is a rectangle with another rectangle sketched inside it.  The inner rectangle represents the area that will actually be printed.  The height of the outer rectangle is labeled “h” and the width of outer rectangle is labeled “w”.  The distance between the right/left sides of the outer rectangle and inner rectangle are labeled “1 inch margin”.  The distance between the tops of the two rectangles is labeled “2 inch margin”.  The distance between the bottoms of the two rectangles is labeled “1.5 inch margin”.   The height of the inner rectangle is labeled “h-3.5” and the width of the inner rectangle is labeled “w-2”.](https://tutorial.math.lamar.edu/Classes/CalcI/Optimization_Files/image009.webp)\n\nHere are the equations that we’ll be working with.\n\n            \\[\\begin{align*}{\\mbox{Maximize : }} & A = \\left( {w - 2} \\right)\\left( {h - 3.5} \\right)\\\\ {\\mbox{Constraint :}} & 200 = wh\\end{align*}\\]\r\n\nSolving the constraint for \\(h\\) and plugging into the equation for the printed area gives,\n\n            \\[A\\left( w \\right) = \\left( {w - 2} \\right)\\left( {\\frac{{200}}{w} - 3.5} \\right) = 207 - 3.5w - \\frac{{400}}{w}\\]\r\n\nThe first and second derivatives are,\n\n          \\[A'\\left( w \\right) =  - 3.5 + \\frac{{400}}{{{w^2}}} = \\frac{{400 - 3.5{w^2}}}{{{w^2}}}\\hspace{0.25in}\\hspace{0.25in}A''\\left( w \\right) =  - \\frac{{800}}{{{w^3}}}\\]\r\n\nFrom the first derivative we have the following two critical points (\\(w = 0\\) is not a critical point because the area function does not exist there).\n\n            \\[w =  \\pm \\,\\sqrt {\\frac{400}{3.5}}  =  \\pm \\,10.6904\\]\r\n\nHowever, since we’re dealing with the dimensions of a piece of paper we know that we must have \\(w > 0\\) and so only 10.6904 will make sense.\n\nAlso notice that provided \\(w > 0\\) the second derivative will always be negative and so in the range of possible optimal values of the width the area function is always concave down and so we know that the maximum printed area will be at \\(w = 10.6904\\,\\,{\\mbox{inches}}\\).\n\nThe height of the paper that gives the maximum printed area is then,\n\n            \\[h = \\frac{{200}}{{10.6904}} = 18.7084\\,\\,{\\mbox{inches}}\\]\nVerification: unknown; source-backed; computational verification unavailable\nAssumptions: none supplied\n\nجست‌وجوی وب: skipped — Web search is disabled or no backend is configured.",
+      "warnings": [],
+      "nodes": [
+        "classify",
+        "learn",
+        "read_source",
+        "teaching_bestpractices",
+        "verified_examples",
+        "web_search",
+        "write_explanation"
+      ],
+      "topic_kind": "core"
+    }
+  ]
+}

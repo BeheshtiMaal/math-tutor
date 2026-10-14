@@ -277,13 +277,16 @@ class WriterSchemaChecks(unittest.IsolatedAsyncioTestCase):
         # Text and blocks are never merged into one field.
         self.assertNotIn("block_requests", result["explanation"])
 
-    async def test_a_valid_block_request_is_accepted_but_not_emitted_until_w5(self):
-        request = {"type": "function_graph", "title": "Power rule", "params": {"expression": "x**2"}, "fallback_text": "A graph of x squared."}
+    async def test_a_valid_block_request_is_validated_and_emitted_in_w5(self):
+        request = {"type": "function_graph", "title": "Power rule", "params": {
+            "expressions": [{"label": "y", "expression": "x^2"}],
+            "domain": {"min": -2, "max": 2}, "sample_count": 50}, "fallback_text": "A graph of x squared."}
         result = await self.run_full([full_draft(block_requests=[request])], thread="w2-block-valid")
         self.assertEqual(len(result["block_requests"]), 1)
         self.assertIsInstance(result["block_requests"][0], agent.BlockRequest)
-        # W5 owns validation and emission, so nothing is emitted yet.
-        self.assertEqual(result["ui_blocks"], [])
+        self.assertEqual(len(result["ui_blocks"]), 1)
+        self.assertEqual(result["ui_blocks"][0]["data_source"], "sympy_graph_sampler")
+        self.assertIn("A graph of x squared.", result["explanation"])
 
     async def test_a_malformed_block_request_is_dropped_and_the_text_survives(self):
         bad = {"type": "hologram", "title": "Nope", "fallback_text": "x"}

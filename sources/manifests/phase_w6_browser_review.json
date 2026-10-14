@@ -1,0 +1,39 @@
+{
+  "kind": "agent-operated Windows checklist; not human sign-off",
+  "observations": [
+    {
+      "browser": "chromium",
+      "version": "155.0.8059.40",
+      "os": "Windows",
+      "pageErrors": [],
+      "horizontalOverflowAt375": false,
+      "mathDirection": "ltr",
+      "reducedMotionAnimation": "none",
+      "sliderValue": "0.5",
+      "changedMathVisible": true,
+      "screenshots": [
+        "chromium-graph-light.png",
+        "chromium-graph-dark.png",
+        "chromium-step-dark.png",
+        "chromium-mobile-dark.png"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "157.0",
+      "os": "Windows",
+      "pageErrors": [],
+      "horizontalOverflowAt375": false,
+      "mathDirection": "ltr",
+      "reducedMotionAnimation": "none",
+      "sliderValue": "0.5",
+      "changedMathVisible": true,
+      "screenshots": [
+        "firefox-graph-light.png",
+        "firefox-graph-dark.png",
+        "firefox-step-dark.png",
+        "firefox-mobile-dark.png"
+      ]
+    }
+  ]
+}

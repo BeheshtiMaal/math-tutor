@@ -30,6 +30,10 @@ class ServerSettings(BaseModel):
     thread_idle_seconds: float = Field(default=21_600.0, gt=0, le=2_592_000)
     max_threads: int = Field(default=200, ge=1, le=10_000)
     allow_nonlocal_bind: bool = False
+    session_max_turns: int = Field(default=100, ge=1, le=10000)
+    session_max_model_calls: int = Field(default=500, ge=1, le=100000)
+    session_max_tokens: int = Field(default=200000, ge=1, le=100000000)
+    usage_log_path: str = Field(default='.cache/web/usage.jsonl', min_length=1, max_length=1024)
 
     @model_validator(mode="after")
     def loopback_binding(self):
@@ -55,6 +59,10 @@ class ServerSettings(BaseModel):
             "TUTOR_WEB_THREAD_IDLE_SECONDS": "thread_idle_seconds",
             "TUTOR_WEB_MAX_THREADS": "max_threads",
             "TUTOR_WEB_ALLOW_NONLOCAL_BIND": "allow_nonlocal_bind",
+            "TUTOR_WEB_SESSION_MAX_TURNS": "session_max_turns",
+            "TUTOR_WEB_SESSION_MAX_MODEL_CALLS": "session_max_model_calls",
+            "TUTOR_WEB_SESSION_MAX_TOKENS": "session_max_tokens",
+            "TUTOR_WEB_USAGE_LOG_PATH": "usage_log_path",
         }
         for key, field in mapping.items():
             raw = source.get(key, "")

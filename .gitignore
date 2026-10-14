@@ -15,3 +15,12 @@ __pycache__/
 files/
 specs/
 IMPLEMENTATION_STATUS.md
+node_modules/
+.next/
+frontend/.next-geometry-build/
+frontend/.next-w7-build/
+frontend/.next-w8-build/
+frontend/.next-w9-build/
+frontend/playwright-report/
+frontend/test-results/
+*.tsbuildinfo

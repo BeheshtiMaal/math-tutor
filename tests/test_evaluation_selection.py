@@ -8,6 +8,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class EvaluationSelectionChecks(unittest.TestCase):
+    def test_resume_subset_does_not_include_cases_outside_previous_selection(self):
+        dataset = {'records': [{'id': 'one'}, {'id': 'two'}]}
+        prior = {'runs': 1, 'planned_runs': 2,
+                 'selected_pairs': [{'id': 'one', 'language': 'fa'}, {'id': 'two', 'language': 'en'}],
+                 'results': [{'id': 'one', 'language': 'fa', 'status': 'complete'}]}
+        self.assertEqual(unrun_jobs(dataset, prior), [({'id': 'two'}, 'en')])
+
     def test_unfinished_reconstruction_is_exact_and_aggregate_consistent(self):
         dataset = json.loads((ROOT / 'sources/manifests/evaluation_set.json').read_text(encoding='utf-8'))
         prior = json.loads((ROOT / 'sources/manifests/evaluation_run_aborted_42.json').read_text(encoding='utf-8'))

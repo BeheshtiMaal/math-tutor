@@ -75,7 +75,7 @@ class StubGraph:
         self.checkpointer = checkpointer
         self.threads = []
 
-    async def ainvoke(self, payload, config):
+    async def ainvoke(self, payload, config, *, context=None):
         self.threads.append(config["configurable"]["thread_id"])
         if self.delay:
             await asyncio.sleep(self.delay)
@@ -96,7 +96,7 @@ class HealthAndTopologyChecks(unittest.TestCase):
         self.assertEqual(body["graph_nodes"], list(agent.NODE_NAMES))
         self.assertEqual(len(body["graph_nodes"]), 11)
         self.assertFalse(body["offline"])
-        self.assertEqual(body["services"], {"model": "missing", "search": "missing", "embedding": "missing"})
+        self.assertEqual(body["services"], {"model": "missing", "search": "disabled", "embedding": "missing"})
         self.assertEqual(body["known_threads"], 0)
         self.assertEqual(body["active_threads"], 0)
 
@@ -272,13 +272,12 @@ class AnswerAndLessonChecks(unittest.TestCase):
             self.assertEqual(fresh["lesson"]["step_index"], 0)
             self.assertTrue(fresh["lesson"]["awaiting_user"])
 
-    def test_ui_event_is_rejected_until_phase_w7(self):
+    def test_ui_event_requires_valid_envelope(self):
         app, _, _ = make_app(model=FakeModelClient([plan()]), retrieval=client())
         with TestClient(app) as client_:
             response = client_.post("/api/chat/turn", json={"thread_id": new_thread_id(), "action": "ui_event"})
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json()["error"]["code"], "bad_request")
-        self.assertIn("W7", response.json()["error"]["detail"])
 
 
 class ErrorMappingChecks(unittest.TestCase):

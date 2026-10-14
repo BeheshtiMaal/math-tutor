@@ -1,0 +1,22 @@
+[
+  {
+    "topic": "logarithms",
+    "action": "new_lesson",
+    "language": "fa",
+    "block_types": [
+      "step_reveal"
+    ],
+    "has_step_reveal": true,
+    "has_text": true
+  },
+  {
+    "topic": "derivative",
+    "action": "followup",
+    "language": "fa",
+    "block_types": [
+      "step_reveal"
+    ],
+    "has_step_reveal": true,
+    "has_text": true
+  }
+]

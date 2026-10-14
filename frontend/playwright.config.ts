@@ -1,0 +1,2 @@
+import { defineConfig, devices } from "@playwright/test";
+export default defineConfig({testDir:"./e2e",timeout:180000,expect:{timeout:30000},workers:1,use:{baseURL:"http://127.0.0.1:3000",trace:"retain-on-failure"},projects:[{name:"chromium",use:{...devices["Desktop Chrome"],channel:"chrome"}},{name:"firefox",use:{...devices["Desktop Firefox"]}}],reporter:[["list"],["json",{outputFile:"test-results/browser-results.json"}]]});

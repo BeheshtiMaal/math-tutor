@@ -78,7 +78,8 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(result["__interrupt__"])
             self.assertEqual(result["explanation"].count("Example:"), int(index == 3))
         self.assertTrue(result["lesson_complete"])
-        self.assertIn("Verification: unknown", result["explanation"])
+        self.assertNotIn("Verification: unknown", result["explanation"])
+        self.assertEqual(result["examples"].records[0].verification_status, "unknown")
         self.assertEqual(len(self.retrieval.calls), 3)
         self.assertEqual(len(model.calls), 1)
         finished = await graph.ainvoke(Command(resume="next"), thread)
@@ -182,7 +183,8 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         first = await graph.ainvoke(self.state(), thread)
         self.assertTrue(first["__interrupt__"])
         self.assertEqual(first["step_index"], 0)
-        self.assertIn("planning failed", first["explanation"])
+        self.assertTrue(any("planning failed" in warning for warning in first["warnings"]))
+        self.assertNotIn("planning failed", first["explanation"])
         self.assertEqual(len(sentences(first["current_step_explanation"])), 2)
 
     async def test_ambiguous_okay_with_question_is_followup_not_next(self):
@@ -220,7 +222,8 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         graph, thread, model, first = await self.start([broken, broken, RuntimeError("private-provider-secret")])
         self.assertEqual(len(model.calls), 3)
         self.assertEqual(first["step_index"], 0)
-        self.assertIn("planning failed", first["explanation"])
+        self.assertTrue(any("planning failed" in warning for warning in first["warnings"]))
+        self.assertNotIn("planning failed", first["explanation"])
         self.assertNotIn("private-provider-secret", first["explanation"])
         self.assertNotIn("One sentence only", first["explanation"])
         self.assertEqual(len(sentences(first["current_step_explanation"])), 2)
@@ -233,7 +236,8 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result["step_index"], 0)
         self.assertEqual(result["current_step_explanation"], first["current_step_explanation"])
         self.assertNotIn("wrong citation", result["explanation"])
-        self.assertIn("could not be synthesized", result["explanation"])
+        self.assertTrue(any("could not be synthesized" in warning for warning in result["warnings"]))
+        self.assertNotIn("could not be synthesized", result["explanation"])
         self.assertEqual(len(model.calls), 4)
 
     async def test_example_followup_accepts_its_evidence_id_and_keeps_solution(self):
@@ -319,7 +323,8 @@ class StepTeachingChecks(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("Example:", first["explanation"])
         simpler = await graph.ainvoke(Command(resume="simplify"), thread)
         self.assertEqual(simpler["step_index"], 0)
-        self.assertIn("simplification is unavailable", simpler["explanation"])
+        self.assertTrue(any("simplification is unavailable" in warning for warning in simpler["warnings"]))
+        self.assertNotIn("simplification is unavailable", simpler["explanation"])
         self.assertEqual(simpler["current_step_explanation"], first["current_step_explanation"])
 
 

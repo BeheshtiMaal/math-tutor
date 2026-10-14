@@ -1,0 +1,50 @@
+[
+  {
+    "case": "novice",
+    "language": "fa",
+    "level": "beginner",
+    "source": "inferred",
+    "suggestion": "beginner",
+    "text": "لگاریتم به این پرسش پاسخ می‌دهد: «چه توانی لازم است؟». با یک توان مشخص شروع کن، پایه و حاصل را نام‌گذاری کن و تنها پس از آن قاعده کلی را بنویس.\nپایه را تغییر بده و مقدار لگاریتم را برای x مثبت مقایسه کن؛ نمودار از نقطه (1, 0) می‌گذرد.",
+    "warnings": [
+      "No suitable Paul example exists for this topic and learner level.",
+      "Lesson planning failed; using short actual source excerpts instead.",
+      "Some complete source units exceed the short-step or output budget; this lesson does not cover those units."
+    ]
+  },
+  {
+    "case": "fluent",
+    "language": "fa",
+    "level": "advanced",
+    "source": "inferred",
+    "suggestion": "advanced",
+    "text": "برای تعریف تابع لگاریتم به‌صورت عکس تابع نمایی، باید پایه پایه مثبت و مخالف ۱ باشد. این شرط یکتایی و وجود تابع عکس را تضمین می‌کند. تابع نمایی \\( x \\mapsto b^x \\) از اعداد حقیقی به اعداد حقیقی مثبت نگاشتی یکنو و پیوسته است .\nپایه را تغییر بده و مقدار لگاریتم را برای x مثبت مقایسه کن؛ نمودار از نقطه (1, 0) می‌گذرد.",
+    "warnings": [
+      "No suitable Paul example exists for this topic and learner level."
+    ]
+  },
+  {
+    "case": "remembered",
+    "language": "fa",
+    "level": "beginner",
+    "source": "inferred",
+    "suggestion": "beginner",
+    "text": "لگاریتم به این پرسش پاسخ می‌دهد: «چه توانی لازم است؟». با یک توان مشخص شروع کن، پایه و حاصل را نام‌گذاری کن و تنها پس از آن قاعده کلی را بنویس.\nپایه را تغییر بده و مقدار لگاریتم را برای x مثبت مقایسه کن؛ نمودار از نقطه (1, 0) می‌گذرد.",
+    "warnings": [
+      "No suitable Paul example exists for this topic and learner level.",
+      "Lesson planning failed; using short actual source excerpts instead.",
+      "Some complete source units exceed the short-step or output budget; this lesson does not cover those units."
+    ]
+  },
+  {
+    "case": "remembered_after_fallback_fix",
+    "language": "fa",
+    "level": "beginner",
+    "source": "inferred",
+    "suggestion": "beginner",
+    "text": "لگاریتم به پرسشی پاسخ می‌دهد که می‌پرسد \"چه توانی لازم است؟\". پایه لگاریتم پایه b است که باید مثبت باشد و با یک برابر نباشد. عدد x آرگومان لگاریتم است و باید مثبت باشد.\nپایه را تغییر بده و مقدار لگاریتم را برای x مثبت مقایسه کن؛ نمودار از نقطه (1, 0) می‌گذرد.",
+    "warnings": [
+      "No suitable Paul example exists for this topic and learner level."
+    ]
+  }
+]

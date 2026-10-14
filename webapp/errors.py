@@ -22,6 +22,7 @@ class ErrorCode(str, Enum):
     THREAD_NOT_FOUND = "thread_not_found"
     TURN_IN_PROGRESS = "turn_in_progress"
     RATE_LIMITED = "rate_limited"
+    SESSION_LIMIT = "session_limit"
     TURN_TIMEOUT = "turn_timeout"
     MODEL_UNAVAILABLE = "model_unavailable"
     SEARCH_UNAVAILABLE = "search_unavailable"
@@ -38,6 +39,7 @@ HTTP_STATUS: dict[ErrorCode, int] = {
     ErrorCode.THREAD_NOT_FOUND: 404,
     ErrorCode.TURN_IN_PROGRESS: 409,
     ErrorCode.RATE_LIMITED: 429,
+    ErrorCode.SESSION_LIMIT: 429,
     ErrorCode.TURN_TIMEOUT: 504,
     ErrorCode.MODEL_UNAVAILABLE: 503,
     ErrorCode.SEARCH_UNAVAILABLE: 503,

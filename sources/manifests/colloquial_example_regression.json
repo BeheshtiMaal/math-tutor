@@ -1,0 +1,17 @@
+{
+  "tests": 54,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 8.843,
+  "failed_cases": [],
+  "math_execution": "Actual SymPy validation in-process; graph remains real. Worker isolation is not certified by this run.",
+  "worker_regression": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 33.282,
+    "failed_cases": []
+  }
+}

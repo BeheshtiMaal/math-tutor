@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T16:59:21.433968+00:00",
+  "generated_at": "2026-10-13T17:43:54.746264+00:00",
   "curation_phase": "W3",
   "backend": "avalai",
   "model": "text-embedding-3-large",
@@ -8,8 +8,8 @@
   "max_tokens": 2048,
   "cache_dir": ".cache\\retrieval\\avalai\\text-embedding-3-large",
   "semantic_enabled": true,
-  "api_requests": 2,
-  "prompt_tokens": 15545,
+  "api_requests": 1,
+  "prompt_tokens": 4278,
   "local_embedding_model_loaded": false,
   "indexes": {
     "sources": {
@@ -17,13 +17,13 @@
         "status": "success",
         "logical_records": 130,
         "chunks": 130,
-        "embedded": 0,
-        "reused": 130,
+        "embedded": 6,
+        "reused": 124,
         "warnings": []
       },
       "cache": {
         "exists": true,
-        "bytes": 1460078,
+        "bytes": 1463451,
         "settings": {
           "model_id": "text-embedding-3-large",
           "revision": "provider-managed",
@@ -45,7 +45,7 @@
           3072
         ],
         "dtype": "float32",
-        "aggregate_content_hash": "81aab508cae5f88c028120f60477d703d3dd84a16739b3f4472e97e3b6930199",
+        "aggregate_content_hash": "c2bd8af0bca37bdecfc58ea27aedd9d21893a6bd4dcef090bc60e21fa382750c",
         "warnings": []
       }
     },
@@ -54,13 +54,13 @@
         "status": "success",
         "logical_records": 87,
         "chunks": 87,
-        "embedded": 36,
-        "reused": 51,
+        "embedded": 0,
+        "reused": 87,
         "warnings": []
       },
       "cache": {
         "exists": true,
-        "bytes": 971498,
+        "bytes": 971500,
         "settings": {
           "model_id": "text-embedding-3-large",
           "revision": "provider-managed",

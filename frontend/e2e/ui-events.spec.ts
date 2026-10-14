@@ -1,0 +1,37 @@
+import {test,expect} from "@playwright/test";
+
+test("component events explain selected content once and preserve lesson position",async({page})=>{
+  const requests:Record<string,any>[]=[],errors:string[]=[];
+  page.on("pageerror",error=>errors.push(error.message));
+  page.on("request",request=>{if(request.url().endsWith("/api/chat/stream"))requests.push(request.postDataJSON());});
+  await page.goto("/");
+  await page.getByRole("textbox",{name:"پرسش شما"}).fill("لگاریتم را توضیح بده");
+  await page.getByRole("button",{name:"ارسال پرسش"}).click();
+  await expect(page.getByRole("button",{name:"ادامه",exact:true})).toBeEnabled({timeout:130000});
+  const graph=page.locator(".function-graph"),step=page.locator(".step-reveal"),slider=graph.getByRole("slider");
+  await slider.press("Home");for(let i=0;i<4;i++)await slider.press("ArrowRight");
+  await expect(graph.locator(".graph-highlights")).toContainText(/[-−]3/);
+  expect(requests).toHaveLength(1);
+  await graph.getByRole("button",{name:"دربارهٔ این نمودار بپرس"}).click();
+  await expect(page.getByRole("button",{name:"ادامه",exact:true})).toBeEnabled({timeout:130000});
+  await expect(page.locator(".lesson-message").last()).toContainText("b = 0.5");
+  await expect(page.locator(".lesson-message").last()).toContainText(/[-−]3/);
+  expect(requests[1].message).toBe("");expect(requests[1].ui_event.payload).toEqual({params:{b:.5}});
+  await expect(page.locator(".step-controls")).toContainText("گام ۱");
+  await step.getByRole("button",{name:"مرحلهٔ بعد"}).click();
+  await step.getByRole("button",{name:"این مرحله را نفهمیدم"}).click();
+  await expect(page.getByRole("button",{name:"ادامه",exact:true})).toBeEnabled();
+  expect(requests[2].ui_event.type).toBe("step_confused");
+  expect(requests[2].ui_event.payload.step_id).toBe("s1");
+  expect(requests[2].ui_event.seq).toBeGreaterThan(requests[1].ui_event.seq);
+  await expect(page.locator(".step-controls")).toContainText("گام ۱");
+  await expect(page.locator(".step-reveal")).toHaveCount(1);
+  await expect(page.locator(".function-graph")).toHaveCount(1);
+  const duplicate=await page.request.post("/api/chat/stream",{data:requests[2]});
+  expect(await duplicate.text()).toContain('"event_status": "duplicate"');
+  await expect(page.locator(".library-footer")).toContainText("گفت‌وگوها روی این دستگاه ذخیره می‌شوند");
+  await page.reload();
+  await expect(step).toContainText("مرحلهٔ ۲ از ۳");
+  await expect(graph.getByRole("slider")).toHaveAttribute("aria-valuenow","0.5");
+  await expect(page.locator(".katex-error")).toHaveCount(0);expect(errors).toEqual([]);
+});

@@ -4,8 +4,8 @@ Shapes follow spec v3.0 sections 7 and 8. Fields that later phases fill are
 present with explicit empty values rather than omitted, so the client contract
 does not change between phases:
 
-* ``blocks`` is always empty until phase W5.
-* ``level_suggestion`` is always ``None`` until phase W8.
+* ``blocks`` is the closed, backend-validated W5 component union.
+* ``level_suggestion`` reports the W8 wording heuristic separately from manual settings.
 * ``usage`` values are ``None`` until phase W9 measures token usage.
 
 The learner-profile contracts live in the core (``agent.py``) because the graph
@@ -28,6 +28,8 @@ from agent import (
 )
 
 from .threads import normalize_thread_id, valid_thread_id
+from .ui_blocks import UIBlock
+from ui_events import UIEvent
 
 Mode = Literal["answer", "learn"]
 Language = Literal["fa", "en"]
@@ -66,9 +68,15 @@ class ChatTurnRequest(WebContract):
     # validation happens in the service rather than in request parsing.
     learner_profile: dict[str, Any] | None = None
     client: ClientInfo | None = None
+    ui_event: UIEvent | None = None
 
     @model_validator(mode="after")
     def message_required_for_text_actions(self):
+        if self.action == 'ui_event':
+            if self.ui_event is None or self.message or self.ui_event.thread_id != self.thread_id:
+                raise ValueError('UI event requires matching thread and empty message')
+        elif self.ui_event is not None:
+            raise ValueError('UI event requires ui_event action')
         if self.action in {"new_lesson", "followup"} and not self.message:
             raise ValueError(f"action '{self.action}' requires a non-empty message")
         return self
@@ -90,6 +98,7 @@ class Segment(WebContract):
 
 
 class LessonState(WebContract):
+    concept: str | None = Field(default=None,max_length=120)
     step_index: int = Field(ge=0)
     total_steps: int = Field(ge=0)
     awaiting_user: bool
@@ -107,11 +116,14 @@ class InterruptInfo(WebContract):
 
 
 class Usage(WebContract):
+    limit_reached: bool = False
     prompt_tokens: int | None = Field(default=None, ge=0)
     completion_tokens: int | None = Field(default=None, ge=0)
 
 
 class ChatTurnResponse(WebContract):
+    degraded: bool = False
+    event_status: Literal['accepted', 'duplicate', 'stale'] | None = None
     status: Literal["ok", "thread_not_found"] = "ok"
     thread_id: str
     turn_id: str | None = None
@@ -125,7 +137,7 @@ class ChatTurnResponse(WebContract):
     level_source: LevelSource = "default"
     level_suggestion: LearnerLevel | None = None
     segments: list[Segment] = Field(default_factory=list)
-    blocks: list[dict[str, Any]] = Field(default_factory=list)
+    blocks: list[UIBlock] = Field(default_factory=list, max_length=2)
     lesson: LessonState | None = None
     interrupt: InterruptInfo | None = None
     next_request: str | None = None

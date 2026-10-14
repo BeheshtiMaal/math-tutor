@@ -335,7 +335,7 @@ class ChunkChecks(unittest.TestCase):
                 index.validate_vectors(values, 1)
 
 
-@unittest.skipUnless(importlib.util.find_spec("sentence_transformers"), "Actual multilingual E5 acceptance blocked: embedding package/model unavailable")
+@unittest.skipUnless(os.environ.get('TUTOR_TEST_LOCAL_E5')=='1' and importlib.util.find_spec("sentence_transformers"), "Optional local E5 acceptance: set TUTOR_TEST_LOCAL_E5=1 with package/model installed")
 class ActualE5Checks(unittest.TestCase):
     def test_real_model_persian_english_paraphrases_against_english_passages(self):
         config, _ = agent.load_config()

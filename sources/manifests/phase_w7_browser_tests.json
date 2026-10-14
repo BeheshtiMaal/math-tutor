@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "engine": "chromium",
+      "stats": {
+        "startTime": "2026-10-14T05:52:44.561Z",
+        "duration": 113459.337,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "engine": "firefox",
+      "stats": {
+        "startTime": "2026-10-14T05:56:05.546Z",
+        "duration": 180310.115,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "fixture": "scripts/serve_w6_fixture.py",
+  "actual_graph": true,
+  "actual_sympy": true,
+  "external_services": "deterministic replacements",
+  "specs": [
+    "lesson.spec.ts",
+    "blocks.spec.ts",
+    "ui-events.spec.ts"
+  ],
+  "react_inspection": "StepReveal, state.index=1, typed onEvent callback; lesson index=0",
+  "mobile_chrome": {
+    "width": 375,
+    "document_overflow": false,
+    "footer_overflow": false,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "katex_errors": 0
+  },
+  "initial_failures": "outdated bilingual fixtures, wrong zero-based test ID, missing optional replay header proxy defect; final acceptance rerun"
+}

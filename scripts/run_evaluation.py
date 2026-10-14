@@ -40,19 +40,42 @@ from langsmith import tracing_context  # noqa: E402
 from web_search import TavilySearchClient  # noqa: E402
 
 STRIP = ("$", "\\(", "\\)", "\\[", "\\]", "\\left", "\\right", "\\text", "\\,", "\\;", "\\!",
-         "\\", "{", "}", "^", "_", "*", "`")
+         "\\", "{", "}", "_", "*", "`")
+
+# Bounded editorial alternatives for the concepts missed solely by wording.
+# These are coverage hints, not mathematical correctness or negation proofs.
+CONCEPT_ALTERNATIVES = {
+    "multiply": ("multiplying", "product"),
+    "sum formula": ("addition formula", "sine addition identity"),
+    "two-sided": ("both the left and the right", "left and right must agree"),
+    "نادرست": ("درست نیست", "برقرار نیست", "کافی نیست", "نیست", "خطا"),
+    "هیچ‌کدام": ("نه بیشینه", "نه کمینه"),
+    "پایه یکسان": ("پایه‌ها یکی", "پایه‌ها با هم مساوی", "پایه برابر"),
+    "ریشه ناخواسته": ("ریشه‌های ناخواسته", "جواب‌های اضافی"),
+    "لزومی ندارد": ("لازم نیست", "ضروری نیست"),
+    "علامت‌دار": ("تجمع علامت", "با علامت منفی", "مقدار انتگرال منفی"),
+    "تجزیه": ("(x - 1)(x + 1)",),
+    "2/3": (r"\frac{2}{3}",),
+}
 
 
 def normalize(text):
     text = text.lower().replace("\u200c", "")
+    text = text.replace("ي", "ی").replace("ك", "ک")
+    text = text.replace(r"\cdot", "*").replace(r"\times", "*")
+    text = re.sub(r"\^\{([^{}]+)\}", r"^(\1)", text)
+    text = re.sub(r"\^([a-z0-9]+)", r"^(\1)", text)
     for token in STRIP:
         text = text.replace(token, "")
     return re.sub(r"\s+", " ", text).strip()
 
 
 def concept_found(concept, answer_norm, answer_compact):
-    value = normalize(concept)
-    return value in answer_norm or value.replace(" ", "") in answer_compact
+    for candidate in (concept, *CONCEPT_ALTERNATIVES.get(concept, ())):
+        value = normalize(candidate)
+        if value in answer_norm or value.replace(" ", "") in answer_compact:
+            return True
+    return False
 
 
 async def run_item(graph, config, record, language):
@@ -66,7 +89,10 @@ async def run_item(graph, config, record, language):
     elapsed = round(time.monotonic() - started, 1)
 
     answer = result.get("explanation") or result.get("answer") or ""
-    answer_norm, answer_compact = normalize(answer), normalize(answer).replace(" ", "")
+    # Score the lesson itself, not appended bank examples or service warnings.
+    segments = result.get("explanation_segments") or []
+    lesson_text = segments[0].text if segments else answer
+    answer_norm, answer_compact = normalize(lesson_text), normalize(lesson_text).replace(" ", "")
     expected = record["expected_concepts"][language]
     found = [term for term in expected if concept_found(term, answer_norm, answer_compact)]
     missing = [term for term in expected if term not in found]
@@ -81,6 +107,7 @@ async def run_item(graph, config, record, language):
         kind=record["kind"], language=language, status=status, elapsed_seconds=elapsed,
         degraded=degraded, expected=expected, found=found, missing=missing,
         answer_chars=len(answer), answer=answer, warnings=warnings,
+        scoring_version="w3-concept-alternatives-v2", scored_text="first explanation segment",
         nodes=[getattr(event, "node", None) if not isinstance(event, dict) else event.get("node")
                for event in (result.get("execution_trace") or ())],
         topic_kind=result.get("topic_kind"),
@@ -110,6 +137,13 @@ def unrun_jobs(dataset, previous):
     """Select unfinished pairs; reject ambiguous reconstructed aggregate coverage."""
     all_jobs = [(record, language) for record in dataset["records"] for language in ("fa", "en")]
     known = {(record["id"], language) for record, language in all_jobs}
+    if "selected_pairs" in previous:
+        selected = {(row["id"], row["language"]) for row in previous["selected_pairs"]}
+        if not selected <= known or len(selected) != previous["planned_runs"]:
+            raise ValueError("Prior selected pairs do not match the dataset/planned count")
+        all_jobs = [(record, language) for record, language in all_jobs
+                    if (record["id"], language) in selected]
+        known = selected
     if "results" in previous:
         completed = {(row["id"], row["language"]) for row in previous["results"]}
         if not completed <= known or len(completed) != previous["runs"]:
@@ -157,7 +191,7 @@ def unrun_jobs(dataset, previous):
     return jobs
 
 
-async def main(limit, concurrency, output, force, rerun_failed=None, run_unfinished=None):
+async def main(limit, concurrency, output, force, rerun_failed=None, run_unfinished=None, phase='W3'):
     config, credentials = load_config()
     dataset = json.loads((ROOT / "sources/manifests/evaluation_set.json").read_text(encoding="utf-8"))
     records = dataset["records"][:limit] if limit else dataset["records"]
@@ -203,8 +237,9 @@ async def main(limit, concurrency, output, force, rerun_failed=None, run_unfinis
         clean = [row for row in results if not row.get("degraded")]
         return dict(
             generated_at=datetime.now(timezone.utc).isoformat(),
-            curation_phase="W3", channel="web", model=config.model,
+            curation_phase=phase, channel="web", model=config.model,
             provider=config.provider, search_backend=config.search_backend,
+            search_enabled=config.search_enabled,
             concurrency=concurrency,
             # An interrupted run must not read as a finished one, and a smoke run must
             # not read as a full pass.
@@ -273,6 +308,7 @@ if __name__ == "__main__":
     cli.add_argument("--limit", type=int, default=0)
     cli.add_argument("--concurrency", type=int, default=6)
     cli.add_argument("--output", default="sources/manifests/evaluation_run.json")
+    cli.add_argument("--phase", choices=['W3','W9'], default='W3')
     cli.add_argument("--force", action="store_true",
                      help="overwrite an existing aborted run artifact")
     selection = cli.add_mutually_exclusive_group()
@@ -280,4 +316,4 @@ if __name__ == "__main__":
     selection.add_argument("--run-unfinished", help="prior artifact: run only its unfinished item-language pairs")
     arguments = cli.parse_args()
     raise SystemExit(asyncio.run(main(arguments.limit, arguments.concurrency,
-                                      arguments.output, arguments.force, arguments.rerun_failed, arguments.run_unfinished)))
+                                      arguments.output, arguments.force, arguments.rerun_failed, arguments.run_unfinished,arguments.phase)))

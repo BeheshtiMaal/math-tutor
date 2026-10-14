@@ -1,0 +1,35 @@
+{
+  "natural_request": "دایره واحد را از ابتدا توضیح بده",
+  "component": "geometry_canvas",
+  "scene": "unit_circle",
+  "language": "fa",
+  "initial_angle_degrees": 45,
+  "keyboard_angle_degrees": 46,
+  "normal_next_proxy": true,
+  "final_alerts": [],
+  "initial_update": "15s timeout during first Next dev route compilation; retry succeeded",
+  "react_inspection": "GeometryCanvas confirmed with issued block, Persian params and desired scene",
+  "next_mcp": [
+    {
+      "tool": "get_errors",
+      "response": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"configErrors\\\":[],\\\"sessionErrors\\\":[]}\"}]},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+    },
+    {
+      "tool": "get_compilation_issues",
+      "response": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"issues\\\":[]}\"}]},\"jsonrpc\":\"2.0\",\"id\":2}\n\n"
+    },
+    {
+      "tool": "get_page_metadata",
+      "response": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"sessions\\\":[{\\\"url\\\":\\\"/\\\",\\\"routerType\\\":\\\"app\\\",\\\"segments\\\":[{\\\"path\\\":\\\"app/layout.tsx\\\",\\\"type\\\":\\\"layout\\\",\\\"isBoundary\\\":false,\\\"isBuiltin\\\":false},{\\\"path\\\":\\\"global-error.js\\\",\\\"type\\\":\\\"boundary:global-error\\\",\\\"isBoundary\\\":true,\\\"isBuiltin\\\":true},{\\\"path\\\":\\\"not-found.js\\\",\\\"type\\\":\\\"boundary:not-found\\\",\\\"isBoundary\\\":true,\\\"isBuiltin\\\":true},{\\\"path\\\":\\\"app/page.tsx\\\",\\\"type\\\":\\\"page\\\",\\\"isBoundary\\\":false,\\\"isBuiltin\\\":false}]}]}\"}]},\"jsonrpc\":\"2.0\",\"id\":3}\n\n"
+    }
+  ],
+  "health": {
+    "frontend": {
+      "status": 200
+    },
+    "backend": {
+      "status": 200
+    }
+  },
+  "scope": "representative live integration; not broad live-model geometry quality certification"
+}

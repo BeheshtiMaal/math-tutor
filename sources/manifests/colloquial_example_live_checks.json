@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "request": 1,
+      "http": 200,
+      "reveal": 1,
+      "chartCount": 1,
+      "progressUnchanged": true,
+      "katexErrors": 0
+    },
+    {
+      "request": 2,
+      "http": 200,
+      "reveal": 1,
+      "chartCount": 1,
+      "progressUnchanged": true,
+      "katexErrors": 0
+    }
+  ],
+  "pageErrors": [],
+  "liveModel": true
+}

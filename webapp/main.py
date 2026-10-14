@@ -12,7 +12,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 
 import agent
 
@@ -28,6 +28,7 @@ from .schemas import ChatTurnRequest, ChatTurnResponse, HealthResponse, ServiceS
 from .service import TutorService
 from .settings import ServerSettings
 from .threads import ThreadRegistry
+from .ui_blocks import SamplingRequest, SampleResult, GeometryUpdateRequest, GeometryResult
 
 SERVICE_VERSION = "3.0"
 
@@ -78,6 +79,7 @@ def build_service(
         graph=graph,
         registry=registry,
         turn_timeout_seconds=settings.turn_timeout_seconds,
+        settings=settings,
     )
 
 
@@ -91,8 +93,8 @@ def service_status(
         return ServiceStatus(model="disabled", search="disabled", embedding="disabled")
     return ServiceStatus(
         model="configured" if config.model else "missing",
-        search="configured" if config.search_enabled and credentials.search_api_key else "missing",
-        embedding="configured" if config.semantic_enabled and credentials.embedding_api_key else "missing",
+        search=("configured" if credentials.search_api_key else "missing") if config.search_enabled else "disabled",
+        embedding=("configured" if credentials.embedding_api_key else "missing") if config.semantic_enabled else "disabled",
     )
 
 
@@ -145,6 +147,30 @@ async def chat_resume(payload: ChatTurnRequest, service: ServiceDep) -> ChatTurn
     return await service.turn(payload)
 
 
+@router.post("/api/chat/stream")
+async def chat_stream(payload: ChatTurnRequest, request: Request, service: ServiceDep) -> StreamingResponse:
+    from .streaming import sse
+
+    async def events():
+        async for name, data in service.stream(payload, request.headers.get("x-request-id")):
+            yield sse(name, data)
+
+    return StreamingResponse(events(), media_type="text/event-stream",
+                             headers={"Cache-Control": "no-cache, no-transform", "X-Accel-Buffering": "no"})
+
+
+@router.post("/api/ui/sample")
+async def ui_sample(payload: SamplingRequest, service: ServiceDep) -> SampleResult:
+    """Resample an issued graph with bounded slider values; no model/graph call."""
+    return await service.sample(payload)
+
+
+@router.post("/api/ui/geometry")
+async def ui_geometry(payload: GeometryUpdateRequest, service: ServiceDep) -> GeometryResult:
+    """Update an issued, bounded numeric scene without advancing the lesson."""
+    return await service.geometry(payload)
+
+
 def create_app(
     *,
     settings: ServerSettings | None = None,
@@ -184,6 +210,7 @@ def create_app(
             app.state.credentials = resolved_credentials
         app.state.settings = resolved_settings
         yield
+        await app.state.service.close()
         app.state.service = None
 
     app = FastAPI(
@@ -219,6 +246,8 @@ def create_app(
                     )
         return await call_next(request)
 
+    from .security import LocalRequestGuard
+    app.add_middleware(LocalRequestGuard,max_bytes=resolved_settings.max_request_bytes,origins=resolved_settings.frontend_origins)
     # Added after the body limiter so CORS stays outermost and decorates every
     # response, including a rejected oversized body.
     app.add_middleware(
@@ -226,7 +255,7 @@ def create_app(
         allow_origins=list(resolved_settings.frontend_origins),
         allow_credentials=False,
         allow_methods=["GET", "POST", "OPTIONS"],
-        allow_headers=["Content-Type"],
+        allow_headers=["Content-Type", "X-Request-ID"],
     )
 
     app.add_exception_handler(ApiError, api_error_handler)

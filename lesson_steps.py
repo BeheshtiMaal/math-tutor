@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import re
+from typing import Any
 from pydantic import Field, model_validator
 from agent import Contract, LessonStep, UserAction
+from lesson_presentation import source_language
 
 
 def sentences(text):
@@ -26,6 +28,7 @@ def sentences(text):
 class StepDraft(Contract):
     explanation: str = Field(min_length=1, max_length=1400)
     source_ids: list[str] = Field(min_length=1, max_length=32)
+    block_requests: list[Any] = Field(default_factory=list, max_length=2)
 
     @model_validator(mode="after")
     def short_chunk(self):
@@ -78,12 +81,16 @@ def parse_reply(value, max_chars):
     return LessonReply(action="followup", query=value)
 
 
-def fallback_plan(sources, *, fa, output_limit):
+def fallback_plan(sources, *, fa, output_limit, review_concepts=()):
     """Use actual passages in small chunks; never manufacture mathematical text."""
     plan, used, omitted = [], 0, False
     for record in sources:
-        text = re.sub(r"(?m)^#{1,6} .*\n?", "", record.text).strip()
-        pieces = sentences(text)
+        text = source_language(record.text, "fa" if fa else "en")
+        # Curated definitions can start with directions for the writer. They
+        # guide synthesis but are not a mathematical explanation for a learner.
+        pieces = [piece for piece in sentences(text) if not re.match(
+            r"^(?:At this level the learner\b|Preserve uncertainty\b|Start with a concrete power\b|در این سطح یادگیرنده|عدم قطعیت را حفظ کن|با یک توان مشخص شروع کن)",
+            piece.strip(), re.I)]
         for start in range(0, len(pieces), 2):
             selected = pieces[start:start + 2]
             selected = [piece if piece.endswith((".", "!", "?", "؟")) else piece + "." for piece in selected]
@@ -96,6 +103,13 @@ def fallback_plan(sources, *, fa, output_limit):
             used += len(body)
             plan.append(LessonStep(id=f"step:{len(plan)}", objective=record.provenance.section_title,
                                    text=body, source_ids=[record.id]))
+    # Prefer a matching actual excerpt on model failure; never synthesize
+    # claims from the learner's private description of a weak point.
+    terms = set(re.findall(r"[^\W\d_]{3,}", ' '.join(review_concepts).lower())) - {
+        'the', 'and', 'for', 'with', 'بودن', 'آن', 'این', 'های'}
+    if terms and plan:
+        plan.sort(key=lambda step: -len(terms.intersection(re.findall(r"[^\W\d_]{3,}", step.text.lower()))))
+        plan = [step.model_copy(update={'id': f'step:{index}'}) for index, step in enumerate(plan)]
     if not plan:
         text = ("متن معتبر و کوتاه برای این درس در دسترس نیست. یادداشت محلی مناسب لازم است." if fa
                 else "No valid short source passage is available for this lesson. Suitable prepared local notes are needed.")

@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "step_confused",
+    "status": "ok",
+    "event_status": "accepted",
+    "language": "fa",
+    "lesson_index_unchanged": true,
+    "new_blocks": 0,
+    "persian_prose": true,
+    "duplicate_status": "duplicate",
+    "duplicate_text_empty": true,
+    "text": "در این مرحله، عدد 8 را که در لگاریتم اصلی داشتیم به شکل \\( 2^3 \\) بازنویسی کردیم، چون 8 برابر است با 2 به توان 3. نماد \\( \\log \\) لگاریتم است و ما آن را در صورت کسر داریم. این تغییر کمک می‌کند تا بتوانیم از خاصیت‌های لگاریتم استفاده کنیم.",
+    "payload": {
+      "step_id": "s1"
+    },
+    "warnings": [
+      "No suitable Paul example exists for this topic and learner level.",
+      "Lesson planning failed; using short actual source excerpts instead.",
+      "Some complete source units exceed the short-step or output budget; this lesson does not cover those units."
+    ]
+  },
+  {
+    "kind": "graph_question",
+    "status": "ok",
+    "event_status": "accepted",
+    "language": "fa",
+    "lesson_index_unchanged": true,
+    "new_blocks": 0,
+    "persian_prose": true,
+    "duplicate_status": "duplicate",
+    "duplicate_text_empty": true,
+    "text": "در این نمودار، b = 2.\n\nنمونه‌های محاسبه‌شده برای همین مقادیر: $x=0.1,\\quad y=-3.32193$؛ $x=5.05,\\quad y=2.33628$؛ $x=10,\\quad y=3.32193$.",
+    "payload": {
+      "params": {
+        "b": 2.0
+      }
+    },
+    "warnings": [
+      "No suitable Paul example exists for this topic and learner level.",
+      "Lesson planning failed; using short actual source excerpts instead.",
+      "Some complete source units exceed the short-step or output budget; this lesson does not cover those units."
+    ]
+  }
+]

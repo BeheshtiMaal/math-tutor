@@ -1,0 +1,33 @@
+{
+  "kind": "agent-operated visual/keyboard checklist; not a human sign-off",
+  "observations": [
+    {
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "os": "Windows",
+      "keyboardFirstFocus": "رفتن به کادر پرسش",
+      "horizontalOverflowAt375": false,
+      "pageErrors": [],
+      "reducedMotion": true,
+      "screenshots": [
+        "chromium-light.png",
+        "chromium-dark.png",
+        "chromium-mobile.png"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "157.0",
+      "os": "Windows",
+      "keyboardFirstFocus": "رفتن به کادر پرسش",
+      "horizontalOverflowAt375": false,
+      "pageErrors": [],
+      "reducedMotion": true,
+      "screenshots": [
+        "firefox-light.png",
+        "firefox-dark.png",
+        "firefox-mobile.png"
+      ]
+    }
+  ]
+}

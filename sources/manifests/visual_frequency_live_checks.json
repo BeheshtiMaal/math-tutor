@@ -1,0 +1,28 @@
+[
+  {
+    "action": "new_lesson",
+    "block_types": [
+      "function_graph"
+    ],
+    "language": "fa",
+    "passed": true
+  },
+  {
+    "action": "simplify",
+    "block_types": [],
+    "language": "fa",
+    "passed": true
+  },
+  {
+    "action": "followup",
+    "block_types": [],
+    "language": "fa",
+    "passed": true
+  },
+  {
+    "action": "full",
+    "block_types": [],
+    "language": "fa",
+    "passed": true
+  }
+]
